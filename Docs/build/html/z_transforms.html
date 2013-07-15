@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Z-Transforms &mdash; Sargent_Stachurski_Modules 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Sargent_Stachurski_Modules 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Sargent_Stachurski_Modules’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sargent_Stachurski_Modules’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Sargent_Stachurski_Modules 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction-to-z-transforms">
+<h1>Introduction to Z-Transforms<a class="headerlink" href="#introduction-to-z-transforms" title="Permalink to this headline">¶</a></h1>
+<p>In this module we will introduce the idea of a z-Transform.  For those of you who are familiar with Laplace transforms, the z-Transform can basically be seen as the discrete time equivalent of the Laplace transform.  The z-Transform will share many of the same properties as the Laplace transform.  For those of you who are not familiar with the Laplace transform then the information provided should be sufficient for your understanding.</p>
+<div class="section" id="the-z-transform">
+<h2>The Z-Transform<a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h2>
+<p>In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.</p>
+<dl class="docutils">
+<dt>z-Transform (one sided)</dt>
+<dd>The z-transform of a sampled sequence <span class="math">\(x(kT)\)</span> or <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers and <span class="math">\(T\)</span> is hte sampling period, is defined by:
+<span class="math">\(X(z) = Z[x^*(t)] = Z[x(kT)] = Z[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}\)</span>, where the complex variable <span class="math">\(z\)</span> must be selected so that the summation converges.</dd>
+</dl>
+<p>Lets practice calculating the z-transform before we discuss how it can be used.</p>
+<div class="section" id="first-example">
+<h3>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h3>
+<p>Consider the unit step function defined by:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{array}{cc} 1 &amp; \text{if } k&gt;0 \\ 0 &amp; \text{else} \end{array}\end{split}\]</div>
+<p>We calculate the z-transform by using the definition.</p>
+<div class="math">
+\[X(z) = Z[x(k)] = \sum_{k=0}^\infty 1 z^{-k}\]\[\sum_{k=0}^\infty 1 z^{-k} = 1 + z^{-1} + z^{-2} + ... = \frac{1}{1 - z^{-1}}\]\[\frac{1}{1 - z^{-1}} = \frac{z}{z-1}\]</div>
+<p>This z-transform is defined on <span class="math">\(|z|&gt;1\)</span>.</p>
+</div>
+<div class="section" id="second-example">
+<h3>Second Example<a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h3>
+<p>Consider the polynomial function defined by:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{array}{c} a^k &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{array}\end{split}\]</div>
+<p>We calculate the z-transform by using the definition.</p>
+<div class="math">
+\[X(z) = Z[x(k)] = \sum_{k=0}^\infty a^k z^{-k}\]\[= \sum_{k=0}^\infty (a^{-1} z)^{-k} = \frac{1}{1 - (a^{-1}z)^{-1}}\]\[\frac{1}{1 - (a^{-1}z)^{-1}} = \frac{z}{z-a}\]</div>
+<p>This z-transform is defined on <span class="math">\(|z|&gt;a\)</span>.</p>
+</div>
+<div class="section" id="on-your-own">
+<h3>On Your Own<a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a></h3>
+<p>Now try to calculate the z-transform of the function:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{array}{c} \sin( \omega k T) &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{array}\end{split}\]</div>
+<p>For what values of <span class="math">\(z\)</span> is it defined?</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Try writing it in terms of the definition of sin.  <span class="math">\(sin(x) = \frac{e^{ix} - e^{-ix}}{2i}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="simple-example-of-a-difference-equation">
+<h2>Simple Example of a Difference Equation<a class="headerlink" href="#simple-example-of-a-difference-equation" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction to Z-Transforms</a><ul>
+<li><a class="reference internal" href="#the-z-transform">The Z-Transform</a><ul>
+<li><a class="reference internal" href="#first-example">First Example</a></li>
+<li><a class="reference internal" href="#second-example">Second Example</a></li>
+<li><a class="reference internal" href="#on-your-own">On Your Own</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simple-example-of-a-difference-equation">Simple Example of a Difference Equation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/z_transforms.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sargent_Stachurski_Modules’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Sargent_Stachurski_Modules 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Multiple.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
