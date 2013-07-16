@@ -98,6 +98,21 @@
 </div>
 <div class="section" id="simple-example-of-a-difference-equation">
 <h2>Simple Example of a Difference Equation<a class="headerlink" href="#simple-example-of-a-difference-equation" title="Permalink to this headline">¶</a></h2>
+<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<div class="math">
+\[x_(k) = x(k-1) + T y(k-1)\]</div>
+<p>This problem could be solved through backward substitution and obtaining the equation <span class="math">\(x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)\)</span>, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
+.. image:: images/backwardrect.png</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">scale:</th><td class="field-body">15%</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 </div>
 <div class="section" id="properties-of-the-z-transform">
 <h2>Properties of the Z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
