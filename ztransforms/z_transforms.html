@@ -10,8 +10,9 @@
     
     <title>Introduction to Z-Transforms &mdash; Sargent_Stachurski_Modules 1.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -26,28 +27,27 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
     <link rel="top" title="Sargent_Stachurski_Modules 1.0 documentation" href="../index.html" />
     <link rel="prev" title="Welcome to Sargent_Stachurski_Modules’s documentation!" href="../index.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../index.html" title="Welcome to Sargent_Stachurski_Modules’s documentation!"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Sargent_Stachurski_Modules 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Sargent_Stachurski_Modules 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Introduction to Z-Transforms</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="introduction-to-z-transforms">
 <h1>Introduction to Z-Transforms<a class="headerlink" href="#introduction-to-z-transforms" title="Permalink to this headline">¶</a></h1>
 <p>In this module we will introduce the idea of a z-Transform.  For those of you who are familiar with Laplace transforms, the z-Transform can basically be seen as the discrete time equivalent of the Laplace transform.  The z-Transform will share many of the same properties as the Laplace transform.  For those of you who are not familiar with the Laplace transform then the information provided should be sufficient for your understanding.</p>
@@ -98,6 +98,21 @@
 </div>
 <div class="section" id="simple-example-of-a-difference-equation">
 <h2>Simple Example of a Difference Equation<a class="headerlink" href="#simple-example-of-a-difference-equation" title="Permalink to this headline">¶</a></h2>
+<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<div class="math">
+\[x_(k) = x(k-1) + T y(k-1)\]</div>
+<p>This problem could be solved through backward substitution and obtaining the equation <span class="math">\(x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)\)</span>, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
+.. image:: images/backwardrect.png</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">scale:</th><td class="field-body">15%</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 </div>
 <div class="section" id="properties-of-the-z-transform">
 <h2>Properties of the Z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
@@ -145,73 +160,31 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="linearity">
-<h3>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}a_1 x_1[n] + z_2 x_2[n] &amp;\rightarrow a_1 X_1(z) + a_2 X_2(z)\end{split}\]</div>
-</div>
-<div class="section" id="time-expansion">
-<h3>Time Expansion<a class="headerlink" href="#time-expansion" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x_{(k)}[n] = \begin{cases} x[r], &amp; n=rk \\ 0, &amp; n \ne rk\end{cases} &amp;\rightarrow X(z^k)\end{split}\]</div>
-</div>
-<div class="section" id="time-shifting">
-<h3>Time Shifting <a class="footnote-reference" href="#f2" id="id3">[2]</a><a class="headerlink" href="#time-shifting" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x[n-k] &amp;\rightarrow z^{-k}X(z)\end{split}\]</div>
-</div>
-<div class="section" id="scaling-in-z-domain">
-<h3>Scaling in z-domain<a class="headerlink" href="#scaling-in-z-domain" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}a^n x[n] &amp;\rightarrow X(a^{-1}z)\end{split}\]</div>
-</div>
-<div class="section" id="time-reversal">
-<h3>Time Reversal<a class="headerlink" href="#time-reversal" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x[-n] &amp;\rightarrow X(z^{-1})\end{split}\]</div>
-</div>
-<div class="section" id="complex-conjugation">
-<h3>Complex Conjugation<a class="headerlink" href="#complex-conjugation" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x^*[n] &amp;\rightarrow X^*(z^*)\end{split}\]</div>
-</div>
-<div class="section" id="differentiation">
-<h3>Differentiation<a class="headerlink" href="#differentiation" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}n x[n] &amp;\rightarrow -z2 \frac{\partial X(z)}{\partial z}\end{split}\]</div>
-</div>
-<div class="section" id="convolution">
-<h3>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x_1[n] \ast x_2[n] &amp;\rightarrow X_1(z) X_2(z)\end{split}\]</div>
-</div>
-<div class="section" id="cross-correlation">
-<h3>Cross-Correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}r_{x_1, x_2} = x_1^*[-n] \ast x_2[n] &amp;\rightarrow R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)\end{split}\]</div>
-</div>
-<div class="section" id="multiplication">
-<h3>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\begin{split}x_1[n]x_2[n] &amp;\rightarrow \frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv\end{split}\]</div>
-</div>
 </div>
 <div class="section" id="theorems-associated-with-the-z-transform">
 <h2>Theorems Associated with the Z-Transform<a class="headerlink" href="#theorems-associated-with-the-z-transform" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="parseval-s-theorem">
-<h3>Parseval&#8217;s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[\sum_{b=-\infty}^{\infty} x_1[n]x_2^*[n] = \frac{1}{i 2 \pi} \oint X_1(v) X_2^*(\frac{1}{v})v^{-1} dv\]</div>
-</div>
-<div class="section" id="initial-value-theorem">
-<h3>Initial Value Theorem<a class="headerlink" href="#initial-value-theorem" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[x[0] = \lim_{z \rightarrow \infty} X(z)\]</div>
-</div>
-<div class="section" id="final-value-theorem">
-<h3>Final Value Theorem<a class="headerlink" href="#final-value-theorem" title="Permalink to this headline">¶</a></h3>
-<div class="math">
-\[x[\infty] = \lim_{z \rightarrow 1} (z-1) X(z)\]</div>
+<table border="1" class="docutils" id="z-transform-theorems">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Theorem</th>
+<th class="head">Mathematical Representation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Parseval&#8217;s Theorem</th>
+<td><span class="math">\(\sum_{b=-\infty}^{\infty} x_1[n]x_2^*[n] = \frac{1}{i 2 \pi} \oint X_1(v) X_2^*(\frac{1}{v})v^{-1} dv\)</span></td>
+</tr>
+<tr class="row-odd"><th class="stub">Initial Value Theorem</th>
+<td><span class="math">\(x[0] = \lim_{z \rightarrow \infty} X(z)\)</span></td>
+</tr>
+<tr class="row-even"><th class="stub">Final Value Theorem</th>
+<td><span class="math">\(x[\infty] = \lim_{z \rightarrow 1} (z-1) X(z)\)</span></td>
+</tr>
+</tbody>
+</table>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -221,89 +194,24 @@
 <table class="docutils footnote" frame="void" id="f2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> This property is very important in many economic contexts, as will be seen later in this module.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This property is very important in many economic contexts, as will be seen later in this module.</td></tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Introduction to Z-Transforms</a><ul>
-<li><a class="reference internal" href="#the-z-transform">The Z-Transform</a><ul>
-<li><a class="reference internal" href="#first-example">First Example</a></li>
-<li><a class="reference internal" href="#second-example">Second Example</a></li>
-<li><a class="reference internal" href="#on-your-own">On Your Own</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#simple-example-of-a-difference-equation">Simple Example of a Difference Equation</a></li>
-<li><a class="reference internal" href="#properties-of-the-z-transform">Properties of the Z-Transform</a><ul>
-<li><a class="reference internal" href="#linearity">Linearity</a></li>
-<li><a class="reference internal" href="#time-expansion">Time Expansion</a></li>
-<li><a class="reference internal" href="#time-shifting">Time Shifting </a></li>
-<li><a class="reference internal" href="#scaling-in-z-domain">Scaling in z-domain</a></li>
-<li><a class="reference internal" href="#time-reversal">Time Reversal</a></li>
-<li><a class="reference internal" href="#complex-conjugation">Complex Conjugation</a></li>
-<li><a class="reference internal" href="#differentiation">Differentiation</a></li>
-<li><a class="reference internal" href="#convolution">Convolution</a></li>
-<li><a class="reference internal" href="#cross-correlation">Cross-Correlation</a></li>
-<li><a class="reference internal" href="#multiplication">Multiplication</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#theorems-associated-with-the-z-transform">Theorems Associated with the Z-Transform</a><ul>
-<li><a class="reference internal" href="#parseval-s-theorem">Parseval&#8217;s Theorem</a></li>
-<li><a class="reference internal" href="#initial-value-theorem">Initial Value Theorem</a></li>
-<li><a class="reference internal" href="#final-value-theorem">Final Value Theorem</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../index.html"
-                        title="previous chapter">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/ztransforms/z_transforms.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../index.html" title="Welcome to Sargent_Stachurski_Modules’s documentation!"
-             >previous</a> |</li>
-        <li><a href="../index.html">Sargent_Stachurski_Modules 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
+
     <div class="footer">
         &copy; Copyright 2013, Multiple.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
