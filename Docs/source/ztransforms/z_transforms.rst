@@ -9,11 +9,11 @@ In this module we will introduce the idea of a z-Transform.  For those of you wh
 The Z-Transform
 ===============
 
-In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.
+The z-transform is a transformation that moves us from the time domain to the frequency domain.  In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.
 
 z-Transform (one sided)
 	The z-transform of a sampled sequence :math:`x(kT)` or :math:`x(k)`, where :math:`k` represents non-negative integers and :math:`T` is hte sampling period, is defined by:
-	:math:`X(z) = Z[x^*(t)] = Z[x(kT)] = Z[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}`, where the complex variable :math:`z` must be selected so that the summation converges.
+	:math:`X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = Z[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}`[#f1]_, where the complex variable :math:`z` must be selected so that the summation converges.
 
 Lets practice calculating the z-transform before we discuss how it can be used.
 
@@ -30,7 +30,7 @@ We calculate the z-transform by using the definition.
 
 .. math::
 
-    X(z) = Z[x(k)] &= \sum_{k=0}^\infty 1 z^{-k}
+    X(z) = \mathcal{Z}[x(k)] &= \sum_{k=0}^\infty 1 z^{-k}
 
     &= 1 + z^{-1} + z^{-2} + ... 
 
@@ -54,7 +54,7 @@ We calculate the z-transform by using the definition.
 
 .. math::
 
-        X(z) = Z[x(k)] &= \sum_{k=0}^\infty a^k z^{-k} \\
+        X(z) = \mathcal{Z}[x(k)] &= \sum_{k=0}^\infty a^k z^{-k} \\
         &= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
         &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
         &= \frac{z}{z-a}
@@ -76,6 +76,26 @@ For what values of :math:`z` is it defined?
 
     Try writing it in terms of the definition of sin.  :math:`sin(x) = \frac{e^{ix} - e^{-ix}}{2i}`.
 
+.. include:: properties.rst
+
+For certain functions we have provided a table that will give you the z-transform of specific functions.  You should put your function in the right form to match that of the table and then you can plug it in.
+
+.. include:: transform_table.rst
+
+The Inverse Z-Transform
+=======================
+
+Given a z-transform :math:`X(z)`, it might be useful to be able to convert from the z-transform back to the time sequence that corresponds with the z-transform.  This is where the inverse z-transform comes in; it moves you from the frequency domain back to the time domain.
+
+inverse z-transform
+    The inverse z-transform is defined as: :math:`x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2 \pi i} \oint_C X(z) z^{k-1} \partial z` where the countour integration can be evaluated using the Caucy Residue Theorem.  The integration contour should enclose all singularities of :math:`X(z)`.
+
+An easier way to calculate the inverse z-transform than using the definition would be to use the table above.  Methods such as partial fraction decomposition typically allow you to express a z-transform as a combination of the z-transforms, :math:`X(z)`, from the table above.  Once you have decomposed your function into a combination of those functions then you can convert from :math:`X(z)` back to :math:`x(kT)` by going from z-transform to signal on the table.
+
+First Example
+^^^^^^^^^^^^^
+
+Fill in.
 
 
 Simple Example of a Difference Equation
@@ -90,7 +110,9 @@ As a simple example of a difference equation we will examine the backward rectan
 .. image:: ../images/backwardrect.png
     :scale: 15%
 
-Although this particular problem could be solved through backward substitution and obtaining the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
+Although backward substitution and simple algebra could solve this particular problem [#f3]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.
 
-.. include:: properties.rst
+In order to solve linear difference equations with z-transforms we will make use of the time shift properties mentioned above.  One can simply substitute in the 
 
+.. [#f1] Note that some people use \sum_{k=0}^\infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`.
+.. [#f3] Doing this obtains the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.
