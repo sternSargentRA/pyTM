@@ -1,5 +1,5 @@
 ==============================
-Sargent and Stachurski Modules
+Python teaching Modules (pyTM)
 ==============================
 
 This repository contains the files that make up the modules being created by Tom Sargent and John Stachurski.  The modules will cover such topics as z-transforms...

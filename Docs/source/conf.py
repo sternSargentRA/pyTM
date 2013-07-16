@@ -18,6 +18,17 @@ import sys, os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+sys.path.insert(0, os.path.abspath('../sphinxext'))
+
+sys.path.extend([
+
+    # numpy standard doc extensions
+    os.path.join(os.path.dirname(__file__),
+                 '..', '../..',
+                 'sphinxext')
+
+])
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -25,7 +36,12 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.mathjax']
+extensions = ['sphinx.ext.autodoc',
+              'sphinx.ext.todo',
+              'numpydoc',
+              'ipython_directive',
+              'ipython_console_highlighting',
+              'sphinx.ext.mathjax']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -40,8 +56,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Sargent_Stachurski_Modules'
-copyright = u'2013, Multiple'
+project = u'pyTM'
+copyright = u'2013, Coleman, Lyon, & Sargent'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -120,7 +136,7 @@ html_theme = 'haiku'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -164,7 +180,7 @@ html_theme = 'haiku'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Sargent_Stachurski_Modulesdoc'
+htmlhelp_basename = 'pyTM'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +199,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Sargent_Stachurski_Modules.tex', u'Sargent\\_Stachurski\\_Modules Documentation',
+  ('index', 'pyTM.tex', u'pyTM Documentation',
    u'Multiple', 'manual'),
 ]
 
@@ -213,7 +229,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'sargent_stachurski_modules', u'Sargent_Stachurski_Modules Documentation',
+    ('index', 'pyTM', u'pyTM Documentation',
      [u'Multiple'], 1)
 ]
 
@@ -227,8 +243,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Sargent_Stachurski_Modules', u'Sargent_Stachurski_Modules Documentation',
-   u'Multiple', 'Sargent_Stachurski_Modules', 'One line description of project.',
+  ('index', 'pyTM', u'pyTM Documentation',
+   u'Multiple', 'pyTM', 'One line description of project.',
    'Miscellaneous'),
 ]
 
