@@ -30,11 +30,13 @@ We calculate the z-transform by using the definition.
 
 .. math::
 
-    X(z) = Z[x(k)] = \sum_{k=0}^\infty 1 z^{-k}
+    X(z) = Z[x(k)] &= \sum_{k=0}^\infty 1 z^{-k}
 
-    \sum_{k=0}^\infty 1 z^{-k} = 1 + z^{-1} + z^{-2} + ... = \frac{1}{1 - z^{-1}}
+    &= 1 + z^{-1} + z^{-2} + ... 
 
-    \frac{1}{1 - z^{-1}} = \frac{z}{z-1}
+    &= \frac{1}{1 - z^{-1}}
+
+    &= \frac{z}{z-1}
 
 This z-transform is defined on :math:`|z|>1`.
 
@@ -54,7 +56,6 @@ We calculate the z-transform by using the definition.
 
         X(z) = Z[x(k)] &= \sum_{k=0}^\infty a^k z^{-k} \\
         &= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
-        &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
         &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
         &= \frac{z}{z-a}
 
@@ -87,7 +88,8 @@ As a simple example of a difference equation we will examine the backward rectan
     x_(k) = x(k-1) + T y(k-1)
 
 This problem could be solved through backward substitution and obtaining the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
-.. image:: images/backwardrect.png
+
+.. image:: ../images/backwardrect.png
     :scale: 15%
 
 .. include:: properties.rst
