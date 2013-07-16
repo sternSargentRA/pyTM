@@ -91,3 +91,4 @@ This problem could be solved through backward substitution and obtaining the equ
     :scale: 15%
 
 .. include:: properties.rst
+
