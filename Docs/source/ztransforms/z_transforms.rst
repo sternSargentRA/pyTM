@@ -76,10 +76,18 @@ For what values of :math:`z` is it defined?
     Try writing it in terms of the definition of sin.  :math:`sin(x) = \frac{e^{ix} - e^{-ix}}{2i}`.
 
 
+
 Simple Example of a Difference Equation
 =======================================
 
+As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let :math:`x(k)` be the value of the integral at point :math:`k` and similarly :math:`x(k-1)` is the value at point :math:`k-1` etc...  Let the value of the function at point :math:`k` be given as :math:`y(k)`.  Then the value of the backward rectangle approximation at point :math:`k` can be expressed as:
 
-.. include the properties file
+.. math::
+
+    x_(k) = x(k-1) + T y(k-1)
+
+This problem could be solved through backward substitution and obtaining the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
+.. image:: images/backwardrect.png
+    :scale: 15%
 
 .. include:: properties.rst
