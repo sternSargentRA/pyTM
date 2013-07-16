@@ -87,10 +87,10 @@ As a simple example of a difference equation we will examine the backward rectan
 
     x_(k) = x(k-1) + T y(k-1)
 
-This problem could be solved through backward substitution and obtaining the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
-
 .. image:: ../images/backwardrect.png
     :scale: 15%
+
+Although this particular problem could be solved through backward substitution and obtaining the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
 
 .. include:: properties.rst
 
