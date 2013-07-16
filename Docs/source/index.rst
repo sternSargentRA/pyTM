@@ -13,7 +13,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   z_transforms
+   ztransforms/z_transforms
 
 Indices and tables
 ==================

@@ -24,7 +24,7 @@ Consider the unit step function defined by:
 
 .. math::
 
-    u(k) = \begin{array}{cc} 1 & \text{if } k>0 \\ 0 & \text{else} \end{array}
+    u(k) = \begin{cases} 1 & \text{if } k>0 \\ 0 & \text{else} \end{cases}
 
 We calculate the z-transform by using the definition.
 
@@ -40,23 +40,23 @@ This z-transform is defined on :math:`|z|>1`.
 
 
 Second Example
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 Consider the polynomial function defined by:
 
 .. math::
 
-    u(k) = \begin{array}{c} a^k & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{array}
+    u(k) = \begin{cases} a^k & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
 
 We calculate the z-transform by using the definition.
 
 .. math::
 
-    X(z) = Z[x(k)] = \sum_{k=0}^\infty a^k z^{-k}
-
-    = \sum_{k=0}^\infty (a^{-1} z)^{-k} = \frac{1}{1 - (a^{-1}z)^{-1}}
-
-    \frac{1}{1 - (a^{-1}z)^{-1}} = \frac{z}{z-a}    
+        X(z) = Z[x(k)] &= \sum_{k=0}^\infty a^k z^{-k} \\
+        &= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
+        &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
+        &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
+        &= \frac{z}{z-a}
 
 This z-transform is defined on :math:`|z|>a`.
 
@@ -67,7 +67,7 @@ Now try to calculate the z-transform of the function:
 
 .. math::
 
-    u(k) = \begin{array}{c} \sin( \omega k T) & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{array}
+    u(k) = \begin{cases} \sin( \omega k T) & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
 
 For what values of :math:`z` is it defined?
 
@@ -78,3 +78,8 @@ For what values of :math:`z` is it defined?
 
 Simple Example of a Difference Equation
 =======================================
+
+
+.. include the properties file
+
+.. include:: properties.rst
