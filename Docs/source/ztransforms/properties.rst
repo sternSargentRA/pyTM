@@ -36,6 +36,7 @@ Theorems Associated with the Z-Transform
     Initial Value Theorem; :math:`x[0] = \lim_{z \rightarrow \infty} X(z)`
     Final Value Theorem; :math:`x[\infty] = \lim_{z \rightarrow 1} (z-1) X(z)`
 
+.. include:: transform_table.rst
 
 .. [#f2] Many of these properties were found on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
 

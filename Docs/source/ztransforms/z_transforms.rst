@@ -138,9 +138,9 @@ As a simple example of a difference equation we will examine the backward rectan
 .. image:: ../images/backwardrect.png
     :scale: 15%
 
-Although backward substitution and simple algebra could solve this particular problem [#f4]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.
+Although backward substitution and simple algebra could solve this particular problem [#f4]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.  This method will require the use of the time-shift properties mentioned above.
 
-In order to solve linear difference equations with z-transforms we will make use of the time shift properties mentioned above.
+The first step to solving a simple linear difference equation with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed in :math:`X(z)`) and leave the equation in the form :math:`X(z)`.  We can then take the inverse z-transform of :math:`X(z)` to get 
 
 
 
