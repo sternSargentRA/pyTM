@@ -1,7 +1,7 @@
 Transform Table
 ===============
 
-For certain functions we have provided a table that will give you the z-transform of specific functions. For use in the table [#ftable1]_ below we make the following definitions:
+We have provided a table that gives the z-transform of specific functions. For use in the table [#ftable1]_ below we make the following definitions:
 
 .. math::
 
