@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Properties of the Z-Transform &mdash; Sargent_Stachurski_Modules 1.0 documentation</title>
+    <title>Properties of the Z-Transform &mdash; pyTM 1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,11 +28,11 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Sargent_Stachurski_Modules 1.0 documentation" href="../index.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Sargent_Stachurski_Modules 1.0 documentation</span></a></h1>
+          <span>pyTM 1.0 documentation</span></a></h1>
         <h2 class="heading"><span>Properties of the Z-Transform</span></h2>
       </div>
       <div class="topnav">
@@ -47,47 +47,64 @@
         
   <div class="section" id="properties-of-the-z-transform">
 <h1>Properties of the Z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h1>
-<p>The Z-transform has many useful properties. We will list some of theme (without proof) here. <a class="footnote-reference" href="#f1" id="id1">[1]</a></p>
+<blockquote>
+<div>The Z-transform has many useful properties. We will list some of theme (without proof) here. <a class="footnote-reference" href="#fprop1" id="id1">[1]</a></div></blockquote>
 <table border="1" class="docutils" id="z-transform-properties">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="25%" />
+<col width="38%" />
+<col width="38%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head stub">Property</th>
-<th class="head">Definition</th>
+<th class="head">n - domain( <span class="math">\(x[n]\)</span> )</th>
+<th class="head">Z - domain ( <span class="math">\(X(z)\)</span> )</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><th class="stub">Linearity</th>
-<td><span class="math">\(a_1 x_1[n] + z_2 x_2[n] \rightarrow a_1 X_1(z) + a_2 X_2(z)\)</span></td>
+<td><span class="math">\(a_1 x_1[n] + z_2 x_2[n]\)</span></td>
+<td><span class="math">\(a_1 X_1(z) + a_2 X_2(z)\)</span></td>
 </tr>
 <tr class="row-odd"><th class="stub">Time Expansion</th>
-<td><span class="math">\(x_{(k)}[n] = \begin{cases} x[r],  n=rk \\ 0,  n \ne rk\end{cases} \rightarrow X(z^k)\)</span></td>
+<td><span class="math">\(x_{(k)}[n] = \begin{cases} x[r],  n=rk \\ 0,  n \ne rk\end{cases}\)</span></td>
+<td><span class="math">\(X(z^k)\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Time Shifting <a class="footnote-reference" href="#f2" id="id2">[2]</a></th>
-<td><span class="math">\(x[n-k] \rightarrow z^{-k}X(z)\)</span></td>
+<tr class="row-even"><th class="stub">Time Shifting (backwards) <a class="footnote-reference" href="#fprop2" id="id2">[2]</a></th>
+<td><span class="math">\(x[n-k]\)</span></td>
+<td><span class="math">\(z^{-k}X(z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Scaling in z-domain</th>
-<td><span class="math">\(a^n x[n] \rightarrow X(a^{-1}z)\)</span></td>
+<tr class="row-odd"><th class="stub">Time Shifting (forwards)</th>
+<td><span class="math">\(x[n+k]\)</span></td>
+<td><span class="math">\(z^{k}X(z) - z^{k}x(0) - z^{k-1}x(1) - ... - z x(d-1)\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Time Reversal</th>
-<td><span class="math">\(x[-n] \rightarrow X(z^{-1})\)</span></td>
+<tr class="row-even"><th class="stub">Scaling in z-domain</th>
+<td><span class="math">\(a^n x[n]\)</span></td>
+<td><span class="math">\(X(a^{-1}z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Complex Conjugation</th>
-<td><span class="math">\(x^*[n] \rightarrow X^*(z^*)\)</span></td>
+<tr class="row-odd"><th class="stub">Time Reversal</th>
+<td><span class="math">\(x[-n]\)</span></td>
+<td><span class="math">\(X(z^{-1})\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Differentiation</th>
-<td><span class="math">\(n x[n] \rightarrow -z2 \frac{\partial X(z)}{\partial z}\)</span></td>
+<tr class="row-even"><th class="stub">Complex Conjugation</th>
+<td><span class="math">\(x^*[n]\)</span></td>
+<td><span class="math">\(X^*(z^*)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Convolution</th>
-<td><span class="math">\(x_1[n] \ast x_2[n] \rightarrow X_1(z) X_2(z)\)</span></td>
+<tr class="row-odd"><th class="stub">Differentiation</th>
+<td><span class="math">\(n x[n]\)</span></td>
+<td><span class="math">\(-z \frac{\partial X(z)}{\partial z}\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Cross-Correlation</th>
-<td><span class="math">\(r_{x_1, x_2} = x_1^*[-n] \ast x_2[n] \rightarrow R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)\)</span></td>
+<tr class="row-even"><th class="stub">Convolution</th>
+<td><span class="math">\(x_1[n] \ast x_2[n]\)</span></td>
+<td><span class="math">\(X_1(z) X_2(z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Multiplication</th>
-<td><span class="math">\(x_1[n]x_2[n] \rightarrow \frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv\)</span></td>
+<tr class="row-odd"><th class="stub">Cross-Correlation</th>
+<td><span class="math">\(r_{x_1, x_2} = x_1^*[-n] \ast x_2[n]\)</span></td>
+<td><span class="math">\(R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)\)</span></td>
+</tr>
+<tr class="row-even"><th class="stub">Multiplication</th>
+<td><span class="math">\(x_1[n]x_2[n]\)</span></td>
+<td><span class="math">\(\frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -116,13 +133,13 @@
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="f1" rules="none">
+<table class="docutils footnote" frame="void" id="fprop1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Many of these properties were found on this <a class="reference external" href="http://en.wikipedia.org/wiki/Z-transform">Wikipedia Page</a>. There you can find proofs for most of them.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="f2" rules="none">
+<table class="docutils footnote" frame="void" id="fprop2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This property is very important in many economic contexts, as will be seen later in this module.</td></tr>
@@ -141,7 +158,7 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright 2013, Multiple.
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

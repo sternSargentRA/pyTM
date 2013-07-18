@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transform Table &mdash; pyTM 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>pyTM 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Transform Table</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="transform-table">
+<h1>Transform Table<a class="headerlink" href="#transform-table" title="Permalink to this headline">¶</a></h1>
+<p>For certain functions we have provided a table that will give you the z-transform of specific functions. For use in the table <a class="footnote-reference" href="#ftable1" id="id1">[1]</a> below we make the following definitions:</p>
+<div class="math">
+\[\begin{split}u[n] = \begin{cases} 1, &amp; n \ge 0 \\ 0, &amp; n &lt; 0 \end{cases}\end{split}\]\[\begin{split}\delta[n] = \begin{cases} 1, &amp; n = 0 \\ 0, &amp; n \ne 0 \end{cases}\end{split}\]</div>
+<table border="1" class="docutils" id="id2">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Signal, <span class="math">\(x[n]\)</span></th>
+<th class="head">Z-transform, <span class="math">\(X(z)\)</span></th>
+<th class="head">Condition (radius of convergence)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(\delta[n]\)</span></td>
+<td>1</td>
+<td>all &#8220;z&#8221;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\delta[n-n_0]\)</span></td>
+<td><span class="math">\(z^{-n_0}\)</span></td>
+<td><span class="math">\(z \neq 0\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(u[n]\)</span></td>
+<td><span class="math">\(\frac{1}{1-z^{-1} }\)</span></td>
+<td><span class="math">\(|z| &gt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(e^{-\alpha n} u[n]\)</span></td>
+<td><span class="math">\(1 \over 1-e^{-\alpha  }z^{-1}\)</span></td>
+<td><span class="math">\(|z| &gt;  |e^{-\alpha}| \,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{1}{1 - z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n u[n]\)</span></td>
+<td><span class="math">\(\frac{z^{-1}}{( 1-z^{-1} )^2}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n u[-n-1] \,\)</span></td>
+<td><span class="math">\(\frac{z^{-1} }{ (1 - z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &lt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^2 u[n]\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} (1 + z^{-1} )}{(1 - z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^2 u[-n - 1] \,\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} (1 + z^{-1} )}{(1 - z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\,\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^3 u[n]\)</span></td>
+<td><span class="math">\(\frac{z^{-1} (1 + 4 z^{-1} + z^{-2} )}{(1-z^{-1})^4}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^3 u[-n -1]\)</span></td>
+<td><span class="math">\(\frac{z^{-1} (1 + 4 z^{-1} + z^{-2} )}{(1-z^{-1})^4}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\,\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{1}{1-a z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-a^n u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{1}{1-a z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{az^{-1} }{ (1-a z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-n a^n u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{az^{-1} }{ (1-a z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^2 a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{a z^{-1} (1 + a z^{-1}) }{(1-a z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^2 a^n u[-n -1]\)</span></td>
+<td><span class="math">\(\frac{a z^{-1} (1 + a z^{-1}) }{(1-a z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\cos(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ 1-z^{-1} \cos(\omega_0)}{ 1-2z^{-1}\cos(\omega_0)+ z^{-2}}\)</span></td>
+<td><span class="math">\(|z| &gt;1\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\sin(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} \sin(\omega_0)}{ 1-2z^{-1}\cos(\omega_0)+ z^{-2} }\)</span></td>
+<td><span class="math">\(|z| &gt;1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a^n \cos(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{1-a z^{-1} \cos( \omega_0)}{1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2}}\)</span></td>
+<td><span class="math">\(|z|&gt;|a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a^n \sin(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ az^{-1} \sin(\omega_0) }{ 1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2} }\)</span></td>
+<td><span class="math">\(|z|&gt;|a|\)</span></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="ftable1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This table is a modified version of a similar table found on the <a class="reference external" href="http://en.wikipedia.org/wiki/Z-transform">Wikipedia Page</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

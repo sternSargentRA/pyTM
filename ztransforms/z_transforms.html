@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction to Z-Transforms &mdash; Sargent_Stachurski_Modules 1.0 documentation</title>
+    <title>Introduction to Z-Transforms &mdash; pyTM 1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,18 +28,18 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Sargent_Stachurski_Modules 1.0 documentation" href="../index.html" />
-    <link rel="prev" title="Welcome to Sargent_Stachurski_Modules’s documentation!" href="../index.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
+    <link rel="prev" title="Welcome to pyTM’s documentation!" href="../index.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Sargent_Stachurski_Modules 1.0 documentation</span></a></h1>
+          <span>pyTM 1.0 documentation</span></a></h1>
         <h2 class="heading"><span>Introduction to Z-Transforms</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../index.html">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a>
+        «&#160;&#160;<a href="../index.html">Welcome to pyTM&#8217;s documentation!</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         </p>
@@ -49,43 +49,68 @@
         
         
   <div class="section" id="introduction-to-z-transforms">
-<h1>Introduction to Z-Transforms<a class="headerlink" href="#introduction-to-z-transforms" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id9">Introduction to Z-Transforms</a><a class="headerlink" href="#introduction-to-z-transforms" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction-to-z-transforms" id="id9">Introduction to Z-Transforms</a><ul>
+<li><a class="reference internal" href="#the-z-transform" id="id10">The Z-Transform</a><ul>
+<li><a class="reference internal" href="#first-example" id="id11">First Example</a></li>
+<li><a class="reference internal" href="#second-example" id="id12">Second Example</a></li>
+<li><a class="reference internal" href="#on-your-own" id="id13">On Your Own</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transform-table" id="id14">Transform Table</a></li>
+<li><a class="reference internal" href="#the-inverse-z-transform" id="id15">The Inverse Z-Transform</a><ul>
+<li><a class="reference internal" href="#id4" id="id16">First Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#properties-of-the-z-transform" id="id17">Properties of the Z-Transform</a></li>
+<li><a class="reference internal" href="#theorems-associated-with-the-z-transform" id="id18">Theorems Associated with the Z-Transform</a></li>
+<li><a class="reference internal" href="#simple-example-of-a-difference-equation" id="id19">Simple Example of a Difference Equation</a></li>
+<li><a class="reference internal" href="#present-value-calculations" id="id20">Present Value Calculations</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <p>In this module we will introduce the idea of a z-Transform.  For those of you who are familiar with Laplace transforms, the z-Transform can basically be seen as the discrete time equivalent of the Laplace transform.  The z-Transform will share many of the same properties as the Laplace transform.  For those of you who are not familiar with the Laplace transform then the information provided should be sufficient for your understanding.</p>
 <div class="section" id="the-z-transform">
-<h2>The Z-Transform<a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h2>
-<p>In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.</p>
+<h2><a class="toc-backref" href="#id10">The Z-Transform</a><a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h2>
+<p>The z-transform is a transformation that moves us from the time domain to the frequency domain.  In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.</p>
 <dl class="docutils">
 <dt>z-Transform (one sided)</dt>
-<dd>The z-transform of a sampled sequence <span class="math">\(x(kT)\)</span> or <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers and <span class="math">\(T\)</span> is hte sampling period, is defined by:
-<span class="math">\(X(z) = Z[x^*(t)] = Z[x(kT)] = Z[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}\)</span>, where the complex variable <span class="math">\(z\)</span> must be selected so that the summation converges.</dd>
+<dd><blockquote class="first">
+<div>The z-transform of a sampled sequence <span class="math">\(x(kT)\)</span> or <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers and <span class="math">\(T\)</span> is the sampling period, is defined by the following equation. Note that the complex variable <span class="math">\(z\)</span> must be selected so that the summation converges <a class="footnote-reference" href="#fmain1" id="id1">[4]</a> :</div></blockquote>
+<div class="last math" id="equation-eq_ZTdef">
+<span class="eqno">(1)</span>\[X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}\]</div>
+</dd>
 </dl>
 <p>Lets practice calculating the z-transform before we discuss how it can be used.</p>
 <div class="section" id="first-example">
-<h3>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">First Example</a><a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h3>
 <p>Consider the unit step function defined by:</p>
 <div class="math">
 \[\begin{split}u(k) = \begin{cases} 1 &amp; \text{if } k&gt;0 \\ 0 &amp; \text{else} \end{cases}\end{split}\]</div>
 <p>We calculate the z-transform by using the definition.</p>
 <div class="math">
-\[X(z) = Z[x(k)] = \sum_{k=0}^\infty 1 z^{-k}\]\[\sum_{k=0}^\infty 1 z^{-k} = 1 + z^{-1} + z^{-2} + ... = \frac{1}{1 - z^{-1}}\]\[\frac{1}{1 - z^{-1}} = \frac{z}{z-1}\]</div>
+\[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty 1 z^{-k}\end{split}\]\[\begin{split}&amp;= 1 + z^{-1} + z^{-2} + ...\end{split}\]\[\begin{split}&amp;= \frac{1}{1 - z^{-1}}\end{split}\]\[\begin{split}&amp;= \frac{z}{z-1}\end{split}\]</div>
 <p>This z-transform is defined on <span class="math">\(|z|&gt;1\)</span>.</p>
 </div>
 <div class="section" id="second-example">
-<h3>Second Example<a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Second Example</a><a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h3>
 <p>Consider the polynomial function defined by:</p>
 <div class="math">
 \[\begin{split}u(k) = \begin{cases} a^k &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
 <p>We calculate the z-transform by using the definition.</p>
 <div class="math">
-\[\begin{split}X(z) = Z[x(k)] &amp;= \sum_{k=0}^\infty a^k z^{-k} \\
+\[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty a^k z^{-k} \\
 &amp;= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
-&amp;= \frac{1}{1 - (a^{-1}z)^{-1}} \\
 &amp;= \frac{1}{1 - (a^{-1}z)^{-1}} \\
 &amp;= \frac{z}{z-a}\end{split}\]</div>
 <p>This z-transform is defined on <span class="math">\(|z|&gt;a\)</span>.</p>
 </div>
 <div class="section" id="on-your-own">
-<h3>On Your Own<a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">On Your Own</a><a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a></h3>
 <p>Now try to calculate the z-transform of the function:</p>
 <div class="math">
 \[\begin{split}u(k) = \begin{cases} \sin( \omega k T) &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
@@ -96,73 +121,212 @@
 </div>
 </div>
 </div>
-<div class="section" id="simple-example-of-a-difference-equation">
-<h2>Simple Example of a Difference Equation<a class="headerlink" href="#simple-example-of-a-difference-equation" title="Permalink to this headline">¶</a></h2>
-<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<div class="section" id="transform-table">
+<h2><a class="toc-backref" href="#id14">Transform Table</a><a class="headerlink" href="#transform-table" title="Permalink to this headline">¶</a></h2>
+<p>For certain functions we have provided a table that will give you the z-transform of specific functions. For use in the table <a class="footnote-reference" href="#ftable1" id="id2">[1]</a> below we make the following definitions:</p>
 <div class="math">
-\[x_(k) = x(k-1) + T y(k-1)\]</div>
-<p>This problem could be solved through backward substitution and obtaining the equation <span class="math">\(x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)\)</span>, but this method will not solve all linear difference equations.  We will examine how z-transforms can be used to solve linear difference equations.
-.. image:: images/backwardrect.png</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+\[\begin{split}u[n] = \begin{cases} 1, &amp; n \ge 0 \\ 0, &amp; n &lt; 0 \end{cases}\end{split}\]\[\begin{split}\delta[n] = \begin{cases} 1, &amp; n = 0 \\ 0, &amp; n \ne 0 \end{cases}\end{split}\]</div>
+<table border="1" class="docutils" id="id3">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Signal, <span class="math">\(x[n]\)</span></th>
+<th class="head">Z-transform, <span class="math">\(X(z)\)</span></th>
+<th class="head">Condition (radius of convergence)</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">scale:</th><td class="field-body">15%</td>
+<tr class="row-even"><td><span class="math">\(\delta[n]\)</span></td>
+<td>1</td>
+<td>all &#8220;z&#8221;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\delta[n-n_0]\)</span></td>
+<td><span class="math">\(z^{-n_0}\)</span></td>
+<td><span class="math">\(z \neq 0\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(u[n]\)</span></td>
+<td><span class="math">\(\frac{1}{1-z^{-1} }\)</span></td>
+<td><span class="math">\(|z| &gt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(e^{-\alpha n} u[n]\)</span></td>
+<td><span class="math">\(1 \over 1-e^{-\alpha  }z^{-1}\)</span></td>
+<td><span class="math">\(|z| &gt;  |e^{-\alpha}| \,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{1}{1 - z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n u[n]\)</span></td>
+<td><span class="math">\(\frac{z^{-1}}{( 1-z^{-1} )^2}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n u[-n-1] \,\)</span></td>
+<td><span class="math">\(\frac{z^{-1} }{ (1 - z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &lt; 1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^2 u[n]\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} (1 + z^{-1} )}{(1 - z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^2 u[-n - 1] \,\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} (1 + z^{-1} )}{(1 - z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\,\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^3 u[n]\)</span></td>
+<td><span class="math">\(\frac{z^{-1} (1 + 4 z^{-1} + z^{-2} )}{(1-z^{-1})^4}\)</span></td>
+<td><span class="math">\(|z| &gt; 1\,\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^3 u[-n -1]\)</span></td>
+<td><span class="math">\(\frac{z^{-1} (1 + 4 z^{-1} + z^{-2} )}{(1-z^{-1})^4}\)</span></td>
+<td><span class="math">\(|z| &lt; 1\,\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{1}{1-a z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-a^n u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{1}{1-a z^{-1}}\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{az^{-1} }{ (1-a z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(-n a^n u[-n-1]\)</span></td>
+<td><span class="math">\(\frac{az^{-1} }{ (1-a z^{-1})^2 }\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(n^2 a^n u[n]\)</span></td>
+<td><span class="math">\(\frac{a z^{-1} (1 + a z^{-1}) }{(1-a z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &gt; |a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(- n^2 a^n u[-n -1]\)</span></td>
+<td><span class="math">\(\frac{a z^{-1} (1 + a z^{-1}) }{(1-a z^{-1})^3}\)</span></td>
+<td><span class="math">\(|z| &lt; |a|\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\cos(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ 1-z^{-1} \cos(\omega_0)}{ 1-2z^{-1}\cos(\omega_0)+ z^{-2}}\)</span></td>
+<td><span class="math">\(|z| &gt;1\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\sin(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ z^{-1} \sin(\omega_0)}{ 1-2z^{-1}\cos(\omega_0)+ z^{-2} }\)</span></td>
+<td><span class="math">\(|z| &gt;1\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a^n \cos(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{1-a z^{-1} \cos( \omega_0)}{1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2}}\)</span></td>
+<td><span class="math">\(|z|&gt;|a|\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a^n \sin(\omega_0 n) u[n]\)</span></td>
+<td><span class="math">\(\frac{ az^{-1} \sin(\omega_0) }{ 1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2} }\)</span></td>
+<td><span class="math">\(|z|&gt;|a|\)</span></td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
+<table class="docutils footnote" frame="void" id="ftable1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>This table is a modified version of a similar table found on the <a class="reference external" href="http://en.wikipedia.org/wiki/Z-transform">Wikipedia Page</a>.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-inverse-z-transform">
+<h2><a class="toc-backref" href="#id15">The Inverse Z-Transform</a><a class="headerlink" href="#the-inverse-z-transform" title="Permalink to this headline">¶</a></h2>
+<p>Given a z-transform <span class="math">\(X(z)\)</span>, it might be useful to be able to convert from the z-transform back to the time sequence that corresponds with the z-transform.  This is where the inverse z-transform comes in; it moves you from the frequency domain back to the time domain.</p>
+<dl class="docutils">
+<dt>inverse z-transform</dt>
+<dd>The inverse z-transform is defined as: <span class="math">\(x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2 \pi i} \oint_C X(z) z^{k-1} \partial z\)</span> where the countour integration can be evaluated using the Caucy Residue Theorem.  The integration contour should enclose all singularities of <span class="math">\(X(z)\)</span>.</dd>
+</dl>
+<p>Considering the complicated form of the inverse z-transform, one might hope for easier ways to calculate the inverse z-transform than using the definition.  Luckily, there exist other methods of calculatig the inverse z-transform.  We will briefly examine a technique where we decompose the function into a combination of functions found on the table and then can look up the corresponding inverse z-transform functions.</p>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li>Break up the function through partial fraction expansion of <span class="math">\(G[z] = \frac{F[z]}{z}\)</span> (This will help us get a constant term that we need).</li>
+<li>Multiply by <span class="math">\(z\)</span> to get back to <span class="math">\(F[z]\)</span>.</li>
+<li>Put each piece into a recognizable form.</li>
+<li>Transform each piece.</li>
+</ol>
+<p>We will do a quick example of how to solve by inspection using the table above.</p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id16">First Example</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Find the inverse z-transform of the function <span class="math">\(X[z] = \frac{8z - 19}{(z-2)(z-3)z}\)</span>.</p>
+<p>First we use partial fraction expansion to get <span class="math">\(G[z] = \frac{X[z]}{z} = \frac{c_1}{(z-2)} + \frac{c_2}{(z-3)} + \frac{c_3}{z}\)</span>.</p>
+<p>Then we calculate the constants <span class="math">\(c_1, c_2, c_3\)</span> and get <span class="math">\(G[z] = \frac{(-19/6)}{z} + \frac{(3/2)}{(z-2)} + \frac{(5/3)}{(z-3)}\)</span>.</p>
+<p>We then multiply by <span class="math">\(z\)</span> to get <span class="math">\(X[z] = \frac{-19}{6} + \frac{(3/2)z}{(z-2)} + \frac{(5/3)z}{(z-3)}\)</span>.</p>
+<p>We can read each piece off of the table to get the inverse z-transform of each piece to get <span class="math">\(x[k]\)</span></p>
+<div class="math">
+\[\frac{-19}{6} \rightarrow \frac{-19}{6} \delta[k]\]\[\frac{(3/2)z}{(z-2)} \rightarrow \frac{3}{2} (2)^k u[k]\]\[\frac{(5/3)z}{(z-3)} \rightarrow \frac{5}{3} (3)^k u[k]\]</div>
+<p>This gives us that <span class="math">\(x[k] = \frac{-19}{6} \delta[k] + (\frac{3}{2} (2)^k + \frac{5}{3} (3)^k) u[k]\)</span></p>
+<p>Now that the basics of a z-transform have been presented we can move onto how to use them.</p>
+</div>
 </div>
 <div class="section" id="properties-of-the-z-transform">
-<h2>Properties of the Z-Transform<a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
-<p>The Z-transform has many useful properties. We will list some of theme (without proof) here. <a class="footnote-reference" href="#f1" id="id1">[1]</a></p>
+<h2><a class="toc-backref" href="#id17">Properties of the Z-Transform</a><a class="headerlink" href="#properties-of-the-z-transform" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The Z-transform has many useful properties. We will list some of theme (without proof) here. <a class="footnote-reference" href="#fprop1" id="id5">[2]</a></div></blockquote>
 <table border="1" class="docutils" id="z-transform-properties">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="25%" />
+<col width="38%" />
+<col width="38%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head stub">Property</th>
-<th class="head">Definition</th>
+<th class="head">n - domain( <span class="math">\(x[n]\)</span> )</th>
+<th class="head">Z - domain ( <span class="math">\(X(z)\)</span> )</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><th class="stub">Linearity</th>
-<td><span class="math">\(a_1 x_1[n] + z_2 x_2[n] \rightarrow a_1 X_1(z) + a_2 X_2(z)\)</span></td>
+<td><span class="math">\(a_1 x_1[n] + z_2 x_2[n]\)</span></td>
+<td><span class="math">\(a_1 X_1(z) + a_2 X_2(z)\)</span></td>
 </tr>
 <tr class="row-odd"><th class="stub">Time Expansion</th>
-<td><span class="math">\(x_{(k)}[n] = \begin{cases} x[r],  n=rk \\ 0,  n \ne rk\end{cases} \rightarrow X(z^k)\)</span></td>
+<td><span class="math">\(x_{(k)}[n] = \begin{cases} x[r],  n=rk \\ 0,  n \ne rk\end{cases}\)</span></td>
+<td><span class="math">\(X(z^k)\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Time Shifting <a class="footnote-reference" href="#f2" id="id2">[2]</a></th>
-<td><span class="math">\(x[n-k] \rightarrow z^{-k}X(z)\)</span></td>
+<tr class="row-even"><th class="stub">Time Shifting (backwards) <a class="footnote-reference" href="#fprop2" id="id6">[3]</a></th>
+<td><span class="math">\(x[n-k]\)</span></td>
+<td><span class="math">\(z^{-k}X(z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Scaling in z-domain</th>
-<td><span class="math">\(a^n x[n] \rightarrow X(a^{-1}z)\)</span></td>
+<tr class="row-odd"><th class="stub">Time Shifting (forwards)</th>
+<td><span class="math">\(x[n+k]\)</span></td>
+<td><span class="math">\(z^{k}X(z) - z^{k}x(0) - z^{k-1}x(1) - ... - z x(d-1)\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Time Reversal</th>
-<td><span class="math">\(x[-n] \rightarrow X(z^{-1})\)</span></td>
+<tr class="row-even"><th class="stub">Scaling in z-domain</th>
+<td><span class="math">\(a^n x[n]\)</span></td>
+<td><span class="math">\(X(a^{-1}z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Complex Conjugation</th>
-<td><span class="math">\(x^*[n] \rightarrow X^*(z^*)\)</span></td>
+<tr class="row-odd"><th class="stub">Time Reversal</th>
+<td><span class="math">\(x[-n]\)</span></td>
+<td><span class="math">\(X(z^{-1})\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Differentiation</th>
-<td><span class="math">\(n x[n] \rightarrow -z2 \frac{\partial X(z)}{\partial z}\)</span></td>
+<tr class="row-even"><th class="stub">Complex Conjugation</th>
+<td><span class="math">\(x^*[n]\)</span></td>
+<td><span class="math">\(X^*(z^*)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Convolution</th>
-<td><span class="math">\(x_1[n] \ast x_2[n] \rightarrow X_1(z) X_2(z)\)</span></td>
+<tr class="row-odd"><th class="stub">Differentiation</th>
+<td><span class="math">\(n x[n]\)</span></td>
+<td><span class="math">\(-z \frac{\partial X(z)}{\partial z}\)</span></td>
 </tr>
-<tr class="row-even"><th class="stub">Cross-Correlation</th>
-<td><span class="math">\(r_{x_1, x_2} = x_1^*[-n] \ast x_2[n] \rightarrow R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)\)</span></td>
+<tr class="row-even"><th class="stub">Convolution</th>
+<td><span class="math">\(x_1[n] \ast x_2[n]\)</span></td>
+<td><span class="math">\(X_1(z) X_2(z)\)</span></td>
 </tr>
-<tr class="row-odd"><th class="stub">Multiplication</th>
-<td><span class="math">\(x_1[n]x_2[n] \rightarrow \frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv\)</span></td>
+<tr class="row-odd"><th class="stub">Cross-Correlation</th>
+<td><span class="math">\(r_{x_1, x_2} = x_1^*[-n] \ast x_2[n]\)</span></td>
+<td><span class="math">\(R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)\)</span></td>
+</tr>
+<tr class="row-even"><th class="stub">Multiplication</th>
+<td><span class="math">\(x_1[n]x_2[n]\)</span></td>
+<td><span class="math">\(\frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="theorems-associated-with-the-z-transform">
-<h2>Theorems Associated with the Z-Transform<a class="headerlink" href="#theorems-associated-with-the-z-transform" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Theorems Associated with the Z-Transform</a><a class="headerlink" href="#theorems-associated-with-the-z-transform" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils" id="z-transform-theorems">
 <colgroup>
 <col width="30%" />
@@ -185,16 +349,44 @@
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="f1" rules="none">
+<table class="docutils footnote" frame="void" id="fprop1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Many of these properties were found on this <a class="reference external" href="http://en.wikipedia.org/wiki/Z-transform">Wikipedia Page</a>. There you can find proofs for most of them.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>Many of these properties were found on this <a class="reference external" href="http://en.wikipedia.org/wiki/Z-transform">Wikipedia Page</a>. There you can find proofs for most of them.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="f2" rules="none">
+<table class="docutils footnote" frame="void" id="fprop2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This property is very important in many economic contexts, as will be seen later in this module.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id6">[3]</a></td><td>This property is very important in many economic contexts, as will be seen later in this module.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="simple-example-of-a-difference-equation">
+<h2><a class="toc-backref" href="#id19">Simple Example of a Difference Equation</a><a class="headerlink" href="#simple-example-of-a-difference-equation" title="Permalink to this headline">¶</a></h2>
+<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<div class="math">
+\[x_(k) = x(k-1) + T y(k-1)\]</div>
+<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" style="width: 600.0px; height: 450.0px;" /></a>
+<p>Although backward substitution and simple algebra could solve this particular problem <a class="footnote-reference" href="#fmain2" id="id8">[5]</a>, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.  This method will require the use of the time-shift properties mentioned above.</p>
+<p>The first step to solving a simple linear difference equation with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed in <span class="math">\(X(z)\)</span>) and leave the equation in the form <span class="math">\(X(z)\)</span>.  We can then take the inverse z-transform of <span class="math">\(X(z)\)</span> to get</p>
+</div>
+<div class="section" id="present-value-calculations">
+<h2><a class="toc-backref" href="#id20">Present Value Calculations</a><a class="headerlink" href="#present-value-calculations" title="Permalink to this headline">¶</a></h2>
+<p>One natural application of Z-transforms to economics is in computing the present value of an infinite income stream. Let this stream be represnted by a sequence of real numbers <span class="math">\(\{x_n\}_{n=0}^{\infty}\)</span> and let <span class="math">\(\beta \in (0, 1)\)</span> be a constant discount factor. The present value of this sequence is defined as</p>
+<div class="math" id="equation-eq_PVdef">
+<span class="eqno">(2)</span>\[PV(\beta) = \sum_{n=0}^{\infty} \beta^n x_n\]</div>
+<p>Notice how Equation <a href="#equation-eq_PVdef">(2)</a> looks very much like the definition of the z-transform <a href="#equation-eq_ZTdef">(1)</a> of <span class="math">\(x_n\)</span> in terms of <span class="math">\(\beta\)</span>, instead of <span class="math">\(z\)</span>.</p>
+<table class="docutils footnote" frame="void" id="fmain1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[4]</a></td><td>Note that some people use sum_{k=0}^infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the <span class="math">\(z\)</span>&#8216;s to <span class="math">\(\frac{1}{z}\)</span>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fmain2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[5]</a></td><td>Doing this obtains the equation <span class="math">\(x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)\)</span>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -205,7 +397,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../index.html">Welcome to Sargent_Stachurski_Modules&#8217;s documentation!</a>
+        «&#160;&#160;<a href="../index.html">Welcome to pyTM&#8217;s documentation!</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         </p>
@@ -213,7 +405,7 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright 2013, Multiple.
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
