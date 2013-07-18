@@ -2,9 +2,9 @@
 Introduction to Z-Transforms
 ****************************
 
+.. contents::
+
 In this module we will introduce the idea of a z-Transform.  For those of you who are familiar with Laplace transforms, the z-Transform can basically be seen as the discrete time equivalent of the Laplace transform.  The z-Transform will share many of the same properties as the Laplace transform.  For those of you who are not familiar with the Laplace transform then the information provided should be sufficient for your understanding.
-
-
 
 The Z-Transform
 ===============
@@ -12,8 +12,13 @@ The Z-Transform
 The z-transform is a transformation that moves us from the time domain to the frequency domain.  In the same fashion that it is possible to have both one and two-sided integral transforms the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.
 
 z-Transform (one sided)
-	The z-transform of a sampled sequence :math:`x(kT)` or :math:`x(k)`, where :math:`k` represents non-negative integers and :math:`T` is hte sampling period, is defined by:
-	:math:`X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = Z[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}`[#f1]_, where the complex variable :math:`z` must be selected so that the summation converges.
+	The z-transform of a sampled sequence :math:`x(kT)` or :math:`x(k)`, where :math:`k` represents non-negative integers and :math:`T` is the sampling period, is defined by the following equation. Note that the complex variable :math:`z` must be selected so that the summation converges [#fmain1]_ :
+
+    .. math::
+        :label: eq_ZTdef
+
+        X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}
+
 
 Lets practice calculating the z-transform before we discuss how it can be used.
 
@@ -32,14 +37,13 @@ We calculate the z-transform by using the definition.
 
     X(z) = \mathcal{Z}[x(k)] &= \sum_{k=0}^\infty 1 z^{-k}
 
-    &= 1 + z^{-1} + z^{-2} + ... 
+    &= 1 + z^{-1} + z^{-2} + ...
 
     &= \frac{1}{1 - z^{-1}}
 
     &= \frac{z}{z-1}
 
 This z-transform is defined on :math:`|z|>1`.
-
 
 Second Example
 ^^^^^^^^^^^^^^
@@ -76,10 +80,6 @@ For what values of :math:`z` is it defined?
 
     Try writing it in terms of the definition of sin.  :math:`sin(x) = \frac{e^{ix} - e^{-ix}}{2i}`.
 
-.. include:: properties.rst
-
-For certain functions we have provided a table that will give you the z-transform of specific functions.  You should put your function in the right form to match that of the table and then you can plug it in.
-
 .. include:: transform_table.rst
 
 The Inverse Z-Transform
@@ -97,6 +97,7 @@ First Example
 
 Fill in.
 
+.. include:: properties.rst
 
 Simple Example of a Difference Equation
 =======================================
@@ -110,9 +111,12 @@ As a simple example of a difference equation we will examine the backward rectan
 .. image:: ../images/backwardrect.png
     :scale: 15%
 
-Although backward substitution and simple algebra could solve this particular problem [#f3]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.
+Although backward substitution and simple algebra could solve this particular problem [#fmain2]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.
 
-In order to solve linear difference equations with z-transforms we will make use of the time shift properties mentioned above.  One can simply substitute in the 
+In order to solve linear difference equations with z-transforms we will make use of the time shift properties mentioned above.  One can simply substitute in the
 
-.. [#f1] Note that some people use \sum_{k=0}^\infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`.
-.. [#f3] Doing this obtains the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.
+
+.. include:: pv.rst
+
+..  [#fmain1] Note that some people use \sum_{k=0}^\infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`.
+.. [#fmain2] Doing this obtains the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.

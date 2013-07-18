@@ -1,7 +1,7 @@
 Properties of the Z-Transform
 =============================
 
- (without proof) here. [#f1]_
+ The Z-transform has many useful properties. We will list some of theme (without proof) here. [#fprop1]_
 
 .. csv-table::
     :header: "Property", "n - domain( :math:`x[n]` )", "Z - domain ( :math:`X(z)` )"
@@ -12,7 +12,7 @@ Properties of the Z-Transform
 
     Linearity; :math:`a_1 x_1[n] + z_2 x_2[n]`; :math:`a_1 X_1(z) + a_2 X_2(z)`
     Time Expansion; :math:`x_{(k)}[n] = \begin{cases} x[r],  n=rk \\ 0,  n \ne rk\end{cases}`; :math:`X(z^k)`
-    Time Shifting (backwards) [#f2]_ ; :math:`x[n-k]`; :math:`z^{-k}X(z)`
+    Time Shifting (backwards) [#fprop2]_ ; :math:`x[n-k]`; :math:`z^{-k}X(z)`
     Time Shifting (forwards); :math:`x[n+k]`; :math:`z^{k}X(z) - z^{k}x(0) - z^{k-1}x(1) - ... - z x(d-1)`
     Scaling in z-domain; :math:`a^n x[n]`; :math:`X(a^{-1}z)`
     Time Reversal; :math:`x[-n]`; :math:`X(z^{-1})`
@@ -36,8 +36,6 @@ Theorems Associated with the Z-Transform
     Initial Value Theorem; :math:`x[0] = \lim_{z \rightarrow \infty} X(z)`
     Final Value Theorem; :math:`x[\infty] = \lim_{z \rightarrow 1} (z-1) X(z)`
 
-.. include:: transform_table.rst
+.. [#fprop1] Many of these properties were found on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
 
-.. [#f1] Many of these properties were found on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
-
-.. [#f2] This property is very important in many economic contexts, as will be seen later in this module.
+.. [#fprop2] This property is very important in many economic contexts, as will be seen later in this module.

@@ -1,7 +1,7 @@
 Transform Table
 ===============
 
-For the table [#ftab]_ below we make use of the following definitions:
+For certain functions we have provided a table that will give you the z-transform of specific functions. For use in the table [#ftable1]_ below we make the following definitions:
 
 .. math::
 
@@ -37,4 +37,4 @@ For the table [#ftab]_ below we make use of the following definitions:
     :math:`a^n \cos(\omega_0 n) u[n]`; :math:`\frac{1-a z^{-1} \cos( \omega_0)}{1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2}}`; :math:`|z|>|a|`
     :math:`a^n \sin(\omega_0 n) u[n]`; :math:`\frac{ az^{-1} \sin(\omega_0) }{ 1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2} }`; :math:`|z|>|a|`
 
-.. [#ftab] This table a modified form of a similar table found on the `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_.
+.. [#ftable1] This table is a modified version of a similar table found on the `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_.
