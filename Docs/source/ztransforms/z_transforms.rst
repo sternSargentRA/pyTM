@@ -19,7 +19,6 @@ z-Transform (one sided)
 
         X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}
 
-
 Lets practice calculating the z-transform before we discuss how it can be used.
 
 First Example
@@ -90,12 +89,40 @@ Given a z-transform :math:`X(z)`, it might be useful to be able to convert from 
 inverse z-transform
     The inverse z-transform is defined as: :math:`x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2 \pi i} \oint_C X(z) z^{k-1} \partial z` where the countour integration can be evaluated using the Caucy Residue Theorem.  The integration contour should enclose all singularities of :math:`X(z)`.
 
-An easier way to calculate the inverse z-transform than using the definition would be to use the table above.  Methods such as partial fraction decomposition typically allow you to express a z-transform as a combination of the z-transforms, :math:`X(z)`, from the table above.  Once you have decomposed your function into a combination of those functions then you can convert from :math:`X(z)` back to :math:`x(kT)` by going from z-transform to signal on the table.
+Considering the complicated form of the inverse z-transform, one might hope for easier ways to calculate the inverse z-transform than using the definition.  Luckily, there exist other methods of calculatig the inverse z-transform.  We will briefly examine a technique where we decompose the function into a combination of functions found on the table and then can look up the corresponding inverse z-transform functions.
+
+Steps:
+
+1.  Break up the function through partial fraction expansion of :math:`G[z] = \frac{F[z]}{z}` (This will help us get a constant term that we need).
+2.  Multiply by :math:`z` to get back to :math:`F[z]`.
+3.  Put each piece into a recognizable form.
+4.  Transform each piece.
+
+We will do a quick example of how to solve by inspection using the table above.
 
 First Example
 ^^^^^^^^^^^^^
+Find the inverse z-transform of the function :math:`X[z] = \frac{8z - 19}{(z-2)(z-3)z}`.
 
-Fill in.
+First we use partial fraction expansion to get :math:`G[z] = \frac{X[z]}{z} = \frac{c_1}{(z-2)} + \frac{c_2}{(z-3)} + \frac{c_3}{z}`.
+
+Then we calculate the constants :math:`c_1, c_2, c_3` and get :math:`G[z] = \frac{(-19/6)}{z} + \frac{(3/2)}{(z-2)} + \frac{(5/3)}{(z-3)}`.
+
+We then multiply by :math:`z` to get :math:`X[z] = \frac{-19}{6} + \frac{(3/2)z}{(z-2)} + \frac{(5/3)z}{(z-3)}`.
+
+We can read each piece off of the table to get the inverse z-transform of each piece to get :math:`x[k]`
+
+.. math::
+
+    \frac{-19}{6} \rightarrow \frac{-19}{6} \delta[k]
+
+    \frac{(3/2)z}{(z-2)} \rightarrow \frac{3}{2} (2)^k u[k]
+
+    \frac{(5/3)z}{(z-3)} \rightarrow \frac{5}{3} (3)^k u[k]
+
+This gives us that :math:`x[k] = \frac{-19}{6} \delta[k] + (\frac{3}{2} (2)^k + \frac{5}{3} (3)^k) u[k]`
+
+Now that the basics of a z-transform have been presented we can move onto how to use them.
 
 .. include:: properties.rst
 
@@ -111,10 +138,9 @@ As a simple example of a difference equation we will examine the backward rectan
 .. image:: ../images/backwardrect.png
     :scale: 15%
 
-Although backward substitution and simple algebra could solve this particular problem [#fmain2]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.
+Although backward substitution and simple algebra could solve this particular problem [#fmain2]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.  This method will require the use of the time-shift properties mentioned above.
 
-In order to solve linear difference equations with z-transforms we will make use of the time shift properties mentioned above.  One can simply substitute in the
-
+The first step to solving a simple linear difference equation with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed in :math:`X(z)`) and leave the equation in the form :math:`X(z)`.  We can then take the inverse z-transform of :math:`X(z)` to get
 
 .. include:: pv.rst
 
