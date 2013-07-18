@@ -47,10 +47,49 @@
         
   <div class="section" id="present-value-calculations">
 <h1>Present Value Calculations<a class="headerlink" href="#present-value-calculations" title="Permalink to this headline">¶</a></h1>
-<p>One natural application of Z-transforms to economics is in computing the present value of an infinite income stream. Let this stream be represnted by a sequence of real numbers <span class="math">\(\{x_n\}_{n=0}^{\infty}\)</span> and let <span class="math">\(\beta \in (0, 1)\)</span> be a constant discount factor. The present value of this sequence is defined as</p>
+<p>One natural application of Z-transforms to economics is in computing the present value (PV) of an infinite income stream. Let this stream be represented by a sequence of real numbers <span class="math">\(\{x_n\}_{n=0}^{\infty}\)</span> and let <span class="math">\(\beta \in (0, 1)\)</span> be a constant discount factor. The present value of this sequence is defined as</p>
 <div class="math" id="equation-eq_PVdef">
 <span class="eqno">(1)</span>\[PV(\beta) = \sum_{n=0}^{\infty} \beta^n x_n\]</div>
-<p>Notice how Equation <a href="#equation-eq_PVdef">(1)</a> looks very much like the definition of the z-transform <a href="#equation-eq_ZTdef">(?)</a> of <span class="math">\(x_n\)</span> in terms of <span class="math">\(\beta\)</span>, instead of <span class="math">\(z\)</span>.</p>
+<p>Notice how Equation <a href="#equation-eq_PVdef">(1)</a> looks very much like the definition of the z-transform <a href="#equation-eq_ZTdef">(?)</a> of <span class="math">\(x_n\)</span> in terms of <span class="math">\(\beta\)</span>, instead of <span class="math">\(z\)</span>. The only difference is that the exponent on <span class="math">\(\beta\)</span> here is <span class="math">\(+n\)</span> instead of the <span class="math">\(-n\)</span> from before. This two representations actually yield equivalent results, but do require substituting <span class="math">\(\beta\)</span> for <span class="math">\(\beta^{-1}\)</span> after applying the definition of the transform. This is best understood by example.</p>
+<div class="section" id="first-pv-example">
+<h2>First PV Example<a class="headerlink" href="#first-pv-example" title="Permalink to this headline">¶</a></h2>
+<p>Let the sequence of payoffs be <span class="math">\(x_n = A \psi^n\)</span>, where <span class="math">\((A, \psi) \in \mathbb{R}\)</span>. We can use the z-transform to compute the present value of this sequence directly. We can look up the z-transform we are interested in from the table of transforms. Note that in doing this we take the z-transform in terms of the variable <span class="math">\(\beta\)</span> to conform to our definition of the present value <a href="#equation-eq_PVdef">(1)</a>.</p>
+<div class="math">
+\[X(\beta) = \mathcal{Z}(\psi^n) = \frac{1}{1 - \psi \beta^{-1}}\]</div>
+<p>The z-transforms contained in the table use the <span class="math">\(z^{-n}\)</span> representation, whereas we would like <span class="math">\(\beta^n\)</span>. To overcome this we simply substitute <span class="math">\(\beta\)</span> with <span class="math">\(\beta^{-1}\)</span> in our z-transform to obtain</p>
+<div class="math">
+\[X(\beta) =  \frac{1}{1 - \psi \beta}\]</div>
+<p>We can now use the linearity property of the z-transform to include the <span class="math">\(A\)</span> from the definition of the sequence. The property states that</p>
+<div class="math">
+\[a_1 x_1[n] + z_2 x_2[n] =  a_1 X_1(z) + a_2 X_2(z)\]</div>
+<p>In our situation we don&#8217;t have a linear combination of sequences, but we do have a scalar multiple of the sequence. We see that the scalar just passes directly through the transform. Applying this to our sequence we obtain the final expression for the present value.</p>
+<div class="math">
+\[PV(\beta) = \frac{A}{1 - \psi \beta}\]</div>
+</div>
+<div class="section" id="second-pv-example">
+<h2>Second PV Example<a class="headerlink" href="#second-pv-example" title="Permalink to this headline">¶</a></h2>
+<p>Let the sequence of payoffs be <span class="math">\(x_n = n \lambda^n\)</span>. We want to use the z-transform to compute the present value of this sequence.</p>
+<p>We can see from the table of properties that <span class="math">\(\mathcal{Z}(n x_n) = -z \frac{\partial X(z)}{\partial z}\)</span>. We can apply this property, as well as the z-transform of <span class="math">\(\lambda^n\)</span> to evaluate the present value (note that we compute this in terms of <span class="math">\(\beta\)</span> instead of <span class="math">\(z\)</span>).</p>
+<div class="math">
+\[X(\beta) = \mathcal{Z}(\lambda^n) = \frac{1}{1 - \lambda \beta^{-1}}\]</div>
+<p>Now, because we used <span class="math">\(\beta^{-n}\)</span> when we looked up the z-transform from the table, we need to replace <span class="math">\(\beta \rightarrow \beta^{-1}\)</span>. Doing so yields the following expression:</p>
+<div class="math">
+\[X(\beta) = \frac{1}{1 - \lambda \beta}\]</div>
+<p>We now apply the property from above and finish the calculation of the present value. Note that because we have made the substitution <span class="math">\(\beta \rightarrow \beta^{-1}\)</span>, the negative sign on the property disappears and the expression becomes <span class="math">\(\mathcal{Z}(n x_n) = z \frac{\partial X(z)}{\partial z}\)</span></p>
+<div class="math">
+\[\begin{split}PV(\beta) &amp;= \beta \left[ \frac{\partial X(\beta)}{\partial \beta} \right]\\
+&amp;= \beta \left[ \frac{\partial}{\partial \beta } \left(\frac{1}{1 - \lambda \beta} \right) \right] \\
+&amp;= \beta \left[ \frac{\lambda }{(1-\beta  \lambda )^2} \right] \\
+&amp;= \frac{\lambda \beta }{(1-\beta  \lambda )^2}\end{split}\]</div>
+</div>
+<div class="section" id="reminders-for-pv-calculations">
+<h2>Reminders for PV Calculations<a class="headerlink" href="#reminders-for-pv-calculations" title="Permalink to this headline">¶</a></h2>
+<p>When using the z-transform to compute do present value calculations it is important to keep a few things in mind:</p>
+<ul class="simple">
+<li>Make sure that you adjust <span class="math">\(X(z)\)</span> to be in terms of <span class="math">\(z^n\)</span> immediately after taking the transform. As shown in the two examples above, this is done by substituting <span class="math">\(z \rightarrow z^{-1}\)</span>. Note that if you compute the infinite sum directly, just use <span class="math">\(z^n\)</span> to begin with and don&#8217;t worry about making substitutions.</li>
+<li>Carefully examine the transform, properties, and theorems tables to avoid computing the infinite sum in the transform definition directly. Often this will require a little bit of algebra on the initial sequence to get it in the form of an one or more entries in the table.</li>
+</ul>
+</div>
 </div>
 
 
