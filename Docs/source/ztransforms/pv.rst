@@ -8,7 +8,7 @@ One natural application of Z-transforms to economics is in computing the present
 
     PV(\beta) = \sum_{n=0}^{\infty} \beta^n x_n
 
-Notice how Equation :eq:`eq_PVdef` looks very much like the definition of the z-transform :eq:`eq_ZTdef` of :math:`x_n` in terms of :math:`\beta`, instead of :math:`z`. The only difference is that the exponent on :math:`\beta` here is :math:`+n` instead of the :math:`-n` from before. This two representations actually yield equivalent results, but do require substituting :math:`\beta` for :math:`\beta^{-1}` after applying the definition of the transform. This is best understood by example.
+Notice how Equation :eq:`eq_PVdef` looks very much like the definition of the z-transform :eq:`eq_ZTdef` of :math:`x_n` in terms of :math:`\beta`, instead of :math:`z`. The only difference is that the exponent on :math:`\beta` here is :math:`+n` instead of the :math:`-n` from the definition. These two representations actually yield equivalent results, but moving from the definition to the PV formula requires substituting :math:`\beta` for :math:`\beta^{-1}` after applying the transform. This is best understood by example.
 
 First PV Example
 ^^^^^^^^^^^^^^^^
@@ -49,13 +49,13 @@ We can see from the table of properties that :math:`\mathcal{Z}(n x_n) = -z \fra
 
     X(\beta) = \mathcal{Z}(\lambda^n) = \frac{1}{1 - \lambda \beta^{-1}}
 
-Now, because we used :math:`\beta^{-n}` when we looked up the z-transform from the table, we need to replace :math:`\beta \rightarrow \beta^{-1}`. Doing so yields the following expression:
+As in the previous example, because we used :math:`\beta^{-n}` when we looked up the z-transform from the table, we need to replace :math:`\beta \rightarrow \beta^{-1}`. Doing so yields the following expression:
 
 .. math::
 
     X(\beta) = \frac{1}{1 - \lambda \beta}
 
-We now apply the property from above and finish the calculation of the present value. Note that because we have made the substitution :math:`\beta \rightarrow \beta^{-1}`, the negative sign on the property disappears and the expression becomes :math:`\mathcal{Z}(n x_n) = z \frac{\partial X(z)}{\partial z}`
+We now apply the property from above and finish the calculation of the present value. Note that because we have made the substitution :math:`\beta \rightarrow \beta^{-1}`, the negative sign on the property disappears (why? Can you verify this?) and the expression becomes :math:`\mathcal{Z}(n x_n) = z \frac{\partial X(z)}{\partial z}`.
 
 .. math::
 
