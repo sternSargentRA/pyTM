@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Solving a Linear Difference Equation &mdash; pyTM 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
+    <link rel="next" title="Present Value Calculations" href="pv.html" />
+    <link rel="prev" title="Properties of the Z-Transform" href="properties.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>pyTM 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Solving a Linear Difference Equation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="properties.html">Properties of the Z-Transform</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pv.html">Present Value Calculations</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="solving-a-linear-difference-equation">
+<h1>Solving a Linear Difference Equation<a class="headerlink" href="#solving-a-linear-difference-equation" title="Permalink to this headline">¶</a></h1>
+<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<div class="math">
+\[x(k) = x(k-1) + T y(k-1)\]</div>
+<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" style="width: 600.0px; height: 450.0px;" /></a>
+<p>Although this problem could be solved via backward substitution and basic algebra <a class="footnote-reference" href="#fdiff1" id="id1">[1]</a>, this approach will not solve all linear difference equations.  Instead, we will examine how to use z-transforms to solve linear difference equations.  This method makes extensive use of the time-shift properties mentioned above.</p>
+<p>The first step to solving a simple linear difference equation, <span class="math">\(x(k) = f(x(k-1), x(k-2), \dots, u(k), u(k-1), \dots)\)</span>, with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed only in terms of <span class="math">\(X(z)\)</span>) and leave the equation in the form <span class="math">\(X(z)=f(z)\)</span> where <span class="math">\(f(z)\)</span> is some function.  We can then take the inverse z-transform of <span class="math">\(X(z) = f(z)\)</span> to get a functional form of <span class="math">\(x(k)\)</span> in terms of only <span class="math">\(k\)</span>.</p>
+<p>Let&#8217;s now return to solving the example backward rectangle approximation from before.  Let the equation we are taking the integral of be <span class="math">\(y(k) = k^2 + 1\)</span> from 0 to 2 in 1 unit steps (Thus <span class="math">\(T=1\)</span>).</p>
+<div class="math">
+\[\begin{split}x(k) &amp;= x(k-1) + y(k-1) \\
+x(k) - x(k-1) &amp;= y(k-1) \\
+X(z) - z^{-1} X(z) &amp;= z^{-1} Y(k)\\
+X(z) &amp;= \frac{z^{-1}}{1 - z^{-1}} Y(z) \\
+x(k) &amp;= u[n] y(k)\end{split}\]</div>
+<p>Now, since we already know what <span class="math">\(n\)</span> and <span class="math">\(y(k)\)</span> are <a class="footnote-reference" href="#fdiff2" id="id2">[2]</a>, we can simply plug in the values we need.</p>
+<div class="math">
+\[x(k) = u[0] (k^2 + 1)\]</div>
+<p>This is the solution to the linear difference equation.</p>
+<table class="docutils footnote" frame="void" id="fdiff1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Doing this obtains the equation <span class="math">\(x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)\)</span>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fdiff2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Since we are integrating from 0 to 2 then <span class="math">\(n=0\)</span> and we are given a function <span class="math">\(y(k) = k^2 + 1\)</span></td></tr>
+</tbody>
+</table>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="properties.html">Properties of the Z-Transform</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pv.html">Present Value Calculations</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

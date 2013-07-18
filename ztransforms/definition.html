@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Z-Transform &mdash; pyTM 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
+    <link rel="next" title="Transform Table" href="transform_table.html" />
+    <link rel="prev" title="Introduction to Z-Transforms" href="z_transforms.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>pyTM 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>The Z-Transform</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="z_transforms.html">Introduction to Z-Transforms</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="transform_table.html">Transform Table</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="the-z-transform">
+<h1>The Z-Transform<a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h1>
+<p>The z-transform is a transformation that moves us from the time domain to the frequency domain.  In the same fashion that it is possible to have both one and two-sided integral transforms, the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.</p>
+<dl class="docutils">
+<dt>z-Transform (one sided)</dt>
+<dd><p class="first">The z-transform of a sampled sequence <span class="math">\(x(kT)\)</span> or <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers and <span class="math">\(T\)</span> is the sampling period, is defined by the following equation. Note that the complex variable <span class="math">\(z\)</span> must be selected so that the summation converges <a class="footnote-reference" href="#fdef1" id="id1">[1]</a> :</p>
+<div class="last math" id="equation-eq_ZTdef">
+<span class="eqno">(1)</span>\[X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}\]</div>
+</dd>
+</dl>
+<p>Lets practice calculating the z-transform before we discuss how it can be used.</p>
+<div class="section" id="first-example">
+<h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
+<p>Consider the unit step function defined by:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{cases} 1 &amp; \text{if } k&gt;0 \\ 0 &amp; \text{else} \end{cases}\end{split}\]</div>
+<p>We calculate the z-transform by using the definition.</p>
+<div class="math">
+\[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty 1 z^{-k} \\
+&amp;= 1 + z^{-1} + z^{-2} + \dots \\
+&amp;= \frac{1}{1 - z^{-1}} \\
+&amp;= \frac{z}{z-1}\end{split}\]</div>
+<p>This z-transform is defined on <span class="math">\(|z|&gt;1\)</span>.</p>
+</div>
+<div class="section" id="second-example">
+<h2>Second Example<a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h2>
+<p>Consider the polynomial function defined by:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{cases} a^k &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
+<p>We calculate the z-transform by using the definition.</p>
+<div class="math">
+\[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty a^k z^{-k} \\
+&amp;= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
+&amp;= \frac{1}{1 - (a^{-1}z)^{-1}} \\
+&amp;= \frac{z}{z-a}\end{split}\]</div>
+<p>This z-transform is defined on <span class="math">\(|z|&gt;a\)</span>.</p>
+</div>
+<div class="section" id="on-your-own">
+<h2>On Your Own<a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a></h2>
+<p>Now try to calculate the z-transform of the function:</p>
+<div class="math">
+\[\begin{split}u(k) = \begin{cases} \sin( \omega k T) &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
+<p>For what values of <span class="math">\(z\)</span> is it defined?</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Try writing it in terms of the definition of sin.  <span class="math">\(\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}\)</span>.</p>
+</div>
+<table class="docutils footnote" frame="void" id="fdef1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Note that some people use sum_{k=0}^infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the <span class="math">\(z\)</span>&#8216;s to <span class="math">\(\frac{1}{z}\)</span>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="z_transforms.html">Introduction to Z-Transforms</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="transform_table.html">Transform Table</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
