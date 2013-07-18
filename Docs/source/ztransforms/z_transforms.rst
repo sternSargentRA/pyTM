@@ -140,9 +140,35 @@ As a simple example of a difference equation we will examine the backward rectan
 
 Although backward substitution and simple algebra could solve this particular problem [#fmain2]_, but this approach will not solve all linear difference equations.  We will now examine how z-transforms can be used to solve linear difference equations.  This method will require the use of the time-shift properties mentioned above.
 
-The first step to solving a simple linear difference equation with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed in :math:`X(z)`) and leave the equation in the form :math:`X(z)`.  We can then take the inverse z-transform of :math:`X(z)` to get
+The first step to solving a simple linear difference equation, :math:`x(k) = f(x(k-1), x(k-2), ..., u(k), u(k-1), ...)`, with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed only in terms of :math:`X(z)`) and leave the equation in the form :math:`X(z)=f(z)` where :math:`f(z)` is some function.  We can then take the inverse z-transform of :math:`X(z) = f(z)` to get a functional form of :math:`x(k)` in terms of only :math:`k`.
+
+Lets solve our example from before.  Let the equation we are taking the integral of be :math:`y(k) = k^2 + 1` from 0 to 2 in 1 unit steps (Thus :math:`T=1`).
+
+.. math::
+    
+    x_(k) &= x(k-1) + y(k-1)
+
+    x_(k) - x(k-1) &= y(k-1)
+
+    X(z) - z^{-1} X(z) &= z^{-1} Y(k)
+
+    X(z) = \frac{z^{-1}}{1 - z^{-1}} Y(z)
+
+    x(k) = u[n] y(k)
+
+Now since we already know what :math:`n` and :math:`y(k)` are [#fmain3]_ then we can simply plug in the values we need.
+
+.. math::
+
+    x(k) = u[0] (k^2 + 1)
+
+Then we have solved the linear difference equation.
+
+
+
 
 .. include:: pv.rst
 
 ..  [#fmain1] Note that some people use \sum_{k=0}^\infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`.
 .. [#fmain2] Doing this obtains the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.
+.. [#fmain3] Since we are integrating from 0 to 2 then :math:`n=0` and we are given a function :math:`y(k) = k^2 + 1`
