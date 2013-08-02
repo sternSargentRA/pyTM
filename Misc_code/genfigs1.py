@@ -142,3 +142,7 @@ while dist > tol and i < maxiter:
 
     print i
 
+
+plt.plot(Knewmat)
+plt.plot(Cnewmat)
+plt.show()
