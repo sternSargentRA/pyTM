@@ -13,11 +13,11 @@ import scipy.optimize as opt
 
 # Simulation parameters
 periods = 100
-tol = 1e-15
+tol = 1e-6
 dist = 10
 i = 0
-maxiter = 1e10
-c_step = 1e-15
+maxiter = 1e8
+c_step = 1e-5
 
 # Constant parameters
 bet = 0.95
