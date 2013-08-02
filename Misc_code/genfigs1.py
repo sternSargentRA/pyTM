@@ -16,8 +16,8 @@ periods = 100
 tol = 1e-9
 dist = 10
 i = 0
-maxiter = 1000
-c_step = .001
+maxiter = 10000000
+c_step = .000001
 
 # Constant parameters
 bet = 0.95
@@ -131,7 +131,7 @@ while dist > tol and i < maxiter:
         Cnewmat[t+1] = ctp
         Knewmat[t+2] = calckplus(ktp, ctp, g[t+1])
 
-        print('t', t)
+        # print('t', t)
 
     dist = Knewmat[-1] - kbar1
 
@@ -140,9 +140,17 @@ while dist > tol and i < maxiter:
     else:
         cguess = cguess - c_step
 
-    print i
+    # print i
 
-
-plt.plot(Knewmat)
-plt.plot(Cnewmat)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(Knewmat[:40], 'k', label=r'$k_t$', linewidth=2.)
+ax.plot(range(40), np.ones(40) * kbar1, 'k--', label=r'$\bar{k}$')
+ax.plot(Cnewmat[:40], 'orange', label=r'$c_t$', linewidth=2.)
+# ax.plot(range(40), np.ones(40) * kbar1, 'k--', label=r'$\bar{c}$')
+ax.set_xlabel('Time (t)')
+ax.legend(loc=0)
+ax.set_title('Figure 11.9.1 RMT4')
+# plt.plot(Knewmat)
+# plt.plot(Cnewmat)
 plt.show()
