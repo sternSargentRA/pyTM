@@ -27,16 +27,12 @@ alpha = 0.33
 A = 1.0
 
 # These are the exogenous parameters (Need to be vector bc they might differ)
-# Since they are all 0 we just left them as 0, but in more general cases they
-# could be different
 
-# tauc = np.zeros(periods)
-# taui = np.zeros(periods)
-# tauk = np.zeros(periods)
+# There are no distorting taxes in this version of the model
+tauc = np.zeros(periods)
+taui = np.zeros(periods)
+tauk = np.zeros(periods)
 
-tauc = 0.
-taui = 0.
-tauk = 0.
 g = np.ones(periods)*0.4  # gov spends .4 in all but first 9 periods
 g[:9] = np.ones(9)*.2
 
@@ -83,7 +79,7 @@ def calcMU(cval):
     return mu
 
 
-def calccplus(choy, kman):
+def calccplus(choy, kman, tauchoy, taucman, taukhoy):
     '''
     Parameters:
     -----------
@@ -97,15 +93,13 @@ def calccplus(choy, kman):
 
     takes vals and calculates tomorrow's c
     '''
-    tauc = 0.
-    tauk = 0.
     bet = .95
     alpha = .33
     delt = .2
 
     num = calcMU(choy)
-    den = (bet * (1 + tauc)/(1 + tauc)) * \
-          ((1 - tauk) * (alpha * A * kman**(alpha - 1) - delt) + 1)
+    den = (bet * (1 + tauchoy)/(1 + taucman)) * \
+          ((1 - taukhoy) * (alpha * A * kman**(alpha - 1) - delt) + 1)
 
     cman = (den/num) ** (1./gam)
 
@@ -174,7 +168,7 @@ while dist > tol and i < maxiter:
         ktp = Knewmat[t+1]
         ct = Cnewmat[t]
 
-        ctp = calccplus(ct, ktp)
+        ctp = calccplus(ct, ktp, tauc[t], tauc[t+1], tauk[t])
         Cnewmat[t+1] = ctp
         Knewmat[t+2] = calckplus(ktp, ctp, g[t+1])
 
