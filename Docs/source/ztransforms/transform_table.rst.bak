@@ -14,7 +14,7 @@ This table gives z-transforms of particular functions. In table [#ftable1]_ we u
     :delim: ;
     :name: Transform Table
 
-    Sequence, :math:`x[n]`; Z-transform, :math:`X(z)`; radius of convergence
+    Signal, :math:`x[n]`; Z-transform, :math:`X(z)`; radius of convergence
     :math:`\delta[n]`; 1; all "z"
     :math:`\delta[n-n_0]`; :math:`z^{-n_0}`; :math:`z \neq 0`
     :math:`u[n]`; :math:`\frac{1}{1-z^{-1} }`; :math:`|z| > 1`
@@ -37,4 +37,4 @@ This table gives z-transforms of particular functions. In table [#ftable1]_ we u
     :math:`a^n \cos(\omega_0 n) u[n]`; :math:`\frac{1-a z^{-1} \cos( \omega_0)}{1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2}}`; :math:`|z|>|a|`
     :math:`a^n \sin(\omega_0 n) u[n]`; :math:`\frac{ az^{-1} \sin(\omega_0) }{ 1-2az^{-1}\cos(\omega_0)+ a^2 z^{-2} }`; :math:`|z|>|a|`
 
-.. [#ftable1] This  is a modified version of a table on the `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_.
+.. [#ftable1] This table is a modified version of a similar table found on the `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_.
