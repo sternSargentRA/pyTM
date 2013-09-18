@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple linear prediction theory &mdash; pyTM 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>pyTM 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Simple linear prediction theory</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="simple-linear-prediction-theory">
+<span id="lin-pred"></span><h1>Simple linear prediction theory<a class="headerlink" href="#simple-linear-prediction-theory" title="Permalink to this headline">¶</a></h1>
+<blockquote class="epigraph">
+<div>&#8220;We may regard the present state of the universe as the effect of its past and the cause of its future&#8221; &#8211; Marquis de Laplace</div></blockquote>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This lecture introduces a linear state space system</p>
+<p>Easy to use and embodies a powerful theory of prediction</p>
+<p>A workhorse with many applications</p>
+<ul>
+<li><p class="first">representing dynamics of many higher-order systems</p>
+</li>
+<li><p class="first">predicting the position of a system <span class="math">\(j\)</span> steps into the future</p>
+</li>
+<li><p class="first">predicting a geometric sum of future values of a variable like</p>
+<blockquote>
+<div><ul class="simple">
+<li>non financial income</li>
+<li>dividends on a stock</li>
+<li>the money supply</li>
+<li>a government deficit or surplus</li>
+<li>etc., etc., <span class="math">\(\ldots\)</span></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">key ingredient of important models</p>
+<blockquote>
+<div><ul class="simple">
+<li>Friedman&#8217;s permanent income model of consumption smoothing</li>
+<li>Barro&#8217;s model of smoothing total tax collections</li>
+<li>Rational expectations versions of Cagan&#8217;s model of hyperinflation</li>
+<li>Sargent and Wallace&#8217;s <a href="#id1"><span class="problematic" id="id2">`</span></a>unpleasant monetarist arithmetic&#8217;</li>
+<li>etc., etc., <span class="math">\(\ldots\)</span></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="a-linear-state-space-model">
+<h2>A Linear State Space Model<a class="headerlink" href="#a-linear-state-space-model" title="Permalink to this headline">¶</a></h2>
+<p>Objects in play are</p>
+<ul class="simple">
+<li>An <span class="math">\(n \times 1\)</span> vector <span class="math">\(x_t\)</span> denoting the <em>state</em> at time <span class="math">\(t\)</span></li>
+<li>An <span class="math">\(m \times 1\)</span> vector of i.i.d. random variables <span class="math">\(\epsilon_{t+1} \sim {\cal N}(0,I)\)</span></li>
+<li>A <span class="math">\(k \times 1\)</span> vector of <em>observations</em> <span class="math">\(y_t\)</span> at time <span class="math">\(t\)</span></li>
+<li>An <span class="math">\(n \times n\)</span> matrix <span class="math">\(A\)</span> often called a <em>transition matrix</em></li>
+<li>A <span class="math">\(n \times m\)</span> matrix <span class="math">\(C\)</span> sometimes called a <em>volatility matrix</em></li>
+<li>A <span class="math">\(k \times n\)</span> matrix <span class="math">\(G\)</span></li>
+</ul>
+<p>Here is the linear state-space system</p>
+<div class="math" id="equation-st_space_rep">
+<span class="eqno">(1)</span>\[\begin{split}x_{t+1} &amp; =  A x_t + C \epsilon_{t+1}   \\
+y_t &amp;  =  G x_t\end{split}\]</div>
+</div>
+<div class="section" id="convenient-extension">
+<h2>Convenient extension<a class="headerlink" href="#convenient-extension" title="Permalink to this headline">¶</a></h2>
+<p>We can equally well work with the assumption that <span class="math">\(\{\epsilon_{t+1}\}\)</span> is a <em>martingale difference sequence</em> meaning that it satisfies</p>
+<div class="math">
+\[E [\epsilon_{t+1} | x_t, x_{t-1}, \ldots ] = 0\]</div>
+<p>This is a weaker condition than that <span class="math">\(\epsilon\)</span> is vector of i.i.d. random variables satisfying <span class="math">\(\epsilon_{t+1} \sim {\cal N}(0,I)\)</span></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="second-order-difference-equation">
+<h2>Second-order difference equation<a class="headerlink" href="#second-order-difference-equation" title="Permalink to this headline">¶</a></h2>
+<div class="math" id="equation-st_ex_1">
+<span class="eqno">(2)</span>\[y_{t+1} =  \alpha + \rho_1 y_t + \rho_2 y_{t-1}\]</div>
+<p>To map <a href="#equation-st_ex_1">(2)</a> into our state space system <a href="#equation-st_space_rep">(1)</a>, we set</p>
+<div class="math">
+\[\begin{split}x_t= \left[
+\begin{array}{c} 1 \\ y_t \\ y_{t-1} \end{array}
+\right]
+\qquad
+A = \left[\begin{array}{cc} \alpha &amp; 0 &amp; 0 \\
+                          1 &amp; 0 &amp; 0  \\
+                          0 &amp; 1 &amp; 0 \end{array} \right]
+\qquad
+C= \left[ \begin{array}{c} 0 \\ 0 \\ 0 \end{array}\right]
+\qquad
+G = \left[ \begin{array}{c} 0 &amp; 1 &amp; 0 \end{array}\right]\end{split}\]</div>
+<div class="section" id="experiment-with-note">
+<h3>Experiment with note<a class="headerlink" href="#experiment-with-note" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a good idea</p>
+</div>
+</div>
+</div>
+<div class="section" id="univariate-autoregressive-processes">
+<h2>Univariate Autoregressive Processes<a class="headerlink" href="#univariate-autoregressive-processes" title="Permalink to this headline">¶</a></h2>
+<p>We can use <a href="#equation-st_space_rep">(1)</a> to represent the model</p>
+<div class="math" id="equation-eq_ar_rep">
+<span class="eqno">(3)</span>\[y_t = \alpha_1 y_{t-1} + \alpha_2 y_{t-2} + \alpha_3 y_{t-3} + \alpha_4  y_{t-4} + w_t\]</div>
+<p>where <span class="math">\(w_t\)</span> is a martingale difference sequence.  We set <span class="math">\(n = 4, x_t = [y_t \
+y_{t-1} \  y_{t-2} \  y_{t-3} ]^\prime\)</span> and</p>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} \alpha_1 &amp; \alpha_2 &amp; \alpha_3 &amp;
+\alpha_4 \cr 1 &amp; 0 &amp; 0 &amp; 0 \cr 0 &amp; 1 &amp; 0 &amp; 0 \cr 0 &amp; 0 &amp; 1 &amp; 0 \end{array}
+\right]
+\qquad
+C = \left[ \begin{array}{cc} 1 \cr 0 \cr 0 \cr 0 \end{array} \right]\end{split}\]</div>
+<p>The matrix <span class="math">\(A\)</span> has the form of the <em>companion matrix</em> to the vector
+<span class="math">\([\alpha_1 \  \alpha_2 \ \alpha_3 \ \alpha_4]\)</span>.</p>
+</div>
+<div class="section" id="vector-autoregressions">
+<h2>Vector Autoregressions<a class="headerlink" href="#vector-autoregressions" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(y_t\)</span> be a <span class="math">\(k \times 1\)</span>
+vector, <span class="math">\(\alpha_j\)</span> a <span class="math">\(k \times k\)</span> matrix, and <span class="math">\(w_t\)</span> a <span class="math">\(k \times 1\)</span> martingale
+difference sequence.  Then <a href="#equation-eq_ar_rep">(3)</a> is termed a <em>vector autoregression</em>.
+To map this into <a href="#equation-st_space_rep">(1)</a>, we set <span class="math">\(n = k \cdot 4\)</span>, and</p>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} \alpha_1 &amp; \alpha_2 &amp; \alpha_3 &amp; \alpha_4 \cr
+I &amp; 0        &amp; 0        &amp; 0        \cr
+0 &amp; I        &amp; 0        &amp; 0        \cr
+0 &amp; 0        &amp; I        &amp; 0       \end{array}\right],
+\qquad
+C = \left[ \begin{array}{c} I \cr 0 \cr 0 \cr 0 \end{array} \right]\end{split}\]</div>
+<p>where <span class="math">\(I\)</span> is the <span class="math">\(k \times k\)</span> identity matrix.</p>
+</div>
+<div class="section" id="deterministic-seasonals">
+<h2>Deterministic Seasonals<a class="headerlink" href="#deterministic-seasonals" title="Permalink to this headline">¶</a></h2>
+<p>We can use <a href="#equation-st_space_rep">(1)</a> to represent <span class="math">\(y_t = y_{t-4}\)</span>.    Let <span class="math">\(n=4\)</span>,</p>
+<div class="math">
+\[\begin{split}x_t = \left[\begin{array}{c} y_t &amp; y_{t-1} &amp; y_{t-2} &amp; y_{t-3}\end{array}\right]^\prime,
+\qquad
+ x_0 = \left[\begin{array}{c} 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]^\prime\end{split}\]</div>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} 0 &amp; 0 &amp; 0 &amp; 1 \cr
+1 &amp; 0 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 &amp; 0 \cr
+0 &amp; 0 &amp; 1 &amp; 0  \end{array} \right] ,
+\qquad
+C =  \left[ \begin{array}{cc}  0 \cr 0 \cr 0 \cr 0 \end{array} \right]\end{split}\]</div>
+<p>Here the <span class="math">\(A\)</span> matrix has four distinct eigenvalues and the absolute
+values of each of these eigenvalues is one.  Two eigenvalues are real <span class="math">\((1,-1)\)</span>
+and two  are imaginary <span class="math">\((i,-i)\)</span>,  and so have period four.  <a class="footnote-reference" href="#foot1" id="id3">[1]</a> The
+resulting sequence <span class="math">\(\{x_t : t=1,2,\ldots\}\)</span> oscillates deterministically
+with period four.   It can be used to model deterministic seasonals in
+quarterly time series.</p>
+</div>
+<div class="section" id="indeterministic-seasonal">
+<h2>Indeterministic Seasonal<a class="headerlink" href="#indeterministic-seasonal" title="Permalink to this headline">¶</a></h2>
+<p>We want to use <a href="#equation-st_space_rep">(1)</a> to represent <span class="math">\(y_t = \alpha_4 y_{t-4} + w_t\)</span>
+where <span class="math">\(w_t\)</span> is an iid Gaussian sequence   sequence and <span class="math">\(| \alpha_4 | \leq 1\)</span>.
+We define <span class="math">\(x_t\)</span> as in the previous example and</p>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} 0 &amp; 0 &amp; 0 &amp; \alpha_4 \cr 1 &amp; 0 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 &amp; 0 \cr 0 &amp; 0 &amp; 1 &amp; 0 \end{array} \right]
+\qquad
+C = \left[ \begin{array}{cc}   1 \cr 0 \cr 0 \cr 0 \end{array} \right]\end{split}\]</div>
+<p>With these definitions, <a href="#equation-st_space_rep">(1)</a> represents what we want. <span class="math">\(\{y_t\}\)</span> displays an
+<a href="#id4"><span class="problematic" id="id5">``</span></a>indeterministic&#8217;&#8217; seasonal, i.e., recurrent,
+but aperiodic, seasonal fluctuations.</p>
+<table class="docutils footnote" frame="void" id="foot1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>For example, note that <span class="math">\(i = \exp\left(\pi/2 \right) + i \sin \left(\pi/2\right)\)</span>, so  the period associated</td></tr>
+</tbody>
+</table>
+<p>with <span class="math">\(i\)</span>  is <span class="math">\({\frac{2 \pi}{\frac{\pi}{2}}} = 4\)</span>.</p>
+</div>
+<div class="section" id="polynomial-time-trends">
+<h2>Polynomial Time Trends<a class="headerlink" href="#polynomial-time-trends" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(n=2, x_0 = [0 \ 1]^\prime\)</span>, and</p>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} 1 &amp; 1  \cr 0 &amp; 1   \end{array} \right],
+\qquad
+C = \left[ \begin{array}{cc} 0 \cr 0 \end{array} \right].\end{split}\]</div>
+<p>Then</p>
+<div class="math">
+\[\begin{split}A^t = \left[ \begin{array}{cc} 1 &amp; t  \cr 0 &amp; 1  \end{array} \right]\end{split}\]</div>
+<p>Hence <span class="math">\(x_t = \left[\begin{array}{cc}  t &amp;1 \end{array}\right]^\prime\)</span>, so that the first component of $x_t$ is a linear
+time trend and the second component is a constant.</p>
+<p>It is also possible to use the state-space system <a href="#equation-st_space_rep">(1)</a> to represent polynomial trends of any order.
+For instance, let <span class="math">\(n=3,C=0,x_0 = \left[\begin{array}{cc}0 &amp;0 &amp;1\end{array}\right]^\prime\)</span>, and</p>
+<div class="math">
+\[\begin{split}A = \left[ \begin{array}{cc} 1 &amp; 1 &amp; 0  \cr 0 &amp; 1 &amp; 1  \cr 0 &amp; 0 &amp; 1 \end{array} \right] .\end{split}\]</div>
+<p>It follows that</p>
+<div class="math">
+\[\begin{split}A^t = \left[ \begin{array}{cc} 1 &amp; t &amp; t(t-1)/2 \cr 0 &amp; 1 &amp; t \cr 0 &amp; 0 &amp; 1 \end{array}\right]\end{split}\]</div>
+<p>Then <span class="math">\(x_t^\prime = \left[\begin{array}{cc} t(t-1)/2 &amp;t &amp; 1\end{array}\right]\)</span>, so that <span class="math">\(x_t\)</span> contains  linear and
+quadratic time trends.</p>
+</div>
+<div class="section" id="prediction-theory">
+<h2>Prediction Theory<a class="headerlink" href="#prediction-theory" title="Permalink to this headline">¶</a></h2>
+<p>The optimal forecast of <span class="math">\(x_{t+1}\)</span> given current information is</p>
+<div class="math" id="equation-eqob2">
+<span class="eqno">(4)</span>\[E(x_{t+1} | x_t) = Ax_t\]</div>
+<p>and the one-step-ahead forecast error is</p>
+<div class="math" id="equation-eqob3">
+<span class="eqno">(5)</span>\[x_{t+1} - E(x_{t+1} \mid J_t) = C\epsilon_{t+1}\]</div>
+<p>The covariance matrix of <span class="math">\(x_{t+1}\)</span> conditioned on <span class="math">\(x_t\)</span> is</p>
+<div class="math" id="equation-eqob4">
+<span class="eqno">(6)</span>\[E (x_{t+1} - E ( x_{t+1} | J_t) ) (x_{t+1} - E ( x_{t+1} | J_t))^\prime = CC^\prime\]</div>
+<p>A nonrecursive expression for <span class="math">\(x_t\)</span> as a function of
+<span class="math">\(x_0, \epsilon_1, \epsilon_2, \ldots,  \epsilon_t\)</span> can be found by using <a href="#equation-st_space_rep">(1)</a> repeatedly to obtain</p>
+<div class="math" id="equation-eqob5">
+<span class="eqno">(7)</span>\[\begin{split}x_t &amp; = Ax_{t-1} + C\epsilon_t \\
+    &amp; = A^2 x_{t-2} + AC\epsilon_{t-1} + C\epsilon_t \\
+    &amp; = \left[\sum_{\tau=0}^{t-1} A^\tau C\epsilon_{t-\tau} \right] + A^t x_0\end{split}\]</div>
+<p>Representation <a href="#equation-eqob5">(7)</a> is a  <em>moving-average</em> representation.
+It expresses <span class="math">\(\{x_t : t=1,2,\ldots\}\)</span>
+as a linear function of current and past values of the  process
+<span class="math">\(\{w_t: t=1,2,\ldots\}\)</span> and an initial condition <span class="math">\(x_0\)</span>.</p>
+</div>
+<div class="section" id="covariance-of-prediction-errors">
+<h2>Covariance of Prediction Errors<a class="headerlink" href="#covariance-of-prediction-errors" title="Permalink to this headline">¶</a></h2>
+<p>It is useful to obtain the covariance matrix of the <span class="math">\(j\)</span>-step-ahead prediction
+error</p>
+<div class="math" id="equation-eqob8">
+<span class="eqno">(8)</span>\[x_{t+j} - E_t x_{t+j} = \sum^{j-1}_{s=0} A^s C \epsilon_{t-s+j}.\]</div>
+<p>Evidently,</p>
+<div class="math" id="equation-eqob9a">
+<span class="eqno">(9)</span>\[E_t (x_{t+j} - E_t x_{t+j}) (x_{t+j} - E_t x_{t+j})^\prime =   \sum^{j-1}_{k=0} A^k C C^\prime A^{k^\prime} \equiv V_j\]</div>
+<p>Note that <span class="math">\(V_j\)</span> defined in <a href="#equation-eqob9a">(9)</a> can be calculated recursively via</p>
+<div class="math" id="equation-eqob9b">
+<span class="eqno">(10)</span>\[\begin{split}V_1 &amp;= CC^\prime \\
+V_j &amp;= CC^\prime + A V_{j-1} A^\prime, \quad j \geq 2\end{split}\]</div>
+<p>For <span class="math">\(j \geq 1\)</span>,  <span class="math">\(V_j\)</span> is the conditional covariance matrix of the errors in forecasting
+<span class="math">\(x_{t+j}\)</span> on the basis of time <span class="math">\(t\)</span> information <span class="math">\(x_t\)</span></p>
+<p>A steady-state covariance matrix satisfies</p>
+<div class="math" id="equation-eqob10">
+<span class="eqno">(11)</span>\[V_\infty = CC' + A V_\infty A'\]</div>
+<p>Equation <a href="#equation-eqob10">(11)</a> is an example of a <em>discrete Lyapunov</em> equation in the covariance matrix <span class="math">\(v_\infty\)</span></p>
+</div>
+<div class="section" id="some-things-we-d-like-to-compute">
+<h2>Some things we&#8217;d like to compute<a class="headerlink" href="#some-things-we-d-like-to-compute" title="Permalink to this headline">¶</a></h2>
+<p>Here are some things that we want to compute</p>
+<ul class="simple">
+<li><span class="math">\(j\)</span>-step ahead forecast of <span class="math">\(x\)</span>: <span class="math">\(E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]\)</span></li>
+<li><span class="math">\(j\)</span>-step ahead forecast of <span class="math">\(y\)</span>: <span class="math">\(E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots  \ ]\)</span></li>
+<li>Forecast of a geometric sum of future <span class="math">\(x\)</span>&#8216;s, or <span class="math">\(E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t \right]\)</span></li>
+<li>Forecast of a geometric sum of future <span class="math">\(y\)</span>&#8216;s, or <span class="math">\(E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]\)</span></li>
+</ul>
+<p>We want to compute these and other objects because they are important components of some interesting dynamic models.</p>
+<blockquote>
+<div><ul class="simple">
+<li>For example, if <span class="math">\(\{y_t\}\)</span> is a stream of dividends, then <span class="math">\(E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]\)</span> is a model of a stock price</li>
+<li>Or if <span class="math">\(\{y_t\}\)</span> is a the money supply, then <span class="math">\(E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]\)</span> could be a model of the price level</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="formulas-for-things-we-d-like-to-compute">
+<h2>Formulas for things we&#8217;d like to compute<a class="headerlink" href="#formulas-for-things-we-d-like-to-compute" title="Permalink to this headline">¶</a></h2>
+<p>Fortunately, it is easy to use a little matrix algebra to compute these objects</p>
+<ul class="simple">
+<li><span class="math">\(j\)</span>-step ahead forecast of <span class="math">\(x\)</span>: <span class="math">\(E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]\)</span></li>
+</ul>
+<div class="math">
+\[E_t x_{t+j} = A^j x_t\]</div>
+<ul class="simple">
+<li><span class="math">\(j\)</span>-step ahead forecast of <span class="math">\(y\)</span>: <span class="math">\(E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots \ ]\)</span></li>
+</ul>
+<div class="math">
+\[E_t y_{t+j} = G A^j x_t\]</div>
+<ul class="simple">
+<li>Forecast of a geometric sum of future <span class="math">\(x\)</span>&#8216;s</li>
+</ul>
+<div class="math">
+\[E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t\right] = [I + \beta A + \beta^2 A^2 + \cdots \ ] x_t = [I - \beta A]^{-1} x_t\]</div>
+<ul class="simple">
+<li>Forecast of a geometric sum of future <span class="math">\(y\)</span>&#8216;s</li>
+</ul>
+<div class="math">
+\[E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t\right] = G [I + \beta A + \beta^2 A^2 + \cdots \ ] x_t = G[I - \beta A]^{-1} x_t\]</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

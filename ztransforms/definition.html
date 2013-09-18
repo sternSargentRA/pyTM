@@ -28,10 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
-    <link rel="next" title="Transform Table" href="transform_table.html" />
-    <link rel="prev" title="Introduction to Z-Transforms" href="z_transforms.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
@@ -41,11 +38,7 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="z_transforms.html">Introduction to Z-Transforms</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="transform_table.html">Transform Table</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,47 +47,49 @@
         
   <div class="section" id="the-z-transform">
 <h1>The Z-Transform<a class="headerlink" href="#the-z-transform" title="Permalink to this headline">¶</a></h1>
-<p>The z-transform is a transformation that moves us from the time domain to the frequency domain.  In the same fashion that it is possible to have both one and two-sided integral transforms, the z-transform can also be one or two-sided.  However, for our purposes we will just consider the one-sided z-transform.</p>
-<dl class="docutils">
-<dt>z-Transform (one sided)</dt>
-<dd><p class="first">The z-transform of a sampled sequence <span class="math">\(x(kT)\)</span> or <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers and <span class="math">\(T\)</span> is the sampling period, is defined by the following equation. Note that the complex variable <span class="math">\(z\)</span> must be selected so that the summation converges <a class="footnote-reference" href="#fdef1" id="id1">[1]</a> :</p>
-<div class="last math" id="equation-eq_ZTdef">
-<span class="eqno">(1)</span>\[X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}\]</div>
-</dd>
-</dl>
-<p>Lets practice calculating the z-transform before we discuss how it can be used.</p>
+<p>A <em>one-sided sequence</em> is a sequence <span class="math">\(\{x(k)\}, k= 0, 1, \ldots\)</span></p>
+<p>The subscript <span class="math">\(k\)</span> often denotes time</p>
+<p>The one-sided z-transform maps a <em>one-sided sequence</em> into a function of complex variable <span class="math">\(z\)</span></p>
+<p>z-Transform (one sided)</p>
+<blockquote>
+<div><p>The z-transform of a sampled sequence  <span class="math">\(x(k)\)</span>, where <span class="math">\(k\)</span> represents non-negative integers is defined by the following equation.</p>
+<div class="math" id="equation-eq_ZTdef">
+<span class="eqno">(1)</span>\[X(z) \equiv \mathcal{Z}[x(k)] \equiv \sum_{k=0}^\infty x(k) z^{-k}\]</div>
+</div></blockquote>
+<p>The complex variable <span class="math">\(z\)</span> must take a value that makes  the sum converge <a class="footnote-reference" href="#fdef1" id="id1">[1]</a> :</p>
+<p>Before we discuss some of its uses, let&#8217;s practice calculating some z-transforms</p>
 <div class="section" id="first-example">
 <h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
-<p>Consider the unit step function defined by:</p>
+<p>Consider the unit step function</p>
 <div class="math">
 \[\begin{split}u(k) = \begin{cases} 1 &amp; \text{if } k&gt;0 \\ 0 &amp; \text{else} \end{cases}\end{split}\]</div>
-<p>We calculate the z-transform by using the definition.</p>
+<p>Using the definition.</p>
 <div class="math">
-\[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty 1 z^{-k} \\
+\[\begin{split}X(z) = \mathcal{Z}[u(k)] &amp;= \sum_{k=0}^\infty 1 z^{-k} \\
 &amp;= 1 + z^{-1} + z^{-2} + \dots \\
 &amp;= \frac{1}{1 - z^{-1}} \\
 &amp;= \frac{z}{z-1}\end{split}\]</div>
-<p>This z-transform is defined on <span class="math">\(|z|&gt;1\)</span>.</p>
+<p>This z-transform is well defined on the domain <span class="math">\(|z|&gt;1\)</span>.</p>
 </div>
 <div class="section" id="second-example">
 <h2>Second Example<a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h2>
-<p>Consider the polynomial function defined by:</p>
+<p>Consider the sequence</p>
 <div class="math">
-\[\begin{split}u(k) = \begin{cases} a^k &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
-<p>We calculate the z-transform by using the definition.</p>
+\[\begin{split}x(k) = \begin{cases} a^k &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
+<p>Use the definition again</p>
 <div class="math">
 \[\begin{split}X(z) = \mathcal{Z}[x(k)] &amp;= \sum_{k=0}^\infty a^k z^{-k} \\
 &amp;= \sum_{k=0}^\infty (a^{-1} z)^{-k}\\
 &amp;= \frac{1}{1 - (a^{-1}z)^{-1}} \\
 &amp;= \frac{z}{z-a}\end{split}\]</div>
-<p>This z-transform is defined on <span class="math">\(|z|&gt;a\)</span>.</p>
+<p>This z-transform is well defined on the domain <span class="math">\(|z|&gt;a\)</span>.</p>
 </div>
 <div class="section" id="on-your-own">
 <h2>On Your Own<a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a></h2>
-<p>Now try to calculate the z-transform of the function:</p>
+<p>Now try to calculate the z-transform of the sequence:</p>
 <div class="math">
-\[\begin{split}u(k) = \begin{cases} \sin( \omega k T) &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
-<p>For what values of <span class="math">\(z\)</span> is it defined?</p>
+\[\begin{split}x(k) = \begin{cases} \sin( \omega k T) &amp; \text{if } k \geq 0 \\ 0 &amp; \text{if } k &lt; 0 \end{cases}\end{split}\]</div>
+<p>For what domain of <span class="math">\(z\)</span> values is it defined?</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">Try writing it in terms of the definition of sin.  <span class="math">\(\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}\)</span>.</p>
@@ -102,7 +97,7 @@
 <table class="docutils footnote" frame="void" id="fdef1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Note that some people use sum_{k=0}^infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the <span class="math">\(z\)</span>&#8216;s to <span class="math">\(\frac{1}{z}\)</span>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Some people define the transform as <span class="math">\(\sum_{k=0}^\infty x(k) z^{k}\)</span>.  We will use our definition, but if you want to use the other one, all of this material can be easily translated by converting all of the <span class="math">\(z\)</span>&#8216;s to <span class="math">\(\frac{1}{z}\)</span>&#8216;s.</td></tr>
 </tbody>
 </table>
 </div>
@@ -113,11 +108,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="z_transforms.html">Introduction to Z-Transforms</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="transform_table.html">Transform Table</a>&#160;&#160;»
         </p>
 
       </div>

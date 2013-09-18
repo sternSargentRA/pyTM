@@ -11,6 +11,7 @@ This website will be home to the python based educational modules that are curre
 .. toctree::
    :maxdepth: 1
 
+   linear_pred/lin_pred
    ztransforms/z_transforms
 
 Indices and tables

@@ -28,10 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
-    <link rel="next" title="Present Value Calculations" href="pv.html" />
-    <link rel="prev" title="Properties of the Z-Transform" href="properties.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
@@ -41,11 +38,7 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="properties.html">Properties of the Z-Transform</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="pv.html">Present Value Calculations</a>&#160;&#160;»
         </p>
 
       </div>
@@ -57,7 +50,7 @@
 <p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
 <div class="math">
 \[x(k) = x(k-1) + T y(k-1)\]</div>
-<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" style="width: 600.0px; height: 450.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" /></a>
 <p>Although this problem could be solved via backward substitution and basic algebra <a class="footnote-reference" href="#fdiff1" id="id1">[1]</a>, this approach will not solve all linear difference equations.  Instead, we will examine how to use z-transforms to solve linear difference equations.  This method makes extensive use of the time-shift properties mentioned above.</p>
 <p>The first step to solving a simple linear difference equation, <span class="math">\(x(k) = f(x(k-1), x(k-2), \dots, u(k), u(k-1), \dots)\)</span>, with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed only in terms of <span class="math">\(X(z)\)</span>) and leave the equation in the form <span class="math">\(X(z)=f(z)\)</span> where <span class="math">\(f(z)\)</span> is some function.  We can then take the inverse z-transform of <span class="math">\(X(z) = f(z)\)</span> to get a functional form of <span class="math">\(x(k)\)</span> in terms of only <span class="math">\(k\)</span>.</p>
 <p>Let&#8217;s now return to solving the example backward rectangle approximation from before.  Let the equation we are taking the integral of be <span class="math">\(y(k) = k^2 + 1\)</span> from 0 to 2 in 1 unit steps (Thus <span class="math">\(T=1\)</span>).</p>
@@ -90,11 +83,7 @@ x(k) &amp;= u[n] y(k)\end{split}\]</div>
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="properties.html">Properties of the Z-Transform</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="pv.html">Present Value Calculations</a>&#160;&#160;»
         </p>
 
       </div>
