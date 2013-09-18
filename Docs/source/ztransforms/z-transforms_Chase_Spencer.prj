@@ -1,0 +1,50 @@
+275 Patch Control
+
+0
+0
+1
+transform_table.rst
+11
+5
+0
+
+
+
+
+
+
+definition.rst
+DATA
+273678578 0 77 14 77 260 222 222 1879 791 1 3198 729 -1 -1 0 0 16 0 0 16 1 0 260 77   0
+z_transforms.rst
+DATA
+5243122 0 1 29 1 29 148 148 1805 717 1 426 27 -1 -1 0 0 29 0 0 29 1 0 29 1   0
+transform_table.rst
+DATA
+5243122 0 39 53 2 1 259 259 1916 828 1 90 54 -1 -1 0 0 16 0 0 16 1 0 1 2   0
+inverse_trans.rst
+DATA
+5243122 0 20 6 14 75 0 0 1657 569 1 978 81 -1 -1 0 0 24 0 0 24 1 0 75 14   0
+properties.rst
+DATA
+5243122 0 38 48 38 43 37 37 1694 606 1 594 756 -1 -1 0 0 30 0 0 30 1 0 43 38   0
+C:\Users\tsargent\Documents\GitHub\pyTM\Docs\source\index.rst
+DATA
+273678578 0 0 1 0 1 185 185 1842 754 1 90 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+D:\tom\python\web_tom\conf.py
+DATA:UTF-8:UNIX:UTF-8
+273776882 0 93 15 93 22 0 0 1657 569 1 342 2511 -1 -1 0 0 24 0 0 24 1 0 22 93   0
+D:\tom\python\web_tom\lin_pred.rst
+DATA
+5243122 0 6 1 91 5 37 37 1694 606 1 138 783 -1 -1 0 0 14 0 0 14 1 0 5 91   0
+D:\tom\python\web_tom\index_stac.rst
+DATA
+5243122 0 0 1 0 1 111 111 1768 680 1 90 0 -1 -1 0 0 53 0 0 53 1 0 1 0   0
+D:\tom\python\web_tom\edu_advice.rst
+DATA
+5243122 0 56 62 56 62 37 37 1694 606 1 822 135 -1 -1 0 0 16 0 0 16 1 0 62 56   0
+D:\tom\python\web_tom\index.rst
+DATA:UNIX
+5341426 0 5 1 11 16 0 0 1657 569 1 270 297 -1 -1 0 0 51 0 0 51 1 0 16 11   0
+
+*transform_table.rst
