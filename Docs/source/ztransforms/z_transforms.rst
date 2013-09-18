@@ -15,7 +15,9 @@ Introduction to Z-Transforms
     difference_eq
     pv
 
-In this module we will introduce the idea of a z-Transform.  For those of you who are familiar with Laplace transforms, the z-Transform can basically be seen as the discrete time equivalent of the Laplace transform.  The z-Transform will share many of the same properties as the Laplace transform.  For those of you who are not familiar with the Laplace transform then the information provided should be sufficient for your understanding.
+This lecture describes the z-transform.  If you don't know about Laplace transforms, please ignore the following `helpful' remarks.  
+The z-transform is a discrete time version of the Laplace transform.  It shares many properties of the Laplace transform.  If you don't know the 
+Laplace transform, do not fear this lecture. It is self-contained. 
 
 .. include:: definition.rst
 

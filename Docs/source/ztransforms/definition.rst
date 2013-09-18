@@ -75,4 +75,4 @@ For what domain of :math:`z` values is it defined?
 
     Try writing it in terms of the definition of sin.  :math:`\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}`.
 
-..  [#fdef1] Some people define the transform as :math:`\sum_{k=0}^\infty x(k) z^{k}`.  We will use our definition, but if you want to use the other one, all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`s.
+..  [#fdef1] Some people define the transform as :math:`\sum_{k=0}^\infty x(k) z^{k}`.  We will use our definition, but if you want to use the other one, all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`'s.

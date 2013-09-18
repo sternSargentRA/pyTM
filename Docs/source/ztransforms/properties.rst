@@ -36,6 +36,6 @@ Theorems Associated with the Z-Transform
     Initial Value Thm; :math:`x[0] = \lim_{z \rightarrow \infty} X(z)`
     Final Value Thm; :math:`x[\infty] = \lim_{z \rightarrow 1} (z-1) X(z)`
 
-.. [#fprop1] Many of these properties were found on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
+.. [#fprop1] Many of these properties are  on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
 
 .. [#fprop2] This property is very important in many economic contexts, as will be seen later in this module.

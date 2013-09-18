@@ -1,52 +1,55 @@
 The Z-Transform
 ===============
 
-A *one-sided sequence* is a sequence :math:`\{f_t\}, t= 0, 1, \ldots`
+A *one-sided sequence* is a sequence :math:`\{x(k)\}, k= 0, 1, \ldots`
 
-The subscript :math:`t` often denotes time 
+The subscript :math:`k` often denotes time 
 
 The one-sided z-transform maps a *one-sided sequence* into a function of complex variable :math:`z`  
 
 z-Transform (one sided)
-    The z-transform of a sampled sequence :math:`x(kT)` or :math:`x(k)`, where :math:`k` represents non-negative integers and :math:`T` is the sampling period, is defined by the following equation. Note that the complex variable :math:`z` must be selected so that the summation converges [#fdef1]_ :
+
+    The z-transform of a sampled sequence  :math:`x(k)`, where :math:`k` represents non-negative integers is defined by the following equation. 
 
     .. math::
         :label: eq_ZTdef
 
-        X(z) = \mathcal{Z}[x^*(t)] = \mathcal{Z}[x(kT)] = \mathcal{Z}[x(k)] = \sum_{k=0}^\infty x(kT)z^{-k} = \sum_{k=0}^\infty x(k) z^{-k}
+        X(z) \equiv \mathcal{Z}[x(k)] \equiv \sum_{k=0}^\infty x(k) z^{-k}
+        
+The complex variable :math:`z` must take a value that makes  the sum converge [#fdef1]_ :
 
-Lets practice calculating the z-transform before we discuss how it can be used.
+Before we discuss some of its uses, let's practice calculating some z-transforms 
 
 First Example
 ^^^^^^^^^^^^^
 
-Consider the unit step function defined by:
+Consider the unit step function 
 
 .. math::
 
     u(k) = \begin{cases} 1 & \text{if } k>0 \\ 0 & \text{else} \end{cases}
 
-We calculate the z-transform by using the definition.
+Using the definition.
 
 .. math::
 
-    X(z) = \mathcal{Z}[x(k)] &= \sum_{k=0}^\infty 1 z^{-k} \\
+    X(z) = \mathcal{Z}[u(k)] &= \sum_{k=0}^\infty 1 z^{-k} \\
     &= 1 + z^{-1} + z^{-2} + \dots \\
     &= \frac{1}{1 - z^{-1}} \\
     &= \frac{z}{z-1}
 
-This z-transform is defined on :math:`|z|>1`.
+This z-transform is well defined on the domain :math:`|z|>1`.
 
 Second Example
 ^^^^^^^^^^^^^^
 
-Consider the polynomial function defined by:
+Consider the sequence
 
 .. math::
 
-    u(k) = \begin{cases} a^k & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
+    x(k) = \begin{cases} a^k & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
 
-We calculate the z-transform by using the definition.
+Use the definition again
 
 .. math::
 
@@ -55,21 +58,21 @@ We calculate the z-transform by using the definition.
         &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
         &= \frac{z}{z-a}
 
-This z-transform is defined on :math:`|z|>a`.
+This z-transform is well defined on the domain :math:`|z|>a`.
 
 On Your Own
 ^^^^^^^^^^^
 
-Now try to calculate the z-transform of the function:
+Now try to calculate the z-transform of the sequence:
 
 .. math::
 
-    u(k) = \begin{cases} \sin( \omega k T) & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
+    x(k) = \begin{cases} \sin( \omega k T) & \text{if } k \geq 0 \\ 0 & \text{if } k < 0 \end{cases}
 
-For what values of :math:`z` is it defined?
+For what domain of :math:`z` values is it defined?
 
 .. hint::
 
     Try writing it in terms of the definition of sin.  :math:`\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}`.
 
-..  [#fdef1] Note that some people use \sum_{k=0}^\infty x(k) z^{k}`.  We will use the definition given, but if you were working with the other definition all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`.
+..  [#fdef1] Some people define the transform as :math:`\sum_{k=0}^\infty x(k) z^{k}`.  We will use our definition, but if you want to use the other one, all of this material can be easily translated by converting all of the :math:`z`'s to :math:`\frac{1}{z}`s.

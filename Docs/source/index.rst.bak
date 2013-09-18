@@ -9,7 +9,7 @@ Welcome to pyTM's documentation!
 This website will be home to the python based educational modules that are currently being written.  They will contain...
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    linear_pred/lin_pred
    ztransforms/z_transforms
 
