@@ -233,6 +233,29 @@ It follows that
 Then :math:`x_t^\prime = \left[\begin{array}{cc} t(t-1)/2 &t & 1\end{array}\right]`, so that :math:`x_t` contains  linear and
 quadratic time trends. 
 
+Martingale with Drift
+
+Following Hansen and Sargent XXXXX [add reference], we modify the linear time trend example and set :math:`C` nonzero.  Suppose
+that :math:`N` is one and :math:`C^\prime = [1 \ 0]`.  Since :math:`A = \left[ \begin{array} 1
+& 1 \cr 0 & 1 \end{array}\right]` and :math:`A^t = \left[ \begin{array}  1 & t \cr 0
+& 1 \end{array} \right]`, it follows that
+
+.. math::
+
+   A^\tau C = \left[ \begin{array}  1 \cr 0 \end{array} \right] 
+   :label: eqob24
+   
+Substituting into the moving-average representation :eq:`eqob5`, we obtain 
+
+.. math::
+    x_{1t} = \sum_{\tau=0}^{t-1} \epsilon_{t-\tau} + [1 \ t] x_0 
+    
+where :math:`x_{1t}` is the first entry of :math:`x_t`.  The first term on the right
+ is a cumulated sum of martingale differences,
+and is called a *martingale*, while the second term is a
+translated linear function of time.
+
+
 Prediction Theory
 ==================
 
@@ -280,23 +303,23 @@ error
 Evidently,
 
 .. math:: 
-   E_t (x_{t+j} - E_t x_{t+j}) (x_{t+j} - E_t x_{t+j})^\prime =   \sum^{j-1}_{k=0} A^k C C^\prime A^{k^\prime} \equiv v_j 
+   E_t (x_{t+j} - E_t x_{t+j}) (x_{t+j} - E_t x_{t+j})^\prime =   \sum^{j-1}_{k=0} A^k C C^\prime A^{k^\prime} \equiv V_j 
    :label: eqob9a 
    
-Note that :math:`v_j` defined in :eq:`eqob9a` can be calculated recursively via
+Note that :math:`V_j` defined in :eq:`eqob9a` can be calculated recursively via
 
 .. math:: 
-   v_1 &= CC^\prime \\
-   v_j &= CC^\prime + A v_{j-1} A^\prime, \quad j \geq 2 
+   V_1 &= CC^\prime \\
+   V_j &= CC^\prime + A V_{j-1} A^\prime, \quad j \geq 2 
    :label: eqob9b 
    
-For :math:`j \geq 1`,  :math:`v_j` is the conditional covariance matrix of the errors in forecasting
+For :math:`j \geq 1`,  :math:`V_j` is the conditional covariance matrix of the errors in forecasting
 :math:`x_{t+j}` on the basis of time :math:`t` information :math:`x_t` 
 
 A steady-state covariance matrix satisfies
 
 .. math::
-    v_\infty = CC' + A v_\infty A' 
+    V_\infty = CC' + A V_\infty A' 
     :label: eqob10
     
 Equation :eq:`eqob10` is an example of a *discrete Lyapunov* equation in the covariance matrix :math:`v_\infty`
@@ -310,9 +333,9 @@ Some things we'd like to compute
 
 Here are some things that we want to compute
 
-* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots  ]`
+* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]`
 
-* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots  ]`
+* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots  \ ]`
 
 *  Forecast of a geometric sum of future :math:`x`'s, or :math:`E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t \right]`
 
@@ -320,8 +343,9 @@ Here are some things that we want to compute
 
 We want to compute these and other objects because they are important components of some interesting dynamic models.
 
-For example, if :math:`\{y_t\}` is a stream of dividends, then a forecast of a geometric sum of future dividends is a model of a stock price
+    * For example, if :math:`\{y_t\}` is a stream of dividends, then :math:`E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]` is a model of a stock price
 
+    * Or if :math:`\{y_t\}` is a the money supply, then :math:`E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]` could be a model of the price level
 
 Formulas for things we'd like to compute
 ==========================================
@@ -329,12 +353,12 @@ Formulas for things we'd like to compute
 Fortunately, it is easy to use a little matrix algebra to compute these objects
 
 
-* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots  ]`
+* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]`
 
 .. math:: 
     E_t x_{t+j} = A^j x_t
 
-* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots  ]`
+* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots \ ]`
 
 .. math:: 
     E_t y_{t+j} = G A^j x_t
@@ -342,12 +366,12 @@ Fortunately, it is easy to use a little matrix algebra to compute these objects
 * Forecast of a geometric sum of future :math:`x`'s   
     
 .. math::
-    E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t\right] = [I + \beta A + \beta^2 A^2 + \cdots ] x_t = [I - \beta A]^{-1} x_t 
+    E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t\right] = [I + \beta A + \beta^2 A^2 + \cdots \ ] x_t = [I - \beta A]^{-1} x_t 
     
 * Forecast of a geometric sum of future :math:`y`'s   
     
 .. math::
-    E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t\right] = G [I + \beta A + \beta^2 A^2 + \cdots ] x_t = G[I - \beta A]^{-1} x_t    
+    E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t\right] = G [I + \beta A + \beta^2 A^2 + \cdots \ ] x_t = G[I - \beta A]^{-1} x_t    
                                  
    
 

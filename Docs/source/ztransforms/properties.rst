@@ -1,7 +1,7 @@
 Properties of the Z-Transform
 =============================
 
- The Z-transform has many useful properties. We will list some of theme (without proof) here. [#fprop1]_
+ The Z-transform has many useful properties. We list some here. [#fprop1]_
 
 .. csv-table::
     :header: "Property", "n - domain( :math:`x[n]` )", "Z - domain ( :math:`X(z)` )"
@@ -38,4 +38,4 @@ Theorems Associated with the Z-Transform
 
 .. [#fprop1] Many of these properties are  on this `Wikipedia Page <http://en.wikipedia.org/wiki/Z-transform>`_. There you can find proofs for most of them.
 
-.. [#fprop2] This property is very important in many economic contexts, as will be seen later in this module.
+.. [#fprop2] This property is very important in many economic contexts, as we shall see soon.

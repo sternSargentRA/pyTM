@@ -233,6 +233,27 @@ It follows that
 Then :math:`x_t^\prime = \left[\begin{array}{cc} t(t-1)/2 &t & 1\end{array}\right]`, so that :math:`x_t` contains  linear and
 quadratic time trends. 
 
+Martingale with Drift
+======================
+
+Following Hansen and Sargent XXXXX [add reference], we modify the linear time trend example and set :math:`C` nonzero.  Suppose
+that :math:`N` is one and :math:`C^\prime = [1 \ 0]`.  Since :math:`A = \left[ \begin{array}{cc} 1
+& 1 \cr 0 & 1 \end{array}\right]` and :math:`A^t = \left[ \begin{array} {cc} 1 & t \cr 0
+& 1 \end{array} \right]`, it follows that
+
+.. math::
+   A^\tau C = \left[ \begin{array} {cc} 1 \cr 0 \end{array} \right] 
+   :label: eqob24
+   
+Substituting into the moving-average representation :eq:`eqob5`, we obtain 
+
+.. math::
+    x_{1t} = \sum_{\tau=0}^{t-1} \epsilon_{t-\tau} + \left[\begin{array}{cc} 1 & t \end{array}\right] x_0 
+    
+where :math:`x_{1t}` is the first entry of :math:`x_t`.  The first term on the right is a cumulated sum of martingale differences,
+and is called a *martingale*, while the second term is a translated linear function of time.
+
+
 Prediction Theory
 ==================
 
@@ -326,8 +347,14 @@ We want to compute these and other objects because they are important components
 
 Formulas for things we'd like to compute
 ==========================================
-
 Fortunately, it is easy to use a little matrix algebra to compute these objects
+
+.. note::
+   Useful fact: Suppose that the eigenvalues of :math:`A` are all bounded in modulus by :math:`\frac{1}{\beta}`.  Then :math:`I + \beta A + \beta^2 A + \ldots = \left[I - \beta A \right]^{-1}`
+   The assumption about the eigenvalues of :math:`A` assure that the series on the left converges.  
+
+Here are our formulas:
+
 
 
 * :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]`

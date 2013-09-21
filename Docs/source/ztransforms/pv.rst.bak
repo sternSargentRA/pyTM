@@ -1,7 +1,7 @@
 Present Value Calculations
 ==========================
 
-One natural application of Z-transforms is to compute the present value (PV) of an income stream when a discount factor is constant. Let this stream be represented by a sequence of real numbers :math:`\{x_n\}_{n=0}^{\infty}` and let :math:`\beta \in (0, 1)` be a constant discount factor. The present value of this sequence is defined as
+One natural application of Z-transforms to economics is in computing the present value (PV) of an infinite income stream. Let this stream be represented by a sequence of real numbers :math:`\{x_n\}_{n=0}^{\infty}` and let :math:`\beta \in (0, 1)` be a constant discount factor. The present value of this sequence is defined as
 
 .. math::
     :label: eq_PVdef
@@ -41,7 +41,7 @@ In our situation we don't have a linear combination of sequences, but we do have
 Second PV Example
 ^^^^^^^^^^^^^^^^^
 
-Let the sequence of payoffs be :math:`x_n = n \lambda^n`. We want to use the z-transform to compute its present value
+Let the sequence of payoffs be :math:`x_n = n \lambda^n`. We want to use the z-transform to compute the present value of this sequence.
 
 We can see from the table of properties that :math:`\mathcal{Z}(n x_n) = -z \frac{\partial X(z)}{\partial z}`. We can apply this property, as well as the z-transform of :math:`\lambda^n` to evaluate the present value (note that we compute this in terms of :math:`\beta` instead of :math:`z`).
 
