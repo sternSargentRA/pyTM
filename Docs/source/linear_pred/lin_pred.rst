@@ -13,13 +13,13 @@ Simple linear prediction theory
 Overview
 ============
 
-This lecture introduces a linear state space system
+This lecture introduces the linear state space system
 
 Easy to use and embodies a powerful theory of prediction
 
 A workhorse with many applications 
 
-* representing dynamics of many higher-order systems
+* representing dynamics of many higher-order linear systems
 
 * predicting the position of a system :math:`j` steps into the future 
 
@@ -35,13 +35,13 @@ A workhorse with many applications
     
     * etc., etc., :math:`\ldots`
     
-* key ingredient of important models 
+* key ingredient of useful models 
 
     * Friedman's permanent income model of consumption smoothing
 
     * Barro's model of smoothing total tax collections
     
-    * Rational expectations versions of Cagan's model of hyperinflation
+    * Rational expectations version of Cagan's model of hyperinflation
     
     * Sargent and Wallace's `unpleasant monetarist arithmetic'
     
@@ -50,17 +50,19 @@ A workhorse with many applications
 A Linear State Space Model
 ===============================
 
-Objects in play are
+Objects in play 
 
-* An :math:`n \times 1` vector :math:`x_t` denoting the *state* at time :math:`t`
+* An :math:`n \times 1` vector :math:`x_t` denoting the *state* at time :math:`t, \ t \geq 0`
+
+* An :math:`n \times 1` vector :math:`x_0` denoting the initial state vector at :math:`t=0`
 
 * An :math:`m \times 1` vector of i.i.d. random variables :math:`\epsilon_{t+1} \sim {\cal N}(0,I)`
 
-* A :math:`k \times 1` vector of *observations* :math:`y_t` at time :math:`t`
+* A :math:`k \times 1` vector of *observations* :math:`y_t` at time :math:`t, \ t \geq 0`
 
-* An :math:`n \times n` matrix :math:`A` often called a *transition matrix*
+* An :math:`n \times n` matrix :math:`A`  called a *transition matrix*
 
-* A :math:`n \times m` matrix :math:`C` sometimes called a *volatility matrix*
+* A :math:`n \times m` matrix :math:`C`  called a *volatility matrix*
 
 * A :math:`k \times n` matrix :math:`G`
 
@@ -74,7 +76,7 @@ Here is the linear state-space system
 Convenient extension
 =====================
 
-We can equally well work with the assumption that :math:`\{\epsilon_{t+1}\}` is a *martingale difference sequence* meaning that it satisfies
+We can equally well work with the assumption that :math:`\{\epsilon_{t+1}\}` is a *martingale difference sequence*, meaning that it satisfies
 
 .. math::
        E [\epsilon_{t+1} | x_t, x_{t-1}, \ldots ] = 0     
@@ -83,6 +85,10 @@ This is a weaker condition than that :math:`\epsilon` is vector of i.i.d. random
       
 Examples
 ===========
+  
+Finding the state is an art
+
+By appropriately choosing the definitions of  :math:`A, C, G, x_t, y_t`, a variety of models for :math:`\{y_t\}_{t=0}^\infty` can be captured   
       
 Second-order difference equation
 ================================
@@ -119,7 +125,7 @@ Univariate Autoregressive Processes
 We can use :eq:`st_space_rep` to represent the model
 
 .. math:: 
-   y_t = \alpha_1 y_{t-1} + \alpha_2 y_{t-2} + \alpha_3 y_{t-3} + \alpha_4  y_{t-4} + w_t 
+   y_{t+1} = \alpha_1 y_{t} + \alpha_2 y_{t-1} + \alpha_3 y_{t-2} + \alpha_4  y_{t-3} + \epsilon_{t+1} 
    :label: eq_ar_rep
    
 where :math:`w_t` is a martingale difference sequence.  We set :math:`n = 4, x_t = [y_t \
@@ -131,6 +137,8 @@ y_{t-1} \  y_{t-2} \  y_{t-3} ]^\prime` and
    \right]  
    \qquad 
    C = \left[ \begin{array}{cc} 1 \cr 0 \cr 0 \cr 0 \end{array} \right]
+   \qquad
+    G = \left[ \begin{array}{c} 1 & 0  & 0 & 0 \end{array}\right]
    
 The matrix :math:`A` has the form of the *companion matrix* to the vector
 :math:`[\alpha_1 \  \alpha_2 \ \alpha_3 \ \alpha_4]`. 
@@ -192,7 +200,7 @@ We define :math:`x_t` as in the previous example and
    C = \left[ \begin{array}{cc}   1 \cr 0 \cr 0 \cr 0 \end{array} \right] 
    
 With these definitions, :eq:`st_space_rep` represents what we want. :math:`\{y_t\}` displays an
-``indeterministic'' seasonal, i.e., recurrent,
+*indeterministic* seasonal, i.e., recurrent,
 but aperiodic, seasonal fluctuations.
 
 
@@ -257,7 +265,7 @@ and is called a *martingale*, while the second term is a translated linear funct
 Prediction Theory
 ==================
 
-The optimal forecast of :math:`x_{t+1}` given current information is
+The optimal forecast of :math:`x_{t+1}` given information known at time :math:`t`, namely, :math:`x_t` is
 
 .. math::
    E(x_{t+1} | x_t) = Ax_t 
@@ -265,13 +273,13 @@ The optimal forecast of :math:`x_{t+1}` given current information is
 and the one-step-ahead forecast error is
 
 .. math::
-   x_{t+1} - E(x_{t+1} \mid J_t) = C\epsilon_{t+1} 
+   x_{t+1} - E(x_{t+1} \mid x_t) = C\epsilon_{t+1} 
    :label: eqob3 
 
 The covariance matrix of :math:`x_{t+1}` conditioned on :math:`x_t` is 
 
 .. math::
-   E (x_{t+1} - E ( x_{t+1} | J_t) ) (x_{t+1} - E ( x_{t+1} | J_t))^\prime = CC^\prime 
+   E (x_{t+1} - E ( x_{t+1} | J_t) ) (x_{t+1} - E ( x_{t+1} | x_t))^\prime = CC^\prime 
    :label: eqob4 
 
 A nonrecursive expression for :math:`x_t` as a function of
@@ -320,20 +328,20 @@ A steady-state covariance matrix satisfies
     V_\infty = CC' + A V_\infty A' 
     :label: eqob10
     
-Equation :eq:`eqob10` is an example of a *discrete Lyapunov* equation in the covariance matrix :math:`v_\infty`
+Equation :eq:`eqob10` is an example of a *discrete Lyapunov* equation in the covariance matrix :math:`V_\infty`
 
 
 
 
      
-Some things we'd like to compute
+Some more things we'd like to compute
 ================================
 
 Here are some things that we want to compute
 
-* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]`
+* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots, x_0 ]`
 
-* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots  \ ]`
+* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots, x_0  ]`
 
 *  Forecast of a geometric sum of future :math:`x`'s, or :math:`E_t \left[\sum_{j=0}^\infty \beta^j x_{t+j} | x_t \right]`
 
@@ -343,7 +351,7 @@ We want to compute these and other objects because they are important components
 
     * For example, if :math:`\{y_t\}` is a stream of dividends, then :math:`E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]` is a model of a stock price
 
-    * Or if :math:`\{y_t\}` is a the money supply, then :math:`E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]` could be a model of the price level
+    * Or if :math:`\{y_t\}` is  the money supply, then :math:`E_t \left[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t \right]` is a  model of the price level
 
 Formulas for things we'd like to compute
 ==========================================
@@ -357,12 +365,12 @@ Here are our formulas:
 
 
 
-* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots \ ]`
+* :math:`j`-step ahead forecast of :math:`x`: :math:`E_t x_{t+j} \equiv E [x_{t+j} | x_t] = E [x_{t+j} | x_t, x_{t-1}, \ldots , x_0 ]`
 
 .. math:: 
     E_t x_{t+j} = A^j x_t
 
-* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots \ ]`
+* :math:`j`-step ahead forecast of :math:`y`: :math:`E_t y_{t+j} \equiv E [y_{t+j} | x_t] = E [y_{t+j} | x_t, x_{t-1}, \ldots , x_0 ]`
 
 .. math:: 
     E_t y_{t+j} = G A^j x_t
