@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,9 +9,8 @@
     
     <title>Solving a Linear Difference Equation &mdash; pyTM 1.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/traditional.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -27,30 +25,40 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
+    <link rel="next" title="Present Value Calculations" href="pv.html" />
+    <link rel="prev" title="Properties of the Z-Transform" href="properties.html" /> 
   </head>
   <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>pyTM 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>Solving a Linear Difference Equation</span></h2>
-      </div>
-      <div class="topnav">
-      
-        <p>
-        <a class="uplink" href="../index.html">Contents</a>
-        </p>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pv.html" title="Present Value Calculations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="properties.html" title="Properties of the Z-Transform"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pyTM 1.0 documentation</a> &raquo;</li>
+          <li><a href="z_transforms.html" accesskey="U">Introduction to Z-Transforms</a> &raquo;</li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
   <div class="section" id="solving-a-linear-difference-equation">
 <h1>Solving a Linear Difference Equation<a class="headerlink" href="#solving-a-linear-difference-equation" title="Permalink to this headline">¶</a></h1>
-<p>As a simple example of a difference equation we will examine the backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
+<p>As an example of a difference equation, we study a backward rectangle approximation of an integral.  Let <span class="math">\(x(k)\)</span> be the value of the integral at point <span class="math">\(k\)</span> and similarly <span class="math">\(x(k-1)\)</span> is the value at point <span class="math">\(k-1\)</span> etc...  Let the value of the function at point <span class="math">\(k\)</span> be given as <span class="math">\(y(k)\)</span>.  Then the value of the backward rectangle approximation at point <span class="math">\(k\)</span> can be expressed as:</p>
 <div class="math">
 \[x(k) = x(k-1) + T y(k-1)\]</div>
-<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" /></a>
+<a class="reference internal image-reference" href="../_images/backwardrect.png"><img alt="../_images/backwardrect.png" src="../_images/backwardrect.png" style="width: 600.0px; height: 450.0px;" /></a>
 <p>Although this problem could be solved via backward substitution and basic algebra <a class="footnote-reference" href="#fdiff1" id="id1">[1]</a>, this approach will not solve all linear difference equations.  Instead, we will examine how to use z-transforms to solve linear difference equations.  This method makes extensive use of the time-shift properties mentioned above.</p>
 <p>The first step to solving a simple linear difference equation, <span class="math">\(x(k) = f(x(k-1), x(k-2), \dots, u(k), u(k-1), \dots)\)</span>, with z-transforms is to take the z-transform.  Then you should combine elements (time-shift properties allow everything to be expressed only in terms of <span class="math">\(X(z)\)</span>) and leave the equation in the form <span class="math">\(X(z)=f(z)\)</span> where <span class="math">\(f(z)\)</span> is some function.  We can then take the inverse z-transform of <span class="math">\(X(z) = f(z)\)</span> to get a functional form of <span class="math">\(x(k)\)</span> in terms of only <span class="math">\(k\)</span>.</p>
 <p>Let&#8217;s now return to solving the example backward rectangle approximation from before.  Let the equation we are taking the integral of be <span class="math">\(y(k) = k^2 + 1\)</span> from 0 to 2 in 1 unit steps (Thus <span class="math">\(T=1\)</span>).</p>
@@ -79,15 +87,55 @@ x(k) &amp;= u[n] y(k)\end{split}\]</div>
 </div>
 
 
+          </div>
+        </div>
       </div>
-      <div class="bottomnav">
-      
-        <p>
-        <a class="uplink" href="../index.html">Contents</a>
-        </p>
-
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="properties.html"
+                        title="previous chapter">Properties of the Z-Transform</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pv.html"
+                        title="next chapter">Present Value Calculations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ztransforms/difference_eq.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pv.html" title="Present Value Calculations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="properties.html" title="Properties of the Z-Transform"
+             >previous</a> |</li>
+        <li><a href="../index.html">pyTM 1.0 documentation</a> &raquo;</li>
+          <li><a href="z_transforms.html" >Introduction to Z-Transforms</a> &raquo;</li> 
+      </ul>
+    </div>
     <div class="footer">
         &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.

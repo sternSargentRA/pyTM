@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,9 +9,8 @@
     
     <title>Present Value Calculations &mdash; pyTM 1.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/traditional.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -27,27 +25,33 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" /> 
+    <link rel="top" title="pyTM 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction to Z-Transforms" href="z_transforms.html" />
+    <link rel="prev" title="Solving a Linear Difference Equation" href="difference_eq.html" /> 
   </head>
   <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>pyTM 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>Present Value Calculations</span></h2>
-      </div>
-      <div class="topnav">
-      
-        <p>
-        <a class="uplink" href="../index.html">Contents</a>
-        </p>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="difference_eq.html" title="Solving a Linear Difference Equation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pyTM 1.0 documentation</a> &raquo;</li>
+          <li><a href="z_transforms.html" accesskey="U">Introduction to Z-Transforms</a> &raquo;</li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
   <div class="section" id="present-value-calculations">
 <h1>Present Value Calculations<a class="headerlink" href="#present-value-calculations" title="Permalink to this headline">¶</a></h1>
-<p>One natural application of Z-transforms to economics is in computing the present value (PV) of an infinite income stream. Let this stream be represented by a sequence of real numbers <span class="math">\(\{x_n\}_{n=0}^{\infty}\)</span> and let <span class="math">\(\beta \in (0, 1)\)</span> be a constant discount factor. The present value of this sequence is defined as</p>
+<p>One natural application of Z-transforms is to compute the present value (PV) of an income stream when a discount factor is constant. Let this stream be represented by a sequence of real numbers <span class="math">\(\{x_n\}_{n=0}^{\infty}\)</span> and let <span class="math">\(\beta \in (0, 1)\)</span> be a constant discount factor. The present value of this sequence is defined as</p>
 <div class="math" id="equation-eq_PVdef">
 <span class="eqno">(1)</span>\[PV(\beta) = \sum_{n=0}^{\infty} \beta^n x_n\]</div>
 <p>Notice how Equation <a href="#equation-eq_PVdef">(1)</a> looks very much like the definition of the z-transform <a href="#equation-eq_ZTdef">(?)</a> of <span class="math">\(x_n\)</span> in terms of <span class="math">\(\beta\)</span>, instead of <span class="math">\(z\)</span>. The only difference is that the exponent on <span class="math">\(\beta\)</span> here is <span class="math">\(+n\)</span> instead of the <span class="math">\(-n\)</span> from the definition. These two representations actually yield equivalent results, but moving from the definition to the PV formula requires substituting <span class="math">\(\beta\)</span> for <span class="math">\(\beta^{-1}\)</span> after applying the transform. This is best understood by example.</p>
@@ -68,7 +72,7 @@
 </div>
 <div class="section" id="second-pv-example">
 <h2>Second PV Example<a class="headerlink" href="#second-pv-example" title="Permalink to this headline">¶</a></h2>
-<p>Let the sequence of payoffs be <span class="math">\(x_n = n \lambda^n\)</span>. We want to use the z-transform to compute the present value of this sequence.</p>
+<p>Let the sequence of payoffs be <span class="math">\(x_n = n \lambda^n\)</span>. We want to use the z-transform to compute its present value</p>
 <p>We can see from the table of properties that <span class="math">\(\mathcal{Z}(n x_n) = -z \frac{\partial X(z)}{\partial z}\)</span>. We can apply this property, as well as the z-transform of <span class="math">\(\lambda^n\)</span> to evaluate the present value (note that we compute this in terms of <span class="math">\(\beta\)</span> instead of <span class="math">\(z\)</span>).</p>
 <div class="math">
 \[X(\beta) = \mathcal{Z}(\lambda^n) = \frac{1}{1 - \lambda \beta^{-1}}\]</div>
@@ -93,15 +97,59 @@
 </div>
 
 
+          </div>
+        </div>
       </div>
-      <div class="bottomnav">
-      
-        <p>
-        <a class="uplink" href="../index.html">Contents</a>
-        </p>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Present Value Calculations</a><ul>
+<li><a class="reference internal" href="#first-pv-example">First PV Example</a></li>
+<li><a class="reference internal" href="#second-pv-example">Second PV Example</a></li>
+<li><a class="reference internal" href="#reminders-for-pv-calculations">Reminders for PV Calculations</a></li>
+</ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="difference_eq.html"
+                        title="previous chapter">Solving a Linear Difference Equation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ztransforms/pv.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="difference_eq.html" title="Solving a Linear Difference Equation"
+             >previous</a> |</li>
+        <li><a href="../index.html">pyTM 1.0 documentation</a> &raquo;</li>
+          <li><a href="z_transforms.html" >Introduction to Z-Transforms</a> &raquo;</li> 
+      </ul>
+    </div>
     <div class="footer">
         &copy; Copyright 2013, Coleman, Lyon, &amp; Sargent.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
