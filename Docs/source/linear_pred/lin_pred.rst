@@ -605,9 +605,14 @@ Things to do to complete the module
 
 * Use an updated version of the python program signaprocessingtutorial_anmol.py to construct simulations to teach various lessons
 
+    * Use the control system tools easily to create companion matrices.  This is illustrated in Anmol's program, but much more can be done.  Use it to generate all of the examples above and more.
+
     * For a given stochastic difference equation (e.g., the simple ar 1 in Anmol's program), compute averages and standard deviations across sample paths and compare them with population analogues
     
     * Use the simulations  to illustrate ergodicity -- give some examples where averages across time equal averages across simulations, and some finite T examples where they don't.  Emphasize the role of the initial distribution for :math:`x_0` in determining whether averages over times and averages across simulations are equal.  
     
-* Create a concise but informative list of examples to simulate.  Create this list with an eye to doing somethings later with the Kalman filter with
-  these same examples
+    * Create a teaser example of a nonstationary process that is one of Lars  Hansen's additive or multiplicative processes.  Show tranformation to make outcome stationary and ergodic.
+    
+* Create a concise but informative list of examples to simulate.  Create this list with an eye to doing somethings later with the Kalman filter with these same examples
+
+* Create some examples forecasting  geometric sums. Define and describe the *resolvent operator*
