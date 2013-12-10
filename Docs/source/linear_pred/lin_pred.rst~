@@ -326,7 +326,7 @@ Let  :math:`\bar \mu_1`  be the stationary value of
 solve  for :math:`\bar \mu_1` to get    
 
 .. math::
-    \bar \mu_1 = (I-A_{11})^{-1} A_{12} 
+    \mu_1 = (I-A_{11})^{-1} A_{12} 
     
 Therefore, if
 

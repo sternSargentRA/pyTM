@@ -74,7 +74,6 @@ Here is the linear state-space system
         x_0 & \sim {\cal N}(\hat \mu_0, \Sigma_0) 
         :label: st_space_rep
  
- 
 Martingale difference shocks 
 =============================
 
@@ -298,6 +297,7 @@ where :math:`x_{1t}` is :math:`n-1 \times 1`.
 It follows  that
 
 .. math::
+
      x_{1t+1} & = A_{11}x_{1t} + A_{12}x_{2t} + C_{1}\epsilon_{t+1} \\ 
      x_{2t+1} & = x_{2t}  
      :label: eqpartionA
@@ -307,17 +307,20 @@ We choose to set :math:`x_{20} = 1` so that :math:`x_{2t} = 1` for
 all :math:`t \geq 0`.
 
 
-Let :math:`\mu_{1t} = Ex_{1t}`.   Taking unconditional expectations on both sides of
+  Let
+:math:`\mu_{1t} = Ex_{1t}`.   Taking unconditional expectations on both sides of
 :eq:`eqpartionA` gives
 
 .. math:: 
+
      \mu_{1,t+1} = A_{11} \mu_{1,t} + A_{12}  
      :label: eqob29 
      
 Evidently,
 
-.. math:: 
-      \mu_t \equiv E x_t = \left[\begin{array}{cc} \mu_{1,t} \cr 1 \end{array}\right] 
+.. math::
+
+      \mu_t \equiv E x_t = \left[\begin{array}cc \mu_{1,t} \cr 1 \end{array}\right] 
     
 Stationary values
 ==================
@@ -326,22 +329,25 @@ Let  :math:`\bar \mu_1`  be the stationary value of
 solve  for :math:`\bar \mu_1` to get    
 
 .. math::
-    \bar \mu_1 = (I-A_{11})^{-1} A_{12} 
+    \mu_1 = (I-A_{11})^{-1} A_{12} 
     
 Therefore, if
 
 .. math:: 
+
    Ex_{10} = (I-A_{11})^{-1} A_{12}
    
 then
 
 .. math::
+
     E x_{1,t} = E x_{1,0} = \bar \mu_{1}
     
 It follows that
 
 .. math::
-    E x_t = \left[\begin{array}{cc} \bar \mu_1 \cr 1 \end{array}\right] \equiv \bar \mu
+
+    E x_t = \left[\begin{array}cc \bar mu_1 \cr 1 \end{array}\right] \equiv \bar \mu
 
 
 .. note::
@@ -605,9 +611,12 @@ Things to do to complete the module
 
 * Use an updated version of the python program signaprocessingtutorial_anmol.py to construct simulations to teach various lessons
 
-    * For a given stochastic difference equation (e.g., the simple ar 1 in Anmol's program), compute averages and standard deviations across sample paths and compare them with population analogues
+    * For a given stochastic difference equation (e.g., the simple ar 1 in Anmol's program), compute averages and standard deviations across sample
+    paths and compare them with population analogues
     
-    * Use the simulations  to illustrate ergodicity -- give some examples where averages across time equal averages across simulations, and some finite T examples where they don't.  Emphasize the role of the initial distribution for :math:`x_0` in determining whether averages over times and averages across simulations are equal.  
+    * Use the simulations  to illustrate ergodicity -- give some examples where averages across time equal averages across simulations, and some
+    finite T examples where they don't.  Emphasize the role of the initial distribution for :math:`x_0` in determining whether averages over times and averages
+    across simulations are equal.  
     
 * Create a concise but informative list of examples to simulate.  Create this list with an eye to doing somethings later with the Kalman filter with
   these same examples
