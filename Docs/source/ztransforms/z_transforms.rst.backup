@@ -1,0 +1,35 @@
+****************************
+Introduction to Z-Transforms
+****************************
+
+.. contents::
+    :depth: 3
+
+.. toctree::
+    :hidden:
+
+    definition
+    transform_table
+    inverse_trans
+    properties
+    difference_eq
+    pv
+
+This lecture describes the z-transform.  
+
+
+The z-transform is a discrete time version of the Laplace transform.  It shares many properties of the Laplace transform.  
+
+If you don't know the Laplace transform, fear not. This lecture is self-contained. 
+
+.. include:: definition.rst
+
+.. include:: transform_table.rst
+
+.. include:: inverse_trans.rst
+
+.. include:: properties.rst
+
+.. include:: difference_eq.rst
+
+.. include:: pv.rst

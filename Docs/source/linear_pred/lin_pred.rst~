@@ -13,7 +13,7 @@ Linear State Space Models of Time Series
 Overview
 ============
 
-This lecture introduces the linear state space system
+This lecture introduces the linear state space dynamic system
 
 Easy to use and carries a powerful theory of prediction
 
@@ -71,7 +71,7 @@ Here is the linear state-space system
 .. math::
         x_{t+1} & =  A x_t + C \epsilon_{t+1}   \\
         y_t &  =  G x_t \\
-        x_0 & \sim {\cal N}(\hat \mu_0, \Sigma_0) 
+        x_0 & \sim {\cal N}(\mu_0, \Sigma_0) 
         :label: st_space_rep
  
  
@@ -368,7 +368,7 @@ Covariance stationary processes
 
 **Definition:**
 
-*A  process :math:`\{x_t\}` is said to be *covariance stationary* if 
+A  process :math:`\{x_t\}` is said to be *covariance stationary* if 
 
     * :math:`E x_t = \mu \ \forall t \geq 0` 
     
@@ -407,14 +407,14 @@ It follows that the stationary value of :math:`\mu_t` is
     E x_t = \left[\begin{array}{cc} \bar \mu_1 \cr 1 \end{array}\right] \equiv \bar \mu
 
 
-The stationary values of :math:`\Sigma_t` and :math:\Sigma_{t+j,t}` satisfy
+The stationary values of :math:`\Sigma_t` and :math:`\Sigma_{t+j,t}` satisfy
 
 .. math::
     \Sigma_\infty = A \Sigma_\infty A' + C C' \\
     \Sigma_{t+j,j} = A^j \Sigma_\infty
     :label: eqnSigmainf
     
-Notice that $\Sigma_\infty$ does not depend on :math:`t` and that :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on calendar time :math:`t`   
+Notice that :math:`\Sigma_\infty` does not depend on :math:`t` and that :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on calendar time :math:`t`   
     
 .. note::
 

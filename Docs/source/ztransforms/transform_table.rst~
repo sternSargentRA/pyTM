@@ -1,15 +1,13 @@
 Transform Table
 ===============
 
-This table gives z-transforms of some very useful functions. We emply the following definitions:
+This table gives z-transforms of particular functions. In table [#ftable1]_ we use the following definitions:
 
 .. math::
 
     u[n] = \begin{cases} 1, & n \ge 0 \\ 0, & n < 0 \end{cases}
 
     \delta[n] = \begin{cases} 1, & n = 0 \\ 0, & n \ne 0 \end{cases}
-    
-Later, we'll use entries in this table to solve some applied problems 
 
 .. csv-table::
     :header-rows: 1

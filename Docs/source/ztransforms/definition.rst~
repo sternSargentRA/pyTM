@@ -29,8 +29,8 @@ The complex variable :math:`z` must take a value that allows  the sum to converg
 
 Before we discuss some of its uses, let's  calculate some z-transforms 
 
-Unit step function
-^^^^^^^^^^^^^^^^^^
+First Example
+^^^^^^^^^^^^^
 
 Consider the unit step function 
 
@@ -49,8 +49,8 @@ Applying the definition
 
 :math:`X(z)` is well defined on the domain :math:`|z|>1`.
 
-Geometric sequence
-^^^^^^^^^^^^^^^^^^
+Second Example
+^^^^^^^^^^^^^^
 
 Consider the sequence
 

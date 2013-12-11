@@ -3,34 +3,25 @@ The Z-Transform
 
 A *one-sided sequence* is a sequence :math:`\{x(k)\}, k= 0, 1, \ldots`
 
-Sometimes we write :math:`x_k` instead of :math:`x(k)`
-
-The argument :math:`k` often denotes time 
-
-In some applications, it denotes space
+The subscript :math:`k` often denotes time 
 
 The one-sided z-transform maps a *one-sided sequence* into a function of complex variable :math:`z`  
 
-.. note::
+z-Transform (one sided)
 
-   Don't worry if you don't know or never knew much  about complex variables.  You can understand almost everything in this lecture anyway
-
-Definition of z-Transform (one sided)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    The z-transform :math:`X(z)` of a sequence  :math:`x(k), k \geq 0`, where :math:`k`  is defined as
+    The z-transform of a sampled sequence  :math:`x(k)`, where :math:`k` represents non-negative integers is defined by the following equation. 
 
     .. math::
         :label: eq_ZTdef
 
         X(z) \equiv \mathcal{Z}[x(k)] \equiv \sum_{k=0}^\infty x(k) z^{-k}
         
-The complex variable :math:`z` must take a value that allows  the sum to converge [#fdef1]_ :
+The complex variable :math:`z` must take a value that makes  the sum converge [#fdef1]_ :
 
-Before we discuss some of its uses, let's  calculate some z-transforms 
+Before we discuss some of its uses, let's practice calculating some z-transforms 
 
-Unit step function
-^^^^^^^^^^^^^^^^^^
+First Example
+^^^^^^^^^^^^^
 
 Consider the unit step function 
 
@@ -38,7 +29,7 @@ Consider the unit step function
 
     u(k) = \begin{cases} 1 & \text{if } k>0 \\ 0 & \text{else} \end{cases}
 
-Applying the definition
+Using the definition.
 
 .. math::
 
@@ -47,10 +38,10 @@ Applying the definition
     &= \frac{1}{1 - z^{-1}} \\
     &= \frac{z}{z-1}
 
-:math:`X(z)` is well defined on the domain :math:`|z|>1`.
+This z-transform is well defined on the domain :math:`|z|>1`.
 
-Geometric sequence
-^^^^^^^^^^^^^^^^^^
+Second Example
+^^^^^^^^^^^^^^
 
 Consider the sequence
 
@@ -67,7 +58,7 @@ Use the definition again
         &= \frac{1}{1 - (a^{-1}z)^{-1}} \\
         &= \frac{z}{z-a}
 
-:math:`X(z)` is well defined on the domain :math:`|z|>a`.
+This z-transform is well defined on the domain :math:`|z|>a`.
 
 On Your Own
 ^^^^^^^^^^^

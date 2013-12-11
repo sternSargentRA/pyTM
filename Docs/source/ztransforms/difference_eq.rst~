@@ -36,5 +36,5 @@ This is the solution to the linear difference equation.
 
 .. TODO: maybe give an example where T \ne 1? Just suggesting it because to understand the equation I had to do that myself.
 
-.. [#fdiff1] Doing this yields  :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.
-.. [#fdiff2] Since we are integrating from 0 to 2,   :math:`n=0` and we are given a function :math:`y(k) = k^2 + 1`
+.. [#fdiff1] Doing this obtains the equation :math:`x(k) = x(0) + T \sum_{j=0}^{k-1} y(j)`.
+.. [#fdiff2] Since we are integrating from 0 to 2 then :math:`n=0` and we are given a function :math:`y(k) = k^2 + 1`
