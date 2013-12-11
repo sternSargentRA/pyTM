@@ -1,8 +1,8 @@
 .. _Lin_pred:
 
-******************************************
-Simple linear prediction theory
-******************************************
+*********************************************
+Linear State Space Models of Time Series
+*********************************************
 
 
 .. epigraph::
@@ -13,7 +13,7 @@ Simple linear prediction theory
 Overview
 ============
 
-This lecture introduces the linear state space system
+This lecture introduces the linear state space dynamic system
 
 Easy to use and carries a powerful theory of prediction
 
@@ -269,11 +269,8 @@ and is called a *martingale*, while the second term is a translated linear funct
 
 
 
-Covariance Stationary processes
-================================
-
-We consider settings of :math:`x_0, A, C`  that imply that the first
-two unconditional moments of :math:`\{x_t : t=1,2,\ldots\}` are constant over time.
+Processes with a constant state component 
+=========================================
 
 Let :math:`A, C` satisfy
 
@@ -319,74 +316,7 @@ Evidently,
 .. math:: 
       \mu_t \equiv E x_t = \left[\begin{array}{cc} \mu_{1,t} \cr 1 \end{array}\right] 
     
-Stationary values
-==================
-Let  :math:`\bar \mu_1`  be the stationary value of
-:math:`\mu_{1t}` and substitute :math:`\bar \mu_1` for :math:`\mu_{1t}`  and :math:`\mu_{1,t+1}` in :eq:`eqob29` and
-solve  for :math:`\bar \mu_1` to get    
 
-.. math::
-    \bar \mu_1 = (I-A_{11})^{-1} A_{12} 
-    
-Therefore, if
-
-.. math:: 
-   Ex_{10} = (I-A_{11})^{-1} A_{12}
-   
-then
-
-.. math::
-    E x_{1,t} = E x_{1,0} = \bar \mu_{1}
-    
-It follows that
-
-.. math::
-    E x_t = \left[\begin{array}{cc} \bar \mu_1 \cr 1 \end{array}\right] \equiv \bar \mu
-
-
-.. note::
-
-   If the eigenvalues of :math:`A_{11}` are
-   less than unity in modulus, then starting from any initial value of
-   :math:`\mu_{1,0}`, :math:`\mu_{1t}$ will converge to the stationary value :math:`(I-A_{11})^{-1}
-   A_{12}'.
-
-
-
-
-Unconditional means 
-===================
-
-Think of simlulating :eq:`st_space_rep` :math:`I`  times, thereby generating sample 
-paths :math:`x_{t}^i` for :math:`i=1, \ldots, I` 
-
-A law of large numbers assures us that 
-
-.. math::
-
-    \frac{1}{I} \sum_{i=1}^I x_t^i \approx \mu_t 
-    
-where :math:`\mu_t \equiv E x_t` is to be thought of as an average *across (an infinite number of) sample paths*
-
-By *population average* we mean the average across such an infinite number of sample paths
-
-
-:math:`\mu_t` is called the *unconditional mean*  of  :math:`x_t, t \geq 0`
-
-
-
-The population average of :math:`\epsilon_{t+1}` (again, th average across sample paths) is zero.
-
-Taking expectations (or population  averages) in :eq:`st_space_rep` shows that 
-:math:`\mu_t` evidently obeys
-the difference equation 
-
-.. math::
-    \mu_{t+1} = A \mu_t, t \geq 0
-    :label: eqmulaw
-    
-where :math:`\mu_t = E x_t`, the (population)
-average of :math:`x_t`
 
 Unconditional  covariance matrices
 ===================================
@@ -410,29 +340,149 @@ Equation :eq:`eqxlawmu` implies
 .. math::
     \Sigma_{t+1}  = A \Sigma_t A' + C C'
     :label: eqsigmalaw
+
     
-If the eigenvalues of :math:`A` are stricly less than unity in modulus,  iterations on :eq:`eqsigmalaw` converge to
-the fixed point of the *discrete Lyapunov equation*
+Autocovariance functions
+=========================
+
+Define the *autocovariance function* :math:`\Sigma_{t+j, j}` for :math:`j \geq 0, t \geq 0`
+as
 
 .. math::
-    \Sigma_\infty = A \Sigma A' + C C'
+    \Sigma_{t+j, t} = E (x_{t+j} - \mu_{t+j})(x_t - \mu_t)
+    :label: eqnautodeff
+    
+Elementary calculations show that
+
+.. math::
+    \Sigma_{t+j,t} = A^j \Sigma_t
+    :label: eqnautocov
+    
+Noticed that :math:`\Sigma_{t+j,t}` in general depends on both :math:`j`, the gap between the two dates, and :math:`t`, the earlier date.
+
+
+    
+Covariance stationary processes
+================================
+
+
+**Definition:**
+
+*A  process :math:`\{x_t\}` is said to be *covariance stationary* if 
+
+    * :math:`E x_t = \mu \ \forall t \geq 0` 
+    
+    * :math:`\Sigma_t = \Sigma_0 \ \forall t \geq 0`
+    
+    * :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on time :math:`t`
+    
+Put loosely, for a covariance stationary process, :math:`x_0, A, C`  assume values that imply that all first and second
+unconditional moments of :math:`\{x_t : t=1,2,\ldots\}` are constant over time.
+    
+Constructing a covariance  stationary process
+==============================================
+
+Return to the process :eq:`eqpartionA`
+
+Let  :math:`\bar \mu_1`  be the stationary value of
+:math:`\mu_{1t}` and substitute :math:`\bar \mu_1` for :math:`\mu_{1t}`  and :math:`\mu_{1,t+1}` in :eq:`eqob29` and
+solve  for :math:`\bar \mu_1` to get    
+
+.. math::
+    \bar \mu_1 = (I-A_{11})^{-1} A_{12} 
+    
+Therefore, if
+
+.. math:: 
+   Ex_{10} = (I-A_{11})^{-1} A_{12}
+   
+then
+
+.. math::
+    E x_{1,t} = E x_{1,0} = \bar \mu_{1}
+    
+It follows that the stationary value of :math:`\mu_t` is 
+
+.. math::
+    E x_t = \left[\begin{array}{cc} \bar \mu_1 \cr 1 \end{array}\right] \equiv \bar \mu
+
+
+The stationary values of :math:`\Sigma_t` and :math:\Sigma_{t+j,t}` satisfy
+
+.. math::
+    \Sigma_\infty = A \Sigma_\infty A' + C C' \\
+    \Sigma_{t+j,j} = A^j \Sigma_\infty
     :label: eqnSigmainf
     
+Notice that $\Sigma_\infty$ does not depend on :math:`t` and that :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on calendar time :math:`t`   
     
+.. note::
+
+   If the eigenvalues of :math:`A_{11}` are
+   less than unity in modulus, then (1) starting from any initial value of
+   :math:`\mu_{1,0}`, :math:`\mu_{1t}`  converges to the stationary value :math:`(I-A_{11})^{-1} A_{12}`; and (2) iterations on :eq:`eqsigmalaw` converge
+   to the fixed point of the *discrete Lyapunov equation* in
+   the first line of :eq:`eqnSigmainf`
+
+**Setting initial conditions to assure  covariance stationarity**
+
+If :math:`x_0 \sim {\cal N}(\bar \mu, \Sigma_\infty)` and if the eigenvalues of  :math:`A_{11}` are strictly less than unity, 
+then the :math:`\{x_t\}` process is covariance stationary.
+    
+    
+    
+ 
+
+Unconditional means as ensemble averages
+========================================
+
+By an *ensemble average* we mean the average across an (infinite) population of sample paths *at a point in time*
+
+Think of simlulating :eq:`st_space_rep` :math:`I`  times, thereby generating sample 
+paths :math:`x_{t}^i` for :math:`i=1, \ldots, I` 
+
+A law of large numbers assures us that 
+
+.. math::
+
+    \frac{1}{I} \sum_{i=1}^I x_t^i \approx \mu_t 
+    
+where :math:`\mu_t \equiv E x_t` is to be thought of as an average *across (an infinite number of) sample paths*
+
+By *population average* we mean the average across such an infinite number of sample paths
+
+
+:math:`\mu_t` is called the *unconditional mean*  of  :math:`x_t, t \geq 0`
+
+
+
+The population average of :math:`\epsilon_{t+1}` (again, the average across sample paths) is zero.
+
+
     
     
 Ergodicity
 ===========
 
-Consider the special case in which we set 
+Averages across simulations are interesting theoretically, but in real life situations all we typically observe is a *single* realization :math:`\{x_t, y_t\}_t=0^T`
+
+What can we say about averages *over time*?
+
+Suppose that :math:`\{x_t\}_{t=0}^\infty` is a *covariance stationary* process.
+
+Then a law of large numbers implies that
 
 .. math:: 
-    \Sigma_0 = \Sigma_\infty
-    \mu_0 = \mu_\infty
-    
-provided that finite :math:`Sigma_\infty, \mu_\infty` exist.   
-        
 
+      \lim_{T \rightarrow \infty} \frac{1}{T} \sum_{t=0}^T x_t  & = \mu \\
+      \lim_{T \rightarrow \infty} \frac{1}{T} \sum_{t=0}^T (x_t -\mu) (x_t - \mu)' & = \Sigma_\infty \\
+      \lim_{T \rightarrow \infty} \frac{1}{T} \sum_{t=0}^T (x_{t+j} -\mu) (x_t - \mu)' & = A^j \Sigma_\infty
+ 
+A stochastic process in which averages across time converge to averages across realizations is said to be *ergodic*
+
+If our linear state space  system :eq:`st_space_rep` is covariance stationary, then it is ergodic.       
+        
+    
     
 
 
@@ -454,7 +504,7 @@ and the one-step-ahead forecast error is
 The covariance matrix of :math:`x_{t+1}` conditioned on :math:`x_t` is 
 
 .. math::
-   E (x_{t+1} - E ( x_{t+1} | J_t) ) (x_{t+1} - E ( x_{t+1} | x_t))^\prime = CC^\prime 
+   E (x_{t+1} - E ( x_{t+1} | x_t) ) (x_{t+1} - E ( x_{t+1} | x_t))^\prime = CC^\prime 
    :label: eqob4 
    
 Moving average representation
