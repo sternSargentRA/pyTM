@@ -7,7 +7,7 @@ Given a function :math:`X(z)`, we sometimes want to find a sequence :math:`x(k)`
 The inverse z-transform :math:`x(k), k \geq 0` of :math:`X(z)` is
 
 .. math::
-    x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2 \pi i} \oint_C X(z) z^{k-1} \partial z 
+    x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2 \pi i} \oint_C X(z) z^{k-1} d z 
     
 First, a couple of  possibly scary comments
 

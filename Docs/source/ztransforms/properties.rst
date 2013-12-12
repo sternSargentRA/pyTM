@@ -17,7 +17,7 @@ Here are some useful properties of the Z-transform
     Scaling in z-domain; :math:`a^n x[n]`; :math:`X(a^{-1}z)`
     Time Reversal; :math:`x[-n]`; :math:`X(z^{-1})`
     Complex Conjugation; :math:`x^*[n]`; :math:`X^*(z^*)`
-    Differentiation; :math:`n x[n]`; :math:`-z \frac{\partial X(z)}{\partial z}`
+    Differentiation; :math:`n x[n]`; :math:`-z \frac{d X(z)}{d z}`
     Convolution; :math:`x_1[n] \ast x_2[n]`; :math:`X_1(z) X_2(z)`
     Cross-Correlation; :math:`r_{x_1, x_2} = x_1^*[-n] \ast x_2[n]`; :math:`R_{x_1, x_2}(z) = X_1^*(\frac{1}{z^*}) X_2(z)`
     Multiplication; :math:`x_1[n]x_2[n]`; :math:`\frac{1}{i 2 \pi} \oint X_1(v) X_2(\frac{z}{v})v^{-1} dv`

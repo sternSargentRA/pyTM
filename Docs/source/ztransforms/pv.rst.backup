@@ -43,7 +43,7 @@ Second PV Example
 
 Let the sequence of payoffs be :math:`x_n = n \lambda^n`. We want to use the z-transform to compute its present value
 
-We can see from the table of properties that :math:`\mathcal{Z}(n x_n) = -z \frac{d X(z)}{d z}`. We can apply this property, as well as the z-transform of :math:`\lambda^n` to evaluate the present value (note that we compute this in terms of :math:`\beta` instead of :math:`z`).
+We can see from the table of properties that :math:`\mathcal{Z}(n x_n) = -z \frac{\partial X(z)}{\partial z}`. We can apply this property, as well as the z-transform of :math:`\lambda^n` to evaluate the present value (note that we compute this in terms of :math:`\beta` instead of :math:`z`).
 
 .. math::
 
@@ -55,12 +55,12 @@ As in the previous example, because we used :math:`\beta^{-n}` when we looked up
 
     X(\beta) = \frac{1}{1 - \lambda \beta}
 
-We now apply the property from above and finish the calculation of the present value. Note that because we have made the substitution :math:`\beta \rightarrow \beta^{-1}`, the negative sign on the property disappears (why? Can you verify this?) and the expression becomes :math:`\mathcal{Z}(n x_n) = z \frac{d X(z)}{d z}`.
+We now apply the property from above and finish the calculation of the present value. Note that because we have made the substitution :math:`\beta \rightarrow \beta^{-1}`, the negative sign on the property disappears (why? Can you verify this?) and the expression becomes :math:`\mathcal{Z}(n x_n) = z \frac{\partial X(z)}{\partial z}`.
 
 .. math::
 
-    PV(\beta) &= \beta \left[ \frac{d X(\beta)}{d \beta} \right]\\
-    &= \beta \left[ \frac{d}{d \beta } \left(\frac{1}{1 - \lambda \beta} \right) \right] \\
+    PV(\beta) &= \beta \left[ \frac{\partial X(\beta)}{\partial \beta} \right]\\
+    &= \beta \left[ \frac{\partial}{\partial \beta } \left(\frac{1}{1 - \lambda \beta} \right) \right] \\
     &= \beta \left[ \frac{\lambda }{(1-\beta  \lambda )^2} \right] \\
     &= \frac{\lambda \beta }{(1-\beta  \lambda )^2}
 
@@ -75,12 +75,4 @@ When using the z-transform to compute do present value calculations it is import
 
 
 Things to do for module
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-*  Use z-transform programs described in the signal processing part of the SciPy reference guide.  
-
-*  Explain partial fractions and use python to do with signal processing module
-
-*  Define *convolution* and apply it to compute probability densities of products
-
-*  Use ss (system) object and get its z-transform in SciPy.  Solve some difference equations
+***********************
