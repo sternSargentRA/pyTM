@@ -230,8 +230,8 @@ The mapping :math:`\cal M` is summarized in equation :eq:`comp9a`
 The :math:`H` component of a  rational expectations equilibrium is a fixed point of the operator :math:`{\cal M}`
 
 
-Misbehavior of the :math:`cal M` operator
-=========================================
+Misbehavior of the :math:`{\cal M}` operator
+=============================================
 The mapping :math:`{\cal M}` is not a contraction
 
 There is no guarantee that direct iterations on :math:`{\cal M}` converge
@@ -307,7 +307,9 @@ Substituting this into equation :eq:`comp14` and rearranging gives
 The Key Insight
 ================
 
-Return to equation :eq:`comp7` and set :math:`y_t = Y_t` for all :math:`t`. (Please remember that we have set :math:`n=1`. When :math:`n \neq 1`, we have to adjust some pieces of the argument for :math:`n`)
+Return to equation :eq:`comp7` and set :math:`y_t = Y_t` for all :math:`t`.
+
+(Please remember that we have set :math:`n=1`. When :math:`n \neq 1`, we have to adjust some pieces of the argument for :math:`n`)
 
 Notice that with :math:`y_t=Y_t`, equations :eq:`comp16` and :eq:`comp7` are identical
 
