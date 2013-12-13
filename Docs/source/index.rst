@@ -13,6 +13,7 @@ This website will be home to the python based educational modules that are curre
 
    linear_pred/lin_pred
    ztransforms/z_transforms
+   rational_exp/ratexp1
 
 Indices and tables
 ==================
