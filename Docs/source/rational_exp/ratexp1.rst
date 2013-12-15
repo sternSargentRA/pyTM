@@ -340,5 +340,146 @@ Lucas and Prescott (1971) used this  method to construct a rational expectations
 
 The method exploits a more general connection between equilibrium and Pareto optimality expressed in
 the fundamental theorems of welfare economics. See Mas-Colell, Whinston, and Green (1995)
+
+
+
+Sherwin Rosen's model of the market for engineers
+===================================================
+
+A good example of a rational equilibrium is the equililbrium schooling  model used by Sherwin Rosen.
+ 
+A household chooses a stream of amount of labor to send to a school that takes four periods to produce an educated worker.
+
+Time is the main  input into the schooling technology.
     
+
+Decentralized version of the model
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+A firm and a representative household are price takers in a competitive market
+
+A random shock hits the market, namely, 
+
+.. math::
+      \theta_{t+1}  = \rho \theta_t + \sigma_\theta \epsilon_{t+1} 
+      :label: sherwin1999
+      
+where :math:`\theta_t` is a scalar technology shock and :math:`\epsilon_{t+1}` is an i.i.d. random process distributed as :math:`{\cal N}(0,1)`
+ 
+A time-to-build technology describes how new entrants into school get transformed into educated labor through the input of time:
+
+.. math::
+      N_{t+1}  = \delta N_t + n_{t-3} 
+      :label: sherwin2000
+
+Here :math:`N_t` is the stock of educated labor at time :math:`t`, :math:`n_t` is the number of new entrants into school at time :math:`t`
+
+:math:`\delta \in (0,1)` is one minus a depreciation rate 
+
+Notice how :eq:`sherwin2000` incorporates a  four period time to build  stocks of labor
+
+The firm faces a competitive wage process
+:math:`\{w_t\}_{t=0}^\infty$` as a price taker and chooses a contingency plan for :math:`\{N_t\}_{t=0}^\infty`  to maximize
+
+.. math::
+       E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + (f_1 + \theta_t) N_t - {f_2 \over 2} N_t^2 - w_t N_t \biggr\}. 
+       
+       
+The first-order condition for the firm's problem with respect to :math:`N_t` is
+
+.. math::
+       w_t = f_1 - f_2 N_t + \theta_t
+       :label: sherwin2001
+       
+We  regard equation :eq:`sherwin2001` as an inverse demand function for the stock of labor.
+
+
+
+A representative household chooses a contingency plan for :math:`\{n_t, N_{t+4}\}_{t=0}^\infty` to maximize
+
+.. math::
+       E_0 \sum_{t=0}^\infty \beta^t \biggl\{ w_t N_t - {d \over 2} n_t^2 \biggr\} 
+       :label: sherwin2004 
+       
+subject to :eq:`sherwin2000` and initial conditions in the form of given values for :math:`N_t` for :math:`t = 0, 1, 2, 3`.
+
+To deduce  first order  conditions for the household' problem, it is helpful first to notice that :eq:`sherwin2000` implies that for :math:`j \geq 4`
+
+.. math::
+      N_{t+j} = \delta^{j-3} N_{t+1} + \delta^{j-4} n_t + \delta^{j-3} n_{t+1} + \ldots + \delta n_{t+j-5} + n_{t+j-4}
+      :label: sherwin2002 
+      
+so that
+
+.. math::
+       {\partial \sum_{j=0}^\infty \beta^j w_{t+j} N_{t+j} \over \partial n_t } = \beta^4 \sum_{j=0}^\infty (\beta \delta)^j w_{t+j+4} 
+       
+It follows that the first-order conditions for maximizing :eq:`sherwin2004` subject to  :eq:`sherwin2000` are
+
+.. math:: 
+     n_t = d^{-1} E_t \beta^4 \sum_{j=0}^\infty (\beta \delta)^j w_{t+j+4}, \quad t \geq 0
+     :label: sherwin2005 
+     
+We  regard equation :eq:`sherwin2005` as a supply curve for a flow of new entrants into the schooling technology.
+
+It expresses the supply of new entrants into school :math:`n_t` as a linear function of the *expected present value of wages*
+
+Planning problem
+^^^^^^^^^^^^^^^^^^
+
+
+A planner chooses a contingency plan for new entrants :math:`n_t` to maximize
+
+.. math::
+       E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + (f_1 + \theta_t) N_t - {f_2 \over 2} N_t^2 - {d \over 2} n_t^2 \biggr\} 
+       
+subject to the laws of motion
+
+.. math::
+     \theta_{t+1} & = \rho \theta_t + \sigma_\theta \epsilon_{t+1} \\
+     N_{t+1} & = \delta N_t + n_{t-3} 
+    
+The planner confronts initial conditions :math:`\theta_0, N_0, n_{-1}, n_{-2}, n_{-3}` 
+
+The planner's problem can be formulated as a stochastic discounted optimal linear regulator problem, i.e., a linear-quadratic dynamic programming problem
+
+It  suffices to take
+
+.. math:: 
+      X_t = \left[\begin{array}{c}\theta_t \\ N_{t+3} \end{array} \right]
+     
+as the state vector for the planner's problem.
+
+A solution of the planner's problem is then a law of motion 
+
+.. math:: 
+      X_{t+1} = (A-BF)X_t + C \epsilon_{t+1}
+      
+and a decision rule
+
+.. math:: 
+      n_t = -F X_t
+      
+      
+It is also possible to define the state for the planner's problem more profligately as
+
+.. math:: 
+      \tilde X_t = \left[\begin{array}{cc}  \theta & N_t & n_{t-1} & n_{t-2} & n_{t-3} \end{array}\right]
+      
+with associated decision rule 
+
+.. math::
+     n_t = -\tilde F \tilde X_t
+     
+and law of motion
+
+.. math:: 
+      \tilde X_{t+1} = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1}
+      :label: sherwin2009 
+      
+We can use this representation  to express  a shadow wage $
+
+.. math:: 
+      \tilde w_t = f_1 - f_2 N_t + \theta_t$ as $\tilde w_t = S_w \tilde X_t
 
