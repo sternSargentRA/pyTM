@@ -344,7 +344,7 @@ the fundamental theorems of welfare economics. See Mas-Colell, Whinston, and Gre
 
 
 Sherwin Rosen's model of the market for engineers
-**************************************************
+===================================================
 
 A good example of a rational equilibrium is the equililbrium schooling  model used by Sherwin Rosen.
  
@@ -442,14 +442,49 @@ subject to the laws of motion
     
 The planner confronts initial conditions :math:`\theta_0, N_0, n_{-1}, n_{-2}, n_{-3}` 
 
-The planner's problem can be formulated as a stochastic
-discounted optimal linear regulator problem, i.e., a linear-quadratic dynamic programming problem of the type studied in chapter \use{dplinear}.  We ask the reader to verify that it  suffices to take $ X_t = \bmatrix{\theta_t \cr N_{t+3}}$ as the state for the planner's problem.
-A solution of the planner's problem is then a law of motion $X_{t+1} = (A-BF)X_t + C \epsilon_{t+1}$ and a decision rule $n_t = -F X_t$.
-\index{time to build!Rosen schooling model}%
+The planner's problem can be formulated as a stochastic discounted optimal linear regulator problem, i.e., a linear-quadratic dynamic programming problem
 
-For the purpose of defining a recursive competitive equilibrium, it is useful to note that it is also possible to define the state for the planner's problem
-more profligately as
-$\tilde X_t = \bmatrix{ \theta & N_t & n_{t-1} & n_{t-2} & n_{t-3} }'$ with associated decision rule $n_t = -\tilde F \tilde X_t$ and law of motion
-$$\tilde X_{t+1} = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1}. \EQN sherwin2009 $$
-We can use this representation  to express  a shadow wage $ \tilde w_t = f_1 - f_2 N_t + \theta_t$ as $\tilde w_t = S_w \tilde X_t$.
+It  suffices to take
+
+.. math:: 
+      X_t = \left[\begin{array}{c}\theta_t \\ N_{t+3} \end{array} \right]
+     
+as the state vector for the planner's problem.
+
+A solution of the planner's problem is then a law of motion 
+
+.. math:: 
+      X_{t+1} = (A-BF)X_t + C \epsilon_{t+1}
+      
+and a decision rule
+
+.. math:: 
+      n_t = -F X_t
+      
+      
+It is also possible to define the state for the planner's problem more profligately as
+
+.. math:: 
+      \tilde X_t = \left[\begin{array}{cc}  \theta & N_t & n_{t-1} & n_{t-2} & n_{t-3} \end{array}\right]
+      
+with associated decision rule 
+
+.. math::
+     n_t = -\tilde F \tilde X_t
+     
+and law of motion
+
+.. math:: 
+      \tilde X_{t+1} = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1}
+      :label: sherwin2009 
+      
+We can use this representation  to express  a shadow wage 
+
+.. math:: 
+      \tilde w_t = f_1 - f_2 N_t + \theta_t
+
+as 
+
+.. math:: 
+      \tilde w_t = S_w \tilde X_t
 

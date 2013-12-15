@@ -347,6 +347,13 @@ Sherwin Rosen's model of the market for engineers
 ===================================================
 
 A good example of a rational equilibrium is the equililbrium schooling  model used by Sherwin Rosen.
+
+Rosen used versions of this model to study professional markets for engineers and for lawyers
+
+These are models in which earlier researchers had posited cob web dynamics resting on ad hoc expectations errors to generate cycles in wages and new entrants
+
+Rosen's model gets such cycles without imputing systematic expectations errors to the two workers and firms in his model
+
  
 A household chooses a stream of amount of labor to send to a school that takes four periods to produce an educated worker.
 
@@ -379,8 +386,10 @@ Here :math:`N_t` is the stock of educated labor at time :math:`t`, :math:`n_t` i
 
 Notice how :eq:`sherwin2000` incorporates a  four period time to build  stocks of labor
 
-The firm faces a competitive wage process
-:math:`\{w_t\}_{t=0}^\infty$` as a price taker and chooses a contingency plan for :math:`\{N_t\}_{t=0}^\infty`  to maximize
+A representative firm's problem
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The firm faces a competitive wage process :math:`\{w_t\}_{t=0}^\infty$` as a price taker and chooses a contingency plan for :math:`\{N_t\}_{t=0}^\infty`  to maximize
 
 .. math::
        E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + (f_1 + \theta_t) N_t - {f_2 \over 2} N_t^2 - w_t N_t \biggr\}. 
@@ -392,7 +401,9 @@ The first-order condition for the firm's problem with respect to :math:`N_t` is
        w_t = f_1 - f_2 N_t + \theta_t
        :label: sherwin2001
        
-We  regard equation :eq:`sherwin2001` as an inverse demand function for the stock of labor.
+In the spirit of Rosen, we  regard equation :eq:`sherwin2001` as an inverse demand function for the stock of labor.
+
+
 
 
 
@@ -424,6 +435,26 @@ It follows that the first-order conditions for maximizing :eq:`sherwin2004` subj
 We  regard equation :eq:`sherwin2005` as a supply curve for a flow of new entrants into the schooling technology.
 
 It expresses the supply of new entrants into school :math:`n_t` as a linear function of the *expected present value of wages*
+
+
+.. note::
+    Rosen's approach was directly to posit the demand function :eq:`sherwin2001` and the supply function :eq:`sherwin2005` and to define an equilibrium that equates supply with demand
+    
+Definition
+^^^^^^^^^^^
+
+A *rational expectations equilibrium* of the Rosen schooling model  is a stochastic process :math:`\{w_t, N_t, n_t\}` such that 
+
+    *  given the :math:`\{w_t\}` process, :math:`\{N_t, n_t\}` solves the household's problem, and
+    
+    *  given the :math:`\{w_t\}` process, :math:`\{N_t\}` solves the firms' problem.
+    
+.. note::
+     Evidently, a rational expectations equilibrium can also be characterized as a :math:`\{w_t, N_t, n_t\}` process
+     that equates the demand for labor (equation   :eq:`sherwin2001` to the supply   of  labor (equations :eq:`sherwin2002` and :eq:`sherwin2005`).
+     
+An indirect approach to computing a rational expectations equilibrium is to pose and solve a *planning problem* for :math:{N_t, n_t\}`, then to equate the wage :math:`w_t` to the shadow price of :math:`N_t`
+
 
 Planning problem
 ^^^^^^^^^^^^^^^^^^
