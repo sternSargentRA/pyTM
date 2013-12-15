@@ -447,7 +447,7 @@ The planner's problem can be formulated as a stochastic discounted optimal linea
 It  suffices to take
 
 .. math:: 
-      X_t = \left[\begin{array}{c}\theta_t \\ N_{t+3} \end{array} \left]
+      X_t = \left[\begin{array}{c}\theta_t \\ N_{t+3} \end{array} \right]
      
 as the state vector for the planner's problem.
 

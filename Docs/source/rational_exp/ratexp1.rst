@@ -478,8 +478,13 @@ and law of motion
       \tilde X_{t+1} = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1}
       :label: sherwin2009 
       
-We can use this representation  to express  a shadow wage $
+We can use this representation  to express  a shadow wage 
 
 .. math:: 
-      \tilde w_t = f_1 - f_2 N_t + \theta_t$ as $\tilde w_t = S_w \tilde X_t
+      \tilde w_t = f_1 - f_2 N_t + \theta_t
+
+as 
+
+.. math:: 
+      \tilde w_t = S_w \tilde X_t
 
