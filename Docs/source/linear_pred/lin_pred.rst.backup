@@ -338,8 +338,10 @@ Equations :eq:`st_space_rep` and :eq:`eqmulaw` imply that
 Equation :eq:`eqxlawmu` implies 
 
 .. math::
-    \Sigma_{t+1}  = A \Sigma_t A' + C C'
+    \Sigma_{t+1}  = A \Sigma_t A' + C C',
     :label: eqsigmalaw
+    
+a difference equation that is to be solved subject to  a initial condition for  :math:`\Sigma_0` associated with the known initial distribution for :math:`x_0`
 
     
 Autocovariance functions
@@ -414,7 +416,7 @@ The stationary values of :math:`\Sigma_t` and :math:`\Sigma_{t+j,t}` satisfy
     \Sigma_{t+j,j} = A^j \Sigma_\infty
     :label: eqnSigmainf
     
-Notice that $\Sigma_\infty$ does not depend on :math:`t` and that :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on calendar time :math:`t`   
+Notice that :math:`\Sigma_\infty` does not depend on :math:`t` and that :math:`\Sigma_{t+j,t}` depends on the time gap :math:`j` but not on calendar time :math:`t`   
     
 .. note::
 
@@ -464,7 +466,8 @@ The population average of :math:`\epsilon_{t+1}` (again, the average across samp
 Ergodicity
 ===========
 
-Averages across simulations are interesting theoretically, but in real life situations all we typically observe is a *single* realization :math:`\{x_t, y_t\}_t=0^T`
+Averages across simulations are interesting theoretically, but in real life situations all we typically observe is a *single* realization 
+:math:`\{x_t, y_t\}_{t=0^T}`
 
 What can we say about averages *over time*?
 
