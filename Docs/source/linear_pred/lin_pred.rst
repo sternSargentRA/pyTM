@@ -114,7 +114,7 @@ To map :eq:`st_ex_1` into our state space system :eq:`st_space_rep`, we set
     \right]
     \qquad    
     A = \left[\begin{array}{cc} \alpha & 0 & 0 \\ 
-                              1 & 0 & 0  \\
+                              0 & \rho_1 & \rho_2  \\
                               0 & 1 & 0 \end{array} \right]
     \qquad
     C= \left[ \begin{array}{c} 0 \\ 0 \\ 0 \end{array}\right]

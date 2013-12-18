@@ -474,7 +474,7 @@ Another application of a  law of large numbers assures us that
 
 .. math::
 
-    \bar x_t = \frac{1}{I} \sum_{i=1}^I (x_t^i - \bar x_t) (x_t^i - \bar x_t) \approx \Sigma_t 
+    {\rm Cov}_t = \frac{1}{I} \sum_{i=1}^I (x_t^i - \bar x_t) (x_t^i - \bar x_t) \approx \Sigma_t 
     
 where :math:`\Sigma_t = E (x_t - \mu_t)(x_t- \mu_t)'` is to be thought of as an average *across (an infinite number of) sample paths*
 
