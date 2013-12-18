@@ -16,14 +16,20 @@ Overview
 This lecture introduces the concept of a *rational expectations equilibrium*
 
 
+
+
 To illustrate the  rational expectations equilibrium concept, we describe a linear-quadratic version of a famous and important model
 of Lucas and Prescott [XXXXX add reference] [XXXXX add footnote and reference to Sargent black book; also
 cite Ljungqvist and Sargent chapter][#f1]_
 
 
-Lucas and Prescott (1971) is one of the key papers that kicked off the *rational expectations revolution*
+The Lucas and Prescott (1971) paper is one of a small number of papers that kicked off the *rational expectations revolution*
 
-We will learn about how a represenative agent's problem differs from a planner's
+We'll follow Lucas and Prescott by employing a setting that is readily "Belmanized" (i.e., capable of being formulated in terms of dynamic programming problems)
+
+Because we use  linear-quadratic-Gaussian setups for demand and costs, we can use  linear-quadratic dynamic programming 
+
+We will learn about how a represenative agent's problem differs from a planner's and how a planning problem can be used to compute rational expectations quantities
 
 We will also learn about the important "Big :math:`K`", "little :math:`k`" trick that is widely used in macroeconomics
 
@@ -33,24 +39,35 @@ Except that for us
    
    * and instead of "little :math:`k`" it will be "little :math:`y`"
    
-We will learn about how a rational  expectations equilibrium can be characterized as a fixed point of a mapping (we'll call it `:math:{\cal M}` from a *perceived law of motion*
+We will learn about how a rational  expectations equilibrium can be characterized as a fixed point of a mapping  that we'll call :math:`{\cal M}` from a *perceived law of motion*
 to an *actual law of motion*
 
-Equality between the perceived and actual laws of motion captures in a nut shell what the rational expectations equilibrium concept is all about
+Equality between a perceived and an actual law of motion for endogenous market-wide objects captures in a nut shell what the rational expectations equilibrium concept is all about
 
 A Model of a Competitive Equilibrium in the Presence of Adjustment Costs
 ==========================================================================
 
 
 
-:math:`n` firms produce a homogeneous outputs that is sold in a competitive market.
+:math:`n` firms produce a homogeneous good that is sold in a competitive market.
+
+There is no uncertainty
+
+The price :math:`p_t` of the single  good  lies on the inverse demand curve
+
+.. math::
+    p_t = A_0 - A_1 Y_t
+    :label: comp3d 
+    
+where 
+
+   * :math:`A_0 >0, A_1 > 0`
+   
+   * :math:`Y_t = n y_t` is the market-wide level of output
 
 Each firm faces adjustment costs.
 
-We assume that there is no uncertainty
-
-
-A firm's  profit function makes it want to forecast future values of  the aggregate of output decisions of other firms just like it
+The presence of these adjustment costs in the  firm's  profit function makes it want to forecast future values of  the aggregate of output decisions of other firms just like it
 
 It wants to do this in order to choose its  own output optimally   
 
@@ -60,6 +77,10 @@ That justifies firms  in treating their forecast of aggregate output as being un
 
 .. [#f1]The model is a version of one analyzed by Lucas and Prescott (1971) and Sargent (1987a). The recursive competitive equilibrium concept was used by Lucas and Prescott (1971) and described further by Prescott and  Mehra (1980).
 
+
+.. note::
+      We can get closer to Lucas and Prescott's formulation by adding uncertainty to the problem by assuming that the inverse demand function is :math:`p_t = A_0 - A_1 Y_t + u_t`, where :math:`u_{t+1} = \rho u_t + \sigma_u \epsilon_{t+1}`
+      where :math:`|\rho| < ` and :math`epsilon_{t+1} \sim {\cal N}(0,1)` is an iid process.    We ask you to study the consequences of this change in problem XXXXX 
 
 A firm's problem
 ^^^^^^^^^^^^^^^^^
@@ -84,21 +105,9 @@ Here
 
    * :math:`\beta \in (0,1)` is a discount factor
    
-   *  :math:`d >0` measures a cost of adjusting the rate of output.
+   * :math:`d >0` measures a cost of adjusting the rate of output.
    
 The firm is a price taker.
-
-The price :math:`p_t` lies on the inverse demand curve
-
-.. math::
-    p_t = A_0 - A_1 Y_t
-    :label: comp3d 
-    
-where 
-
-   * :math:`A_0 >0, A_1 > 0`
-   
-   * :math:`Y_t = n y_t` is the market-wide level of output
    
 .. note:: 
 
@@ -340,6 +349,70 @@ Lucas and Prescott (1971) used this  method to construct a rational expectations
 
 The method exploits a more general connection between equilibrium and Pareto optimality expressed in
 the fundamental theorems of welfare economics. See Mas-Colell, Whinston, and Green (1995)
+
+
+
+
+Exercises
+=============
+
+
+Exercise 1
+------------
+
+A competitive  firm seeks to maximize
+
+.. math:: 
+    \sum_{t=0}^\infty \beta^t R_t
+    :label: ex1
+    
+where :math:`\beta \in (0,1)` and time :math:`t` revenue :math:`R_t` is
+
+.. math::
+    R_t = p_t y_t - .5 d (y_{t+1} - y_t)^2, \quad d > 0
+    :label: ex2
+    
+where :math:`p_t` is the price of output and :math:`y_t` is the time :math:`t` output of the firm.  
+
+The firm starts with a given initial level of output :math:`y_0`
+
+The market  price lies on the market demand curve
+
+.. math:: 
+    p_t = A_0 - A_1 Y_t, \quad A_0, A_1 > 0
+    label:`ex3
+    
+where :math:`Y_t` is the market level of output, which the firm takes as exogenous
+
+The firm believes that :math:`Y_t` follows the law of motion
+
+.. math::
+      Y_{t+1} = H_0 + H_1 Y_{t},\
+      :label: `eq4
+      
+with :math:`Y_0` as an initial condition.
+
+    *  Formulate the Bellman equation for the firm's problem.
+
+    *  Formulate the firm's problem as a discounted optimal linear regulator problem, being careful to describe all of the  objects needed. 
+    
+    *  What is the {\it state\/} for the firm's problem?
+
+    *  Use the  program XXXXXX{\tt olrp.m}XXXXX to solve the firm's problem for the following parameter values: :math:`A_0= 100, A_1=.05, \beta = .95, d=10, H_0 = 95.5, H_1 = .95`
+    
+    *  Express the solution of the firm's problem in the form
+    
+       .. math::
+             y_{t+1} = h_0 + h_1 y_t + h_2 Y_t
+             :label:ex5
+          
+         and give values for the :math:`h_j`s
+
+    * If there were :math:`n` identical competitive firms all behaving according to  equation :eq:`ex5`, what would  equation :eq:`ex5`  imply for the {\it actual}
+      law of motion of the form :eq:`ex4` for the market supply :math:`Y`?
+
+
+
 
 
 
