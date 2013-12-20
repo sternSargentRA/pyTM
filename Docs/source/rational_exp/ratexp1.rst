@@ -358,7 +358,7 @@ Exercises
 
 
 Exercise 1
-------------
+^^^^^^^^^^^
 
 A competitive  firm seeks to maximize
 
@@ -380,15 +380,15 @@ The market  price lies on the market demand curve
 
 .. math:: 
     p_t = A_0 - A_1 Y_t, \quad A_0, A_1 > 0
-    label:`ex3
+    :label: ex3
     
 where :math:`Y_t` is the market level of output, which the firm takes as exogenous
 
 The firm believes that :math:`Y_t` follows the law of motion
 
 .. math::
-      Y_{t+1} = H_0 + H_1 Y_{t},\
-      :label: `eq4
+      Y_{t+1} = H_0 + H_1 Y_{t}
+      :label: ex4
       
 with :math:`Y_0` as an initial condition.
 
@@ -403,15 +403,84 @@ with :math:`Y_0` as an initial condition.
     *  Express the solution of the firm's problem in the form
     
        .. math::
-             y_{t+1} = h_0 + h_1 y_t + h_2 Y_t
-             :label:ex5
+              y_{t+1} = h_0 + h_1 y_t + h_2 Y_t
+              :label: ex5
           
-         and give values for the :math:`h_j`s
+    * Give values for the :math: `h_j` s
 
     * If there were :math:`n` identical competitive firms all behaving according to  equation :eq:`ex5`, what would  equation :eq:`ex5`  imply for the {\it actual}
       law of motion of the form :eq:`ex4` for the market supply :math:`Y`?
 
+      
+      
+      
+Exercise 2
+------------
 
+Now assume that  the firm in problem 1 is ``representative''
+
+Implement this idea  by setting :math:`n=1`
+
+In equilibrium, we require that :math:`y_t = Y_t`, but we don't impose this condition at the stage that the firm is optimizing because we want to model  competitive behavior
+
+Define a rational expectations equilibrium to be a pair of numbers :math:`H_0, H_1` such that if the representative firm solves   the problem ascribed to it in exercise 1,
+then the firm's optimal behavior given by equation :eq:`	ex5` implies that :math:`y_t = Y_t \ \forall \ t \geq 0`
+
+
+     *  Use the program that you wrote for exercise 1  to determine which if any  of the following pairs  :math:`(H_0, H_1)` is a rational expectations equilibrium:
+                  
+            *  (94.0888, .9211)
+            
+            *  (93.22, .9433)
+            
+            *  (95.08187459215024, .95245906270392)
+            
+            * (Answer: set (iii) which implies :math:`(h_0, h_1, h_2) = (95.0819, 1, -.0475)`
+
+      * Describe an iterative algorithm that uses the program that you wrote for exercise 1 to compute a rational expectations equilibrium. 
+        (You are not being asked actually to use the algorithm you are suggesting.)
+
+
+      
+Exercise 3
+------------
+
+A planner seeks to maximize the welfare criterion
+
+.. math::
+    \sum_{t=0}^\infty \beta^t S_t 
+    
+where :math:`S_t` is "consumer surplus plus producer surplus" defined to be
+
+.. math::
+     S_t = S(Y_t, Y_{t+1}) = \int_0^{Y_t} (A_0 - A_1 x) d   - .5 d (Y_{t+1} - Y_t)^2
+     
+Please 
+
+     *  Formulate the planner's  Bellman equation.
+
+     *  Formulate the planner's problem as an optimal linear regulator, and, for the same parameter values in exercise 1, solve it using the python program XXXXXX  olrp.m. 
+
+     *  Represent the solution in the form :math:`Y_{t+1} = s_0 + s_1 Y_t`
+
+     *  Compare your answer  in  the previous part  with your answer to the first part  of exercise 2
+     
+
+Exercise 4
+------------
+
+A monopolist faces the industry demand curve :eq:`ex3`  and  chooses :math:` Y_t` to maximize :math:` \sum_{t=0}^\infty \beta^t R_t` where
+
+.. math::
+      R_t = p_t Y_t - .5 d(Y_{t+1} - Y_t)^2
+
+where :math:`Y_0` is given
+
+     * Formulate the firm's Bellman equation
+     
+     * For the parameter values listed in exercise1, formulate and solve the firm's problem using the python program XXXXXXX olrp.m
+     
+     *  Compare your answer in part b with the answer you obtained to part b of exercise 3
 
 
 
