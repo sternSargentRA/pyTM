@@ -114,7 +114,7 @@ To map :eq:`st_ex_1` into our state space system :eq:`st_space_rep`, we set
     \right]
     \qquad    
     A = \left[\begin{array}{cc} \alpha & 0 & 0 \\ 
-                              1 & 0 & 0  \\
+                              0 & \rho_1 & \rho_2  \\
                               0 & 1 & 0 \end{array} \right]
     \qquad
     C= \left[ \begin{array}{c} 0 \\ 0 \\ 0 \end{array}\right]
@@ -230,7 +230,7 @@ Then
 .. math::
    A^t = \left[ \begin{array}{cc} 1 & t  \cr 0 & 1  \end{array} \right] 
    
-Hence :math:`x_t = \left[\begin{array}{cc}  t &1 \end{array}\right]^\prime`, so that the first component of $x_t$ is a linear
+Hence :math:`x_t = \left[\begin{array}{cc}  t &1 \end{array}\right]^\prime`, so that the first component of :math:`x_t` is a linear
 time trend and the second component is a constant.
 
 It is also possible to use the state-space system :eq:`st_space_rep` to represent polynomial trends of any order.
@@ -308,8 +308,11 @@ Let :math:`\mu_{1t} = Ex_{1t}`.   Taking unconditional expectations on both side
 :eq:`eqpartionA` gives
 
 .. math:: 
-     \mu_{1,t+1} = A_{11} \mu_{1,t} + A_{12}  
+     \mu_{1,t+1} = A_{11} \mu_{1,t} + A_{12},
      :label: eqob29 
+     
+a difference equation that is to be solved subject to an initial condition :math:`\mu_{1,0}` for :math:`x_{1,0}`
+    
      
 Evidently,
 
@@ -447,7 +450,7 @@ A law of large numbers assures us that
 
 .. math::
 
-    \frac{1}{I} \sum_{i=1}^I x_t^i \approx \mu_t 
+    \bar x_t = \frac{1}{I} \sum_{i=1}^I x_t^i \approx \mu_t 
     
 where :math:`\mu_t \equiv E x_t` is to be thought of as an average *across (an infinite number of) sample paths*
 
@@ -461,6 +464,21 @@ By *population average* we mean the average across such an infinite number of sa
 The population average of :math:`\epsilon_{t+1}` (again, the average across sample paths) is zero.
 
 
+Unconditional covariance matrices as ensemble averages
+=======================================================
+
+Again, think of simlulating :eq:`st_space_rep` :math:`I`  times, thereby generating sample 
+paths :math:`x_{t}^i` for :math:`i=1, \ldots, I` 
+
+Another application of a  law of large numbers assures us that 
+
+.. math::
+
+    {\rm Cov}_t = \frac{1}{I} \sum_{i=1}^I (x_t^i - \bar x_t) (x_t^i - \bar x_t) \approx \Sigma_t 
+    
+where :math:`\Sigma_t = E (x_t - \mu_t)(x_t- \mu_t)'` is to be thought of as an average *across (an infinite number of) sample paths*
+
+:math:`\Sigma_t` is called the *unconditional covariance*  of  :math:`x_t, t \geq 0`
     
     
 Ergodicity

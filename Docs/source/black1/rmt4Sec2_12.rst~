@@ -363,7 +363,7 @@ The distribution would spread out. [#f9]_
 .. rubric:: Footnotes
 
 .. [#f2] A linear marginal utility is essential for deriving :eq:`sprob5` from :eq:`sprob4`.  Suppose instead that we had imposed the following more standard assumptions on the utility function: :math:`u'(c) >0, u''(c)<0, u'''(c) > 0` and required that :math:`c \geq 0`.  The Euler equation remains :eq:`sprob4`. But the fact that :math:`u''' <0` implies via Jensen's inequality that :math:`E_t u'(c_{t+1}) >  u'(E_t c_{t+1})`.  This inequality together with :eq:`sprob4` implies that :math:`E_t c_{t+1} > c_t` (consumption is said to be a 'submartingale'), so that consumption stochastically diverges to :math:`+\infty`.  The consumer's savings also diverge to :math:`+\infty`.  
-.. [#f4] Representation :eq:`sprob15ab` implies that :math:`d(L) = U_y (I - A_{22} L)^{-1} C_2`.
+.. [#f4] Representation :eq:`sprob15` implies that :math:`d(L) = U_y (I - A_{22} L)^{-1} C_2`.
 .. [#f5] A moving average representation for a process :math:`y_t` is said to be *it fundamental* if the linear space spanned by :math:`y^t` is equal to the linear space spanned by :math:`w^t`.  A time-invariant innovations representation, attained via the Kalman filter, is by construction fundamental.
 .. [#f8] See Campbell and Shiller (1988) and  Lettau and Ludvigson (2001, 2004) for interesting applications of related ideas.
 .. [#f9] See Deaton and Paxton (1994) and Storesletten, Telmer, and  Yaron (2004) for evidence that cross section distributions of consumption spread out with age.
