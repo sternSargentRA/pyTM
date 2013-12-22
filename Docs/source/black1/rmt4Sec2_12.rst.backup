@@ -63,7 +63,7 @@ The *state* vector confronting the household at :math:`t` is :math:`\left[\matri
 
 We impose this condition to rule out an always-borrow scheme that would allow the household to enjoy unbounded or bliss consumption  forever.
 
-First-order conditions for maximizing :eq:`sprob1` subject to :eq:`sprob2` are 
+First-order conditions for maximizing :eq:`sprob1` subject to :eq:`sprob2` are [#f1]_
 
 .. math::
   E_t u'(c_{t+1}) = u'(c_t) , \ \ \forall t \geq 0
@@ -75,7 +75,7 @@ Quadratic preferences
 
 For the rest of this lecture we assume the quadratic utility function :math:`u(c_t) =  -.5 (c_t - \gamma)^2`, where :math:`\gamma` is a bliss level of consumption. 
 
-Along with this quadratic utility specification, we allow consumption :math:`c_t` to be negative. 
+Along with this quadratic utility specification, we allow consumption :math:`c_t` to be negative. [#f3]_
 
 .. note::
     One way to solve the consumer's problem is to apply *dynamic programming*  as in lecture XXXXX.  We do this later. But first we use an alternative approach that is revealing and shows the work that dynamic programming does for us automatically
@@ -209,7 +209,7 @@ Recalling the form of the endowment process , we can compute
   E_{t+1} \sum_{j=0}^\infty \beta^j z_{t+j+1} & = (I -\beta A_{22})^{-1} z_{t+1} \\
   E_t \sum_{j=0}^\infty \beta^j z_{t+j+1} & = (I - \beta A_{22})^{-1} A_{22} z_t
 
-Substituting these formulas into XXXXXX and and using XXXXX gives the following representation for the consumer's optimum decision rule:
+Substituting these formulas into XXXXXX and and using XXXXX gives the following representation for the consumer's optimum decision rule [#f6]_ :
 
 .. math::
   c_{t+1} & = c_t + (1-\beta) U_y  (I-\beta A_{22})^{-1} C_2 w_{t+1} \\
@@ -222,7 +222,7 @@ Representation :eq:`sprob16abcd` reveals several things about the optimal decisi
 
     1. The *state* consists of the endogenous part :math:`c_t` and the exogenous part :math:`z_t`. These contain all of the relevant information for forecasting future :math:`c,y, b`. Notice that financial assets :math:`b_t` have disappeared as a component of the state because they are properly encoded in :math:`c_t`. 
    
-    2. According to :eq:`sprob16abcd`, consumption is a random walk with innovation :math:`(1-\beta) d(\beta)w_{t+1}` as implied also by :eq:`sprob13`. This outcome confirms that the Euler equation :eq:`sprob5` is built into the solution. That consumption is a random walk of course implies that it does not possess an asymptotic stationary distribution, at least so long as :math:`z_t` exhibits perpetual random fluctuations, as it will generally under :eq:`sprob15ab`. This feature is inherited partly from the assumption that :math:`\beta R =1`.
+    2. According to :eq:`sprob16abcd`, consumption is a random walk with innovation :math:`(1-\beta) d(\beta)w_{t+1}` as implied also by :eq:`sprob13`. This outcome confirms that the Euler equation :eq:`sprob5` is built into the solution. That consumption is a random walk of course implies that it does not possess an asymptotic stationary distribution, at least so long as :math:`z_t` exhibits perpetual random fluctuations, as it will generally under :eq:`sprob15ab` [#f7]_. This feature is inherited partly from the assumption that :math:`\beta R =1`.
     
     3. The impulse response function of :math:`c_t` is a box: for all :math:`j\geq 1`, the response of :math:`c_{t+j}` to an increase in the innovation :math:`w_{t+1}` is :math:`(1-\beta) d(\beta) = (1-\beta) U_y (I -\beta A_{22})^{-1} C_2`. 
     
@@ -362,9 +362,13 @@ The distribution would spread out. [#f9]_
 
 .. rubric:: Footnotes
 
-.. [#f2] A linear marginal utility is essential for deriving :eq:`sprob5` from :eq:`sprob4`.  Suppose instead that we had imposed the following more standard assumptions on the utility function: :math:`u'(c) >0, u''(c)<0, u'''(c) > 0` and required that :math:`c \geq 0`.  The Euler equation remains :eq:`sprob4`. But the fact that :math:`u''' <0` implies via Jensen's inequality that :math:`E_t u'(c_{t+1}) >  u'(E_t c_{t+1})`.  This inequality together with :eq:`sprob4` implies that :math:`E_t c_{t+1} > c_t` (consumption is said to be a 'submartingale'), so that consumption stochastically diverges to :math:`+\infty`.  The consumer's savings also diverge to :math:`+\infty`.  
-.. [#f4] Representation :eq:`sprob15ab` implies that :math:`d(L) = U_y (I - A_{22} L)^{-1} C_2`.
-.. [#f5] A moving average representation for a process :math:`y_t` is said to be *it fundamental* if the linear space spanned by :math:`y^t` is equal to the linear space spanned by :math:`w^t`.  A time-invariant innovations representation, attained via the Kalman filter, is by construction fundamental.
+.. [#f1] We shall study how to derive this first-order condition in detail in later chapters.
+.. [#f2] A linear marginal utility is essential for deriving :eq:`sprob5` from :eq:`sprob4`.  Suppose instead that we had imposed the following more standard assumptions on the utility function: :math:`u'(c) >0, u''(c)<0, u'''(c) > 0` and required that :math:`c \geq 0`.  The Euler equation remains :eq:`sprob4`. But the fact that :math:`u''' <0` implies via Jensen's inequality that :math:`E_t u'(c_{t+1}) >  u'(E_t c_{t+1})`.  This inequality together with :eq:`sprob4` implies that :math:`E_t c_{t+1} > c_t` (consumption is said to be a 'submartingale'), so that consumption stochastically diverges to :math:`+\infty`.  The consumer's savings also diverge to :math:`+\infty`.  Chapter 17 discusses this 'precautionary savings' divergence result in depth.
+.. [#f3] That :math:`c_t` can be negative explains why we impose condition  :eq:`sprob3` instead of an upper bound on the level of borrowing, such as the natural borrowing limit of chapters 8, 17, and  18.
+.. [#f4] Representation :eq:`sprob15` implies that :math:`d(L) = U_y (I - A_{22} L)^{-1} C_2`.
+.. [#f5] A moving average representation for a process :math:`y_t` is said to be *it fundamental* if the linear space spanned by :math:`y^t` is equal to the linear space spanned by :math:`w^t`.  A time-invariant innovations representation, attained via the Kalman filter as in section 2.7, is by construction fundamental.
+.. [#f6] See appendix B of chapter 8 for a reinterpretation of precisely these outcomes in terms of a competitive equilibrium of a model with a complete set of markets in history- and date-contingent claims to consumption.
+.. [#f7] The failure of consumption to converge will  occur again in chapter 8 when we drop quadratic utility and assume that consumption must be nonnegative.
 .. [#f8] See Campbell and Shiller (1988) and  Lettau and Ludvigson (2001, 2004) for interesting applications of related ideas.
 .. [#f9] See Deaton and Paxton (1994) and Storesletten, Telmer, and  Yaron (2004) for evidence that cross section distributions of consumption spread out with age.
 

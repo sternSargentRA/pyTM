@@ -43,7 +43,7 @@ A workhorse with many applications
 
     * Rational expectations version of Cagan's model of hyperinflation
 
-    * Sargent and Wallace's 'unpleasant monetarist arithmetic'
+    * Sargent and Wallace's "unpleasant monetarist arithmetic"
 
     * etc., etc., :math:`\ldots`
 
@@ -211,11 +211,7 @@ With these definitions, :eq:`st_space_rep` represents what we want. :math:`\{y_t
 *indeterministic* seasonal, i.e., recurrent,
 but aperiodic, seasonal fluctuations.
 
-
-.. [#foot1]  For example, note that :math:`i = \exp\left(\pi/2 \right) + i \sin \left(\pi/2\right)`, so  the period associated
-
-with :math:`i`  is :math:`{\frac{2 \pi}{\frac{\pi}{2}}} = 4`.
-
+.. [#foot1]  For example, note that :math:`i = \exp\left(\pi/2 \right) + i \sin \left(\pi/2\right)`, so  the period associated with :math:`i`  is :math:`{\frac{2 \pi}{\frac{\pi}{2}}} = 4`.
 
 Polynomial Time Trends
 =======================
@@ -483,6 +479,25 @@ where :math:`\Sigma_t = E (x_t - \mu_t)(x_t- \mu_t)'` is to be thought of as an 
 
 :math:`\Sigma_t` is called the *unconditional covariance*  of  :math:`x_t, t \geq 0`
 
+Averages over time
+===================
+
+Think of taking a single realization :math:`\{x_t\}` of the state-space system and forming the sequence of averages and cross-averages
+
+.. math::
+    \bar x_t &= \frac{1}{t} \sum_{j=1}^t x_t \\
+    R_t & = \frac{1}{t} \sum_{j=1}^t x_t x_t'
+
+It is sometimes convenient to represent these sample moments recursively:
+
+.. math::
+    \bar x_t & =  \bar x_{t-1} + \frac{1}{t} (x_t - \bar x_{t-1} )\\
+    R_t & = R_{t-1} + \frac{1}{t} \bigl( x_t x_t' - R_{t-1}\bigr)
+
+As :math:`t \rightarrow +\infty`, we would like the sample moments :math:`\bar x_t` and :math:`R_t` to converge to something interpretable in terms
+of our basic state-space representation.
+
+To get this desideratum, we require something called *erodicity*
 
 Ergodicity
 ===========
