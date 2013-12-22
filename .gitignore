@@ -4,3 +4,9 @@ gh-pages/
 Docs/build/
 *.ipynb_checkpoints/
 *.pyc
+
+*.bak
+*.kilepr
+*~
+*.backup
+*.prj
