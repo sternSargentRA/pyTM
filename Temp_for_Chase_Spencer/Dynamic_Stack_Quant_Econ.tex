@@ -1,0 +1,1152 @@
+
+Dynamic Stackelberg Problems
+
+
+\section{History dependence}
+
+  Previous chapters described decision problems that are recursive in
+what we can call ``natural'' state variables, i.e., state variables that
+describe stocks of capital, wealth, and information that helps forecast
+future values of prices and quantities that impinge on future utilities
+or profits.  In problems that are recursive in the natural state variables,
+optimal decision rules are functions of the natural state variables.
+
+\index{time consistency}
+ This chapter is our first encounter with a class of
+problems that are not recursive in the natural state variables.
+Kydland and Prescott (1977), Prescott (1977),  and Calvo (1978) gave
+macroeconomic examples of decision problems
+whose solutions  exhibited {\it time inconsistency\/}
+because they are not recursive in the natural state variables.
+Those authors studied the decision problem of  a large agent
+(a government) that confronts  a competitive market composed of many small private
+agents
+whose decisions are influenced by their
+{\it forecasts\/} of the government's future actions.  In such
+settings, the natural state variables of private agents at time
+$t$ are partly shaped by past  decisions
+that were influenced by their earlier forecasts of the government's action
+at time $t$.  In a rational expectations equilibrium,
+ the government  on average confirms private agents' earlier forecasts of
+the government's time $t$ actions.  This requirement to confirm prior forecasts
+puts constraints on the government's
+time $t$ decisions that prevent its problem  from being
+recursive in  natural state variables.
+These additional constraints make the government's
+decision rule at $t$ depend on the entire history of the
+state from time $0$ to time $t$.
+
+ \auth{Kydland, Finn E.} \auth{Prescott, Edward C.}%
+It took some time for economists to figure out how to formulate policy problems of this type
+recursively.
+Prescott  (1977) asserted that
+ recursive optimal control theory does not apply
+to problems with this structure.  This chapter and chapters
+\use{socialinsurance} and \use{credible} show
+how Prescott's pessimism about the inapplicability
+of optimal control theory has been overturned
+by more recent work.\NFootnote{The important contribution by Kydland and Prescott (1980)
+ helped to dissipate
+ Prescott's initial pessimism.}
+An important finding is that if the natural state variables
+are augmented with  additional state variables that measure
+ costs in terms of the government's {\it current\/} continuation
+value of confirming {\it past\/} private sector expectations about its
+current behavior, this class of problems
+can be made recursive. This fact affords immense
+computational advantages and yields substantial insights.
+  This chapter displays these
+within the tractable framework of linear quadratic problems.
+
+\section{The Stackelberg problem}
+
+To exhibit the essential structure of
+the problems that concerned Kydland and Prescott (1977) and Calvo (1979),
+this chapter uses the optimal linear regulator
+to solve a linear quadratic version of
+what is known as a dynamic Stackelberg problem.\NFootnote{In some settings
+it is  called a Ramsey problem.}
+For now we refer to the Stackelberg leader as the government and
+the Stackelberg follower as the representative agent or
+private sector.  Soon we'll give
+an application with another  interpretation of these two players.
+
+Let $z_t$ be  an $n_z \times 1$  vector of natural state variables,
+$x_t$ an $n_x \times 1$  vector of  endogenous variables free
+to jump at $t$, and $u_t$ a vector of government instruments.
+The $z_t$ vector is inherited from the past. But $x_t$ is {\it not\/} inherited from the past.
+  The model determines
+ the ``jump variables'' $x_t$ at time
+$t$.  Included in $x_t$ are prices and quantities that adjust
+instantaneously to clear markets at time $t$.
+Let $ y_t = \left[\matrix{z_t \cr x_t \cr} \right]$.
+Define the
+government's one-period loss function\NFootnote{The
+ problem assumes that there
+are no cross products between states and controls in the
+return function.  There is a simple transformation that converts a problem
+whose return function has cross products into an equivalent problem
+that has no cross products. For example, see Hansen and Sargent (2008, chapter 4, pp. 72-73).}
+$$ r(y, u)  =  y' R y  + u' Q u . \EQN target $$
+
+Subject to an initial condition for $z_0$, but not for
+$x_0$, a government wants to maximize
+$$ -  \sum_{t=0}^\infty \beta^t r(y_t, u_t).  \EQN new1 $$
+The government makes policy in light of  the model
+$$ \left[\matrix{I & 0 \cr
+                 G_{21} & G_{22} \cr}\right]
+    \left[ \matrix{   z_{t+1} \cr  x_{t+1} \cr} \right]
+  = \left[ \matrix{ \hat A_{11}  &  \hat A_{12} \cr
+                    \hat A_{21} & \hat A_{22}  \cr} \right]
+\left[\matrix{ z_t \cr x_t \cr} \right]
+    + \hat B u_t   . \EQN new2$$
+We assume that the matrix on the left is invertible,
+so that we can multiply both sides of the above equation by its
+inverse to obtain\NFootnote{We
+have assumed that the matrix on the left of \Ep{new2} is invertible
+for ease of presentation.
+However, by appropriately using the
+invariant subspace methods described
+under step 2 below (see Appendix \the\chapternum\use{appBblkstack}),
+it is straightforward to adapt the computational
+method when this assumption is violated.}
+$$ \left[ \matrix{   z_{t+1} \cr  x_{t+1} \cr} \right]
+  = \left[ \matrix{ A_{11}  &   A_{12} \cr
+                     A_{21} &  A_{22}  \cr} \right]
+   \left[\matrix{ z_t \cr x_t \cr} \right]
+    +  B u_t   \EQN new3$$
+or
+$$ y_{t+1} = A y_t + B u_t  . \EQN new30 $$
+The government maximizes \Ep{new1} by choosing sequences
+$\{u_t, x_t, z_{t+1}\}_{t=0}^\infty$ subject to
+\Ep{new30} and the initial condition for $z_0$.
+
+
+The private sector's  behavior is summarized by the second
+block of equations of \Ep{new2}  or \Ep{new3}. These
+typically include the first-order conditions
+of private  agents' optimization problem (i.e., their Euler equations). They
+summarize the forward-looking aspect of private agents' behavior.
+We shall provide an example later in this chapter in which, as is typical
+of these problems,
+the last $n_x$ equations
+of \Ep{new3} or \Ep{new30} constitute {\it implementability constraints} that
+ are formed by the Euler equations  of a competitive fringe or
+private sector.
+When combined with a stability condition to be imposed below, these
+Euler equations
+summarize the private sector's best response to the
+sequence of actions by the government.
+
+The   certainty equivalence principle
+stated in chapter \use{dplinear} allows us
+to  work with a nonstochastic model.
+ We would attain the
+same decision rule   if we were  to replace
+$x_{t+1}$ with the forecast $E_t x_{t+1}$ and to add  a shock process
+$C \epsilon_{t+1}$ to the right side of \Ep{new3}, where
+$\epsilon_{t+1}$ is an i.i.d.\ random vector
+ with mean of  zero
+and identity covariance matrix.
+
+Let $X^t$ denote the history of any variable $X$  from
+$0$ to $t$. Miller and Salmon (1982, 1985),
+Hansen, Epple, and Roberds (1985), Pearlman, Currie, and Levine (1986),
+Sargent (1987),
+Pearlman (1992), and others have all studied
+versions of the following problem:
+\medskip
+\noindent {\bf Problem S:}
+The  {\it
+ Stackelberg problem\/}
+is to  maximize \Ep{new1} by choosing an $x_0$ and
+ a sequence of decision rules, the time $t$ component of which
+maps the time $t$ history of the state
+$z^t$ into the time $t$ decision $u_t$ of the Stackelberg leader.
+   The Stackelberg leader commits to
+this sequence of decision  rules at time $0$.
+The maximization is subject to a given initial condition
+for $z_0$.  But $x_0$ is among the objects  to be chosen by the Stackelberg leader.
+
+\medskip
+The  optimal decision rule  is history dependent, meaning that
+$u_t$ depends not only on $z_t$ but also on lags of $z$.
+ History
+dependence has two sources: (a) the government's
+ability to commit\NFootnote{The government would
+make different choices were it
+to choose sequentially, that is,  were it to select its time $t$ action
+at time $t$.}
+ to a sequence of rules at time
+$0$, and
+(b) the forward-looking behavior of the
+private sector embedded in the second block of equations
+\Ep{new3}.
+The history dependence of the
+government's plan is expressed in the dynamics of Lagrange multipliers $\mu_x$
+on the last $n_x$ equations of  \Ep{new2} or \Ep{new3}.  These
+multipliers measure the costs today of honoring past government
+promises about current and
+future settings
+of $u$.  It is appropriate to initialize
+the multipliers to zero at time $t=0$, because then there are no past
+promises about $u$ to honor.   But the multipliers $\mu_x$
+take nonzero values thereafter, reflecting
+future costs to the government of adhering to
+its commitment.
+
+\section{Solving the Stackelberg problem}
+This section describes a remarkable four-step algorithm for
+solving the Stackelberg problem.
+%Currie and Levine (1996), Pearlman, Currie and  Levine (1986)
+%and Pearlman (1992) recognized and exploited the connections
+%between the optimal linear regulator problem and
+%the optimal control of `forward looking' models
+%under commitment. We adapt and extend their arguments
+%to include a preference for robustness of decision
+%rules to model misspecification.
+
+\subsection{Step 1: solve an optimal linear regulator}
+
+Step 1  seems to disregard the forward-looking aspect  of the
+problem (step 3  will take account of that).
+%Recall from chapters \use{rgames01} and \use{rgames2t}.
+If we temporarily ignore the fact that the $x_0$ component of the state
+$y_0 = \left[\matrix{z_0 \cr x_0\cr}\right]$ is {\it not\/}
+actually part of the true state vector, then  superficially the Stackelberg
+problem
+\Ep{new1}, \Ep{new30} has the form of
+an optimal linear regulator problem.
+It can be solved by forming a Bellman equation and iterating
+ until it converges.
+The optimal value function has the form $v(y) = - y' P y$, where
+$P$ satisfies the  Riccati equation \Ep{bell3}.
+The next steps note how the value function
+$v(y) = -y'Py$
+encodes  objects that solve the Stackelberg problem, then
+tell how to decode them.
+
+  A reader not wanting to be reminded
+of the details of the Bellman equation can now move directly to step 2.
+For those wanting a reminder, here it is.
+The linear regulator is
+$$ v(y_0) = -y_0' P y_0
+= {\rm max}_{\{  u_t, y_{t+1}\}_{t=0}^\infty} - \sum_{t=0}^\infty \beta^t
+  \left( y_t' R y_t +   u_t'   Q   u_t \right) \EQN olrp1a $$
+where the maximization is subject to a fixed initial condition for
+$y_0$ and the law of motion\NFootnote{In step 4, we acknowledge that the $x_0$ component
+is {\it not\/} given but is to be chosen by the Stackelberg leader.}
+$$ y_{t+1} = A y_t +   B   u_t . \EQN new30a  $$
+  Associated with problem \Ep{olrp1a}, \Ep{new30a}  is the
+Bellman equation
+$$ - y' P y = {\rm max}_{  u, y^*} \left\{ -  y' R y -   u'Q
+     u - \beta y^{* \prime} P y^* \right\} \EQN bell1  $$
+where the maximization is subject to
+$$ y^* = A y + B   u  \EQN bell2 $$
+where $y^*$ denotes next period's value of the state.
+Problem \Ep{bell1}, \Ep{bell2} gives rise to the matrix Riccati equation
+$$ P = R + \beta A' P A - \beta^2 A' P   B (  Q
+  + \beta   B' P   B)^{-1}   B' P A  \EQN bell3 $$
+and the formula for $F$ in the   decision rule $  u_t = - F y_t$
+ $$ F = \beta(   Q + \beta   B' P   B)^{-1}
+    B' P A .  \EQN bell4 $$
+Thus, we can solve problem \Ep{new1}, \Ep{new30} by iterating
+to convergence on the difference equation counterpart to the algebraic Riccati equation \Ep{bell3}, or by using
+a faster computational method that emerges as a by-product in
+step 2.  This method is described in Appendix \the\chapternum\use{appBblkstack}.
+
+
+\subsection{Step 2: use the stabilizing properties of shadow price $P y_t$}
+ At this point, we decode the information in the matrix
+ $P$ in terms of shadow prices that are associated
+with  a Lagrangian. We adapt a method described earlier in section \use{lagrangianformulation} that solves a linear quadratic
+control problem of the form
+%Thus, another way to pose the Stackelberg problem
+\Ep{new1}, \Ep{new30} by attaching a sequence of Lagrange
+multipliers $ 2 \beta^{t+1} \mu_{t+1}$ to the sequence of constraints
+\Ep{new30} and then  forming the Lagrangian:
+$$ {\cal L} = - \sum_{t=0}^\infty  \beta^t \left[ y_t' R  y_t + u_t' Q u_t
+   + 2  \beta \mu_{t+1}'(A y_t + B u_t  - y_{t+1})
+    \right]. \EQN olrp3 $$
+For the Stackelberg problem, it is important to partition
+$\mu_t$ conformably with our partition of $y_t=\left[\matrix{z_t \cr
+   x_t \cr}\right]$, so that
+$ \mu_t = \left[\matrix{ \mu_{zt} \cr \mu_{xt} \cr} \right],$
+where $\mu_{xt}$ is an $n_x \times 1 $ vector of
+ multipliers adhering to the implementability
+constraints.  For now, we can ignore the partitioning of
+$\mu_t$, but it will be very important when we turn our
+attention to the specific requirements of the Stackelberg problem
+in step 3.
+
+We want to maximize \Ep{olrp3} with respect to
+sequences for $u_t$ and $y_{t+1}$.
+The first-order conditions with respect to $u_t, y_t$, respectively,
+are:
+$$\EQNalign{  0 & = Q u_t + \beta B' \mu_{t+1} \EQN foc1;a  \cr
+             \mu_t & = R y_t + \beta A' \mu_{t+1}. \EQN foc1;b \cr} $$
+Solving \Ep{foc1;a} for $u_t$
+and substituting into \Ep{new30} gives
+$$ y_{t+1} = A y_t - \beta B Q^{-1} B'  \mu_{t+1}. \EQN olrp4 $$
+%Write \Ep{olrp4} as
+%$$ y_{t+1} = A y_t - \beta   B   Q^{-1}   B' \mu_{t+1}.
+%      \EQN olrp6$$
+We can represent the system formed by
+ \Ep{olrp4}  and \Ep{foc1;b}
+as
+$$ \left[\matrix{I & \beta   B   Q^{-1}   B' \cr
+                0 & \beta A' \cr}\right] \left[\matrix{y_{t+1} \cr \mu_{t+1} \cr}
+             \right]
+ = \left[\matrix{A & 0 \cr
+                 - R & I \cr} \right]
+  \left[\matrix{y_t \cr \mu_t \cr}\right] \EQN olrp7 $$
+or
+$$ L^* \left[\matrix{y_{t+1} \cr \mu_{t+1} \cr}
+             \right]
+ =  N
+  \left[\matrix{y_t \cr \mu_t \cr}\right]. \EQN olrp8 $$
+We seek a ``stabilizing'' solution of \Ep{olrp8}, i.e., one
+that satisfies
+$$ \sum_{t=0}^\infty  \beta^t y_t' y_t < +\infty .$$
+
+\subsection{Stabilizing solution}
+By the same argument used in  section \use{lagrangianformulation} of chapter \use{dplinear}, a
+stabilizing solution satisfies $\mu_0 = P y_0$, where $P$ solves
+the matrix Riccati equation \Ep{bell3}. The solution for $\mu_0$
+replicates itself over time in the sense that
+$$ \mu_t = P y_t . \EQN king4 $$
+ Appendix   \the\chapternum\use{appAblkstack} verifies that the matrix $P$ that satisfies the Riccati equation
+\Ep{bell3} is the same $P$ that defines the stabilizing initial
+conditions $(y_0, P y_0)$.
+In Appendix  \the\chapternum\use{appBblkstack}, we describe how to construct $P$ by  computing
+generalized eigenvalues and eigenvectors.
+
+
+\medskip
+
+\subsection{Step 3: convert implementation multipliers into state variables}
+
+\subsubsection{Key insight}
+We now confront the fact that the $x_0$ component of $y_0$
+consists of variables that are not state variables, i.e., they are
+not inherited from the past but are to be determined at time $t$.
+In the optimal linear regulator problem, $y_0$ is a state vector
+inherited from the past; the multiplier $\mu_0$ jumps at $t$ to
+satisfy $\mu_0 = P y_0$ and thereby stabilize the system. But in  the
+Stackelberg problem,
+ pertinent components of {\it both\/}
+$y_0$ {\it and\/} $\mu_0$ must adjust to satisfy
+$\mu_0 = P y_0$.
+In particular, partition
+ $\mu_t$ conformably with the partition of $y_t$  into
+$\left[\matrix{z_t' &  x_t' \cr} \right]'$:\NFootnote{This
+argument just adapts one in Pearlman (1992). The Lagrangian
+associated with the Stackelberg problem remains \Ep{olrp3}, which
+means that the same  section \use{lagrangianformulation} logic implies that the stabilizing
+solution must satisfy \Ep{king4}. It is only  in how we impose
+\Ep{king4} that the solution diverges from that for the linear
+regulator.}
+$$ \mu_t = \left[\matrix{ \mu_{zt} \cr \mu_{xt} \cr} \right].$$
+For the Stackelberg problem,  the first $n_z$ elements
+of $y_t$ are predetermined  but the remaining components
+are free.  And while the first $n_z$ elements of
+$\mu_t$ are free to jump at $t$, the remaining
+components are not.  The third step completes the
+solution of the Stackelberg problem by acknowledging these facts.
+{\it After\/}
+we have performed the key step of computing the matrix $P$ that solves
+the Riccati equation \Ep{bell3},
+we convert the last  $n_x$ Lagrange multipliers $\mu_{xt}$ into
+state variables by using the following procedure
+
+%The key insight
+%\NFootnote{This
+%argument simply adapts the one in Pearlman (1992).}
+% is that Lagrangian associated with the
+%Stackelberg problem remains \Ep{olrp3} which means that
+%the same  logic as in section \use{sect:stabilizing}
+%means that the stabilizing solution
+%must satisfy
+%$$ \mu_t = P y_t . \EQN king4 $$
+%It is only  in how we impose \Ep{king4}
+%that the solution diverges from that for
+%the linear regulator.
+
+Write the last $n_x$ equations
+of \Ep{king4} as
+$$ \mu_{xt} = P_{21} z_t + P_{22} x_t, \EQN king5 $$
+where the partitioning of $P$ is conformable with that
+of $y_t$ into $\left[ \matrix{z_t &  x_t \cr}\right]'$.   The vector
+$\mu_{xt}$ becomes part of the state at $t$, while $x_t$ is free
+to jump at $t$.  Therefore, we solve \Ep{king5}  for
+$x_t$ in terms of $(z_t, \mu_{xt})$:
+$$ x_t = - P_{22}^{-1} P_{21} z_t + P_{22}^{-1} \mu_{xt}. \EQN king6 $$
+Then we can write
+$$ y_t =\left[\matrix{z_t \cr x_t \cr}\right]  = \left[ \matrix{I & 0 \cr
+           - P_{22}^{-1} P_{21} &  P_{22}^{-1} \cr}  \right]
+    \left[\matrix{z_t \cr \mu_{xt} \cr}\right] \EQN king7 $$
+and from \Ep{king5}
+$$ \mu_{xt} =  \left[\matrix{ P_{21} & P_{22} \cr}
+\right] y_t . \EQN king8 $$
+
+With these modifications, the key formulas
+\Ep{bell4} and \Ep{bell3} from the optimal linear
+regulator for $F$ and $P$, respectively,
+continue to apply.
+Using \Ep{king7}, the  optimal decision rule is
+$$u_t    = -F
+ \left[ \matrix{I & 0 \cr
+           - P_{22}^{-1} P_{21} &  P_{22}^{-1} \cr}  \right]
+    \left[\matrix{z_t \cr \mu_{xt} \cr}\right]. \EQN king10 $$
+Then we have  the following complete description of the
+Stackelberg plan:\NFootnote{When a random shock $C \epsilon_{t+1}$ is present, we must add
+  $$\left[ \matrix{I & 0 \cr P_{21} & P_{22}\cr} \right] C \epsilon_{t+1}
+    \EQN randterm $$
+to the right side of  \Ep{king11;a}.} {\ninepoint
+$$ \EQNalign{ \left[ \matrix{ z_{t+1} \cr \mu_{x,t+1} \cr} \right]
+  & = \left[ \matrix{I & 0 \cr P_{21} & P_{22}\cr} \right]
+  (A - B F)
+  % \left(\matrix{A_1 - B_1 F_1  \cr
+   %             A_2 - B_2 F_1 - C_2 F_2 \cr} \right)
+    \left[\matrix{ I & 0 \cr
+              - P_{22}^{-1} P_{21} & P_{22}^{-1} \cr}\right]
+    \left[\matrix{ z_t \cr \mu_{xt} \cr} \right] \hskip1cm \EQN king11;a \cr
+   x_t & = \left[\matrix{ - P_{22}^{-1} P_{21}   & P_{22}^{-1} \cr}
+  \right]
+    \left[\matrix{ z_t \cr \mu_{xt} \cr} \right] .  \EQN king11;b \cr} $$
+}%endninepoint
+The difference equation
+\Ep{king11;a} is to  be initialized from the given
+value of $z_0$ and a value for $\mu_{x0}$ to be determined in step 4.
+%{\bf XXXX Tom:  check these equations in the monograph on robustness.  In particular,
+% check that we zero out \mu_{0,x} and not \mu_{0,z}.}
+
+
+
+\subsection{Step 4: solve for $x_0$ and $\mu_{x0}$}
+
+The value function $V(y_0)$ satisfies
+$$ V(y_0) = - z_0 ' P_{11} z_0 - 2 x_0' P_{21} z_0 - x_0' P_{22} x_0 . \EQN valuefny $$
+Now choose $x_0$ by equating to zero the gradient of $V(y_0)$ with respect to  $x_0$:
+$$ - 2 P_{21} z_0 - 2 P_{22} x_0 =0,  $$
+which by virtue of \Ep{king5} is equivalent with
+$$ \mu_{x0} = 0 . \EQN mu0condition  $$
+Then we can compute $x_0$ from \Ep{king6} to arrive at
+$$ x_0 = - P_{22}^{-1} P_{21} z_0. \EQN king6x0 $$
+
+The Lagrange multiplier $\mu_{xt}$ measures the cost to the Stackelberg leader at $t \geq 0$
+of confirming expectations about its time $t$ action that the followers had held
+at dates $s < t$.  
+Setting
+$\mu_{x0}=0$ means that at time $0$ there are no such prior expectations to confirm.
+\subsection{Summary}
+In summary, we solve the Stackelberg problem by
+formulating a particular optimal linear regulator, solving the associated
+matrix Riccati equation \Ep{bell3} for $P$, computing
+$F$, and  then partitioning
+$P$ to obtain representation \Ep{king11}.
+
+
+
+
+\subsection{History-dependent representation of decision rule}
+
+\auth{Von Zur Muehlen, Peter}%
+ For some purposes, it is useful to eliminate the implementation
+multipliers  $\mu_{xt}$ and to express
+the decision rule for $u_t$ as a function
+of $z_t, z_{t-1},$ and $u_{t-1}$.
+This can be accomplished as
+follows.\NFootnote{Peter Von Zur Muehlen suggested
+this representation to us.}
+First represent \Ep{king11;a} compactly as
+$$  \left[ \matrix{ z_{t+1} \cr \mu_{x,t+1} \cr} \right]
+   = \left[ \matrix{m_{11} & m_{12} \cr m_{21} & m_{22}\cr} \right]
+    \left[\matrix{ z_t \cr \mu_{xt} \cr} \right] \EQN vonzer1 $$
+and write the feedback rule for $u_t$
+$$u_t  = f_{11}  z_{t} + f_{12} \mu_{xt} . \EQN vonzer2 $$
+Then where $f_{12}^{-1}$ denotes
+the generalized inverse of $f_{12}$,
+ \Ep{vonzer2} implies $\mu_{x,t} = f_{12}^{-1}(u_t - f_{11}z_t)$.
+Equate the right side of this expression to the right side
+of the second line of \Ep{vonzer1} lagged once and rearrange by using
+\Ep{vonzer2} lagged once to eliminate $\mu_{x,t-1}$
+to get
+$$ u_t =  f_{12} m_{22} f_{12}^{-1} u_{t-1} + f_{11} z_t
+   + f_{12}(m_{21} - m_{22} f_{12}^{-1} f_{11}) z_{t-1}
+   \EQN vonzer3;a $$
+or
+$$ u_t = \rho u_{t-1} + \alpha_0 z_t + \alpha_1 z_{t-1} \EQN vonzer3;b $$
+for $t \geq 1$.  For $t=0$, the initialization $\mu_{x,0}=0$ implies
+that
+$$ u_0 = f_{11} z_0. \EQN vonzer3;c $$
+
+  By making the instrument feed back on itself,
+the form of \Ep{vonzer3} potentially allows for
+``instrument-smoothing'' to emerge as an optimal rule under
+commitment.\NFootnote{This insight partly motivated Woodford
+(2003) to use his model to interpret empirical evidence about
+interest rate smoothing in the United States.}
+
+
+\subsection{Digression on determinacy of equilibrium}
+Appendix \the\chapternum\use{appBblkstack} describes methods for  solving a system of difference
+equations of the form \Ep{new2} or \Ep{new3} with an arbitrary feedback rule that
+expresses the decision rule for
+$u_t$ as a function of current and  previous values of $y_t$ and perhaps previous values
+of itself.  The difference equation system has  a unique solution
+satisfying the stability condition $\sum_{t=0}^\infty \beta^t y_t \cdot  y_t$
+if the eigenvalues of the matrix \Ep{symplec2} split, with half being greater than
+unity and half being less than unity in modulus.  If more than half are less than
+unity in modulus, the equilibrium is said to be indeterminate \index{indeterminacy!of equilibrium}%
+ in the sense that there are multiple equilibria starting from any initial condition.
+
+If we choose to represent the solution of a Stackelberg or Ramsey problem in the form
+\Ep{vonzer3}, we can substitute that representation for $u_t$ into
+\Ep{new3}, obtain a difference equation system in $y_t, u_t$, and ask whether
+the resulting system is determinate. To answer this question, we would use the method
+of Appendix \the\chapternum\use{appBblkstack}, form system \Ep{symplec2}, then check whether the generalized
+eigenvalues split as required.   Researchers have used this method to study the determinacy
+of equilibria under Stackelberg plans with representations like \Ep{vonzer3} and have discovered
+that sometimes an equilibrium can be indeterminate.\NFootnote{The existence of a Stackelberg plan is not at
+issue because we know how to construct one using the method in the text.}  See Evans
+and Honkapohja (2003) for a discussion of determinacy of equilibria under commitment
+in a class of equilibrium monetary models and
+how determinacy depends on how the decision rule of the Stackelberg leader is represented.  Evans and
+Honkapohja argue that casting a government decision rule in a way that leads to indeterminacy is a bad idea.
+\auth{Evans, George W.}
+\auth{Honkapohja, Seppo}
+\index{implementation!of Stackelberg plan}
+\section{A large firm with a competitive fringe}
+
+As an example, this section studies the equilibrium of an industry with
+a large firm that acts as a Stackelberg leader with respect to a competitive
+fringe.  Sometimes the large firm is called `the monopolist' even though there are
+actually many firms in the industry.  The industry produces a single nonstorable homogeneous good. One
+large firm produces $Q_t$ and a representative firm in a competitive
+fringe produces $q_t$.  The representative firm in the competitive
+fringe acts as a price taker and chooses sequentially.  The large firm
+commits to a policy at time $0$, taking into account its ability to
+manipulate the price sequence, both directly through the effects of
+its quantity choices on prices, and indirectly through the responses of
+the competitive fringe to its forecasts of prices.\NFootnote{Hansen and Sargent
+(2008, ch.~16) use this model as a laboratory to illustrate an equilibrium concept featuring
+robustness in which at least one of the agents has doubts about the stochastic specification
+of the demand shock process.}
+
+  The costs of production are
+${\cal C}_t = e Q_t + .5 g Q_t^2+ .5 c (Q_{t+1} - Q_{t})^2 $
+for the large firm
+and $ \sigma_t= d q_t + .5 h q_t^2 + .5 c (q_{t+1} - q_t)^2$
+for the competitive firm,
+where $d>0, e >0, c>0, g >0, h>0 $ are cost parameters.
+There is a linear inverse demand curve
+$$ p_t = A_0 - A_1 (Q_t + \overline q_t) + v_t, \EQN oli1 $$
+where $A_0, A_1$ are both positive and  $v_t$ is a disturbance
+to demand governed by
+$$ v_{t+1}= \rho v_t + C_\epsilon \check \epsilon_{t+1} \EQN oli2 $$
+and where $ | \rho | < 1$ and $\check \epsilon_{t+1}$ is an i.i.d.\
+sequence of random variables with mean zero and variance $1$.
+In \Ep{oli1}, $\overline q_t$ is equilibrium output  of the representative
+competitive firm.  In equilibrium, $\overline q_t = q_t$, but we
+must distinguish between $q_t$ and $\overline q_t$ in posing the optimum
+problem of a competitive firm.
+
+\subsection{The competitive fringe}
+
+ The representative competitive firm regards $\{p_t\}_{t=0}^\infty$
+as an exogenous  stochastic process and chooses
+an output plan to
+maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \left\{
+ p_t q_t - \sigma_t
+% .5 c(q_{t+1} - q_t)^2 -.5h q_t^2  - d q_t
+ \right\}, \quad \beta \in(0,1) \EQN oli3 $$
+subject to $q_0$ given, where  %$c>0, d>0, h>0$ are cost parameters,
+$E_t$ is the mathematical expectation based on time
+$t$ information.
+Let $i_t = q_{t+1} - q_t.$  We
+regard $i_t$ as the representative firm's control at $t$.  The
+first-order conditions
+ for maximizing \Ep{oli3} are
+$$  i_t =  E_t  \beta i_{t+1} -c^{-1} \beta h  q_{t+1}
+  + c^{-1} \beta  E_t( p_{t+1} -d) \EQN oli4   $$
+for $t \geq 0$.
+We appeal to the  certainty equivalence principle stated on
+page \use{certequiv} to justify working with
+a non-stochastic version of \Ep{oli4} formed by dropping
+the expectation operator and the random term $\check \epsilon_{t+1}$
+from \Ep{oli2}.   We use
+a method of Sargent (1979) and Townsend
+(1983).\NFootnote{They used this method to compute a rational expectations
+competitive equilibrium.  The  key step was
+to eliminate price and output by substituting
+  from the inverse demand curve and the production function into
+the firm's first-order conditions to get a difference equation
+in capital.}
+  We shift  \Ep{oli1} forward one period, replace conditional
+expectations with realized values,  use \Ep{oli1} to  substitute
+for $p_{t+1}$ in  \Ep{oli4}, and set $q_t = \overline q_t$ for all
+$t\geq 0$ to get
+%{\ninepoint
+$$ i_t = \beta i_{t+1}  - c^{-1} \beta h \overline q_{t+1}
+ + c^{-1} \beta (A_0-d) - c^{-1} \beta    A_1 \overline q_{t+1}
+  -  c^{-1} \beta    A_1 Q_{t+1} + c^{-1} \beta    v_{t+1}. \EQN oli5 $$
+%}%endninepoint
+Given sufficiently stable sequences $\{Q_t, v_t\}$, we could solve \Ep{oli5}
+and $i_t = \overline q_{t+1} - \overline q_t$ to
+express the competitive fringe's
+output sequence  as a function of the (tail of the)
+monopolist's output sequence.
+The dependence of $i_t$ on future $Q_t$'s opens an avenue for the monopolist to influence current outcomes by its choice now
+of its future actions.  
+  It is this feature that makes the  monopolist's problem fail  to be
+recursive in the natural state variables $\overline q, Q$.   The monopolist
+arrives at period $t >0$ facing the  constraint that it must
+ confirm the expectations about its time $t$ decision
+upon which the competitive fringe   based its decisions at dates
+before $t$.
+
+\subsection{The monopolist's problem}
+
+The monopolist views the competitive firm's sequence of Euler equations
+as  constraints on its own opportunities.
+They are {\it implementability constraints\/} on the
+monopolist's choices.
+ Including the implementability constraints \Ep{oli5},
+we can represent
+the constraints
+in terms of the transition law impinging on the monopolist:
+%{\ninepoint
+$$ \eqalign{ \left[\matrix{ 1 & 0 & 0 & 0 & 0 \cr
+                  0 & 1 & 0 & 0 & 0 \cr
+                  0 & 0 & 1 & 0 & 0 \cr
+                  0 & 0 & 0 & 1 & 0 \cr
+                  A_0 -d & 1 & - A_1 & - A_1 -h & c \cr }\right]
+   \left[\matrix{ 1 \cr v_{t+1} \cr Q_{t+1} \cr \overline
+ q_{t+1} \cr i_{t+1} \cr}
+    \right]
+  & = \left[ \matrix{ 1 & 0 & 0 & 0 & 0 \cr
+             0 & \rho & 0 & 0 & 0 \cr
+             0 & 0 & 1 & 0 & 0 \cr
+             0 & 0 & 0 & 1 & 1 \cr
+             0 & 0 & 0 & 0 & {c\over \beta} \cr} \right]
+     \left[ \matrix{ 1 \cr v_t \cr Q_t \cr \overline
+    q_t \cr i_t \cr} \right] \cr
+& + \left[\matrix{ 0 \cr 0 \cr 1 \cr 0 \cr 0 \cr}\right] u_t
+   , \cr}   \EQN oli6 $$
+%}%endninepoint
+where $u_t = Q_{t+1} - Q_t $ is the control of the monopolist.
+The last row portrays the implementability constraints \Ep{oli5}.
+Represent \Ep{oli6} as
+$$ y_{t+1} = A y_t + B u_t .  \EQN oli6a  $$
+
+Although we have entered the competitive fringe's choice variable  $i_t$  as a component
+of the ``state''  $y_t$ in the monopolist's transition law  \Ep{oli6a},
+$i_t$ is actually  a ``jump''
+ variable. Nevertheless, the analysis  in earlier sections of this chapter
+implies that the  solution of the large firm's
+problem is encoded in the Riccati equation associated with
+\Ep{oli6a} as the transition law.  Let's decode it.
+
+To match our general setup, we partition $y_t$ as
+$y_t' = \left[\matrix{z_t' &  x_t' \cr} \right]$ where
+$z_t' = \left[\matrix{ 1 & v_t & Q_t & \overline q_t \cr}\right]$
+and $x_t = i_t$.
+ The large firm's problem is
+$$
+\max_{\{u_t, p_t, Q_{t+1}, \overline q_{t+1}, i_t\}}
+ \sum_{t=0}^\infty \beta^t \left\{ p_t Q_t  - {\cal C}_t \right\} $$
+subject to  the given initial condition
+for $z_0$, equations \Ep{oli1} and \Ep{oli5} and $i_t = \overline q_{t+1} -
+\overline q_t$,
+ as well as the laws of motion
+of the natural state variables $z$.     Notice that the monopolist  in effect chooses the
+price sequence, as well as the quantity sequence of the
+competitive fringe, albeit subject to the restrictions imposed by
+the behavior of consumers, as summarized by the demand curve
+\Ep{oli1} and the implementability constraint \Ep{oli5} that
+describes the best responses  of the competitive fringe.
+
+By substituting \Ep{oli1} into  the above objective function,
+the monopolist's problem can be expressed as
+$$
+\max_{\{u_t\}}
+ \sum_{t=0}^\infty \beta^t
+    \left\{ (A_0 - A_1 (\overline q_t + Q_t) + v_t) Q_t - eQ_t - .5gQ_t^2 -
+    .5 c u_t^2
+ \right\} \EQN oli7  $$
+subject to \Ep{oli6a}.
+This can be written
+$$
+\max_{\{u_t\}}
+ -  \sum_{t=0}^\infty \beta^t \left\{ y_t' R y_t +   u_t' Q u_t
+   \right\} \EQN oli9 $$
+subject to \Ep{oli6a}
+where
+$$  R =  - \left[\matrix{ 0 & 0 & {A_0-e \over 2} & 0 & 0 \cr
+                       0 & 0 & {1 \over 2} & 0 & 0 \cr
+                       {A_0-e \over 2} & {1 \over 2} & - A_1 -.5g
+                   & -{A_1 \over 2} & 0 \cr
+                   0 & 0 & -{A_1 \over 2} & 0 & 0 \cr
+                  0 & 0 & 0 & 0 & 0 \cr} \right] $$
+and $Q= {c \over 2}$.
+
+
+\subsection{Equilibrium representation}
+
+ We can use \Ep{king11} to  represent the
+solution of the monopolist's problem  \Ep{oli9}  in the form:
+$$ \left[\matrix{z_{t+1} \cr \mu_{x,t+1}\cr}\right]
+   = \left[\matrix{m_{11} & m_{12} \cr
+                   m_{21} & m_{22}\cr}\right]
+     \left[\matrix{z_t \cr \mu_{x,t} \cr} \right]  \EQN oli11 $$
+or
+$$ \left[\matrix{z_{t+1} \cr \mu_{x,t+1}\cr}\right]
+   = m
+     \left[\matrix{z_t \cr \mu_{x,t} \cr} \right] . \EQN oli11 $$
+ The monopolist is
+constrained to set $\mu_{x,0} \leq 0$, but will find it optimal to
+set it to zero.
+Recall that $z_t =\left[\matrix{ 1 & v_t & Q_t & \overline q_t \cr}\right]'$.
+Thus, \Ep{oli11}  includes the equilibrium law of motion for the quantity
+$\overline q_t$
+of the competitive fringe.  By construction,  $\overline q_t$ satisfies the Euler
+equation of the representative firm in the competitive fringe, as
+we elaborate in Appendix \the\chapternum\use{appCblkstack}.
+%% TTTTTT
+\subsection{Numerical example}
+We computed the optimal Stackelberg plan
+for parameter settings $A_0, A_1, \rho, C_\epsilon,\hfil\break
+  c, d, e, g, h,  \beta $ = $100, 1, .8, .2, 1,  20, 20, .2, .2,
+.95$. \NFootnote{These calculations were performed
+by the Matlab program {\tt oligopoly5.m}}\mtlb{olipololy5.m}%
+%, a modification of Stijn and Tom's earlier
+%program with robustness.XXXXX}
+For these parameter values
+the decision rule  is
+$$u_t = (Q_{t+1} - Q_t) =\left[\matrix{ 19.78 & .19 & -.64 & -.15 & -.30 \cr}\right]
+\left[ \matrix{z_t \cr \mu_{xt}\cr}\right] \EQN urule1 $$
+which can also be represented
+as
+
+$$u_t=
+    0.44  u_{t-1} +
+\left[\matrix{
+   19.7827  \cr  0.1885 \cr   -0.6403  \cr  -0.1510 \cr}\right]'  z_t +
+\left[\matrix{ -6.9509 \cr   -0.0678 \cr   0.3030  \cr  0.0550 \cr}\right]'
+ z_{t-1} . \EQN urule2 $$
+Note how in representation \Ep{urule1}
+the monopolist's decision for $u_t = Q_{t+1} - Q_t$
+feeds back negatively on the implementation
+multiplier.\NFootnote{We also computed impulse responses to the demand innovation $\epsilon_t$.
+%while the remaining figures show a simulated sample path using
+%a Gaussian i.i.d.\ $\epsilon_t$ with mean zero and unit
+%variance.  The simulation was initialized with all variables
+%except $\mu_x$ set to the nonstochastic
+%steady state of \Ep{oli11}; we set $\mu_x$ to zero.
+The impulse responses show that a demand innovation
+pushes the implementation multiplier down and leads
+the monopolist to expand output while the representative
+competitive firm contracts output in subsequent periods.  The response
+of price to a demand shock innovation is to rise on impact
+but then to decrease in subsequent periods in response to the
+increase in total supply $\overline q+Q$ engineered by the monopolist.}
+
+ %Note in Figure  4.5 %\Fg{oli30}
+%how starting from $0$ the implementation multiplier
+%decreases toward its negative steady state value.  The negative
+%value of the multiplier reflects the cost to the large firm
+%of adhering to its plan.  The time inconsistency
+%of the large firm's plan is reflected in the incentive
+%the large firm would have to reset the multiplier to zero
+%in any period and thereby reinitialize its plan (see Hansen,
+%Epple, and Roberds (1985)).   Figure  4.5 %\Fg{oli30}
+%and the other sample paths show that the large firm is acting
+%to smooth total output $Q+q$, and that it does so by inducing
+%a negative contemporaneous covariance between its own output
+%and the price.
+%%
+%%%%%%%%%
+%%\midinsert
+%%$$ \grafone{oli10.eps,height=2.5in}
+%%{{\bf Figure 4.2.}
+%%Impulse response of $p, q, Q, \mu_x$ to innovation to demand
+%%shock $\epsilon$.} $$
+%%\endinsert
+%%%%%%%%
+%
+%\midfigure{oli10f}
+%\centerline{\epsfxsize=3truein\epsffile{oli10.eps}}
+%\caption{Impulse response of $p, q, Q, \mu_x$ to innovation to demand shock
+%$\epsilon$.}
+%\infiglist{oli10f}
+%\endfigure
+%
+%%%%%%%%
+%%\midinsert
+%%$$\grafone{oli60.eps,height=2.5in}{{\bf Figure 4.3.}
+%%Impulse response of  $q+Q, w, v$ to $\epsilon$.} $$
+%%\endinsert
+%%%%%%%%%%%%
+%
+%\midfigure{oli60f}
+%\centerline{\epsfxsize=3truein\epsffile{oli60.eps}}
+%\caption{Impulse response of  $q+Q, w, v$ to $\epsilon$.}
+%\infiglist{oli60f}
+%\endfigure
+%
+%%%%%%%%%%%%
+%%\midinsert
+%%$$
+%%\grafone{oli20.eps,height=2.5in}{{\bf Figure 4.4.} Sample path of $q+Q, q, Q$.}
+%% $$
+%%\endinsert
+%%%%%%%%%%%%%%%
+%
+%\midfigure{oli20f}
+%\centerline{\epsfxsize=3truein\epsffile{oli20.eps}}
+%\caption{Sample path of $q+Q, q, Q$.}
+%\infiglist{oli20f}
+%\endfigure
+%
+%%%%%%%%%%%
+%% \midinsert
+%%$$\grafone{oli30.eps,height=3in}
+%% {{\bf Figure 4.5.}  Sample path of $\mu_x, Q, p$.} $$
+%% \endinsert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\midfigure{oli30f}
+%\centerline{\epsfxsize=3truein\epsffile{oli30.eps}}
+%\caption{Sample path of $\mu_x, Q, p$.}
+%\infiglist{oli30f}
+%\endfigure
+%
+%%%%%%%%%%%%%%%%%%
+%% \midinsert
+%%$$
+%%\grafone{oli50.eps,height=3in}{{\bf Figure 4.6.} Sample path of $v, Q, q, p$.}
+%%$$
+%% \endinsert
+%%%%%%%%%%%%%%%%%%%
+%
+%\midfigure{oli50f}
+%\centerline{\epsfxsize=3truein\epsffile{oli50.eps}}
+%\caption{Sample path of $v, Q, q, p$.}
+%\infiglist{oli50f}
+%\endfigure
+
+\section{Concluding remarks}
+
+  This chapter is our first encounter with  a class of problems
+in which optimal decision rules are history dependent.\NFootnote{For another application of the techniques
+in this chapter and how they related to the method recommended by 
+Kydland and Prescott (1980), see Evans and Sargent (2013).} We shall
+confront many more such problems in chapters \use{socialinsurance},
+\use{socialinsurance2},
+and \use{credible} and shall see in various contexts how history
+dependence can be represented recursively by
+appropriately augmenting the natural state variables with
+counterparts to our implementability multipliers.  A hint at what
+these counterparts are is gleaned by appropriately interpreting
+implementability multipliers as derivatives of value functions. In
+chapters \use{socialinsurance}, \use{socialinsurance2}, and \use{credible}, we make dynamic
+incentive and enforcement problems recursive  by augmenting the
+state with continuation values of other decision
+makers.\NFootnote{In chapter \use{socialinsurance}, we describe Marcet and Marimon's (1992, 1999) method of
+constructing recursive contracts, which  is closely related to the method
+that we have presented in this chapter.}
+\auth{Marcet, Albert}%
+ \auth{Marimon, Ramon}%
+  \auth{Kydland, Finn E.} \auth{Prescott, Edward C.}%
+  \auth{Evans, David} \auth{Sargent, Thomas J.}%
+
+\appendix{A}{The stabilizing $\mu_t = Py_t$}\label{appAblkstack}%
+We verify that the  $P$ associated with the stabilizing $\mu_0 = P
+y_0$ satisfies the Riccati equation associated with the Bellman
+equation. Substituting $\mu_t = P y_t$ into \Ep{olrp4} and
+\Ep{foc1;b} gives
+$$\EQNalign{ (I + \beta   B   Q^{-1}   B P) y_{t+1}
+   & = A y_t \EQN olrp9;a \cr
+    \beta A' P y_{t+1} & = - Ry_t + P y_t. \EQN olrp9;b \cr } $$
+A matrix inversion identity implies
+$$ (I + \beta   B   Q^{-1}   B' P)^{-1}
+  = I - \beta   B (  Q + \beta
+    B' P   B)^{-1}   B' P .
+  \EQN olrp10  $$
+Solving \Ep{olrp9;a} for $y_{t+1}$ gives
+$$ y_{t+1} = (A -   B F) y_t \EQN olrp11 $$
+where
+$$ F = \beta (  Q + \beta   B' P   B)^{-1}   B' P A .\EQN olrp12 $$
+Premultiplying \Ep{olrp11} by $ \beta A' P$
+gives
+$$ \beta A' P y_{t+1} = \beta (A'PA - A' P   B F) y_t. \EQN olrp13 $$
+For the right side of \Ep{olrp13} to agree with
+the right side of \Ep{olrp9;b} for any initial value of
+$y_0$ requires that
+$$ P = R + \beta A'P A -\beta^2 A'P   B (  Q +  \beta   B' P
+    B)^{-1}   B' P A. \EQN olrp14 $$
+Equation \Ep{olrp14} is the algebraic matrix Riccati equation
+associated with the optimal linear regulator
+for the system $A,   B, Q,   R$.
+
+\appendix{B}{Matrix linear difference equations}\label{appBblkstack}%
+This appendix generalizes some calculations from chapter
+\use{dplinear} for solving systems of linear difference equations.
+Returning to system \Ep{olrp8}, let $L =L^* \beta^{-.5}$ and
+transform the system \Ep{olrp8} to
+$$ L \left[ \matrix{ y_{t+1}^*  \cr
+                \mu_{t+1}^* \cr} \right] =
+      N  \left[ \matrix{ y_{t}^*  \cr
+           \mu_t^* \cr} \right] ,            \EQN symplec2     $$
+where $y_t^* = \beta^{t/2} y_t,  \mu_t^* = \mu_t \beta^{t/2}$.
+Now $\lambda L - N$ is a symplectic pencil,\NFootnote{A {\it pencil\/}
+$\lambda L - N$ is the family of matrices indexed by the complex variable
+$\lambda$.  A pencil is {\it symplectic\/} if $L J L' = N J N'$, where
+$J = \left[\matrix{ 0 & - I \cr
+                    I & 0 \cr} \right]$. See Anderson, Hansen,
+McGratten, and Sargent (1996).}
+so that the generalized eigenvalues of
+$L, N$ occur in reciprocal pairs: if $\lambda_i$ is
+an eigenvalue, then so is $\lambda_i^{-1}$.
+
+We can use Evan Anderson's Matlab program {\tt schurg.m} to
+find a stabilizing solution of
+system \Ep{symplec2}.\NFootnote{This program is
+ available at
+% http://www.math.niu.edu/~anderson/
+% $<$http://www.unc.edu/\raise-4pt\hbox{\~{}}ewanders$>$.
+ $<$http://www.math.niu.edu/\raise-4pt\hbox{\~{}}anderson$>$.}
+%{\tt www.unc.edu/\~ewanders}.}
+% (This is overkill
+%for our problem because $L$ is nonsingular.)
+  The program computes the ordered real
+generalized Schur decomposition of the matrix pencil.
+  Thus, {\tt schurg.m} computes
+matrices $\bar L, \bar N, V$ such that $\bar L$ is upper
+triangular, $\bar N$ is upper block triangular, and $V$ is the
+matrix of right Schur vectors such that for some orthogonal
+matrix $W$, the following hold:
+$$ \eqalign{ W L V & =  \bar L \cr
+         W N V & = \bar N. \cr} \EQN schur $$
+Let the stable eigenvalues (those less than $1$)
+appear first.  Then the stabilizing solution is
+$$ \mu_t^* = P y_t^* \EQN chisoln $$
+where
+$$ P = V_{21}  V_{11}^{-1},$$
+$V_{21}$ is the lower left block of $V$, and
+$V_{11}$ is the  upper left block.
+
+
+If $L$ is nonsingular, we can  represent the solution of the system
+as\NFootnote{The solution method
+in the text assumes that $L$ is nonsingular
+and well conditioned.  If it is not, the following method proposed
+by Evan Anderson will work.
+We want to solve for a solution of the form
+$$ y_{t+1}^* = A_o^{*} y_t^* .$$
+Note that with \Ep{chisoln},
+$$ L [I; P] y_{t+1}^* = N [I; P] y_t^* $$
+The solution $A_o^{*}$ will then  satisfy
+$$    L [I; P] A_o^{*} = N [ I;P]. $$
+Thus $A^{o*}$ can be computed via the Matlab command
+$$ A_o^{*} = (L* [I; P]) \backslash (N* [ I;P]). $$}
+$$ \left[ \matrix {y_{t+1}^* \cr \mu_{t+1}^* \cr} \right]
+       = L^{-1} N \left[ \matrix{I \cr P \cr} \right] y_t^*. \EQN Zsoln $$
+The solution is to be initialized from
+\Ep{chisoln}.
+We can use the  first half and then the second half
+of the rows of this  representation
+to deduce the following recursive
+ solutions for $y_{t+1}^*$ and $\mu_{t+1}^*$:
+$$ \eqalign{ y_{t+1}^* &  = A_o^{*} y_t^*  \cr
+             \mu_{t+1}^* & =   \psi^* y_t^*.  \cr } \EQN solnprelim  $$
+Now express this solution in terms of the original variables:
+$$ \eqalign{ y_{t+1} &  = A_o y_t  \cr
+             \mu_{t+1} & =   \psi y_t, \cr } \EQN soln  $$
+ where $A_o = A_o^{*}\beta^{-.5}, \psi =
+\psi^* \beta^{-.5}$. We also have the representation
+$$ \mu_t = P y_t .   \EQN chicontemp $$
+The matrix $A_o = A -   B F$, where $F$ is the matrix for
+the optimal decision rule.
+
+\appendix{C}{Forecasting formulas}\label{appCblkstack}%
+The decision rule for the competitive fringe incorporates
+forecasts of future prices from \Ep{oli11} under $m$.
+Thus, the representative competitive firm uses equation \Ep{oli11}
+to forecast future values of $(Q_t, q_t)$ in order to forecast
+$p_t$.
+The representative competitive firm's
+forecasts
+ are generated from the $j$th iterate of \Ep{oli11}:\NFootnote{The
+representative
+firm  acts as though $(q_t, Q_t)$ were exogenous to it.}
+$$ \left[\matrix{z_{t+j} \cr \mu_{x,t+j}\cr}\right]
+   = m^j
+     \left[\matrix{z_t \cr \mu_{x,t} \cr} \right] . \EQN oli12 $$
+
+%It is important to recognize that the
+%representative firm is forecasting
+%using $m$ in \Ep{oli2}.
+The following calculation verifies that the representative
+firm forecasts by iterating  the law of motion
+associated with $m$. Write  the Euler equation for $i_t$ \Ep{oli4}
+in terms  of a
+polynomial
+in the lag operator $L$
+ and factor it:
+$(1 - (\beta^{-1} + (1+c^{-1}h))L + \beta^{-1} L^2) = -(\beta
+\lambda)^{-1} L (1 - \beta \lambda L^{-1})(1-\lambda L)$ where
+$\lambda \in (0,1)$ and $\lambda =1$ when $h =0$.\NFootnote{See
+Sargent (1979 or 1987a) for an account of the method we are using
+here.}
+  By taking the nonstochastic version
+of \Ep{oli4} and solving an unstable root forward and a stable root
+backward using the technique of Sargent (1979 or 1987a, chap. IX), we obtain
+$$ i_t  =  (\lambda-1)q_t +  c^{-1}   \sum_{j=1}^\infty
+   ( \beta \lambda)^j p_{t+j}, \EQN oli4a $$
+or
+$$ i_t = (\lambda -1) q_t + c^{-1} \sum_{j=1}^\infty
+  (  \beta \lambda)^j
+     [(A_0-d) - A_1 (Q_{t+j} + q_{t+j}) + v_{t+j}] , \EQN oli4b $$
+This can be expressed as
+$$ i_t =(\lambda -1) q_t + c^{-1} e_p \beta \lambda m
+    (I - \beta \lambda m)^{-1}
+\left[\matrix{z_t \cr \mu_{xt}\cr}
+  \right]   \EQN oli4c $$
+where $e_p = \left[\matrix{ (A_0 -d ) & 1 & - A_1 & -A_1 & 0\cr}\right]$
+is a vector that forms $p_t -d$ upon postmultiplication by
+$\left[\matrix{z_t \cr \mu_{xt}\cr}
+  \right]  $.
+It can be verified that
+the solution procedure builds in  \Ep{oli4c} as an identity,
+so that
+\Ep{oli4c} agrees with%\NFootnote{The Matlab program
+%{\tt oligopoly2.m} verifies this equality.}
+$$ i_t = - P_{22}^{-1} P_{21} z_t + P_{22}^{-1} \mu_{xt}.
+   \EQN oli4d $$
+
+
+%To find a stabilizing subspace, recall from chapter \use{rgames1} some
+%of the properties of \Ep{olrp8}.
+%The generalized eigenvalues of
+%$(L^*,N)$ occur in $\sqrt{\beta}$-symmetric pairs: if $\lambda_i$
+%is an eigenvalue, there is another eigenvalue $\lambda_{-i} = {1
+%\over \beta \lambda_i}$.
+% To find
+%the optimum, we must  solve stable roots backward and
+%unstable roots forward, which puts $(y_t, \mu_t)$ into
+%the stabilizing subspace defined by the Euler equations.
+%We can obtain such
+%%%%
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1} \quad   There is no uncertainty.
+For $t \geq 0$, a  monetary authority sets the growth of the (log)
+of money according to
+$$ m_{t+1} = m_t + u_t \leqno(1)  $$
+subject to the initial condition $m_0>0$ given.  The demand for money
+is
+  $$  m_t - p_t = - \alpha (p_{t+1} - p_t), \alpha > 0,  \leqno(2)     $$
+where $p_t$ is the log of the price level.  Equation (2) can be
+interpreted as the Euler equation  of the holders of money.
+
+\medskip
+\noindent{\bf a.}  Briefly interpret how equation
+(2) makes the demand for real balances vary inversely with
+the expected rate of inflation.
+Temporarily (only for this part of the exercise) drop
+equation (1) and assume instead that $\{m_t\}$ is a given sequence
+satisfying $\sum_{t=0}^\infty m_t^2 < + \infty$.
+Please solve the difference equation (2) ``forward''
+to express $p_t$ as a function of current and future values of $m_s$.
+Note how future values of $m$ influence the current price level.
+
+\medskip
+At time $0$,  a  monetary authority chooses a possibly
+history-dependent strategy for setting $\{u_t\}_{t=0}^\infty$.  (The monetary
+authority commits to this strategy.)  The monetary authority orders
+sequences $\{m_t, p_t\}_{t=0}^\infty$ according to
+$$ - \sum_{t=0}^\infty .95^t \left[  (p_t - \overline p)^2 +
+    u_t^2 + .00001 m_t^2  \right]. \leqno(3) $$
+Assume that $m_0=10, \alpha=5, \bar p=1$.
+\medskip
+\noindent{\bf b.} Please briefly interpret  this problem
+as one where the monetary authority wants
+to stabilize the price level, subject
+to costs of adjusting the money supply and some implementability
+constraints.    (We include the term $.00001m_t^2$ for purely technical
+reasons that you need not discuss.)
+
+\noindent {\bf c.} Please write and run a Matlab program
+to find the optimal  sequence
+$\{u_t\}_{t=0}^\infty$.
+\medskip
+\noindent {\bf d.}  Display the optimal decision rule for $u_t$
+as a function of $u_{t-1},  m_t, m_{t-1}$.
+\medskip
+\noindent{\bf e.} Compute the optimal $\{m_t, p_t\}_t$
+ sequence for $t=0, \ldots,  10$.
+
+\medskip
+\noindent{\it Hint:} The optimal $\{m_t\}$ sequence must satisfy
+$ \sum_{t=0}^\infty (.95)^t m_t^2 < +\infty$.
+You are free to apply the Matlab program {\tt olrp.m\/}.
+% that is available
+%from the course web site or from Yongs Shin.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2}  \quad A representative
+consumer has quadratic utility functional
+$$ \sum_{t=0}^\infty \beta^t \left\{ -.5 (b -c_t)^2 \right\} \leqno(1) $$
+where $\beta \in (0,1)$, $b = 30$,  and $c_t$ is time $t$ consumption.
+The consumer faces a sequence of budget constraints
+$$ c_t + a_{t+1} = (1+r)a_t + y_t - \tau_t \leqno(2) $$
+where $a_t $ is the household's holdings of an  asset at the beginning
+of $t$, $r >0$ is a constant net interest rate satisfying $\beta (1+r) <1$,
+ and
+$y_t$ is the consumer's endowment at $t$.  The consumer's plan for
+$(c_t, a_{t+1})$  has to obey the boundary condition
+$\sum_{t=0}^\infty \beta^t a_t^2 < + \infty$.
+Assume that $y_0, a_0$ are given
+initial conditions and that
+$y_t$ obeys
+$$ y_t = \rho y_{t-1}, \quad t \geq 1,  \leqno(3)$$
+where $|\rho| <1$.
+Assume that $a_0=0$, $y_0=3$, and $\rho=.9$.
+
+
+At time $0$, a    planner commits to a plan
+for taxes $\{\tau_t\}_{t=0}^\infty$.  The planner designs the plan
+   to maximize
+$$ \sum_{t=0}^\infty \beta^t
+\left\{ -.5 (c_t-b)^2 -   \tau_t^2\right\}  \leqno(4) $$
+over $\{c_t, \tau_t\}_{t=0}^\infty$ subject
+ to the implementability constraints
+(2) for $t\geq 0$ and
+$$\lambda_t =  \beta (1+r) \lambda_{t+1} \leqno(5) $$
+for $t\geq 0$, where $\lambda_t \equiv (b-c_t)$.
+
+\medskip
+\noindent{\bf a.}  Argue that (5) is the Euler equation for a consumer
+who maximizes (1) subject to (2), taking $\{\tau_t\}$ as a given sequence.
+\medskip
+\noindent{\bf b.}  Formulate the planner's problem as a Stackelberg problem.
+\medskip
+\noindent{\bf c.}  For $\beta=.95, b=30, \beta(1+r)=.95$,
+  formulate an artificial
+optimal linear regulator  problem and use it to solve the Stackelberg problem.
+\medskip
+\noindent{\bf d.} Give a recursive representation  of the
+Stackelberg plan for $\tau_t$.
+
+
+\eqnotracefalse
