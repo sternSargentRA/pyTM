@@ -16,6 +16,7 @@ This website will be home to the python based educational modules that are curre
    rational_exp/ratexp1
    black1/rmt4Sec2_12
    seppo/D_Evans_model
+   unfiled/MarkovPQE
 
 Indices and tables
 ==================
