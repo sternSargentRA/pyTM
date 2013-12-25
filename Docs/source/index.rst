@@ -14,7 +14,7 @@ This website will be home to the python based educational modules that are curre
    linear_pred/lin_pred
    ztransforms/z_transforms
    rational_exp/ratexp1
-   black1/rmt4Sec2_12
+   black1/perm_income
    seppo/D_Evans_model
 
 Indices and tables

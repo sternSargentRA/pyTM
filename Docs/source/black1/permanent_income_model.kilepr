@@ -26,7 +26,7 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:rmt4Sec2_12.rst]
+[document-settings,item:perm_income.rst]
 Bookmarks=
 Encoding=windows-1250
 FoldedColumns=
@@ -46,6 +46,16 @@ mode=LaTeX
 open=true
 order=1
 
+[item:perm_income.rst]
+archive=true
+column=38
+encoding=windows-1250
+highlight=reStructuredText
+line=365
+mode=reStructuredText
+open=true
+order=0
+
 [item:permanent_income_model.kilepr]
 archive=true
 column=4
@@ -56,23 +66,13 @@ mode=
 open=false
 order=-1
 
-[item:rmt4Sec2_12.rst]
-archive=true
-column=38
-encoding=windows-1250
-highlight=reStructuredText
-line=365
-mode=reStructuredText
-open=true
-order=0
-
 [view-settings,view=0,item:Spencer_notes_and_hints.tex]
 CursorColumn=42
 CursorLine=5
 JumpList=
 ViMarks=
 
-[view-settings,view=0,item:rmt4Sec2_12.rst]
+[view-settings,view=0,item:perm_income.rst]
 CursorColumn=38
 CursorLine=365
 JumpList=

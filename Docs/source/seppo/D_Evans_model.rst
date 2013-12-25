@@ -1,11 +1,16 @@
-Introduction
-============
+**********************************
+History Dependent Public Policies
+**********************************
 
 This lecture describes *history-dependent public policies* and some of their representations
 
 We study these objects in the context of a model in which a benevolent tax authority is forced to raise a prescribed present value of revenues by imposing a distorting flat rate tax on the output of a competitive representative firm that faces costs of adjusting its output. 
 
 That the firm lives within a competitive equilibrium imposes restrictions on the tax authority. [1]_
+
+Two sources of history dependence
+==================================
+
 
 We compare two timing protocols.
 
@@ -261,7 +266,7 @@ Then the complete state at time t becomes :math:`\left(\begin{matrix} z_t \ \lam
 
 \ The evolution of the state is
 
-.. math:: \left(\begin{matrix} z_{t+1}\ \ lambda_{ut+1}\end{matrix}\right) = \left(\begin{matrix} I & 0 \ P_{21}&P_{22}\end{matrix}\right)(A-BF)\left(\begin{matrix} I & 0\\ -P_{22}^{-1}P_{21}&P_{22}^{-1}\end{matrix}\right)\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right)
+.. math:: \left(\begin{matrix} z_{t+1}\ \lambda_{ut+1}\end{matrix}\right) = \left(\begin{matrix} I & 0 \ P_{21}&P_{22}\end{matrix}\right)(A-BF)\left(\begin{matrix} I & 0\\ -P_{22}^{-1}P_{21}&P_{22}^{-1}\end{matrix}\right)\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right)
 
 \ with initial state
 
@@ -310,8 +315,8 @@ where the maximization is subject to the constraint
 and where
 
 .. math::
-   R = \left(\begin{matrix} 0 & -\frac {A_0}2 & 0 & 0 \ -\frac{A_0}2 & \frac{A_1}2 & \frac {-\mu}{2}&0\\ 0 & \frac{-\mu}{2}&0 & 0 \\ 0 & 0 & 0&\frac d2\end{matrix}\right),
-   \: A = \left(\begin{matrix}1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 1\\ 0 & 0 & 0 & 0 \ -\frac{A_0}d & \frac{A_1}d & 0 & \frac{A_1}d+\frac1\beta\end{matrix}\right)\text{,  and  }B =\left(\begin{matrix} 0 \ 0 \\ 1 \ \frac1d\end{matrix}\right).
+   R = \left(\begin{matrix} 0 & -\frac {A_0}2 & 0 & 0 \\ -\frac{A_0}2 & \frac{A_1}2 & \frac {-\mu}{2}&0\\ 0 & \frac{-\mu}{2}&0 & 0 \\ 0 & 0 & 0&\frac d2\end{matrix}\right),
+   \: A = \left(\begin{matrix}1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 1\\ 0 & 0 & 0 & 0 \\ -\frac{A_0}d & \frac{A_1}d & 0 & \frac{A_1}d+\frac1\beta\end{matrix}\right)\text{,  and  }B =\left(\begin{matrix} 0 \ 0 \\ 1 \ \frac1d\end{matrix}\right).
 
 Functional equation :eq:`ES_KP` has solution
 
