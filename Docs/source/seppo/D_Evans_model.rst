@@ -4,9 +4,13 @@ History Dependent Public Policies
 
 This lecture describes *history-dependent public policies* and some of their representations
 
-We study these objects in the context of a model in which a benevolent tax authority is forced to raise a prescribed present value of revenues by imposing a distorting flat rate tax on the output of a competitive representative firm that faces costs of adjusting its output. 
+We study these objects in the context of a model in which a benevolent tax authority is forced 
 
-That the firm lives within a competitive equilibrium imposes restrictions on the tax authority. [1]_
+    * to raise a prescribed present value of revenues
+    
+    * to do so by imposing a distorting flat rate tax on the output of a competitive representative firm  
+
+That the firm lives within a competitive equilibrium and faces costs of adjustment imposes restrictions on the tax authority. [1]_
 
 Two sources of history dependence
 ==================================
@@ -646,13 +650,20 @@ The Ramsey Plan can then only be time consistent if :math:`G_t` remains constant
 Credible policy
 ===============
 
-The theme of this section is conveyed in the following:
+We express the  theme of this section in the following:
 
-**Remark** We have seen that in general, a continuation of a Ramsey plan is not a Ramsey plan. This is sometimes summarized by saying that a Ramsey plan is not *credible*. A continuation of a credible plan is a credible plan.
+**Remark** In general, a continuation of a Ramsey plan is not a Ramsey plan. This is sometimes summarized by saying that a Ramsey plan is not *credible*. 
 
-The literature on a credible public policy or credible plan introduced by :cite:`Chari_Kehoe_1990` and :cite:`Stokey_1989` and describes history-dependent policies that arrange incentives so that public policies can be implemented by a *sequence* of government decision makers. In this section, we sketch how recursive methods that :cite:`Chang1998` used to characterize credible policies would apply to our model.
+**Remark** A continuation of a credible plan is a credible plan.
 
-A credibility problem arises because we assume that the timing of decisions differs from the definition of Ramsey Protocol Ramsey timing. Throughout this section, we now assume the following:
+The literature on a credible public policy (:cite:`Chari_Kehoe_1990` and :cite:`Stokey_1989`)  arrange strategies and incentives so that public policies can be implemented by a *sequence* of government decision makers. 
+
+Here  we confine ourselvs to  sketching how recursive methods can be  used to characterize credible policies in  our model.
+
+:cite:`Chang1998` is a key reference
+
+A credibility problem arises because we assume that the timing of decisions differs from those in for a Ramsey problem
+
 
 **Definition** Sequential timing protocol:
 
@@ -662,15 +673,27 @@ A credibility problem arises because we assume that the timing of decisions diff
 
 Item (2) captures that taxes are now set sequentially, the time :math:`t+1` tax being set *after* the government has observed :math:`u_t`.
 
-Of course, the representative firm sets :math:`u_t` in light of its expectations of how the government will ultimately choose to set future taxes. A credible tax plan :math:`\{\tau_{s+1}\}_{s=t}^\infty` is one that is anticipated by the representative firm and also one that the government chooses to confirm.
+Of course, the representative firm sets :math:`u_t` in light of its expectations of how the government will ultimately choose to set future taxes. 
 
-We use the following recursion, closely related to but different from , to define the continuation value function for Ramsey planner:
+**Key properties** A credible tax plan :math:`\{\tau_{s+1}\}_{s=t}^\infty`  
+
+     * is anticipated by the representative firm, and 
+      
+     * one that the government chooses to confirm
+
+We use the following recursion, closely related to but different from  :eq:`ES_28a`, to define the continuation value function for Ramsey planner:
 
 .. math::
   J_t = A_0 Q_{t} - \frac{A_1}{2} Q_{t}^2 - \frac{d}{2} u_{t}^2 + \beta J_{t+1} (\tau_{t+1},G_{t+1})
   :label: foo1
 
-This differs from :eq:`ES_28a` because continuation values are now allowed to depend explicitly on values of the choice :math:`\tau_{t+1}` and continuation government revenue to be raised :math:`G_{t+1}` that need not be ones called for by the prevailing government policy. Thus, deviations from that policy are allowed, an alteration that recognizes that :math:`\tau_t` is chosen sequentially.
+This differs from :eq:`ES_28a` because
+
+       * continuation values are now allowed to depend explicitly on values of the choice :math:`\tau_{t+1}`, and
+       
+       * continuation government revenue to be raised :math:`G_{t+1}`  need not be ones called for by the prevailing government policy. 
+
+Thus, deviations from that policy are allowed, an alteration that recognizes that :math:`\tau_t` is chosen sequentially.
 
 Express the government budget constraint as requiring that :math:`G_0` solves the difference equation
 
@@ -679,9 +702,15 @@ Express the government budget constraint as requiring that :math:`G_0` solves th
   :label: ES_govt_budget_sequential
 
 
-subject to the terminal condition :math:`\lim_{t \rightarrow + \infty} \beta^t G_t= 0`. Because the government is choosing sequentially, it is convenient to take :math:`G_t` as a state variable at :math:`t` and to regard the time :math:`t` government as choosing :math:`(\tau_{t+1}, G_{t+1})` subject to constraint :eq:`ES_govt_budget_sequential`.
+subject to the terminal condition :math:`\lim_{t \rightarrow + \infty} \beta^t G_t= 0`. 
 
-To express the notion of a credible government plan concisely, we expand the strategy space by also adding :math:`J_t` itself as a state variable and allow policies to take the following recursive forms. [9]_ Regard :math:`J_0` as an a discounted present value promised to the Ramsey planner and take it as an initial condition. Then after choosing :math:`u_0` according to
+Because the government is choosing sequentially, it is convenient to take :math:`G_t` as a state variable at :math:`t` and to regard the time :math:`t` government as choosing :math:`(\tau_{t+1}, G_{t+1})` subject to constraint :eq:`ES_govt_budget_sequential`.
+
+To express the notion of a credible government plan concisely, we expand the strategy space by also adding :math:`J_t` itself as a state variable and allow policies to take the following recursive forms. [9]_ 
+
+Regard :math:`J_0` as an a discounted present value promised to the Ramsey planner and take it as an initial condition. 
+
+Then after choosing :math:`u_0` according to
 
 .. math::
    u_0 = \upsilon(Q_0, G_0, J_0),
@@ -705,29 +734,87 @@ choose subsequent taxes, outputs, *and* continuation values according to recursi
    J_{t+1}(\tau_{t+1}, G_{t+1}) & = & \nu(Q_t, u_t, G_{t+1}, J_t, \tau_{t+1} )
    :label: ES_33
 
-Here :math:`\hat \tau_{t+1}` is the time :math:`t+1` government action called for by the plan, while :math:`\tau_{t+1}` is possibly some one-time deviation that the time :math:`t+1` government contemplates and :math:` G_{t+1}` is the associated continuation tax collections. The plan is said to be *credible* if, for each :math:`t` and each state :math:`(Q_t, u_t, G_t, J_t)`, the plan satisfies the incentive constraint
+Here :math:`\hat \tau_{t+1}` is the time :math:`t+1` government action called for by the plan, while :math:`\tau_{t+1}` is possibly some one-time deviation that the time :math:`t+1` government contemplates and :math:` G_{t+1}` is the associated continuation tax collections. 
+
+**Definition** The plan is said to be *credible* if, for each :math:`t` and each state :math:`(Q_t, u_t, G_t, J_t)`, the plan satisfies the incentive constraint
 
 .. math::
     J_t= A_0 Q_{t} & - &\frac{A_1}{2} Q_{t}^2 - \frac{d}{2} u_{t}^2   + \beta J_{t+1} (\hat \tau_{t+1}, \hat G_{t+1}) \\
     & \geq &  A_0 Q_{t} - \frac{A_1}{2} Q_{t}^2 - \frac{d}{2} u_{t}^2 +  \beta J_{t+1} ( \tau_{t+1}, G_{t+1})
    :label: ES_34
 
-for all tax rates :math:`\tau_{t+1} \in {\mathbf R}` available to the government. Here :math:`\hat G_{t+1} = \frac{G_t - \hat \tau_{t+1} Q_{t+1}}{\beta}`. 
+for all tax rates :math:`\tau_{t+1} \in {\mathbf R}` available to the government. 
 
-Inequality expresses that continuation values adjust to deviations in ways that discourage the government from deviating from the prescribed :math:`\hat \tau_{t+1}`.
+Here :math:`\hat G_{t+1} = \frac{G_t - \hat \tau_{t+1} Q_{t+1}}{\beta}`. 
 
-Inequality :eq:`ES_34` indicates that *two* continuation values :math:`J_{t+1}` contribute to sustaining time :math:`t` promised value :math:`J_t`; :math:`J_{t+1} (\hat \tau_{t+1}, \hat G_{t+1})` is the continuation value when the government chooses to confirm the private sector's expectation, formed according to the decision rule :eq:`ES_30`; [10]_ :math:`J_{t+1}(\tau_{t+1}, G_{t+1})` tells the continuation consequences should the government disappoint the private sector's expectations. The internal structure of the plan deters deviations from it. That :eq:`ES_34` maps *two* continuation values :math:`J_{t+1}(\tau_{t+1},G_{t+1})` and :math:`J_{t+1}(\hat \tau_{t+1},\hat G_{t+1})` into one promised value :math:`J_t` reflects how a credible plan arranges a system of private sector expectations that induces the government to choose to confirm them. :cite:`Chang1998` builds on how inequality :eq:`ES_34` maps two continuation values into one.
+    * Inequality expresses that continuation values adjust to deviations in ways that discourage the government from deviating from the prescribed :math:`\hat \tau_{t+1}`.
 
-**Remark** Let :math:`{\sf J}` be the set of values associated with credible plans. Every value :math:`J \in {\sf J}` can be attained by a credible plan that has a recursive representation of form form :eq:`ES_30`, :eq:`ES_31`, :eq:`ES_32`.  The set of values can be computed as the largest fixed point of an operator that maps sets of candidate values into sets of values. Given a value within this set, it is possible to construct a government strategy of  the  recursive form :eq:`ES_30`, :eq:`ES_31`, :eq:`ES_32` that attains that value. In many cases, there is a of values and associated credible plans. In those cases where the Ramsey outcome is credible, a multiplicity of credible plans be a key part of the story because, as we have seen earlier, a continuation of a Ramsey plan is not a Ramsey plan. For it to be credible, a Ramsey outcome must be supported by a worse outcome associated with another plan, the prospect of reversion to which sustains the Ramsey outcome.
+    * Inequality :eq:`ES_34` indicates that *two* continuation values :math:`J_{t+1}` contribute to sustaining time :math:`t` promised value :math:`J_t`; :math:`J_{t+1} (\hat \tau_{t+1}, \hat G_{t+1})` is the continuation value when the government chooses to confirm the private sector's expectation, formed according to the decision rule :eq:`ES_30`; [10]_ :math:`J_{t+1}(\tau_{t+1}, G_{t+1})` tells the continuation consequences should the government disappoint the private sector's expectations. 
+
+The internal structure of a credible  plan deters deviations from it.
+
+That :eq:`ES_34` maps *two* continuation values :math:`J_{t+1}(\tau_{t+1},G_{t+1})` and :math:`J_{t+1}(\hat \tau_{t+1},\hat G_{t+1})` into one promised value :math:`J_t` reflects how a credible plan arranges a system of private sector expectations that induces the government to choose to confirm them. 
+
+:cite:`Chang1998` builds on how inequality :eq:`ES_34` maps two continuation values into one.
+
+**Remark** Let :math:`{\sf J}` be the set of values associated with credible plans. 
+
+Every value :math:`J \in {\sf J}` can be attained by a credible plan that has a recursive representation of form form :eq:`ES_30`, :eq:`ES_31`, :eq:`ES_32`. 
+
+The set of values can be computed as the largest fixed point of an operator that maps sets of candidate values into sets of values. 
+
+Given a value within this set, it is possible to construct a government strategy of  the  recursive form :eq:`ES_30`, :eq:`ES_31`, :eq:`ES_32` that attains that value.
+
+In many cases, there is a of values and associated credible plans. 
+
+In those cases where the Ramsey outcome is credible, a multiplicity of credible plans be a key part of the story because, as we have seen earlier, a continuation of a Ramsey plan is not a Ramsey plan.
+
+For it to be credible, a Ramsey outcome must be supported by a worse outcome associated with another plan, the prospect of reversion to which sustains the Ramsey outcome.
 
 Concluding remarks
 ==================
 
-The term 'optimal policy', which pervades an important applied monetary economics literature, means different things under different timing protocols. Under the 'static' Ramsey timing protocol (i.e., choose a sequence once-and-for-all), we obtain a unique plan. Here the phrase 'optimal policy' seems to fit well, since the Ramsey planner optimally reaps early benefits from influencing the private sector's beliefs about the government's later actions. But if we adopt the sequential timing protocol associated with credible public policies, 'optimal policy' is a more ambiguous description. There is a multiplicity of credible plans. True, the theory explains how it is optimal for the government to confirm the private sector's expectations about its actions along a credible plan; but some credible plans have very bad outcomes. And these bad outcomes are central to the theory because it is the presence of bad credible plans that makes possible better ones by sustaining the low continuation values that appear in the second line of incentive constraint :eq:`ES_34`.
+The term 'optimal policy', which pervades an important applied monetary economics literature, means different things under different timing protocols. 
 
-Recently, many have taken for granted that 'optimal policy' means 'follow the Ramsey plan'. [11]_ In pursuit of more attractive ways to describe a Ramsey plan when policy making is in practice done sequentially, some writers have repackaged a Ramsey plan in the following way. Take a Ramsey *outcome* – a sequence of endogenous variables under a Ramsey plan – and reinterpret it (or perhaps only a subset of its variables) as a *target path* of relationships among outcome variables to be assigned to a sequence of policy makers. [12]_ If appropriate (infinite dimensional) invertibility conditions are satisfied, it can happen that following the Ramsey plan is the *only* way to hit the target path. [13]_ The spirit of this work is to say, “in a democracy we are obliged to live with the sequential timing protocol, so let's constrain policy makers' objectives in ways that will force them to follow a Ramsey plan in spite of their benevolence”. [14]_ By this slight of hand, we acquire a theory of an optimal outcome target path.
+Under the 'static' Ramsey timing protocol (i.e., choose a sequence once-and-for-all), we obtain a unique plan. 
 
-This 'invertibility' argument leaves open two important loose ends: (1) implementation, and (2) time consistency. As for (1), repackaging a Ramsey plan (or the tail of a Ramsey plan) as a target outcome sequence does not confront the delicate issue of *how* that target path is to be implemented. [15]_ As for (2), it is an interesting question whether the 'invertibility' logic can repackage and conceal a Ramsey plan well enough to make policy makers forget or ignore the benevolent intentions that give rise to the time inconsistency of a Ramsey plan in the first place. To attain such an optimal output path, policy makers must forget their benevolent intentions because there will inevitably occur temptations to deviate from that target path, and the implied relationship among variables like inflation, output, and interest rates along it. The continuation of such an optimal target path is not an optimal target path.
+Here the phrase 'optimal policy' seems to fit well, since the Ramsey planner optimally reaps early benefits from influencing the private sector's beliefs about the government's later actions.
+
+When we adopt the sequential timing protocol associated with credible public policies, 'optimal policy' is a more ambiguous description. 
+
+There is a multiplicity of credible plans.
+
+True, the theory explains how it is optimal for the government to confirm the private sector's expectations about its actions along a credible plan;
+
+but some credible plans have very bad outcomes. 
+
+And these bad outcomes are central to the theory because it is the presence of bad credible plans that makes possible better ones by sustaining the low continuation values that appear in the second line of incentive constraint :eq:`ES_34`.
+
+Recently, many have taken for granted that 'optimal policy' means 'follow the Ramsey plan'. [11]_ 
+
+In pursuit of more attractive ways to describe a Ramsey plan when policy making is in practice done sequentially, some writers have repackaged a Ramsey plan in the following way.
+
+    *  Take a Ramsey *outcome* – a sequence of endogenous variables under a Ramsey plan – and reinterpret it (or perhaps only a subset of its variables) as a *target path* of relationships among outcome variables to be assigned to a sequence of policy makers. [12]_ 
+    
+    *  If appropriate (infinite dimensional) invertibility conditions are satisfied, it can happen that following the Ramsey plan is the *only* way to hit the target path. [13]_ 
+    
+    *  The spirit of this work is to say, “in a democracy we are obliged to live with the sequential timing protocol, so let's constrain policy makers' objectives in ways that will force them to follow a Ramsey plan in spite of their benevolence”. [14]_ 
+    
+    *  By this slight of hand, we acquire a theory of an *optimal outcome target path*
+
+This 'invertibility' argument leaves open two important loose ends: 
+
+    #. implementation, and 
+    
+    #. time consistency.
+    
+As for (1), repackaging a Ramsey plan (or the tail of a Ramsey plan) as a target outcome sequence does not confront the delicate issue of *how* that target path is to be implemented. [15]_
+
+As for (2), it is an interesting question whether the 'invertibility' logic can repackage and conceal a Ramsey plan well enough to make policy makers forget or ignore the benevolent intentions that give rise to the time inconsistency of a Ramsey plan in the first place. 
+
+To attain such an optimal output path, policy makers must forget their benevolent intentions because there will inevitably occur temptations to deviate from that target path, and the implied relationship among variables like inflation, output, and interest rates along it.
+
+**Remark** The continuation of such an optimal target path is not an optimal target path.
 
 .. [1]
    We could also call a competitive equilibrium a rational expectations
