@@ -1,0 +1,17 @@
+
+Python code
+------------
+
+The program is relatively simple and self-explanatory:
+
+.. literalinclude:: tom/github/python_programs/EvansSargent/main.py
+   :lines: 17-
+
+   
+   Python code
+------------
+
+The program is relatively simple and self-explanatory:
+
+.. literalinclude:: ~/github/python_programs/EvansSargent/main.py
+   :lines: 17-

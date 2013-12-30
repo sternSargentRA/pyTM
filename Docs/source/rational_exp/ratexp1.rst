@@ -7,7 +7,7 @@ Rational Expectations Equilibrium
 
 .. epigraph::
 
-    "If you're so smart, why aren't you rich?``
+    "If you're so smart, why aren't you rich?"
 
 
 Overview

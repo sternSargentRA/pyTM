@@ -436,6 +436,18 @@ that obeys and the following updating equations for :math:`t\geq 0`:
 
 We have conditioned the functions :math:`\upsilon`, :math:`\tau`, and :math:`u` by :math:`\mu` to emphasize how the dependence of :math:`F` on :math:`G_0` appears indirectly through the Lagrange multiplier :math:`\mu`. We'll discuss how to compute :math:`\mu` in section :ref:`sec:computing_mu`, but first want to consider the following numerical example.
 
+
+Python program
+---------------
+
+The program is relatively simple and self-explanatory:
+
+.. literalinclude:: ../../../python_programs/EvansSargent/main.py
+   :lines: 1-
+   
+   
+# ../ sends back ONE relative to CURRENT directory where the *.rst file iss
+
 Example
 -------
 
@@ -562,7 +574,8 @@ The answer is no because along a Ramsey plan, for :math:`t \geq 1`, in general i
   w\bigl(Q_t, \upsilon(Q_t|\check{\mu})|\check{\mu}\bigr) > w(Q_t, u_t|\mu_0)
   :label: ES_28
 
-which expresses a continuation Ramsey planner's incentive to deviate from a time :math:`0` Ramsey plan by resetting :math:`u_t` according to and adjusting the Lagrange multiplier on the continuation appropriately to account for tax revenues already collected. [7]_ 
+Inequality :eq:`ES_28` expresses a continuation Ramsey planner's incentive to deviate from a time :math:`0` Ramsey plan by resetting :math:`u_t` according to XXXXXX
+and adjusting the Lagrange multiplier on the continuation appropriately to account for tax revenues already collected. [7]_ 
 
 Inequality expresses the time-inconsistency of a Ramsey plan.
 
