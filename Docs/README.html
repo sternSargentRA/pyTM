@@ -1,0 +1,784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    /*DOCUMENTATION ************************************************
+    * This document was generated with Pandoc, using a minimally   *
+    * modified version of Brett Terpstra's "GitHub" stylesheet,    *
+    * as included in Marked.app (http://markedapp.com), copyright  *
+    * 2011 Brett Terpstra and used, gratefully, with permission.   *
+    * Please leave this notice intact when building or distributing*
+    * your HTML. Brett's kindness in allowing his work to be reused*
+    * and redistributed is deeply appreciated.    (DPS, 2012-12-06)*
+    ***************************************************************/
+-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+html, body {
+    color: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 13.34px helvetica,arial,freesans,clean,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+    padding: 3px;
+    background: #fff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+p {
+    margin: 1em 0;
+}
+
+a {
+    color: #4183c4;
+    text-decoration: none;
+}
+
+em em {
+    font-style: normal;
+}
+
+#wrapper {
+    background-color: #fff;
+    border: 3px solid #eee !important;
+    padding: 0 30px;
+    /*margin: 15px;*/
+    max-width: 700px;
+    margin: 15px auto;
+}
+
+#wrapper {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#wrapper>*:first-child {
+    margin-top: 0!important;
+}
+
+#wrapper>*:last-child {
+    margin-bottom: 0!important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 15px 0;
+    padding-bottom: 2px;
+    font-size: 24px;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    margin: 20px 0 10px 0;
+    font-size: 18px;
+}
+
+h3 {
+    margin: 20px 0 10px 0;
+    padding-bottom: 2px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+h4 {
+    font-size: 14px;
+    line-height: 26px;
+    padding: 18px 0 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 13px;
+    line-height: 26px;
+    padding: 14px 0 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h6 {
+    color: #666;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 18px 0 0;
+    font-weight: normal;
+    font-variant: italic;
+}
+
+hr {
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;border: 0 none;
+    color: #ccc;
+    height: 4px;
+    margin: 20px 0;
+    padding: 0;
+}
+
+#wrapper>h2:first-child,#wrapper>h1:first-child,#wrapper>h1:first-child+h2 {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper>h3:first-child,#wrapper>h4:first-child,#wrapper>h5:first-child,#wrapper>h6:first-child {
+    margin: 0;
+    padding: 0;
+}
+
+h4+p,h5+p,h6+p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,ol {
+    margin: 15px 0 15px 25px;
+}
+
+ul li,ol li {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+ul li>*:last-child,ol li>*:last-child {
+    margin-bottom: 0;
+}
+
+ul li>*:first-child,ol li>*:first-child {
+    margin-top: 0;
+}
+
+#wrapper>ul,#wrapper>ol {
+    margin-top: 21px;
+    margin-left: 36px;
+}
+
+dl {
+    margin: 0;
+    padding: 10px 1em 10px;
+}
+
+dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+    padding: 5px 0 5px;
+}
+
+dl dd {
+    font-size: 13px;
+    margin: 0;
+    padding: 0px 1em 0;
+}
+
+blockquote {
+    margin: 14px 0;
+    border-left: 4px solid #ddd;
+    padding-left: 11px;
+    color: #555;
+}
+
+tbody {
+    display: table-row-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+table {
+    margin-bottom: 2em;
+    padding: 0;
+    font-size: 14px;
+    border-collapse: collapse;
+
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .35);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .35);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .35);
+    width: 70%;
+    margin: 0 auto 2em auto;
+}
+
+table th,table td {
+    padding: 10px 10px 9px;
+    line-height: 18px;
+    text-align: left;
+}
+
+table th {
+    padding-top: 9px;
+    font-family: LeagueGothic;
+    font-size: 18px;
+    font-weight: normal !important;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+table td {
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-family: fjord,georgia,serif;
+    font-size: 14px !important;
+}
+
+table tbody th {
+    border-top: 1px solid #ddd;
+    vertical-align: top;
+}
+
+table {
+    border: 1px solid #ddd;
+    border-collapse: separate;
+    *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+table th + th,table td + td,table th + td {
+    border-left: 1px solid #ddd;
+}
+
+table thead tr:first-child th:first-child,table tbody tr:first-child td:first-child {
+    -webkit-border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+    border-radius: 4px 0 0 0;
+}
+
+table thead tr:first-child th:last-child,table tbody tr:first-child td:last-child {
+    -webkit-border-radius: 0 4px 0 0;
+    -moz-border-radius: 0 4px 0 0;
+    border-radius: 0 4px 0 0;
+}
+
+table tbody tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 4px;
+    -moz-border-radius: 0 0 0 4px;
+    border-radius: 0 0 0 4px;
+}
+
+table tbody tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 4px 0;
+    -moz-border-radius: 0 0 4px 0;
+    border-radius: 0 0 4px 0;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(0,0,0,0.03);
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+p code, p tt {
+    margin: 0 2px;
+    padding: 2px 5px;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 12px
+}
+
+pre>code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+    font-size: 13px
+}
+
+#wrapper>pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+
+#wrapper>pre,#wrapper>div.highlight {
+    margin: 10px 0 0;
+}
+
+pre code,pre tt {
+    background-color: transparent;
+    border: none;
+}
+
+#wrapper {
+    background-color: #fff;
+    border: 1px solid #CACACA;
+    padding: 30px;
+}
+
+pre.poetry {
+    font-family: Georgia, Garamond, serif !important;
+    font-style: italic;
+    font-size: 110% !important;
+    line-height: 1.6em;
+    display: block;
+    margin-left: 1em;
+}
+
+pre.poetry code {
+    font-family: Georgia, Garamond, serif !important;
+    word-break: break-all;
+    word-break: break-word; /* Non standard for webkit */
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    white-space: pre-wrap;
+}
+
+sup,sub,a.footnote {
+    font-size: 1.4ex;
+    height: 0;
+    line-height: 1;
+    vertical-align: super;
+    position: relative;
+}
+
+sub {
+    vertical-align: sub;
+    top: -1px;
+}
+
+@media print {
+    body {
+        background: #fff;
+    }
+
+    img, pre, blockquote, table, figure {
+        page-break-inside: avoid
+    }
+
+    #wrapper {
+        background: #fff;
+        border: none;
+    }
+
+    code {
+        background-color: #fff;
+        color: #444!important;
+        padding: 0 .2em;
+        border: 1px solid #DEDEDE;
+    }
+
+    pre code {
+        background-color: #fff!important;
+        overflow: visible;
+    }
+
+    pre {
+        background: #fff;
+    }
+}
+
+@media screen {
+
+    ::selection {
+        background: rgba(157, 193, 200,.5)
+    }
+
+    h1::selection {
+        background-color: rgba(45, 156, 208, .3)
+    }
+
+    h2::selection {
+        background-color: rgba(90, 182, 224, .3)
+    }
+
+    h3::selection,
+    h4::selection,
+    h5::selection,
+    h6::selection,li::selection,ol::selection {
+        background-color: rgba(133, 201, 232, .3)
+    }
+
+    code::selection {
+        background-color: rgba(0,0,0,.7);
+        color: #eee
+    }
+
+    code span::selection {
+        background-color: rgba(0,0,0,.7) !important;
+        color: #eee !important
+    }
+
+    a::selection {
+        background-color: rgba(255, 230, 102,.2)
+    }
+
+    td::selection,th::selection,caption::selection {
+        background-color: rgba(180, 237, 95, .5);
+    }
+}
+
+em em {
+    font-style: normal;
+}
+
+#criticnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 1px 1px 1px #777;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-size: 12px;
+}
+
+#criticnav ul {
+    list-style-type: none;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#criticnav ul li {
+    display: block;
+    width: 33%;
+    text-align: center;
+    padding: 10px 0 5px!important;
+    margin: 0 !important;
+    line-height: 1em;
+    float: left;
+    border-left: 1px solid #ccc;
+    text-transform: uppercase;
+}
+
+#criticnav ul li:before {
+    content: none !important;
+}
+
+#criticnav ul li#edited-button {
+    border-right: 1px solid #ccc;
+}
+
+#criticnav ul li.active {
+    background-image: -webkit-linear-gradient(top, white, #cccccc)
+}
+
+.original del {
+    
+        text-decoration: none;
+}   
+
+.original ins,
+.original span.popover,
+.original ins.break {
+    display: none;
+}
+
+.edited ins {
+    
+        text-decoration: none;
+}   
+
+.edited del,
+.edited span.popover,
+.edited ins.break {
+    display: none;
+}
+
+.original mark,
+.edited mark {
+    background-color: transparent;
+}
+
+.markup mark {
+    background-color: #fffd38;
+    text-decoration: none;
+}
+
+.markup del {
+    background-color: #f6a9a9;
+    text-decoration: none;
+}
+
+.markup ins {
+    background-color: #a9f6a9;
+    text-decoration: none;
+}
+
+.markup ins.break {
+    display: block;
+    line-height: 2px;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.markup ins.break span {
+    line-height: 1.5em;
+}
+
+.markup .popover {
+    background-color: #4444ff;
+    color: #fff;
+}
+
+.markup .popover .critic.comment {
+    display: none;
+}
+
+.markup .popover:hover span.critic.comment {
+    display: block;
+    position: absolute;
+    width: 200px;
+    left: 30%;
+    font-size: 0.8em; 
+    color: #ccc;
+    background-color: #333;
+    z-index: 10;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+</style>
+
+    <style type="text/css">
+    table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+      margin: 0; padding: 0; vertical-align: baseline; border: none; }
+    table.sourceCode { width: 100%; line-height: 100%; }
+    td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+    td.sourceCode { padding-left: 5px; }
+    code > span.kw { color: #007020; font-weight: bold; }
+    code > span.dt { color: #902000; }
+    code > span.dv { color: #40a070; }
+    code > span.bn { color: #40a070; }
+    code > span.fl { color: #40a070; }
+    code > span.ch { color: #4070a0; }
+    code > span.st { color: #4070a0; }
+    code > span.co { color: #60a0b0; font-style: italic; }
+    code > span.ot { color: #007020; }
+    code > span.al { color: #ff0000; font-weight: bold; }
+    code > span.fu { color: #06287e; }
+    code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
+
+
+
+
+
+</head>
+
+<body class="normal">
+    <div id="wrapper">
+
+<h1 id="converting-.tex-to-.rst"><a href="#converting-.tex-to-.rst">Converting <code>.tex</code> to <code>.rst</code></a></h1>
+<p>To convert a TeX or LaTeX source into a restructured test file (<code>rst</code>) I use a combination of the tool <code>pandoc</code>, some regular expression magic in my text editor, and some hand editing.</p>
+<h2 id="using-pandoc"><a href="#using-pandoc">Using pandoc</a></h2>
+<ol style="list-style-type: decimal">
+<li>Make sure <code>pandoc</code> is installed. On OSX you can do <code>brew install pandoc</code>. On Ubuntu you can do <code>sudo apt-get install pandoc</code>. To verify that it is properly installed open up a new terminal window or tab and enter <code>which pandoc</code>. If something ending in <code>/pandoc</code> appears, you are good to go.</li>
+<li>Prepare the <code>.tex</code> source. Really this is just a matter of extracting the portion of the source file that you would like to translate and moving it to its own file in the directory where you want the <code>.rst</code> file to end up.</li>
+<li><code>cd</code> to the directory where you put your new <code>.tex</code> file and run pandoc. The main command syntax is <code>pandoc -s source_file_name.tex -o output_file_name.rst</code>. The <code>-s</code> flag tells pandoc that the next thing you enter the source file name and the <code>-o</code> flag allows you to specify the output file name. (<em>Note</em> if you didn’t give the new source file a <code>.tex</code> extension, pandoc will probably not work properly).</li>
+</ol>
+<p>After those steps, most of your work should be done for you.</p>
+<h2 id="cleaning-up-the-translated-document"><a href="#cleaning-up-the-translated-document">Cleaning up the Translated Document</a></h2>
+<p>The output of pandoc is pretty good, but definitely not perfect. Here is a list of things that it <strong>does not</strong> do very well (I will list them here and then show shortcuts for how to fix them after the list):</p>
+<ul>
+<li>Handle equation labels.</li>
+</ul>
+<h3 id="fixing-equation-labels-and-references"><a href="#fixing-equation-labels-and-references">Fixing Equation Labels and References</a></h3>
+<h4 id="equation-labels"><a href="#equation-labels">Equation Labels</a></h4>
+<p>I have to do quite a bit of clean up here. Let’s work with an example. Suppose you had the following LaTeX source:</p>
+<pre class="sourceCode latex"><code class="sourceCode latex">\begin{equation} \label{eq:HHObj}
+  \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)
+\end{equation}</code></pre>
+<p>The correct corresponding restructured text should be:</p>
+<pre class="rst"><code>.. math::
+    \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)
+    :label: HHObj</code></pre>
+<p>However, pandoc gives this:</p>
+<pre class="rst"><code>.. math::
+
+   \label{eq:HHObj}
+     \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)</code></pre>
+<p>The first thing we need to do is change <code>\label{eq:HHObj}</code> to <code>:label: HHObj</code>. To do this I use the following regular expression to find and replace. I’ll give instructions for how to do this in Sublime Text. I give the keyboard shortcuts for Ubuntu and then the ones for OSX are in parenthesis:</p>
+<ol style="list-style-type: decimal">
+<li>Open the find and replace dialog: <code>ctrl+h</code> (<code>super+alt+f</code>)</li>
+<li>Make sure the box with a <code>*</code> is not grayed out. It is the one on the top left of this new box. This enables regular expression searching</li>
+<li>Enter <code>\\label\{(.+?)\}</code> into the “Find What” box. I’ll break down what each piece does:
+<ul>
+<li><code>\\label</code> searches for the <code>\label</code> LaTeX command. We need two <code>\</code>’s because `\<code>is a special symbol in regular expressions (regex) so we need to &quot;escape&quot; it (tell the regular expression parser to treat it as a single</code>`` character)</li>
+<li><code>\{</code> searches for the opening curly brace. <code>{</code> is also a special regex symbol, so we need to escape it also</li>
+<li><code>(.+?)</code> This uses 4 special regex things. The <code>.</code> matches anything except a new line character. The <code>+</code> says we want 1 or more of what preceeded it, so in this case we want 1 or more of any character on the current line. The <code>?</code> says that the “more” from the <code>+</code> should be “non-greedy” – which means it should match as few characters as possible (if we didn’t do this and there happened to be another <code>}</code> on the same line, it would match everything up to that <code>}</code>. Putting the <code>?</code> here ensures we don’t leave the <code>\label{}</code> command) . Finally, this is enclosed in <code>()</code> because we want to “capture” what is inside the parenthesis – in this case the actual name of our label.</li>
+<li><code>\}</code> This just escapes the closing curly brace from the <code>\label{}</code> command.</li>
+</ul></li>
+<li>Enter <code>:label: \1</code> in the “Replace with” box. This is another regular expression. Everything is very normal and exactly what you would think up to the <code>\1</code>. This is special syntax for using the first (hence the <code>1</code>) item we captured in our find regex (remember we “capture” things using <code>()</code>). We captured the actual label name so it goes here.</li>
+<li>Press the “Replace All” button or use the keyboard shortcut <code>ctrl+alt+enter</code> (<code>ctrl+alt+enter</code>). This will scan the entire document and convert every instance of <code>\label{name}</code> to <code>:label: name</code>.</li>
+</ol>
+<p>Now that we have the correct rst command, we need to reorganize things. To continue with our example we should have the following:</p>
+<pre class="rst"><code>.. math::
+
+   :label: eq:HHObj
+     \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)</code></pre>
+<p>We need do three things: (1) move actual body of the equation indented one time just under the <code>.. math:</code> directive, move the <code>:label:</code> just below that, and (3) make sure each of those lines is indented one (and only one) time under the <code>.. math:</code> directive. I will explain how I do each step using sublime keyboard shortcuts:</p>
+<ol style="list-style-type: decimal">
+<li>Put the cursor on the line with the equation and press <code>shift+ctrl+up</code> (<code>super+ctrl+up</code>) to have it swap places with the <code>:label:</code>. I then press it one more time to put this just below the directive. It should now look like this:</li>
+</ol>
+<pre class="rst"><code>.. math::
+     \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)
+
+   :label: eq:HHObj</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Do the same trick to get the label just beneath the equation content. It should now look like this:</li>
+</ol>
+<pre class="rst"><code>.. math::
+     \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)
+   :label: eq:HHObj</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>I then press <code>shift+up</code> (<code>shift+up</code>) to select a portion of the line with the <code>:label:</code> and a part of the equation’s line. Then use <code>ctrl+[</code> (<code>super+[</code>) however many times is necessary for both of those lines to have now whitespace in front of them. Then hit <code>ctrl+]</code> (<code>super+]</code>) one time to indent them once under the directive. The finished product should look like this:</li>
+</ol>
+<pre class="rst"><code>.. math::
+    \max \sum_{t = 0}^{\infty} \beta^t u \left( c_t \right)
+    :label: eq:HHObj</code></pre>
+<h4 id="equation-references"><a href="#equation-references">Equation References</a></h4>
+<p>For some reason, pandoc completely ignores calls to <code>\eqref{}</code> and doesn’t properly handle <code>\ref{}</code> for equations. However, this is pretty simple to fix. Consider the following LaTeX source:</p>
+<pre class="tex"><code>The household&#39;s problem is to maximize \ref{eq:HHObj} subject to \eqref{eq:HHBC},
+where $\beta \in (0, 1)$ is a discount factor.</code></pre>
+<p>Pandoc would give rst that looks like</p>
+<pre class="rst"><code>The household’s problem is to maximize [eq:HHObj] subject to ,
+where :math:`\beta \in (0, 1)` is a discount factor.</code></pre>
+<p>where the correct rst is</p>
+<pre class="rst"><code>The household&#39;s problem is to maximize :eq:`eq:HHObj` subject to :eq:`eq:HHBC`,
+where :math:`\beta \in (0, 1)` is a discount factor.</code></pre>
+<p>Notice that it treated the call <code>\ref{eq:HHObj}</code> as a normal cross reference (like the ones we use to reference another section or subsection) and completely ignored the use of <code>\eqref</code>. The fastest way I have found to fix this is to just copy and paste the original LaTeX source and then use a regular expression to convert it to the correct rst command.</p>
+<p>So I would copy and paste the part of the code that calls <code>ref</code> and <code>eqref</code> so that my rst looks like:</p>
+<pre class="rst"><code>The household’s problem is to maximize \ref{eq:HHObj} subject to \eqref{eq:HHBC},
+where :math:`\beta \in (0, 1)` is a discount factor.</code></pre>
+<p>I then use the following regular expression in the “Find What” box: <code>\\(eq)?ref\{(.+?)\}</code>. I’ll break it down piece by piece again:</p>
+<ul>
+<li><code>\\</code>: Again we escape the <code>\</code> so the regex parser treats it like a real backslash.</li>
+<li><code>(eq)?ref</code>: We are using the capture syntax on the characters <code>eq</code>, but not so we can keep track of it for later. In this case the <code>?</code> after the closing parenthesis says we would like to find 0 or 1 of the group proceeding the <code>?</code>, which in this case needed to be two characters, not just one. Because we needed to match cases of <code>ref</code> and <code>eqref</code> we need to match when we find 0 or 1 of the two letter sequence <code>eq</code> followed by the sequence <code>ref</code>.</li>
+<li><code>\{(.+?)\}</code> This is the same sequence we met above. It escapes the opening <code>{</code> [<code>\{</code>], does a non-greedy capturing match on 1 or more of anything [<code>(.+?)</code>], and escapes the closing <code>}</code> [<code>\}</code>]</li>
+</ul>
+<p>I then enter the following regular expression into the “Replace With” box: <code>:eq:`\2`</code> This is similar to the replace with box from above, but we need to add the backtick characters and use capture number 2 from the find box because we don’t want to use the condition match of the sequence <code>eq</code> we would have gotten from <code>(eq)?</code>. We then use Replace All <code>ctrl+alt+enter</code> (<code>ctrl+alt+enter</code>) and get the correct rst:</p>
+<pre class="rst"><code>The household’s problem is to maximize :eq:`eq:HHObj` subject to :eq:`eq:HHBC`,
+where :math:`\beta \in (0, 1)` is a discount factor.</code></pre>
+<h3 id="many-short-lines---few-long-lines"><a href="#many-short-lines---few-long-lines">Many Short Lines -&gt; Few Long Lines</a></h3>
+<p>This is more personal preference, but pandoc will write out lines that are no longer than 80 characters. This means longer paragraphs are broken into many lines of rst source, even if the LaTeX source had the whole paragraph on a single line. This is a pretty quick fix for sublime. What I do is open the find dialog using <code>ctrl+f</code> (<code>super+f</code>) – the find and replace dialog we have been using by <code>ctrl+h</code> (<code>super+alt+f</code>) would work too – and enter the following regex into the Find box: <code>.+\n^[\w:]</code>. I’ll break it down again:</p>
+<ul>
+<li><code>.+</code>: find one or more of anything… Not very useful</li>
+<li><code>\n</code>: find a new-line character</li>
+<li><code>^</code>:anchors the search to the beginning of a line. This is important because it will only allow us to match if the expression following the <code>^</code> is the very first character on a line. This will ensure we don’t mess up any indented code in some kind of directive.</li>
+<li><code>[\w:]</code>: The <code>\w</code> says that we should match any character that is commonly used in words (letters, numbers, and the underscore) <strong>or</strong> the <code>:</code> character.</li>
+</ul>
+<p>The net effect of this regex is to match all sets of more than one line where the second line begins with a word or a colon. The colon is important because it will allow us to match even if we are in the middle of an inline directive like <code>:math:</code>. This is probably not a bullet proof way to find all paragraphs that were split across lines, but I haven’t run into any errors using it.</p>
+<p>After entering the regex I hit find all <code>alt+enter</code> (<code>alt+enter</code>), which will insert an active cursor everywhere where the regular expression matched. I then move to the beginning of each line using <code>home</code> (<code>super+left</code>) and then hit backspace once followed by the space bar. This will take the paragraph that was split across many lines and put them on a single line.</p>
+<h3 id="citations"><a href="#citations">Citations</a></h3>
+<p>Sphinx (and therefore rst) does not properly handle citations. There are a few things we need to do to get this tor work properly. Consider the LaTeX source</p>
+<pre class="tex"><code>This is the approach taken in \citet{GreatPaper:2016}</code></pre>
+<p>pandoc would convert this to</p>
+<pre class="rst"><code>This is the approach taken in</code></pre>
+<p>There is a sphinx extension that allows you to use the a LaTeX <code>.bib</code> file to handle citations. You will need to install this into your python distribution using <code>conda install sphinxcontrib-bibtex</code> (or if you aren’t using anaconda <code>pip install sphinxcontrib-bibtex</code>). This will download and install the bibtex sphinx extension for you. <strong>NOTE</strong>: you only need to do this once. After this is installed you can then use <code>:cite:`ref`</code>, where <code>ref</code> is what would go into a <code>\cite{}</code> command in LaTeX.</p>
+<p>To fix the issue with the missing citation I would simply copy and paste the LaTeX source that calls a member of the <code>\cite</code> family and call the following regex find and replace. The find half is <code>\\cite[tp]?\{(.+?)\}?</code> and the replace half is <code>:cite:`\1`</code>. The find regex searches for <code>\cite</code>, <code>\citep</code>, or <code>\citet</code>, then captures the actual reference to be inserted by our replace regex. If you use other <code>cite</code> commands in LaTeX you can add them to the find regex.</p>
+<p>To actually include the bibliography on the page then scroll to the bottom of the .rst file and paste the following:</p>
+<pre class="rst"><code>.. rubric:: Bibliography
+
+.. bibliography:: file_name.bib
+  :enumtype: upperroman</code></pre>
+<p>where <code>file_name.bib</code> is the name of the <code>.bib</code> file that is in the same directory as the <code>.rst</code> file calling it. This will insert a bold heading called <code>Bibliography</code> and print out the bib entries that were cited in the body of the rst file.</p>
+<h3 id="section-labels"><a href="#section-labels">Section labels</a></h3>
+<p>Pandoc doesn’t use the Sphinx system for referencing sections. This is somewhat tedious to correct, I have mostly had to do it purely by hand. Luckily, the references to different sections of a book or paper are not extremely common, so it isn’t too bad to fix manually. Consider the LaTeX source:</p>
+<pre class="tex"><code>\section{New Section} \label{sec:new_section}
+
+This is my new section
+
+\section{Other Section} \label{sec:other_section}
+
+This is another section. It comes after \ref{sec:new_section}.</code></pre>
+<p>Pandoc translates this to:</p>
+<pre class="rst"><code>New Section
+===========
+
+[sec:new:sub:`s`\ ection]
+
+This is my new section
+
+Other Section
+=============
+
+[sec:other:sub:`s`\ ection]
+
+This is another section. It comes after [sec:new:sub:`s`\ ection].</code></pre>
+<p>To make this work properly we need the following rst output:</p>
+<pre class="rst"><code>.. _sec:new_section:
+
+New Section
+===========
+
+This is my new section
+
+.. _sec:other_section:
+
+Other Section
+=============
+
+This is another section. It comes after :ref:`sec:new_section`.</code></pre>
+<p>I have just had to correct these by hand. Notice two important things. First, when defining the section label we need to start the line with <code>.. _name:</code>. The underscore before the name and the colon after the name are important. Second, no other text can appear in lines between <code>.. _name:</code> and the section heading.</p>
+<h3 id="figures"><a href="#figures">Figures</a></h3>
+<p>TODO: write this up better.</p>
+<p>We have to do most of the work by hand with figures. If the pages to be generated are in html format, it is optimal to use figures stored in <code>png</code> format.</p>
+<p>Consider the following LaTeX source:</p>
+<pre class="tex"><code>\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{ES_plot_1.eps}
+\end{center}
+\caption{\small{Ramsey plan and Ramsey outcome.  From upper left to right, first panel: $Q_t$; second panel, $\tau_t$,
+third panel $u_t = Q_{t+1} - Q_t$.}}%
+\label{fig:ES_plot_1}%
+\end{figure}</code></pre>
+<p>To get something similar we would use the following rst:</p>
+<pre class="rst"><code>.. _fig:ES_plot_1:
+
+.. figure:: images/ES_plot_1.png
+  :align: center
+  :figclass: align-center
+
+  Figure 1
+
+  Ramsey plan and Ramsey outcome. From upper left to right, first panel: :math:`Q_t`; second panel, :math:`\tau_t`, third panel :math:`u_t = Q_{t+1} - Q_t`.</code></pre>
+<h3 id="other-common-issues"><a href="#other-common-issues">Other Common Issues</a></h3>
+<p>Here is a list of other things that pandoc does not do properly:</p>
+<ul>
+<li>Handle custom commands. If I had the line <code>\newcommand{\bmat}{\begin{matrix}}</code> in the LaTeX source and then used it using <code>$\bmat$</code>, pandoc would simply insert <code>:math:`\bmat`</code> without ever defining what <code>\bmat</code> is. I just over come this using the regex tools we have been building up. In this case the Find What box would be <code>\\bmat</code> and the Replace With box would be <code>\\begin\{matrix\}</code></li>
+<li>If in the LaTeX source we end an environment like <code>equation</code> or <code>align</code> and then start the next line of text with a space, pandoc will put that space in the rst. This is bad because the end of an environment is usually associated with the <code>.. math:</code> directive and the space in front of the next paragraph would cause it to be included in the directive. There really isn’t anything fancy to fix this, I just move the cursor onto the line and press <code>ctrl+[</code> (<code>super+[</code>) and dedent to remove leading whitespace.</li>
+</ul>
+
+    </div>
+
+
+
+</body>
+</html>

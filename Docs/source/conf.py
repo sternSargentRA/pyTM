@@ -38,6 +38,7 @@ sys.path.extend([
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.todo',
               'numpydoc',
+              'sphinxcontrib.bibtex',
               'ipython_directive',
               'ipython_console_highlighting',
               'sphinx.ext.mathjax']
