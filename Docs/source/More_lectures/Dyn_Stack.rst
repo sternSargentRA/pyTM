@@ -218,7 +218,9 @@ We adapt a method described earlier in section XXXXXX that solves a linear quadr
    \right]
    :label: olrp3
 
-For the Stackelberg problem, it is important to partition :math:`\mu_t` conformably with our partition of :math:`y_t=\begin{bmatrix} z_t \\ x_t \end{bmatrix}`, so that :math:`\mu_t = \begin{bmatrix}  \mu_{zt} \\ \mu_{xt} \end{bmatrix}`, where :math:`\mu_{xt}` is an :math:`n_x \times 1` vector of multipliers adhering to the implementability constraints.
+For the Stackelberg problem, it is important to partition :math:`\mu_t` conformably with our partition of :math:`y_t=\begin{bmatrix} z_t \\ x_t \end{bmatrix}`, so that :math:`\mu_t = \begin{bmatrix}  \mu_{zt} \\ \mu_{xt} \end{bmatrix}`
+
+Here :math:`\mu_{xt}` is an :math:`n_x \times 1` vector of multipliers adhering to the implementability constraints.
 
 For now, we can ignore the partitioning of :math:`\mu_t`, but it will be very important when we turn our attention to the specific requirements of the Stackelberg problem in step 3.
 
@@ -259,7 +261,9 @@ We seek a "stabilizing" solution of :eq:`olrp8`, i.e., one that satisfies
 Stabilizing solution
 --------------------
 
-By the same argument used in section XXXXXX of chapter XXXXXX, a stabilizing solution satisfies :math:`\mu_0 = P y_0`, where :math:`P` solves the matrix Riccati equation :eq:`bell3`. The solution for :math:`\mu_0` replicates itself over time in the sense that
+By the same argument used in section XXXXXX of chapter XXXXXX, a stabilizing solution satisfies :math:`\mu_0 = P y_0`, where :math:`P` solves the matrix Riccati equation :eq:`bell3`.
+
+The solution for :math:`\mu_0` replicates itself over time in the sense that
 
 .. TODO: fill in section and chapter links given the placeholder XXXXXX above
 
@@ -267,7 +271,9 @@ By the same argument used in section XXXXXX of chapter XXXXXX, a stabilizing sol
 	\mu_t = P y_t .
 	:label: king4
 
-Appendix :ref:`appAblkstack` verifies that the matrix :math:`P` that satisfies the Riccati equation :eq:`bell3` is the same :math:`P` that defines the stabilizing initial conditions :math:`(y_0, P y_0)`. In Appendix XXXXXXX, we describe how to construct :math:`P` by computing generalized eigenvalues and eigenvectors.
+Appendix :ref:`appAblkstack` verifies that the matrix :math:`P` that satisfies the Riccati equation :eq:`bell3` is the same :math:`P` that defines the stabilizing initial conditions :math:`(y_0, P y_0)`. 
+
+In Appendix XXXXXXX, we describe how to construct :math:`P` by computing generalized eigenvalues and eigenvectors.
 
 .. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
@@ -277,12 +283,26 @@ Step 3: convert implementation multipliers into state variables
 Key insight
 ~~~~~~~~~~~
 
-We now confront the fact that the :math:`x_0` component of :math:`y_0` consists of variables that are not state variables, i.e., they are not inherited from the past but are to be determined at time :math:`t`. In the optimal linear regulator problem, :math:`y_0` is a state vector inherited from the past; the multiplier :math:`\mu_0` jumps at :math:`t` to satisfy :math:`\mu_0 = P y_0` and thereby stabilize the system. But in the Stackelberg problem, pertinent components of *both* :math:`y_0` *and* :math:`\mu_0` must adjust to satisfy :math:`\mu_0 = P y_0`. In particular, partition :math:`\mu_t` conformably with the partition of :math:`y_t` into :math:`\begin{bmatrix} z_t' &  x_t' \end{bmatrix}'` [#f4]_:
+We now confront the fact that the :math:`x_0` component of :math:`y_0` consists of variables that are not state variables.
+
+This means that they are not inherited from the past but are to be determined at time :math:`t`.
+In the optimal linear regulator problem, :math:`y_0` is a state vector inherited from the past;
+
+the multiplier :math:`\mu_0` jumps at :math:`t` to satisfy :math:`\mu_0 = P y_0` and thereby stabilize the system.
+
+But in the Stackelberg problem, pertinent components of *both* :math:`y_0` *and* :math:`\mu_0` must adjust to satisfy :math:`\mu_0 = P y_0`.
+
+In particular, partition :math:`\mu_t` conformably with the partition of :math:`y_t` into :math:`\begin{bmatrix} z_t' &  x_t' \end{bmatrix}'` [#f4]_:
 
 .. math::
 	\mu_t = \begin{bmatrix}  \mu_{zt} \\ \mu_{xt} \end{bmatrix}.
 
-For the Stackelberg problem, the first :math:`n_z` elements of :math:`y_t` are predetermined but the remaining components are free. And while the first :math:`n_z` elements of :math:`\mu_t` are free to jump at :math:`t`, the remaining components are not. The third step completes the solution of the Stackelberg problem by acknowledging these facts.
+For the Stackelberg problem, the first :math:`n_z` elements of :math:`y_t` are predetermined but the remaining components are free. 
+
+And while the first :math:`n_z` elements of :math:`\mu_t` are free to jump at :math:`t`, the remaining components are not. 
+
+The third step completes the solution of the Stackelberg problem by acknowledging these facts.
+
 *After* we have performed the key step of computing the matrix :math:`P` that solves the Riccati equation :eq:`bell3`, we convert the last :math:`n_x` Lagrange multipliers :math:`\mu_{xt}` into state variables by using the following procedure
 
 Write the last :math:`n_x` equations of :eq:`king4` as
@@ -291,7 +311,11 @@ Write the last :math:`n_x` equations of :eq:`king4` as
 	\mu_{xt} = P_{21} z_t + P_{22} x_t,
 	:label: king5
 
-where the partitioning of :math:`P` is conformable with that of :math:`y_t` into :math:`\begin{bmatrix} z_t &  x_t  \end{bmatrix}'`. The vector :math:`\mu_{xt}` becomes part of the state at :math:`t`, while :math:`x_t` is free to jump at :math:`t`. Therefore, we solve :eq:`king5` for :math:`x_t` in terms of :math:`(z_t, \mu_{xt})`:
+where the partitioning of :math:`P` is conformable with that of :math:`y_t` into :math:`\begin{bmatrix} z_t &  x_t  \end{bmatrix}'`.
+
+The vector :math:`\mu_{xt}` becomes part of the state at :math:`t`, while :math:`x_t` is free to jump at :math:`t`. 
+
+Therefore, we solve :eq:`king5` for :math:`x_t` in terms of :math:`(z_t, \mu_{xt})`:
 
 .. math::
 	x_t = - P_{22}^{-1} P_{21} z_t + P_{22}^{-1} \mu_{xt}.
@@ -311,7 +335,9 @@ and from
   \mu_{xt} =  \begin{bmatrix}  P_{21} & P_{22} \end{bmatrix} y_t .
   :label: king8
 
-With these modifications, the key formulas :eq:`bell4` and :eq:`bell3` from the optimal linear regulator for :math:`F` and :math:`P`, respectively, continue to apply. Using :eq:`king7`, the optimal decision rule is
+With these modifications, the key formulas :eq:`bell4` and :eq:`bell3` from the optimal linear regulator for :math:`F` and :math:`P`, respectively, continue to apply. 
+
+Using :eq:`king7`, the optimal decision rule is
 
 .. math::
   u_t = -F \begin{bmatrix} I & 0 \\ - P_{22}^{-1} P_{21} &  P_{22}^{-1} \end{bmatrix}
@@ -363,12 +389,22 @@ The Lagrange multiplier :math:`\mu_{xt}` measures the cost to the Stackelberg le
 Summary
 -------
 
-In summary, we solve the Stackelberg problem by formulating a particular optimal linear regulator, solving the associated matrix Riccati equation :eq:`bell3` for :math:`P`, computing :math:`F`, and then partitioning :math:`P` to obtain representation :eq:`king11`.
+In summary, we solve the Stackelberg problem by 
+
+    * formulating a particular optimal linear regulator,
+    
+    * solving the associated matrix Riccati equation :eq:`bell3` for :math:`P`,
+    
+    * computing :math:`F`,
+    
+    * then partitioning :math:`P` to obtain representation :eq:`king11`.
 
 History-dependent representation of decision rule
 -------------------------------------------------
 
-For some purposes, it is useful to eliminate the implementation multipliers :math:`\mu_{xt}` and to express the decision rule for :math:`u_t` as a function of :math:`z_t, z_{t-1},` and :math:`u_{t-1}`. This can be accomplished as follows [#f6]_. First represent :eq:`king11` compactly as
+For some purposes, it is useful to eliminate the implementation multipliers :math:`\mu_{xt}` and to express the decision rule for :math:`u_t` as a function of :math:`z_t, z_{t-1},` and :math:`u_{t-1}`.
+
+This can be accomplished as follows [#f6]_. First represent :eq:`king11` compactly as
 
 .. math::
   \begin{bmatrix}  z_{t+1} \\ \mu_{x,t+1} \end{bmatrix}
@@ -382,7 +418,9 @@ and write the feedback rule for :math:`u_t`
   u_t  = f_{11}  z_{t} + f_{12} \mu_{xt} .
   :label: vonzer2
 
-Then where :math:`f_{12}^{-1}` denotes the generalized inverse of :math:`f_{12}`, :eq:`vonzer2` implies :math:`\mu_{x,t} = f_{12}^{-1}(u_t - f_{11}z_t)`. Equate the right side of this expression to the right side of the second line of :eq:`vonzer1` lagged once and rearrange by using :eq:`vonzer2` lagged once and rearrange by using lagged once to eliminate :math:`\mu_{x,t-1}` to get
+Then where :math:`f_{12}^{-1}` denotes the generalized inverse of :math:`f_{12}`, :eq:`vonzer2` implies :math:`\mu_{x,t} = f_{12}^{-1}(u_t - f_{11}z_t)`. 
+
+Equate the right side of this expression to the right side of the second line of :eq:`vonzer1` lagged once and rearrange by using :eq:`vonzer2` lagged once and rearrange by using lagged once to eliminate :math:`\mu_{x,t-1}` to get
 
 .. math::
   u_t =  f_{12} m_{22} f_{12}^{-1} u_{t-1} + f_{11} z_t + f_{12}(m_{21} - m_{22} f_{12}^{-1} f_{11}) z_{t-1}
@@ -406,20 +444,44 @@ By making the instrument feed back on itself, the form of potentially allows for
 Digression on determinacy of equilibrium
 ----------------------------------------
 
-Appendix XXXXXXX describes methods for solving a system of difference equations of the form :eq:`new2` or :eq:`new3` with an arbitrary feedback rule that expresses the decision rule for :math:`u_t` as a function of current and previous values of :math:`y_t` and perhaps previous values of itself. The difference equation system has a unique solution satisfying the stability condition :math:`\sum_{t=0}^\infty \beta^t y_t \cdot  y_t` if the eigenvalues of the matrix :eq:`symplec2` split, with half being greater than unity and half being less than unity in modulus. If more than half are less than unity in modulus, the equilibrium is said to be indeterminate in the sense that there are multiple equilibria starting from any initial condition.
+Appendix XXXXXXX describes methods for solving a system of difference equations of the form :eq:`new2` or :eq:`new3` with an arbitrary feedback rule that expresses the decision rule for :math:`u_t` as a function of current and previous values of :math:`y_t` and perhaps previous values of itself. 
+
+The difference equation system has a unique solution satisfying the stability condition :math:`\sum_{t=0}^\infty \beta^t y_t \cdot  y_t` if the eigenvalues of the matrix :eq:`symplec2` split, with half being greater than unity and half being less than unity in modulus. 
+
+If more than half are less than unity in modulus, the equilibrium is said to be indeterminate in the sense that there are multiple equilibria starting from any initial condition.
 
 .. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
-If we choose to represent the solution of a Stackelberg or Ramsey problem in the form :eq:`vonzer3`, we can substitute that representation for :math:`u_t` into :eq:`new3`, obtain a difference equation system in :math:`y_t, u_t`, and ask whether the resulting system is determinate. To answer this question, we would use the method of Appendix XXXXXXX, form system , then check whether the generalized eigenvalues split as required. Researchers have used this method to study the determinacy of equilibria under Stackelberg plans with representations like :eq:`vonzer3` and have discovered that sometimes an equilibrium can be indeterminate [#f7]_. See Evans and Honkapohja (2003) for a discussion of determinacy of equilibria under commitment in a class of equilibrium monetary models and how determinacy depends on how the decision rule of the Stackelberg leader is represented. Evans and Honkapohja argue that casting a government decision rule in a way that leads to indeterminacy is a bad idea.
+If we choose to represent the solution of a Stackelberg or Ramsey problem in the form :eq:`vonzer3`, we can substitute that representation for :math:`u_t` into :eq:`new3`, obtain a difference equation system in :math:`y_t, u_t`, and ask whether the resulting system is determinate.
+
+To answer this question, we would use the method of Appendix XXXXXXX, form system , then check whether the generalized eigenvalues split as required. 
+
+Researchers have used this method to study the determinacy of equilibria under Stackelberg plans with representations like :eq:`vonzer3` and have discovered that sometimes an equilibrium can be indeterminate [#f7]_.
+
+See Evans and Honkapohja (2003) for a discussion of determinacy of equilibria under commitment in a class of equilibrium monetary models and how determinacy depends on how the decision rule of the Stackelberg leader is represented.
+
+Evans and Honkapohja argue that casting a government decision rule in a way that leads to indeterminacy is a bad idea.
 
 .. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
 A large firm with a competitive fringe
 ======================================
 
-As an example, this section studies the equilibrium of an industry with a large firm that acts as a Stackelberg leader with respect to a competitive fringe. Sometimes the large firm is called ‘the monopolist' even though there are actually many firms in the industry. The industry produces a single nonstorable homogeneous good. One large firm produces :math:`Q_t` and a representative firm in a competitive fringe produces :math:`q_t`. The representative firm in the competitive fringe acts as a price taker and chooses sequentially. The large firm commits to a policy at time :math:`0`, taking into account its ability to manipulate the price sequence, both directly through the effects of its quantity choices on prices, and indirectly through the responses of the competitive fringe to its forecasts of prices [#f8]_.
+As an example, this section studies the equilibrium of an industry with a large firm that acts as a Stackelberg leader with respect to a competitive fringe. 
 
-The costs of production are :math:`{\cal C}_t = e Q_t + .5 g Q_t^2+ .5 c (Q_{t+1} - Q_{t})^2` for the large firm and :math:`\sigma_t= d q_t + .5 h q_t^2 + .5 c (q_{t+1} - q_t)^2` for the competitive firm, where :math:`d>0, e >0, c>0, g >0, h>0` are cost parameters. There is a linear inverse demand curve
+Sometimes the large firm is called ‘the monopolist' even though there are actually many firms in the industry. 
+
+The industry produces a single nonstorable homogeneous good.
+
+One large firm produces :math:`Q_t` and a representative firm in a competitive fringe produces :math:`q_t`. 
+
+The representative firm in the competitive fringe acts as a price taker and chooses sequentially. 
+
+The large firm commits to a policy at time :math:`0`, taking into account its ability to manipulate the price sequence, both directly through the effects of its quantity choices on prices, and indirectly through the responses of the competitive fringe to its forecasts of prices [#f8]_.
+
+The costs of production are :math:`{\cal C}_t = e Q_t + .5 g Q_t^2+ .5 c (Q_{t+1} - Q_{t})^2` for the large firm and :math:`\sigma_t= d q_t + .5 h q_t^2 + .5 c (q_{t+1} - q_t)^2` for the competitive firm, where :math:`d>0, e >0, c>0, g >0, h>0` are cost parameters. 
+
+There is a linear inverse demand curve
 
 .. math::
 	p_t = A_0 - A_1 (Q_t + \overline q_t) + v_t,
@@ -431,7 +493,9 @@ where :math:`A_0, A_1` are both positive and :math:`v_t` is a disturbance to dem
 	v_{t+1}= \rho v_t + C_\epsilon \check \epsilon_{t+1}
 	:label: oli2
 
-and where :math:` | \rho | < 1` and :math:`\check \epsilon_{t+1}` is an i.i.d.sequence of random variables with mean zero and variance :math:`1`. In :eq:`oli1`, :math:`\overline q_t` is equilibrium output of the representative competitive firm. In equilibrium, :math:`\overline q_t = q_t`, but we must distinguish between :math:`q_t` and :math:`\overline q_t` in posing the optimum problem of a competitive firm.
+and where :math:` | \rho | < 1` and :math:`\check \epsilon_{t+1}` is an i.i.d.sequence of random variables with mean zero and variance :math:`1`. In :eq:`oli1`, :math:`\overline q_t` is equilibrium output of the representative competitive firm. 
+
+In equilibrium, :math:`\overline q_t = q_t`, but we must distinguish between :math:`q_t` and :math:`\overline q_t` in posing the optimum problem of a competitive firm.
 
 The competitive fringe
 ----------------------
@@ -442,13 +506,21 @@ The representative competitive firm regards :math:`\{p_t\}_{t=0}^\infty` as an e
   E_0 \sum_{t=0}^\infty \beta^t \left\{ p_t q_t - \sigma_t \right\}, \quad \beta \in(0,1)
   :label: oli3
 
-subject to :math:`q_0` given, where :math:`E_t` is the mathematical expectation based on time :math:`t` information. Let :math:`i_t = q_{t+1} - q_t.` We regard :math:`i_t` as the representative firm's control at :math:`t`. The first-order conditions for maximizing :eq:`oli3` are
+subject to :math:`q_0` given, where :math:`E_t` is the mathematical expectation based on time :math:`t` information. Let :math:`i_t = q_{t+1} - q_t.` 
+
+We regard :math:`i_t` as the representative firm's control at :math:`t`. 
+
+The first-order conditions for maximizing :eq:`oli3` are
 
 .. math::
   i_t =  E_t  \beta i_{t+1} -c^{-1} \beta h  q_{t+1} + c^{-1} \beta  E_t( p_{t+1} -d)
   :label: oli4
 
-for :math:`t \geq 0`. We appeal to the certainty equivalence principle stated on page XXXXXXX to justify working with a non-stochastic version of :eq:`oli4` formed by dropping the expectation operator and the random term :math:`\check \epsilon_{t+1}` from :eq:`oli2`. We use a method of Sargent (1979) and Townsend (1983) [#f9]_. We shift :eq:`oli1` forward one period, replace conditional expectations with realized values, use :eq:`oli1` to substitute for :math:`p_{t+1}` in :eq:`oli4`, and set :math:`q_t = \overline q_t` for all :math:`t\geq 0` to get
+for :math:`t \geq 0`. We appeal to the certainty equivalence principle stated on page XXXXXXX to justify working with a non-stochastic version of :eq:`oli4` formed by dropping the expectation operator and the random term :math:`\check \epsilon_{t+1}` from :eq:`oli2`. 
+
+We use a method of Sargent (1979) and Townsend (1983) [#f9]_. 
+
+We shift :eq:`oli1` forward one period, replace conditional expectations with realized values, use :eq:`oli1` to substitute for :math:`p_{t+1}` in :eq:`oli4`, and set :math:`q_t = \overline q_t` for all :math:`t\geq 0` to get
 
 .. TODO: Fill in the links given the placeholder XXXXXXX above.
 
@@ -456,12 +528,20 @@ for :math:`t \geq 0`. We appeal to the certainty equivalence principle stated on
   i_t = \beta i_{t+1}  - c^{-1} \beta h \overline q_{t+1} + c^{-1} \beta (A_0-d) - c^{-1} \beta    A_1 \overline q_{t+1} -  c^{-1} \beta    A_1 Q_{t+1} + c^{-1} \beta    v_{t+1}.
   :label: oli5
 
-Given sufficiently stable sequences :math:`\{Q_t, v_t\}`, we could solve :eq:`oli5` and :math:`i_t = \overline q_{t+1} - \overline q_t` to express the competitive fringe's output sequence as a function of the (tail of the) monopolist's output sequence. The dependence of :math:`i_t` on future :math:`Q_t`\ 's opens an avenue for the monopolist to influence current outcomes by its choice now of its future actions. It is this feature that makes the monopolist's problem fail to be recursive in the natural state variables :math:`\overline q, Q`. The monopolist arrives at period :math:`t >0` facing the constraint that it must confirm the expectations about its time :math:`t` decision upon which the competitive fringe based its decisions at dates before :math:`t`.
+Given sufficiently stable sequences :math:`\{Q_t, v_t\}`, we could solve :eq:`oli5` and :math:`i_t = \overline q_{t+1} - \overline q_t` to express the competitive fringe's output sequence as a function of the (tail of the) monopolist's output sequence.
+
+The dependence of :math:`i_t` on future :math:`Q_t`\ 's opens an avenue for the monopolist to influence current outcomes by its choice now of its future actions.
+
+It is this feature that makes the monopolist's problem fail to be recursive in the natural state variables :math:`\overline q, Q`.
+
+The monopolist arrives at period :math:`t >0` facing the constraint that it must confirm the expectations about its time :math:`t` decision upon which the competitive fringe based its decisions at dates before :math:`t`.
 
 The monopolist's problem
 ------------------------
 
-The monopolist views the competitive firm's sequence of Euler equations as constraints on its own opportunities. They are *implementability constraints* on the monopolist's choices. Including the implementability constraints , we can represent the constraints in terms of the transition law impinging on the monopolist:
+The monopolist views the competitive firm's sequence of Euler equations as constraints on its own opportunities. 
+
+They are *implementability constraints* on the monopolist's choices. Including the implementability constraints , we can represent the constraints in terms of the transition law impinging on the monopolist:
 
 .. math::
   \begin{bmatrix}
@@ -487,15 +567,23 @@ where :math:`u_t = Q_{t+1} - Q_t` is the control of the monopolist. The last row
 	y_{t+1} = A y_t + B u_t .
 	:label: oli6a
 
-Although we have entered the competitive fringe's choice variable :math:`i_t` as a component of the "state" :math:`y_t` in the monopolist's transition law :eq:`oli6a`, :math:`i_t` is actually a "jump" variable. Nevertheless, the analysis in earlier sections of this chapter implies that the solution of the large firm's problem is encoded in the Riccati equation associated with :eq:`oli6a` as the transition law. Let's decode it.
+Although we have entered the competitive fringe's choice variable :math:`i_t` as a component of the "state" :math:`y_t` in the monopolist's transition law :eq:`oli6a`, :math:`i_t` is actually a "jump" variable.
 
-To match our general setup, we partition :math:`y_t` as :math:`y_t' = \begin{bmatrix} z_t' &  x_t' \end{bmatrix}` where :math:`z_t' = \begin{bmatrix}  1 & v_t & Q_t & \overline q_t  \end{bmatrix}` and :math:`x_t = i_t`. The large firm's problem is
+Nevertheless, the analysis in earlier sections of this chapter implies that the solution of the large firm's problem is encoded in the Riccati equation associated with :eq:`oli6a` as the transition law. 
+
+Let's decode it.
+
+To match our general setup, we partition :math:`y_t` as :math:`y_t' = \begin{bmatrix} z_t' &  x_t' \end{bmatrix}` where :math:`z_t' = \begin{bmatrix}  1 & v_t & Q_t & \overline q_t  \end{bmatrix}` and :math:`x_t = i_t`. 
+
+The large firm's problem is
 
 .. math::
   \max_{\{u_t, p_t, Q_{t+1}, \overline q_{t+1}, i_t\}}
   \sum_{t=0}^\infty \beta^t \left\{ p_t Q_t  - {\cal C}_t \right\}
 
-subject to the given initial condition for :math:`z_0`, equations :eq:`oli1` and :eq:`oli5` and :math:`i_t = \overline q_{t+1} - \overline q_t`, as well as the laws of motion of the natural state variables :math:`z`. Notice that the monopolist in effect chooses the price sequence, as well as the quantity sequence of the competitive fringe, albeit subject to the restrictions imposed by the behavior of consumers, as summarized by the demand curve :eq:`oli1` and the implementability constraint :eq:`oli5` that describes the best responses  of the competitive fringe.
+subject to the given initial condition for :math:`z_0`, equations :eq:`oli1` and :eq:`oli5` and :math:`i_t = \overline q_{t+1} - \overline q_t`, as well as the laws of motion of the natural state variables :math:`z`. 
+
+Notice that the monopolist in effect chooses the price sequence, as well as the quantity sequence of the competitive fringe, albeit subject to the restrictions imposed by the behavior of consumers, as summarized by the demand curve :eq:`oli1` and the implementability constraint :eq:`oli5` that describes the best responses  of the competitive fringe.
 
 By substituting :eq:`oli1` into the above objective function, the monopolist's problem can be expressed as
 
@@ -543,14 +631,20 @@ or
   = m \begin{bmatrix} z_t \\ \mu_{x,t} \end{bmatrix} .
   :label: oli11
 
-The monopolist is constrained to set :math:`\mu_{x,0} \leq 0`, but will find it optimal to set it to zero. Recall that :math:`z_t =\begin{bmatrix}  1 & v_t & Q_t & \overline q_t  \end{bmatrix}'`. Thus, :eq:`oli11` includes the equilibrium law of motion for the quantity :math:`\overline q_t` of the competitive fringe. By construction, :math:`\overline q_t` satisfies the Euler equation of the representative firm in the competitive fringe, as we elaborate in Appendix XXXXXXX.
+The monopolist is constrained to set :math:`\mu_{x,0} \leq 0`, but will find it optimal to set it to zero. 
+
+Recall that :math:`z_t =\begin{bmatrix}  1 & v_t & Q_t & \overline q_t  \end{bmatrix}'`.
+
+Thus, :eq:`oli11` includes the equilibrium law of motion for the quantity :math:`\overline q_t` of the competitive fringe. By construction, :math:`\overline q_t` satisfies the Euler equation of the representative firm in the competitive fringe, as we elaborate in Appendix XXXXXXX.
 
 .. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
 Numerical example
 -----------------
 
-We computed the optimal Stackelberg plan for parameter settings :math:`A_0, A_1, \rho, C_\epsilon, c, d, e, g, h,  \beta` = :math:`100, 1, .8, .2, 1,  20, 20, .2, .2, .95` [#f10]_. For these parameter values the decision rule is
+We computed the optimal Stackelberg plan for parameter settings :math:`A_0, A_1, \rho, C_\epsilon, c, d, e, g, h,  \beta` = :math:`100, 1, .8, .2, 1,  20, 20, .2, .2, .95` [#f10]_. 
+
+For these parameter values the decision rule is
 
 .. math::
   u_t = (Q_{t+1} - Q_t) =\begin{bmatrix}  19.78 & .19 & -.64 & -.15 & -.30  \end{bmatrix}
@@ -571,7 +665,12 @@ Note how in representation :eq:`urule1` the monopolist's decision for :math:`u_t
 Concluding remarks
 ==================
 
-This chapter is our first encounter with a class of problems in which optimal decision rules are history dependent [#f12]_. We shall confront many more such problems in chapters XXXXXXX, XXXXXXX, and XXXXXXX and shall see in various contexts how history dependence can be represented recursively by appropriately augmenting the natural state variables with counterparts to our implementability multipliers. A hint at what these counterparts are is gleaned by appropriately interpreting implementability multipliers as derivatives of value functions. In chapters XXXXXXX, XXXXXXX, and XXXXXXX, we make dynamic incentive and enforcement problems recursive by augmenting the state with continuation values of other decision makers [#f13]_.
+This lecture is our first encounter with a class of problems in which optimal decision rules are history dependent [#f12]_. 
+
+There are  many more such problems  -see  XXXXXXX, XXXXXXX, and XXXXXXX and shall see in various contexts how history dependence can be represented recursively by 
+appropriately augmenting the natural state variables with counterparts to our implementability multipliers. 
+
+A hint at what these counterparts are is gleaned by appropriately interpreting implementability multipliers as derivatives of value functions.  [#f13]_.
 
 .. TODO: Fill in the links given the placeholder XXXXXXX above.
 
