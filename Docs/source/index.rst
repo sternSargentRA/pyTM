@@ -17,7 +17,7 @@ This website will be home to the python based educational modules that are curre
    black1/perm_income
    seppo/D_Evans_model
    More_lectures/Markov_Perf
-   More/lectures/Dyn_Stack
+   More_lectures/Dyn_Stack
 
 Indices and tables
 ==================
