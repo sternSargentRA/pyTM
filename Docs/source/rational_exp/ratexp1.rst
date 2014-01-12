@@ -406,7 +406,7 @@ with :math:`Y_0` as an initial condition.
               y_{t+1} = h_0 + h_1 y_t + h_2 Y_t
               :label: ex5
 
-    * Give values for the :math: `h_j` s
+    * Give values for the :math:`h_j` s
 
     * If there were :math:`n` identical competitive firms all behaving according to  equation :eq:`ex5`, what would  equation :eq:`ex5`  imply for the {\it actual}
       law of motion of the form :eq:`ex4` for the market supply :math:`Y`?
@@ -424,7 +424,7 @@ Implement this idea  by setting :math:`n=1`
 In equilibrium, we require that :math:`y_t = Y_t`, but we don't impose this condition at the stage that the firm is optimizing because we want to model  competitive behavior
 
 Define a rational expectations equilibrium to be a pair of numbers :math:`H_0, H_1` such that if the representative firm solves   the problem ascribed to it in exercise 1,
-then the firm's optimal behavior given by equation :eq:`	ex5` implies that :math:`y_t = Y_t \ \forall \ t \geq 0`
+then the firm's optimal behavior given by equation :eq:`ex5` implies that :math:`y_t = Y_t \ \forall \ t \geq 0`
 
 
      *  Use the program that you wrote for exercise 1  to determine which if any  of the following pairs  :math:`(H_0, H_1)` is a rational expectations equilibrium:

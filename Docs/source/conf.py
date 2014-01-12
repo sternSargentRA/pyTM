@@ -33,10 +33,12 @@ sys.path.extend([
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
+todo_include_todos = True
+
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.todo',
+              'sphinx.ext.todo',  # toggle on and off above
               'numpydoc',
               'sphinxcontrib.bibtex',
               'ipython_directive',
