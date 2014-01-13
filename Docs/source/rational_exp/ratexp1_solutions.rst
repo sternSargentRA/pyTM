@@ -162,8 +162,8 @@ Exercise 3
 The planner would like to maximize the following
 
 .. math::
-    \sum_{t=0}^\infty \beta^t S_t
-    \text{where } S_t := S(Y_t, Y_{t+1}) = \int_0^{Y_t} \left( A_0 - A_1 x \right) dx -.5d \left(Y_{t+1} - Y_t \right)^2
+    \sum_{t=0}^\infty & \beta^t S_t \\
+    \text{where } S_t &:= S(Y_t, Y_{t+1}) = \int_0^{Y_t} \left( A_0 - A_1 x \right) dx -.5d \left(Y_{t+1} - Y_t \right)^2
     :label: ex3_obj
 
 Part a
@@ -172,7 +172,8 @@ Part a
 We can formulate the planner's Bellman equation by:
 
 .. math::
-    V(Y) = \max_{Y'} \int_0^{Y} \left( A_0 - A_1 x \right) dx -.5d \left(Y' - Y \right)^2 + \beta V(Y')
+    V(Y) &= \max_{Y'} \int_0^{Y} \left( A_0 - A_1 x \right) dx -.5d \left(Y' - Y \right)^2 + \beta V(Y') \\
+    &= A_0 Y - \frac{A_1}{2} Y^2 - .5d \left(Y' - Y \right)^2 + \beta V(Y')
 
 Part b
 ^^^^^^
@@ -184,7 +185,7 @@ The discounted linear control problem is
     \text{subject to } & x_{t+1} = A x_t + B u_t
 
 
-To map the firm's problem into a discounted optimal linear control problem, we need to define a state vector :math:`x_t`, a control vector :math:`u_t`, and matrices :math`:A, B, Q, R` that define the preferences in the objective function and the law of motion for the state.
+To map the firm's problem into a discounted optimal linear control problem, we need to define a state vector :math:`x_t`, a control vector :math:`u_t`, and matrices :math:`A, B, Q, R` that define the preferences in the objective function and the law of motion for the state.
 
 For the state and control vectors choose
 
@@ -197,8 +198,7 @@ For the state and control vectors choose
 To see how to define the matrices :math:`A, B, Q, R`, we substitute :math:`S_t` out of :eq:`ex3_obj` and write the objective function as
 
 .. math::
-    \max \sum_{t = 0}^{\infty} \beta^t \left[ \left( A_0 - A_1 Y_t\right)y_t - .5 d \left( y_{t+1} - y_t \right)   \right]
-    \text{subject to } & Y_{t+1} = H_0 + H_1 Y_t.
+    \max \sum_{t = 0}^{\infty} \beta^t \left[ \left( A_0 Y_t -\frac{A_1}{2} Y_t^2 \right) - .5 d \left( Y_{t+1} - Y_t \right)   \right]
     :label: ex3_obj2
 
 Studying :eq:`ex3_obj2` we can now read of the needed matrices
@@ -206,8 +206,13 @@ Studying :eq:`ex3_obj2` we can now read of the needed matrices
 .. math::
     A &= \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \\
     B &= \begin{bmatrix} 1 \\ 0 \end{bmatrix} \\
-    R &= \begin{bmatrix} A_1/2 & -A_0/2 \\ -A_0/2 & 0 \end{bmatrix} \\
+    R &= \begin{bmatrix} -A_1/2 & A_0/2 \\ A_0/2 & 0 \end{bmatrix} \\
     Q &= -.5 d
+
+Our python code to solve this problem is below:
+
+.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+   :pyobject: ex3
 
 Part c
 ^^^^^^
@@ -218,3 +223,70 @@ Part d
 ^^^^^^
 
 This is the same answer as we had when we set :math:`n=1` in the last part of problem 2.  This makes sense because the problems that a single firm and a planner face would be the same.
+
+Exercise 4
+==========
+
+The monopolist would like to maximize the following
+
+.. math::
+    \sum_{t=0}^\infty & \beta^t R_t \\
+    \text{where } R_t &:= p_t Y_t - .5d (Y_{t+1} - Y_t)^2
+    :label: ex4_obj
+
+Where we use the industry demand curve :math:`p_t = A_0 - A_1 Y_t` as the value for prices.
+
+Part a
+^^^^^^
+
+We can formulate the monopolist's Bellman equation by:
+
+.. math::
+    V(Y) &= \max_{Y'} pY - .5d \left(Y' - Y \right)^2 + \beta V(Y') \\
+    &= A_0 Y - A_1 Y^2 - .5d \left(Y' - Y \right)^2 + \beta V(Y') 
+
+Part b
+^^^^^^
+
+The discounted linear control problem is
+
+.. math::
+    &\max -\sum_{t=0}^{\infty} \beta^t \left\{ x_t' R x_t  + u_t' Q u_t\right\} \\
+    \text{subject to } & x_{t+1} = A x_t + B u_t
+
+
+To map the firm's problem into a discounted optimal linear control problem, we need to define a state vector :math:`x_t`, a control vector :math:`u_t`, and matrices :math:`A, B, Q, R` that define the preferences in the objective function and the law of motion for the state.
+
+For the state and control vectors choose
+
+.. math::
+
+    x = \begin{bmatrix} Y_t \\ 1 \end{bmatrix}
+
+    u = Y_{t+1} - Y_{t}.
+
+To see how to define the matrices :math:`A, B, Q, R`, we substitute :math:`S_t` out of :eq:`ex3_obj` and write the objective function as
+
+.. math::
+    \max \sum_{t = 0}^{\infty} \beta^t \left[ \left( A_0 Y_t - A_1 Y_t^2 \right) - .5 d \left( Y_{t+1} - Y_t \right)   \right]
+    :label: ex4_obj2
+
+Studying :eq:`ex4_obj2` we can now read of the needed matrices
+
+.. math::
+    A &= \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \\
+    B &= \begin{bmatrix} 1 \\ 0 \end{bmatrix} \\
+    R &= \begin{bmatrix} -A_1 & A_0/2 \\ A_0/2 & 0 \end{bmatrix} \\
+    Q &= -.5 d
+
+Our python code to solve this problem is below:
+
+.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+   :pyobject: ex4
+
+Part c
+^^^^^^
+
+Remember that olrp solves for :math:`F` such that the optimal choice of :math:`u` is :math:`u = - F x`.  We are given that :math:`F = \begin{bmatrix} .0735 & -73.47 \end{bmatrix}`.  We get that our solution is :math:`u = -.0735 Y + 73.47`.  Also remember that :math:`u := Y' - Y`.  Hence :math:`Y' = 73.47 + .9265Y`.
+
+Notice that this problem is almost the same setup as in problem 3, but we get a slightly different answer.

@@ -81,3 +81,26 @@ def ex3():
     return F
 
 F_3 = ex3()
+
+def ex4():
+    'Solve exercise 4 from rational expectatiosn module'
+    A_0 = 100
+    A_1 = 0.05
+    beta = 0.95
+    d = 10.0
+    H_0 = 95.5
+    H_1 = 0.95
+
+    A = np.array([[1, 0], [0, 1]])
+    B = np.array([[1], [0]])
+    R = -np.array([[A_1, -A_0/2], [-A_0/2, 0]])
+    Q = -0.5*d
+
+    F, P = olrp(beta, A, B, R, Q)
+
+    return F
+
+F_4 = ex4()
+
+print(F_4)
+print(F_3)
