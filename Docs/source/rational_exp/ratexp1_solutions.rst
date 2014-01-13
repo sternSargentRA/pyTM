@@ -71,18 +71,13 @@ Part d
 
 .. todo:: Clean this up. It is a bit verbose. Maybe just link to the files?
 
-Here are functions `doubleo` and `olrp` that solve the linear quadratic control problem.
+We have implemented a function named `olrp` that solves the optinal linear quadratic control problem. The python module containing this function can be downloaded as :download:`lq.py </../../pyTM/util/lq.py>`
 
-.. literalinclude:: ../../../pyTM/util/lq.py
-   :pyobject: doubleo
-
-.. literalinclude:: ../../../pyTM/util/lq.py
-   :pyobject: olrp
 
 
 The code below uses the `olrp` function above to compute the feedback law :math:`F` governing the solution.
 
-.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+.. literalinclude:: /../../pyTM/ratexp/ratexp1.py
    :pyobject: ex1
 
 The output of that functions gives us
@@ -146,7 +141,7 @@ must hold for :math:`H_0, H_1` to lead to a rational expectations equilibrium. N
 
 The code below uses each guess for :math:`H_0, H_1`, solves for the implied value of the feedback rule :math:`F`, and checks the condition in :eq:`ex2_cond`.
 
-.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+.. literalinclude:: /../../pyTM/ratexp/ratexp1.py
    :pyobject: ex2
 
 The return value of this function is `[False, False, True]`, telling us that only under the third parameterization do the values for :math:`H_0, H_1` lead to a rational expectations equilibrium.
@@ -211,7 +206,7 @@ Studying :eq:`ex3_obj2` we can now read of the needed matrices
 
 Our python code to solve this problem is below:
 
-.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+.. literalinclude:: /../../pyTM/ratexp/ratexp1.py
    :pyobject: ex3
 
 Part c
@@ -243,7 +238,7 @@ We can formulate the monopolist's Bellman equation by:
 
 .. math::
     V(Y) &= \max_{Y'} pY - .5d \left(Y' - Y \right)^2 + \beta V(Y') \\
-    &= A_0 Y - A_1 Y^2 - .5d \left(Y' - Y \right)^2 + \beta V(Y') 
+    &= A_0 Y - A_1 Y^2 - .5d \left(Y' - Y \right)^2 + \beta V(Y')
 
 Part b
 ^^^^^^
@@ -281,7 +276,7 @@ Studying :eq:`ex4_obj2` we can now read of the needed matrices
 
 Our python code to solve this problem is below:
 
-.. literalinclude:: ../../../pyTM/ratexp/ratexp1.py
+.. literalinclude:: /../../pyTM/ratexp/ratexp1.py
    :pyobject: ex4
 
 Part c

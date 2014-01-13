@@ -11,7 +11,11 @@ from pyTM.util.lq import olrp
 
 
 def ex1():
-    'Solve exercise 1 from rational expectations module'
+    """
+    Solve exercise 1 from rational expectations module
+
+    Requires that the olrp function is imported from the lq module
+    """
     A_0 = 100
     A_1 = 0.05
     beta = 0.95
@@ -32,7 +36,11 @@ F_1 = ex1()
 
 
 def ex2():
-    'Solve exercise 2 from rational expectations module'
+    """
+    Solve exercise 2 from rational expectations module
+
+    Requires that the olrp function is imported from the lq module
+    """
     A_0 = 100
     A_1 = 0.05
     beta = 0.95
@@ -63,13 +71,15 @@ F_2 = ex2()
 
 
 def ex3():
-    'Solve exercise 3 from rational expectatiosn module'
+    """
+    Solve exercise 3 from rational expectations module
+
+    Requires that the olrp function is imported from the lq module
+    """
     A_0 = 100
     A_1 = 0.05
     beta = 0.95
     d = 10.0
-    H_0 = 95.5
-    H_1 = 0.95
 
     A = np.array([[1, 0], [0, 1]])
     B = np.array([[1], [0]])
@@ -82,14 +92,17 @@ def ex3():
 
 F_3 = ex3()
 
+
 def ex4():
-    'Solve exercise 4 from rational expectatiosn module'
+    """
+    Solve exercise 4 from rational expectations module
+
+    Requires that the olrp function is imported from the lq module
+    """
     A_0 = 100
     A_1 = 0.05
     beta = 0.95
     d = 10.0
-    H_0 = 95.5
-    H_1 = 0.95
 
     A = np.array([[1, 0], [0, 1]])
     B = np.array([[1], [0]])

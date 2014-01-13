@@ -308,8 +308,8 @@ and a control law :math:`u_{jt}= -f_j x_t` for the other player; here variables 
 
 .. NOTE: I put these into a list. I was having a hard time reading them otherwise
 
-The equilibrium of Judd’s model can be computed by filling in the matrices appropriately. A Python tutorial :download:`markov_perf_judd.py <../../../python_programs/markov_perf_judd.py>`. uses `nnash` to compute the equilibrium.
+The equilibrium of Judd’s model can be computed by filling in the matrices appropriately. A Python tutorial :download:`markov_perf_judd.py </../../python_programs/markov_perf_judd.py>`. uses `nnash` to compute the equilibrium.
 
-.. literalinclude:: ../../../pyTM/util/lq.py
+.. literalinclude:: /../../pyTM/util/lq.py
    :pyobject: nnash
 
