@@ -13,7 +13,7 @@ import numpy as np
 from numpy import dot, eye
 from scipy.linalg import solve, eig
 
-__all__ = ["doublej", "doubleo", "olrp"]
+__all__ = ["doublej", "doubleo", "olrp", "MarkovPerfectDuopoly"]
 
 
 def doublej(a1, b1, max_it=50):
@@ -263,3 +263,159 @@ def olrp(beta, A, B, R, Q, N=None, tol=1e-6, max_iter=1000):
         p = p1
 
     return f, p
+
+
+class MarkovPerfectDuopoly(object):
+    """
+    This class is for analyzing the linear Markov perfect equilibrium
+    associated with the duopoly example. In this example, player i
+    maximizes
+
+    .. math::
+        - \\sum_{t=0}^{\\infty} \\left\\{x_t' r_i x_t + 2 x_t' w_i
+        u_{it} +u_{it}' q_i u_{it} + u_{jt}' s_i u_{jt} + 2 u_{jt}'
+        m_i u_{it} \\right\\}
+
+    subject to the law of motion
+
+    .. math::
+        x_{t+1} = a x_t + b_1 u_{1t} + b_2 u_{2t}
+
+    and a perceived control law :math:`u_j(t) = - f_j x_t` for the other
+    player.
+
+    Parameters
+    ----------
+
+    The inputs are the matrices from the equations above:
+
+    * a : shape=(n, n)
+    * b1 : shape=(n, k_1)
+    * b2 : shape=(n, k_2)
+    * r1 : shape=(n, n)
+    * r2 : shape=(n, n)
+    * q1 : shape=(k_1, k_1)
+    * q2 : shape=(k_2, k_2)
+    * s1 : shape=(k_1, k_1)
+    * s2 : shape=(k_2, k_2)
+    * w1 : shape=(n, k_1)
+    * w2 : shape=(n, k_2)
+    * m1 : shape=(k_2, k_1)
+    * m2 : shape=(k_1, k_2)
+
+
+    """
+
+    def __init__(self, a, b1, b2, r1, r2, q1, q2, s1, s2, w1, w2, m1, m2):
+
+        self.a = a
+        self.b1 = b1
+        self.b2 = b2
+        self.r1 = r1
+        self.r2 = r2
+        self.q1 = q1
+        self.q2 = q2
+        self.s1 = s1
+        self.s2 = s2
+        self.w1 = m1
+        self.w2 = m2
+        self.m1 = m1
+        self.m2 = m2
+
+    def nnash(self, tol=1e-8, max_iter=1000):
+        """
+        Compute the limit of a Nash linear quadratic dynamic game.
+
+        The solution computed in this routine is the :math:`f_i` and
+        :math:`p_i` of the associated double optimal linear regulator
+        problem.
+
+        Parameters
+        ----------
+        tol : float, optional(default=1e-8)
+            The tolerance level for convergence
+
+        max_iter :int, optional(default=1000)
+            The maximum number of iterations to allow
+
+        Returns
+        -------
+        f_1 : array_like, dtype=float, shape=(k_1, n)
+
+        f_2 : array_like, dtype=float, shape=(k_2, n)
+
+        p_1 : array_like, dtype=float, shape=TODO
+
+        p_2 : array_like, dtype=float, shape=TODO
+
+        """
+        # Unload parameters
+        a = np.asarray(self.a)
+        b1 = np.asarray(self.b1)
+        b2 = np.asarray(self.b2)
+        r1 = np.asarray(self.r1)
+        r2 = np.asarray(self.r2)
+        q1 = np.asarray(self.q1)
+        q2 = np.asarray(self.q2)
+        s1 = np.asarray(self.s1)
+        s2 = np.asarray(self.s2)
+        w1 = np.asarray(self.w1)
+        w2 = np.asarray(self.w2)
+        m1 = np.asarray(self.m1)
+        m2 = np.asarray(self.m2)
+
+        n = a.shape[0]
+
+        if b1.ndim == 1:
+            k_1 = 1
+            b1 = np.reshape(b1, (n, 1))
+        else:
+            k_1 = b1.shape[1]
+
+        if b2.ndim == 1:
+            k_2 = 1
+            b2 = np.reshape(b2, (n, 1))
+        else:
+            k_2 = b2.shape[1]
+
+        v1 = eye(k_1)
+        v2 = eye(k_2)
+        p1 = np.zeros((n, n))
+        p2 = np.zeros((n, n))
+        f1 = np.random.randn(n, n)
+        f2 = np.random.randn(n, n)
+
+        for it in range(max_iter):
+            # update
+            f10 = f1
+            f20 = f2
+
+            g2 = solve(dot(b2.T, p2.dot(b2))+q2, v2)
+            g1 = solve(dot(b1.T, p1.dot(b1))+q1, v1)
+            h2 = dot(g2, b2.T.dot(p2))
+            h1 = dot(g1, b1.T.dot(p1))
+
+            # break up the computation of f1, f2
+            f_1_left = v1 - dot(h1.dot(b2)+g1.dot(m1.T),
+                                h2.dot(b1)+g2.dot(m2.T))
+            f_1_right = h1.dot(a)+g1.dot(w1.T) - dot(h1.dot(b2)+g1.dot(m1.T),
+                                                     h2.dot(a)+g2.dot(w2.T))
+            f1 = solve(f_1_left, f_1_right)
+            f2 = h2.dot(a)+g2.dt(w2.T) - dot(h2.dot(b1)+g2.dot(m2.T), f1)
+
+            a2 = a - b2.dot(f2)
+            a1 = a - b1.dot(f1)
+
+            p1 = (dot(a2.T, p1.dot(a2)) + r1 + dot(f2.T, s1.dot(f2)) -
+                  dot(dot(a2.T, p1.dot(b1)) + w1 - f2.T.dot(m1), f1))
+            p2 = (dot(a1.T, p2.dot(a1)) + r2 + dot(f1.T, s2.dot(f1)) -
+                  dot(dot(a1.T, p2.dot(b2)) + w2 - f1.T.dot(m2), f2))
+
+            if dd < tol:  # success!
+                break
+
+        else:
+            msg = 'No convergence: Iteration limit of {0} reached in nnash'
+            raise ValueError(msg.format(max_iter))
+
+        return f1, f2, p1, p2
