@@ -280,8 +280,7 @@ by choosing a decision rule for price and quantity of the form
 
 where :math:`u_{it} =\left[ \matrix{p_{it} & q_{it}\cr}\right]'`, and the state is :math:`x_t=\left[\matrix{I_{1t} & I_{2t}\cr}\right]`.
 
-XXXXXXXX EDIT HERE AND PUT IN THE PYTHON PROGRAMS AFTER CHASE AND SPENCER HAVE THEM.
-In the web site for the book, we supply a Matlab program nnash.m that computes a Markov perfect equilibrium of the linear quadratic dynamic game in which player :math:`i` maximizes
+Below we show a Python function `nnash` that computes a Markov perfect equilibrium of the linear quadratic dynamic game in which player :math:`i` maximizes
 
 .. math::
    - \sum_{t=0}^\infty \{ x_t' r_i x_t + 2 x_t' w_i u_{it} +u_{it}' q_i u_{it} + u_{jt}' s_i u_{jt} + 2 u_{jt}' m_i u_{it} \}
@@ -309,6 +308,8 @@ and a control law :math:`u_{jt}= -f_j x_t` for the other player; here variables 
 
 .. NOTE: I put these into a list. I was having a hard time reading them otherwise
 
-The equilibrium of Judd’s model
-can be computed by filling in the matrices appropriately. A Matlab
-tutorial judd.m uses nnash.m to compute the equilibrium.
+The equilibrium of Judd’s model can be computed by filling in the matrices appropriately. A Python tutorial :download:`markov_perf_judd.py <../../../python_programs/markov_perf_judd.py>`. uses `nnash` to compute the equilibrium.
+
+.. literalinclude:: ../../../pyTM/util/lq.py
+   :pyobject: nnash
+
