@@ -453,7 +453,7 @@ A planner seeks to maximize the welfare criterion
 where :math:`S_t` is "consumer surplus plus producer surplus" defined to be
 
 .. math::
-     S_t = S(Y_t, Y_{t+1}) = \int_0^{Y_t} (A_0 - A_1 x) d   - .5 d (Y_{t+1} - Y_t)^2
+     S_t = S(Y_t, Y_{t+1}) = \int_0^{Y_t} (A_0 - A_1 x) dx   - .5 d (Y_{t+1} - Y_t)^2
 
 Please
 
