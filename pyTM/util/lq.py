@@ -154,7 +154,7 @@ def doubleo(A, C, R, Q, tol=1e-15):
     return k1, g1
 
 
-def olrp(beta, A, B, R, Q, W=None, tol=1e-6, max_iter=1000):
+def olrp(beta, A, B, R, Q, N=None, tol=1e-6, max_iter=1000):
     """
     Calculates F of the feedback law:
 
@@ -223,18 +223,18 @@ def olrp(beta, A, B, R, Q, W=None, tol=1e-6, max_iter=1000):
 
     B = np.reshape(B, (n, k))
 
-    if W is None:
-        W = np.zeros((n, k))
+    if N is None:
+        N = np.zeros((n, k))
 
     if np.min(np.abs(eig(np.atleast_2d(Q))[0])) > 1e-5:
-        Q_mldiv_W = solve(Q, W.T)
-        A = sqrt(beta) * (A - B.dot(Q_mldiv_W))
+        Q_mldiv_N = solve(Q, N.T)
+        A = sqrt(beta) * (A - B.dot(Q_mldiv_N))
         B = sqrt(beta) * B
-        R = R - W.dot(Q_mldiv_W)
+        R = R - N.dot(Q_mldiv_N)
 
         k, s = doubleo(A.T, B.T, R, Q)
 
-        f = k.T + Q_mldiv_W
+        f = k.T + Q_mldiv_N
 
         p = s
 
@@ -245,11 +245,11 @@ def olrp(beta, A, B, R, Q, W=None, tol=1e-6, max_iter=1000):
 
         for it in range(max_iter):
             f0 = solve(Q + beta * B.T.dot(p0).dot(B),
-                       beta * B.T.dot(p0).dot(A) + W.T)
+                       beta * B.T.dot(p0).dot(A) + N.T)
             p1 = beta * A.T.dot(p0).dot(A) + R - \
-                (beta * A.T.dot(p0).dot(B) + W).dot(f0)
+                (beta * A.T.dot(p0).dot(B) + N).dot(f0)
             f1 = solve(Q + beta * B.T.dot(p1).dot(B),
-                       beta * B.T.dot(p1).dot(A) + W.T)
+                       beta * B.T.dot(p1).dot(A) + N.T)
             dd = np.max(f1 - f0)
             p0 = p1
 
