@@ -208,3 +208,13 @@ Studying :eq:`ex3_obj2` we can now read of the needed matrices
     B &= \begin{bmatrix} 1 \\ 0 \end{bmatrix} \\
     R &= \begin{bmatrix} A_1/2 & -A_0/2 \\ -A_0/2 & 0 \end{bmatrix} \\
     Q &= -.5 d
+
+Part c
+^^^^^^
+
+Remember that olrp solves for :math:`F` such that the optimal choice of :math:`u` is :math:`u = - F x`.  We are given that :math:`F = \begin{bmatrix} .0475 & -95.08 \end{bmatrix}`.  We get that our solution is :math:`u = -.0475 Y + 95.08`.  Also remember that :math:`u := Y' - Y`.  Hence :math:`Y' = 95.08 + .9525Y`.
+
+Part d
+^^^^^^
+
+This is the same answer as we had when we set :math:`n=1` in the last part of problem 2.  This makes sense because the problems that a single firm and a planner face would be the same.

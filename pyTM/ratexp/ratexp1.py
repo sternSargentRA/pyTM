@@ -73,7 +73,7 @@ def ex3():
 
     A = np.array([[1, 0], [0, 1]])
     B = np.array([[1], [0]])
-    R = np.array([[A_1/2, -A_0/2], [-A_0/2, 0]])
+    R = -np.array([[A_1/2, -A_0/2], [-A_0/2, 0]])
     Q = -0.5*d
 
     F, P = olrp(beta, A, B, R, Q)
