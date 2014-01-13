@@ -1,2 +1,0 @@
-# Blank
-from lq import *
