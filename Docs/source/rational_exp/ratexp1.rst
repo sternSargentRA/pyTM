@@ -469,7 +469,7 @@ Please
 Exercise 4
 ------------
 
-A monopolist faces the industry demand curve :eq:`ex3`  and  chooses :math:` Y_t` to maximize :math:` \sum_{t=0}^\infty \beta^t R_t` where
+A monopolist faces the industry demand curve :eq:`ex3`  and  chooses :math:`Y_t` to maximize :math:`\sum_{t=0}^\infty \beta^t R_t` where
 
 .. math::
       R_t = p_t Y_t - .5 d(Y_{t+1} - Y_t)^2
@@ -660,4 +660,3 @@ as
 
 .. math::
       \tilde w_t = S_w \tilde X_t
-
