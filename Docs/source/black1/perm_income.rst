@@ -211,7 +211,7 @@ Suppose that the endowment process has the moving average representation
 
 where
 
-   *  :math:`w_{t+1}` is an i.i.d. vector process with :math:`E w_{t+1} =0` and contemporaneous covariance matrix :math:`E w_{t+1} w_{t+1}'=I`
+   *  :math:`w_{t+1}` is an i.i.d. vector process with :math:`E w_{t+1} =0` and contemporaneous covariance matrix :math:`E w_{t+1} w_{t+1}'=I`
    
    *  :math:`d(L) = \sum_{j=0}^\infty d_j L^j`, where :math:`L` is the lag operator
    
@@ -257,7 +257,7 @@ Recalling the form of the endowment process , we can compute
   E_{t+1} \sum_{j=0}^\infty \beta^j z_{t+j+1} & = (I -\beta A_{22})^{-1} z_{t+1} \\
   E_t \sum_{j=0}^\infty \beta^j z_{t+j+1} & = (I - \beta A_{22})^{-1} A_{22} z_t
 
-Substituting these formulas into XXXXXX and and using XXXXX gives the following representation for the consumer's optimum decision rule:
+Using  these formulas together with :eq:`sprob15ab` and substituting  into :eq:`sprob11aa` and :eq:`sprob7aa`  gives the following representation for the consumer's optimum decision rule:
 
 .. math::
   c_{t+1} & = c_t + (1-\beta) U_y  (I-\beta A_{22})^{-1} C_2 w_{t+1} \\
@@ -268,13 +268,19 @@ Substituting these formulas into XXXXXX and and using XXXXX gives the following 
 
 Representation :eq:`sprob16abcd` reveals several things about the optimal decision rule. 
 
-    1. The *state* consists of the endogenous part :math:`c_t` and the exogenous part :math:`z_t`. These contain all of the relevant information for forecasting future :math:`c,y, b`. Notice that financial assets :math:`b_t` have disappeared as a component of the state because they are properly encoded in :math:`c_t`. 
+    1. The *state* consists of the endogenous part :math:`c_t` and the exogenous part :math:`z_t`. These contain all of the relevant information for forecasting future :math:`c,y, b`.
+    
+    2. Financial assets :math:`b_t` have disappeared as a component of the state because they are properly encoded in :math:`c_t`. 
    
-    2. According to :eq:`sprob16abcd`, consumption is a random walk with innovation :math:`(1-\beta) d(\beta)w_{t+1}` as implied also by :eq:`sprob13`. This outcome confirms that the Euler equation :eq:`sprob5` is built into the solution. That consumption is a random walk of course implies that it does not possess an asymptotic stationary distribution, at least so long as :math:`z_t` exhibits perpetual random fluctuations, as it will generally under :eq:`sprob15ab`. This feature is inherited partly from the assumption that :math:`\beta R =1`.
+    3. According to :eq:`sprob16abcd`, consumption is a random walk with innovation :math:`(1-\beta) d(\beta)w_{t+1}` as implied also by :eq:`sprob13`.
     
-    3. The impulse response function of :math:`c_t` is a box: for all :math:`j\geq 1`, the response of :math:`c_{t+j}` to an increase in the innovation :math:`w_{t+1}` is :math:`(1-\beta) d(\beta) = (1-\beta) U_y (I -\beta A_{22})^{-1} C_2`. 
+    4. The random walk outcome confirms that the Euler equation :eq:`sprob5` is built into the solution. 
     
-    4. Solution :eq:`sprob16abcd` reveals that the joint process :math:`c_t,b_t` possesses the property that Granger and Engle (1987) called *cointegration*. 
+    5. That consumption is a random walk of course implies that it does not possess an asymptotic stationary distribution, at least so long as :math:`z_t` exhibits perpetual random fluctuations, as it will generally under :eq:`sprob15ab`. This feature is inherited partly from the assumption that :math:`\beta R =1`.
+    
+    6. The impulse response function of :math:`c_t` is a box: for all :math:`j\geq 1`, the response of :math:`c_{t+j}` to an increase in the innovation :math:`w_{t+1}` is :math:`(1-\beta) d(\beta) = (1-\beta) U_y (I -\beta A_{22})^{-1} C_2`. 
+    
+    7. Solution :eq:`sprob16abcd` reveals that the joint process :math:`c_t,b_t` possesses the property that Granger and Engle (1987) called *cointegration*. 
     
     
 Cointegration
@@ -296,7 +302,7 @@ Equation :eq:`sprob7` can be arranged to take the form
    (1-\beta) b_t + c_t = (1-\beta) E_t \sum_{j=0}^\infty \beta^j y_{t+j},
    :label: sprob77
 
-which asserts that the *cointegrating residual*  on the left side equals the conditional expectation of the geometric sum of future incomes on the right. [#f8]_
+Equation :eq:`sprob77`  asserts that the *cointegrating residual*  on the left side equals the conditional expectation of the geometric sum of future incomes on the right. [#f8]_
 
 .. _sub_debt_dynamics:
 
@@ -304,7 +310,7 @@ Debt dynamics
 -------------
 
 If we subtract the equation for :math:`b_t` in equation :eq:`sprob16abcd` evaluated at time
-:math:`t` that equation evaluated at time :math:`t+1` we obtain
+:math:`t` that equation evaluated at time :math:`t+1`, we obtain
 
 .. math::
   b_{t+1}- b_t = U_y (I-\beta A_{22})^{-1} (z_{t+1} - z_t) - {\frac{1}{1-\beta}}(c_{t+1} - c_t ) .
@@ -321,12 +327,14 @@ Substituting :math:`z_{t+1} - z_t = (A_{22} - I )z_t + C_2 w_{t+1}` and the equa
 Two classic examples
 --------------------
 
-We illustrate formulas with the following two examples. In both examples, the endowment follows the process :math:`y_t = z_{1t} + z_{2t}` where
+We illustrate formulas :eq:`sprob16abcd` with the following two examples. In both examples, the endowment follows the process :math:`y_t = z_{1t} + z_{2t}` where
 
 .. math::
   \begin{bmatrix} z_{1 t+1} \\ z_{2t+1}\end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix}\begin{bmatrix}z_{1t} \\z_{2t} \end{bmatrix} + \begin{bmatrix} \sigma_1 & 0 \\ 0 & \sigma_2 \end{bmatrix} \begin{bmatrix}w_{1t+1} \\w_{2t+1} \end{bmatrix}
 
-where :math:`w_{t+1}` is an i.i.d. :math:`2 \times 1` process distributed as :math:`{\cal N}(0,I)`. Here :math:`z_{1t}` is a permanent component of :math:`y_t` while :math:`z_{2t}` is a purely transitory component.
+where :math:`w_{t+1}` is an i.i.d. :math:`2 \times 1` process distributed as :math:`{\cal N}(0,I)`. 
+
+    *  Here :math:`z_{1t}` is a permanent component of :math:`y_t` while :math:`z_{2t}` is a purely transitory component.
 
 **Example 1.** Assume that the consumer observes the state :math:`z_t` at time :math:`t`.
 
@@ -362,7 +370,7 @@ In particular, from our study of example XXXXX with the *Kalman filter* XXXXXX, 
 
 where :math:`K` is the Kalman gain and :math:`a_t = y_t - E [ y_t | y^{t-1}]`.
 
-From lecture XXXX on the Kalman filter,  we know that :math:`K \in [0,1]` and that :math:`K` increases as :math:`\frac{\sigma_1^2}{\sigma_2^2}` increases, i.e., as the ratio of the variance of the permanent shock to the variance of the transitory shock to income increases. 
+From lecture XXXX on the Kalman filter,  we know that :math:`K \in [0,1]` and that :math:`K` increases as :math:`\Bigl(\frac{\sigma_1^2}{\sigma_2^2}\Bigr)` increases, i.e., as the ratio of the variance of the permanent shock to the variance of the transitory shock to income increases. 
 
 Applying formulas :eq:`sprob16abcd` implies
 
