@@ -3,8 +3,8 @@ def_graphic_ext=eps
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
-kileversion=2.1.0
-lastDocument=rmt4Sec2_12.rst
+kileversion=2.1.3
+lastDocument=perm_income.rst
 masterDocument=
 name=permanent_income_model
 pkg_extIsRegExp=false
@@ -31,9 +31,9 @@ Bookmarks=
 Encoding=windows-1250
 FoldedColumns=
 FoldedLines=
-Highlighting=reStructuredText
+Highlighting=Restructured Text
 Indentation Mode=normal
-Mode=reStructuredText
+Mode=Restructured Text
 ReadWrite=true
 
 [item:Spencer_notes_and_hints.tex]
@@ -48,11 +48,11 @@ order=1
 
 [item:perm_income.rst]
 archive=true
-column=38
+column=25
 encoding=windows-1250
-highlight=reStructuredText
-line=365
-mode=reStructuredText
+highlight=Restructured Text
+line=217
+mode=Restructured Text
 open=true
 order=0
 
@@ -73,7 +73,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:perm_income.rst]
-CursorColumn=38
-CursorLine=365
+CursorColumn=25
+CursorLine=217
 JumpList=
-ViMarks=
+ViMarks=.,217,24,[,217,23,],217,24

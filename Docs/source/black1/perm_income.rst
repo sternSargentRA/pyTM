@@ -3,7 +3,11 @@
 The LQ permanent income model
 ======================================
 
-This lecture describes the infinite horizon linear quadratic savings problem whose solution is a rational expectations version of the permanent income model of Friedman (1956) and Hall (1978).
+This lecture describes the infinite-horizon linear-quadratic savings problem
+
+Its  solution is a rational expectations version of the famous permanent income model of Friedman (1956)
+
+Hall (1978) cast Friedman' model within the linear-quadratic setting
 
 We use the model as a vehicle for illustrating
 
@@ -26,7 +30,15 @@ A consumer has preferences over consumption streams that are ordered by the util
   E_0 \sum_{t=0}^\infty \beta^t u(c_t)
   :label: sprob1
 
-where :math:`E_t` is the mathematical expectation conditioned on the consumer's time :math:`t` information, :math:`c_t` is time :math:`t` consumption, :math:`u(c)` is a strictly concave one-period utility function, and :math:`\beta \in (0,1)` is a discount factor. 
+where 
+
+    *  :math:`E_t` is the mathematical expectation conditioned on the consumer's time :math:`t` information
+    
+    *  :math:`c_t` is time :math:`t` consumption
+    
+    *  :math:`u(c)` is a strictly concave one-period utility function
+    
+    *  :math:`\beta \in (0,1)` is a discount factor 
 
 The consumer maximizes :eq:`sprob1` by choosing a consumption, borrowing plan :math:`\{c_t, b_{t+1}\}_{t=0}^\infty` subject to the sequence of budget constraints
 
@@ -34,7 +46,15 @@ The consumer maximizes :eq:`sprob1` by choosing a consumption, borrowing plan :m
   c_t + b_t = R^{-1} b_{t+1}  + y_t
   :label: sprob2
 
-where :math:`y_t` is an exogenous stationary endowment process, :math:`R` is a constant gross risk-free interest rate, :math:`b_t` is one-period risk-free debt maturing at :math:`t`, and :math:`b_0` is a given initial condition. 
+where 
+
+     *  :math:`y_t` is an exogenous stationary endowment process
+    
+     *  :math:`R` is a constant gross risk-free interest rate
+     
+     *  :math:`b_t` is one-period risk-free debt maturing at :math:`t`
+     
+     *  :math:`b_0` is a given initial condition. 
 
 
 .. note::
@@ -49,7 +69,13 @@ We shall  assume that the endowment process has the state-space representation
     :label: sprob15ab
 
 
-where :math:`w_{t+1}` is an i.i.d. process with mean zero and identity contemporaneous covariance matrix, :math:`A_{22}` is a stable matrix, its eigenvalues being strictly below unity in modulus, and :math:`U_y` is a selection vector that pins down :math:`y` with a particular linear combination of the :math:`z_t`.
+where
+
+   *  :math:`w_{t+1}` is an i.i.d. process with mean zero and identity contemporaneous covariance matrix
+   
+   *  :math:`A_{22}` is a stable matrix, its eigenvalues being strictly below unity in modulus
+   
+   *  :math:`U_y` is a selection vector that pins down :math:`y` with a particular linear combination of the :math:`z_t`.
 
 We impose the following condition on the consumption, borrowing plan:
 
@@ -59,9 +85,13 @@ We impose the following condition on the consumption, borrowing plan:
 
 Condition :eq:`sprob3` suffices to rule out *Ponzi schemes*
 
-The *state* vector confronting the household at :math:`t` is :math:`\left[\matrix{b_t & z_t\cr}\right]'`, where :math:`b_t` is its one-period debt falling due at the beginning oferiod :math:`t` and :math:`z_t` contains all variables useful for forecasting its future endowment.
+The *state* vector confronting the household at :math:`t` is :math:`\left[\matrix{b_t & z_t\cr}\right]'`
 
-We impose this condition to rule out an always-borrow scheme that would allow the household to enjoy unbounded or bliss consumption  forever.
+   *  :math:`b_t` is the household's one-period debt falling due at the beginning oferiod :math:`t` 
+   
+   *  :math:`z_t` contains all variables useful for forecasting the household's future endowment
+
+We impose condition :eq:`sprob3` to rule out an always-borrow scheme that would allow the household to enjoy unbounded or bliss consumption  forever.
 
 First-order conditions for maximizing :eq:`sprob1` subject to :eq:`sprob2` are 
 
@@ -97,7 +127,7 @@ To accomplish this, solve :eq:`sprob2` forward and impose :math:`\lim_{T\rightar
 
 Imposing :math:`\lim_{T\rightarrow +\infty} \beta^T b_{T+1} =0` suffices to impose :eq:`sprob3` on the debt path. 
 
-Take conditional expectations on both sides of and use and the *law of iterated expectations* to deduce
+Take conditional expectations on both sides of :eq:`sprob6` and use  the *law of iterated expectations* to deduce
 
 .. math::
    b_t = \sum_{j=0}^\infty \beta^j E_t y_{t+j} - {1 \over 1-\beta} c_t
@@ -116,18 +146,30 @@ If we define the *net rate of interest* :math:`r` by :math:`\beta =\frac{1}{1+r}
    \left[ \sum_{j=0}^\infty \beta^j E_t y_{t+j} - b_t\right]
    :label: sprob9
 
-Equation :eq:`sprob8` or :eq:`sprob9` asserts that  consumption  equals economic *income*, namely, a constant marginal propensity to consume or interest factor :math:`\frac{r}{1+r}` times the sum of nonfinancial wealth :math:`\sum_{j=0}^\infty \beta^j E_t y_{t+j}` and financial wealth :math:`-b_t`.
+Equation :eq:`sprob8` or :eq:`sprob9` asserts that  consumption  equals economic *income*
+
+   * *financial wealth* equals :math:`b_t`
+   
+   * *non-financial* wealth equals :math:`\sum_{j=0}^\infty \beta^j E_t y_{t+j}`
+   
+   * A *marginal propensity to consume out of wealth* equals the  interest factor :math:`\frac{r}{1+r}`
+   
+   * *economic income* equals  a constant marginal propensity to consume  times the sum of nonfinancial wealth and financial wealth 
 
 Notice that :eq:`sprob9` represents :math:`c_t` as a function of the *state* :math:`[b_t, z_t]` confronting the household.
 
-Here :math:`z_t` contains the information useful for forecasting the endowment process.
+Here :math:`z_t` contains all information useful for forecasting the household's endowment process.
 
 Another enlightening representation
 ------------------------------------
 
-Pulling together our preceding results, we can regard :math:`z_t, b_t` as the time :math:`t` state, where :math:`z_t` is an *exogenous* component of the state and :math:`b_t` is an *endogenous* component of the state vector. 
+We can regard :math:`z_t, b_t` as the time :math:`t` *state*
 
-The system governing consumption can be represented as
+   *  :math:`z_t` is an *exogenous* component 
+   
+   *  :math:`b_t` is an *endogenous* component 
+
+A linear state-space system governing consumption can be represented as
 
 .. math::
   z_{t+1} & = A_{22} z_t + C_2 w_{t+1} \\
@@ -167,7 +209,13 @@ Suppose that the endowment process has the moving average representation
   y_{t+1} = d(L) w_{t+1}
   :label: sprob12
 
-where :math:`w_{t+1}` is an i.i.d.Â vector process with :math:`E w_{t+1} =0` and contemporaneous covariance matrix :math:`E w_{t+1} w_{t+1}'=I`, :math:`d(L) = \sum_{j=0}^\infty d_j L^j`, where :math:`L` is the lag operator, and the household has an information set [#f5]_ :math:`w^t = [w_t, w_{t-1}, \ldots ]` at time :math:`t`. 
+where
+
+   *  :math:`w_{t+1}` is an i.i.d. vector process with :math:`E w_{t+1} =0` and contemporaneous covariance matrix :math:`E w_{t+1} w_{t+1}'=I`
+   
+   *  :math:`d(L) = \sum_{j=0}^\infty d_j L^j`, where :math:`L` is the lag operator
+   
+   *  at time :math:`t`,  the household has an information set [#f5]_ :math:`w^t = [w_t, w_{t-1}, \ldots ]`  
 
 Then notice that
 
