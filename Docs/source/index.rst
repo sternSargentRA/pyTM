@@ -18,6 +18,7 @@ This website will be home to the python based educational modules that are curre
    seppo/D_Evans_model
    More_lectures/Markov_Perf
    More_lectures/Dyn_Stack
+   More_lectures/Markov_asset
 
 Indices and tables
 ==================
