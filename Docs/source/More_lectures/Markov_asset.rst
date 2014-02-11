@@ -1,7 +1,29 @@
 Asset Pricing in a Markov Environment
 =====================================
 
-Reminder about some prediciton formulas for  Markov chains
+This lecture describes the famous Lucas asset pricing model*XXXXXX Econometrica 1978*
+
+We study a special case of the model in which the state is governed by a discrete state Markov chain
+
+(Lucas had studied a continuous state Markov process for the state)
+
+The model tells  how the price of a "Lucas tree" is determined in a pure exchange economy 
+
+The economy features
+
+   *  a representative agent 
+   
+   *  time-separable preferences over a single good 
+   
+   *  The evolution of the consumption endowment is  described by a discrete state Markov chain
+   
+Our key tools in studying the economy are
+
+   * Formulas for predicting future values of functions of a Markov state
+   
+   * A formula for predicting the discounted sum of future values of a Markov state 
+
+Reminders about prediction formulas for  Markov chains
 -----------------------------------------------------------
 
 Let :math:`P` be an :math:`n \times n` stochastic matrix with
@@ -17,17 +39,18 @@ Here are some useful prediction formulas:
 
 .. math::
        E (y_{t+1} | x_t = e_i ) &  = \sum_j P_{ij} \bar y_j = (P \bar y)_i \cr
-       E (y_{t+j} | x_t = e_i ) & = \sum_j P_{ij}^{(2)} \bar y_j = (P^2 \bar y)_i\cr
+       E (y_{t+k} | x_t = e_i ) & = \sum_j P_{ij}^{(k)} \bar y_j = (P^k \bar y)_i\cr
+           \vdots    & \vdots \cr
        E \bigl[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t = e_i \bigr] & = [(I - \beta P)^{-1} \bar y]_i \cr
        
-where
+where :math:`P_{ij}^{(k)}` is the :math:`ij` element of :math:`P^k` and
 
 .. math::
       (I - \beta P)^{-1}  = I + \beta P + \beta^2 P^2 + \cdots
       
       
-Markov asset pricing with growth
----------------------------------
+Markov asset pricing with stochastic geometric consumption growth
+------------------------------------------------------------------
 
 Take a Lucas asset pricing model 
 
@@ -62,19 +85,19 @@ where :math:`\lambda_t` is governed by an :math:`n` state discrete Markov chain 
 Pricing a Lucas tree
 ^^^^^^^^^^^^^^^^^^^^^
 
-A ``Lucas tree'' is a claim on the consumption  endowment.  
+A "Lucas tree" is a claim on the consumption  endowment.  
 
-The ``dividend'' is :math:`Y_t = C_t`
+The "dividend'' is :math:`Y_t = C_t`
 
-Let's price a Lucas tree ``ex dividend,'' meaning that the buyer does not receive this period's deivdend.
+Let's price a Lucas tree "ex dividend,'' meaning that the seller retains and the buyer does not receive this period's dividend.
  
 Let :math:`p_t` be the price of the Lucas tree, ex dividend
 
 It satisfies
 
 .. math::
-    p_t & = E_t \Bigl[ \beta \frac{U'(C_{t+1}}{U'(C_t)} ( C_{t+1}) + p_{t+1} ) \Bigr]  \cr
-        & = E_t \Bigl[  \beta \frac{ \Bigl(C_{t+1}}{C_t} \Bigr)^{-\gamma} [ Y_{t+1} + p_{t+1}] \Bigr]
+    p_t & = E_t \Bigl[ \beta \frac{U'(C_{t+1})}{U'(C_t)} ( C_{t+1} + p_{t+1} ) \Bigr]  \cr
+    p_t    & = E_t \Bigl[  \beta \Bigl(\frac{ C_{t+1}}{C_t} \Bigr)^{-\gamma} [ Y_{t+1} + p_{t+1}] \Bigr]
    :label: Lucas1
         
 Guess a pricing function  of the form 
@@ -96,8 +119,8 @@ It follows that
      
 or
 
-.. math:;
-     v(i) = \beta \sum_{j=1}^n (P_{ij} \lambda_j^{1-\gamma} ( 1 + v(j) )
+.. math::
+     v(i) = \beta \sum_{j=1}^n P_{ij} \lambda_j^{1-\gamma} ( 1 + v(j) )
      
 which we can write as
 
@@ -121,19 +144,19 @@ A risk-free consol
 
 Consider the same economy
 
-A risk-free consol promises to pay a constant amount  $\zeta> 0$ each period
+A risk-free consol promises to pay a constant amount  :math:`\zeta> 0` each period
 
 Recycling notation, let :math:`p_t` be the ex-coupon price of the consol
 
 The price obeys the 
 
 .. math::
-    U'(C_t) p_t = \beta E_t \Bigl[ U'(C_{t+1} \zeta + U'(C_{t+1}) p_{t+1} \Bigr]
+    U'(C_t) p_t = \beta E_t \Bigl[ U'(C_{t+1}) \zeta + U'(C_{t+1}) p_{t+1} \Bigr]
     
 Substituting :math:`U'(C) = C^{-\gamma}` into the above equation yields
 
 .. math::
-    C_t^{-\gamma} p_t & = \beta E_t \Bigl[ C_{t+1}^-\gamma (\zeta + p_{t+1}) \Bigr] \cr
+    C_t^{-\gamma} p_t & = \beta E_t \Bigl[ C_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] \cr
                       &  = \beta C_t^{-\gamma} E_t \Bigl[ \lambda_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] \cr
                       
 It follows that
@@ -180,7 +203,7 @@ Recall that :math:`p(\lambda_t)` is the value of the consol when the initial gro
 The value of the option satisfies the equation
 
 .. math::
-    U'(C_t) w(\lambda_t, p_S) & = \max \Bigl[ \beta E_t U'(C_{t+1}) w(\lambda_{t+1}, p_S), U'(C_t) (p(\lambda_t) - p_S) \Bigr]
+    U'(C_t) w(\lambda_t, p_S) & = \max \Bigl[ \beta E_t U'(C_{t+1}) w(\lambda_{t+1}, p_S), U'(C_t) (p(\lambda_t) - p_S) \Bigr] \cr
     C_t^{-\gamma} w(\lambda_i, p_S) & = \max \Bigl[ \beta P_{ij} \lambda^{-\gamma} C_t^{-\gamma} w(\lambda_j, p_S), C_t^{-\gamma} (p(\lambda_j) - p_S) \Bigr]
     
 or
@@ -196,7 +219,7 @@ Express the preceding equation as the functional equation
       w_i = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij} w_j, p_j - p_S \bigr]
       :label: FEoption
       
-To solve :eq:`FEoption` form the operator
+To solve :eq:`FEoption` form, the operator
 
 .. math::
     T(w;p, p_S) = \max \bigl( \beta \tilde P w, p - p_S {\bf 1} \bigr)
