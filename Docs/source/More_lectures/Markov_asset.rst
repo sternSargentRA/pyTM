@@ -48,6 +48,65 @@ where :math:`P_{ij}^{(k)}` is the :math:`ij` element of :math:`P^k` and
 .. math::
       (I - \beta P)^{-1}  = I + \beta P + \beta^2 P^2 + \cdots
       
+Premultiplication  by :math:`(I - \beta P)^{-1}` is sometimes called "applying the *resolvent operator*"      
+
+      
+Basic setup 
+---------------------
+
+Lucas studied a pure exchange economy with a representative agent
+
+*pure exchange* means that the aggregate output of the econonmy is exogenous
+
+For Lucas, *representative agent* meant that either
+
+    * There is a single consumer (sometimes also referred to as a household), or
+    
+    * There is more than one consumer, but all consumers have *identical* endowments and preferences 
+
+There is a single *non storable* consumption good at each :math:`t \geq 0`
+      
+   
+A  representative consumer ranks consumption streams according to the utility functional
+
+.. math::
+     E_0 \sum_{t=0}^\infty \beta^t U (C_t)
+     
+where 
+
+    * :math:`C_t` is consumption 
+    
+    * :math:`\beta \in (0,1)` is a fixed discount factor
+    
+    * :math:`U(C) = \frac{C^{1-\gamma}}{1-\gamma}` for :math:`\gamma > 0`, where :math:`\gamma` is the coefficient of relative risk aversion
+    
+In our version  of the model, we'll assume that the consumer's endowment of the consumption  good  follows the process
+
+.. math:: Y_{t+1} = \lambda_{t+1} Y_t 
+
+where :math:`\lambda_t` is governed by an :math:`n` state discrete Markov chain with transition matrix :math:`P`  
+
+Key Insights
+^^^^^^^^^^^^^
+
+Since it is a pure exchange economy, in any competitive equilibrium, prices must adjust so that the representative consumer is content to consume his or her endowment:
+
+.. math::
+   C_t = Y_t \quad \forall t \geq 0
+    
+It follows, that :math:`C_t`  obeys the same stochastic process as the endowment, so 
+
+.. math:: 
+   C_{t+1} = \lambda_{t+1} C_t 
+
+Following Lucas, we can read competitive equilibrium prices for an state-contingent claim by evaluating marginal utilities at the endowment
+
+This means that when the price :math:`Q(C_{t+1},C_t) ` of a time :math:`t`, state :math:`C_t` claim on one unit of  date :math:`t+1`, state :math:`C_{t+1}` consumption is
+
+.. math::
+    Q(C_{t+1},C_t) = \beta \frac{U'(C_{t+1})}{U'(C_t)} {\rm Prob}(C_{t+1} | C_t )
+
+
       
 Markov asset pricing with stochastic geometric consumption growth
 ------------------------------------------------------------------
@@ -61,29 +120,11 @@ We'll price several assets
    * A risk-free consol (a type of bond issued by the UK in the 19th century)
    
    * An infinite horizon call option on a consol
-   
-A  representative consumer ranks consumption streams according to the utility functional
-
-.. math::
-     E_0 \sum_{t=0}^\infty \beta^t U (C_t)
-     
-where 
-
-    * :math:`C_t` is aggregate consumption per capita
-    
-    * :math:`\beta \in (0,1)` is a fixed discount factor
-    
-    * :math:`U(C) = \frac{C^{1-\gamma}}{1-\gamma}` for :math:`\gamma > 0`
-    
-We assume that aggregate consumption per capital obeys
-
-.. math:: C_{t+1} = \lambda_{t+1} C_t 
-
-where :math:`\lambda_t` is governed by an :math:`n` state discrete Markov chain with transition matrix :math:`P`
 
 
-Pricing a Lucas tree
-^^^^^^^^^^^^^^^^^^^^^
+
+Pricing a "Lucas tree"
+^^^^^^^^^^^^^^^^^^^^^^
 
 A "Lucas tree" is a claim on the consumption  endowment.  
 
@@ -96,6 +137,7 @@ Let :math:`p_t` be the price of the Lucas tree, ex dividend
 It satisfies
 
 .. math::
+    p_t &= \sum_{C_{t+1}} \Bigl[ Q(C_{t+1}|C_t ) (C_{t+1} + p_{t+1} ) \Bigr] \cr
     p_t & = E_t \Bigl[ \beta \frac{U'(C_{t+1})}{U'(C_t)} ( C_{t+1} + p_{t+1} ) \Bigr]  \cr
     p_t    & = E_t \Bigl[  \beta \Bigl(\frac{ C_{t+1}}{C_t} \Bigr)^{-\gamma} [ Y_{t+1} + p_{t+1}] \Bigr]
    :label: Lucas1
@@ -132,7 +174,7 @@ where :math:`v` is an :math:`n \times n` vector and
 .. math::
     \tilde P_{ij} = P_{ij} \lambda_j^{1-\gamma}
     
-Finally, we can use a von Neuman series to solve  :eq:`resolvent1`:
+Finally, we can use a von Neuman series (or apply a resolvent operator) to solve  :eq:`resolvent1`:
 
 .. math::
     v = \beta (I - \beta \tilde P)^{-1} \tilde P {\bf 1}
@@ -156,8 +198,7 @@ The price obeys the
 Substituting :math:`U'(C) = C^{-\gamma}` into the above equation yields
 
 .. math::
-    C_t^{-\gamma} p_t & = \beta E_t \Bigl[ C_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] \cr
-                      &  = \beta C_t^{-\gamma} E_t \Bigl[ \lambda_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] \cr
+    C_t^{-\gamma} p_t & = \beta E_t \Bigl[ C_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] = \beta C_t^{-\gamma} E_t \Bigl[ \lambda_{t+1}^{-\gamma} (\zeta + p_{t+1}) \Bigr] \cr
                       
 It follows that
 
@@ -185,12 +226,14 @@ where
 .. math::
     \check  P_{ij} = P_{ij} \lambda_j^{-\gamma} 
     
-Pricing a call option on the consol
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Pricing an option to purchase the consol
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We now want to price an infinite horizon call option on the consol
+We now want to price an infinite horizon  option to purchase a consol at a price :math:`p_S`
 
-The option has a *strike price* :math:`p_S`
+This is termed a *call option*
+
+It is said to have a *strike price* :math:`p_S`
 
 This means that the owner of the option is entitled to purchase the consol at the price :math:`p_S` at the beginning of any period, after the coupon has been paid to the previous owner of the bond
            
