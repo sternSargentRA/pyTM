@@ -40,7 +40,7 @@ Here are some useful prediction formulas:
 .. math::
        E (y_{t+1} | x_t = e_i ) &  = \sum_j P_{ij} \bar y_j = (P \bar y)_i \cr
        E (y_{t+k} | x_t = e_i ) & = \sum_j P_{ij}^{(k)} \bar y_j = (P^k \bar y)_i\cr
-           \vdots    & \vdots \cr
+           \vdots  \quad \quad  & \quad \quad \vdots \cr
        E \bigl[\sum_{j=0}^\infty \beta^j y_{t+j} | x_t = e_i \bigr] & = [(I - \beta P)^{-1} \bar y]_i \cr
        
 where :math:`P_{ij}^{(k)}` is the :math:`ij` element of :math:`P^k` and
@@ -101,14 +101,20 @@ It follows, that :math:`C_t`  obeys the same stochastic process as the endowment
 
 Following Lucas, we can read competitive equilibrium prices for an state-contingent claim by evaluating marginal utilities at the endowment
 
-This means that when the price :math:`Q(C_{t+1},C_t) ` of a time :math:`t`, state :math:`C_t` claim on one unit of  date :math:`t+1`, state :math:`C_{t+1}` consumption is
+For example, if at time :math:`t`, state :math:`C_t`  the consumer could trade a claim to  one unit of  date :math:`t+1`, state :math:`C_{t+1}` consumption at price :math:`Q(C_{t+1},C_t)`,
+the price would have to be
 
 .. math::
     Q(C_{t+1},C_t) = \beta \frac{U'(C_{t+1})}{U'(C_t)} {\rm Prob}(C_{t+1} | C_t )
+    :label: Arrowprice
+    
+in order for him to be content to consume his endowment at each date and state
+
+Here :math:` Q(C_{t+1},C_t)` is the price of a one-period-ahead *Arrow security*
 
 
       
-Markov asset pricing with stochastic geometric consumption growth
+Asset pricing with Markov geometric consumption growth
 ------------------------------------------------------------------
 
 Take a Lucas asset pricing model 
@@ -169,7 +175,8 @@ which we can write as
 .. math:: 
     v = \beta \tilde P {\bf 1} + \beta \tilde P v
    :label: resolvent1
-where :math:`v` is an :math:`n \times n` vector and
+   
+where :math:`v` is an :math:`n \times n` vector, :math:`{\bf 1}` is an :math:`n times 1` vector of ones,  and
 
 .. math::
     \tilde P_{ij} = P_{ij} \lambda_j^{1-\gamma}
@@ -190,7 +197,7 @@ A risk-free consol promises to pay a constant amount  :math:`\zeta> 0` each peri
 
 Recycling notation, let :math:`p_t` be the ex-coupon price of the consol
 
-The price obeys the 
+The price satisies
 
 .. math::
     U'(C_t) p_t = \beta E_t \Bigl[ U'(C_{t+1}) \zeta + U'(C_{t+1}) p_{t+1} \Bigr]
@@ -213,7 +220,7 @@ or
 which can be expressed as
 
 .. math::
-    \bar p = \beta \check P \zeta {\bf 1} + \beta \check P \bar p
+    \bar p = \beta \check P \zeta {\bf 1} + \beta \check P) \bar p
   
 or
 
@@ -246,28 +253,28 @@ Recall that :math:`p(\lambda_t)` is the value of the consol when the initial gro
 The value of the option satisfies the equation
 
 .. math::
-    U'(C_t) w(\lambda_t, p_S) & = \max \Bigl[ \beta E_t U'(C_{t+1}) w(\lambda_{t+1}, p_S), U'(C_t) (p(\lambda_t) - p_S) \Bigr] \cr
-    C_t^{-\gamma} w(\lambda_i, p_S) & = \max \Bigl[ \beta P_{ij} \lambda^{-\gamma} C_t^{-\gamma} w(\lambda_j, p_S), C_t^{-\gamma} (p(\lambda_j) - p_S) \Bigr]
+    U'(C_t) w(\lambda_t, p_S) & = \max \Bigl[ \beta E_t U'(C_{t+1}) w(\lambda_{t+1}, p_S), U'(C_t) (\bar p(\lambda_t) - p_S) \Bigr] \cr
+    C_t^{-\gamma} w(\lambda_i, p_S) & = \max \Bigl[ \beta P_{ij} \lambda^{-\gamma} C_t^{-\gamma} w(\lambda_j, p_S), C_t^{-\gamma} (\bar p(\lambda_j) - p_S) \Bigr]
     
 or
 
 .. math::
-    w(\lambda_i, p_S) = \max \bigl[ \beta \sum_{j=1}^n (P_{ij} \lambda_j^{\gamma}) w (\lambda_j, p_S), p(\lambda_j) - p_S \bigr]
+    w(\lambda_i, p_S) = \max \bigl[ \beta \sum_{j=1}^n (P_{ij} \lambda_j^{\gamma}) w (\lambda_j, p_S), v(\lambda_j) - p_S \bigr]
     
 Let :math:`\hat P_{ij} = P_{ij} \lambda^{-\gamma}_j`
 
 Express the preceding equation as the functional equation
 
 .. math:: 
-      w_i = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij} w_j, p_j - p_S \bigr]
+      w_i = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij} w_j, \bar p_j - p_S \bigr]
       :label: FEoption
       
 To solve :eq:`FEoption` form, the operator
 
 .. math::
-    T(w;p, p_S) = \max \bigl( \beta \tilde P w, p - p_S {\bf 1} \bigr)
+    T(w;p, p_S) = \max \bigl( \beta \hat P w, \bar p - p_S {\bf 1} \bigr)
     
-and iterate to convergence on :math:`T(w;p, p_S)`
+and iterate to convergence on :math:`T(w;\bar p, p_S)`
 
 
 The risk-free interest rate
@@ -281,7 +288,18 @@ For this economy, a stochastic discount factor is
 It follows that the reciprocal :math:`R_t^{-1}` of the gross risk-free interest rate :math:`R_t` is
 
 .. math::
-
    E_t m_{t+1} = \beta \sum_{j=1}^n P_{ij} \lambda_j^\gamma = \beta P \lambda^\gamma
+   
+   
+Price of Arrow securities
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In our economy, the prices of Arrow securities described in equation :eq:`Arrowprice` are given by
+
+.. math::
+     Q_{ij} = \beta \lambda_j^{-\gamma} P_{ij}
+     
+where :math:`Q_{ij}` is the price of one unit of consumption when next period's growth rate is :math:`\lambda_j` given that this period's growth rate is :math:`\lambda_i`
+     
     
  
