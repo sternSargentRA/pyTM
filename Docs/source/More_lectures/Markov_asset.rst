@@ -1,11 +1,19 @@
 Asset Pricing in a Markov Environment
 =====================================
 
-This lecture describes the famous Lucas asset pricing model*XXXXXX Econometrica 1978*
+This lecture describes the famous Lucas asset pricing model
 
-We study a special case of the model in which the state is governed by a discrete state Markov chain
+[Lucas1978]_
 
-(Lucas had studied a continuous state Markov process for the state)
+Lucas allowed a continuous state Markov process for the state
+
+To simplify things, we study a special casein which the state is governed by a discrete state Markov chain
+
+The finite state Markov setting emulates 
+
+[MehraPrescott1985]_
+
+
 
 The model tells  how the price of a "Lucas tree" is determined in a pure exchange economy 
 
@@ -17,7 +25,9 @@ The economy features
    
    *  The evolution of the consumption endowment is  described by a discrete state Markov chain
    
-Our key tools in studying the economy are
+Key tools for studying the economy are
+
+   * Bellman equations 
 
    * Formulas for predicting future values of functions of a Markov state
    
@@ -31,7 +41,9 @@ Let :math:`P` be an :math:`n \times n` stochastic matrix with
 .. math::
      P_{ij} = {\rm Prob} (x_{t+1} = e_j | x_t = e_i )
      
-where :math:`e_i` is the :math:`i` th unit vector.  
+where :math:`e_i` is the :math:`i` th unit vector. 
+
+We are said to be "in state :math:`i`" when :math:`x_t = e_i`
 
 Let :math:`\bar y` be an :math:`n \times 1` vector with the interpretation that :math:`y_t = \bar y_i` if :math:`x_t = e_i`
 
@@ -48,23 +60,33 @@ where :math:`P_{ij}^{(k)}` is the :math:`ij` element of :math:`P^k` and
 .. math::
       (I - \beta P)^{-1}  = I + \beta P + \beta^2 P^2 + \cdots
       
-Premultiplication  by :math:`(I - \beta P)^{-1}` is sometimes called "applying the *resolvent operator*"      
+Premultiplication  by :math:`(I - \beta P)^{-1}` amounts to "applying the *resolvent operator*"      
 
       
 Basic setup 
 ---------------------
 
+    
+There is a single *non storable* consumption good at each :math:`t \geq 0`
+
 Lucas studied a pure exchange economy with a representative agent
 
-*pure exchange* means that the aggregate output of the econonmy is exogenous
+*pure exchange* means that all endowments are exogenous
 
 For Lucas, *representative agent* meant that either
 
     * There is a single consumer (sometimes also referred to as a household), or
     
-    * There is more than one consumer, but all consumers have *identical* endowments and preferences 
+    * When there is more than one consumer,  all consumers have *identical* endowments and preferences 
 
-There is a single *non storable* consumption good at each :math:`t \geq 0`
+Either way, the assumption of a representative agent eradicates all motives and opportunities for trade
+
+This makes it very easy to compute competitive equilibrium prices
+
+
+
+Details
+--------
       
    
 A  representative consumer ranks consumption streams according to the utility functional
@@ -86,6 +108,12 @@ In our version  of the model, we'll assume that the consumer's endowment of the 
 
 where :math:`\lambda_t` is governed by an :math:`n` state discrete Markov chain with transition matrix :math:`P`  
 
+We assume that
+
+    * :math:`\lambda_t = \bar \lambda_i` when the economy is in state :math:`i` (i.e., when :math:`x_t = e_i`)
+    
+    * :math:`{\rm Prob} (\lambda_{t+1} = \bar \lambda_j | \lambda_t = \bar \lambda_i) = P_{ij}`
+
 Key Insights
 ^^^^^^^^^^^^^
 
@@ -99,18 +127,19 @@ It follows, that :math:`C_t`  obeys the same stochastic process as the endowment
 .. math:: 
    C_{t+1} = \lambda_{t+1} C_t 
 
-Following Lucas, we can read competitive equilibrium prices for an state-contingent claim by evaluating marginal utilities at the endowment
+Following Lucas, we can read competitive equilibrium prices of any state-contingent claim by evaluating marginal utilities at the endowment
 
-For example, if at time :math:`t`, state :math:`C_t`  the consumer could trade a claim to  one unit of  date :math:`t+1`, state :math:`C_{t+1}` consumption at price :math:`Q(C_{t+1},C_t)`,
+For example, if at time :math:`t`, state :math:`lambda_t`  the consumer could trade a claim to  one unit of  date :math:`t+1`, state :math:`\lambda_{t+1}`
+consumption at price :math:`Q(\lambda_{t+1},\lambda_t)`,
 the price would have to be
 
 .. math::
-    Q(C_{t+1},C_t) = \beta \frac{U'(C_{t+1})}{U'(C_t)} {\rm Prob}(C_{t+1} | C_t )
+    Q(\lambda_{t+1},\lambda_t) = \beta \frac{U'(C_{t+1})}{U'(C_t)} {\rm Prob}(\lambda_{t+1} | \lambda_t )
     :label: Arrowprice
     
 in order for him to be content to consume his endowment at each date and state
 
-Here :math:` Q(C_{t+1},C_t)` is the price of a one-period-ahead *Arrow security*
+Here :math:`Q(\lambda_{t+1},\lambda_t)` is the price of a one-period-ahead *Arrow security*
 
 
       
@@ -123,7 +152,7 @@ We'll price several assets
 
    * A Lucas tree
    
-   * A risk-free consol (a type of bond issued by the UK in the 19th century)
+   * A consol (a type of bond issued by the UK in the 19th century)
    
    * An infinite horizon call option on a consol
 
@@ -134,16 +163,22 @@ Pricing a "Lucas tree"
 
 A "Lucas tree" is a claim on the consumption  endowment.  
 
-The "dividend'' is :math:`Y_t = C_t`
+The "dividend'' on the Lucas tree is :math:`Y_t = C_t`
 
-Let's price a Lucas tree "ex dividend,'' meaning that the seller retains and the buyer does not receive this period's dividend.
+We'll  price an  "ex dividend" claim on a Lucas tree meaning that,
+  
+     *  the seller retains  this period's dividend
+     
+     *  the buyer pays :math:`p_t` today to purchase a claim on 
+     
+         * :math:`C_{t+1}` and
+         
+         * the right to sell the claim tomorrow at price :math:`p_{t+1}`
  
-Let :math:`p_t` be the price of the Lucas tree, ex dividend
-
-It satisfies
+The price :math:`p_t`  of an ex dividend  Lucas tree satisfies
 
 .. math::
-    p_t &= \sum_{C_{t+1}} \Bigl[ Q(C_{t+1}|C_t ) (C_{t+1} + p_{t+1} ) \Bigr] \cr
+    p_t &= \sum_{\lambda_{t+1}} \Bigl[ Q(\lambda_{t+1}|\lambda_t ) (C_{t+1} + p_{t+1} ) \Bigr] \cr
     p_t & = E_t \Bigl[ \beta \frac{U'(C_{t+1})}{U'(C_t)} ( C_{t+1} + p_{t+1} ) \Bigr]  \cr
     p_t    & = E_t \Bigl[  \beta \Bigl(\frac{ C_{t+1}}{C_t} \Bigr)^{-\gamma} [ Y_{t+1} + p_{t+1}] \Bigr]
    :label: Lucas1
@@ -157,8 +192,8 @@ Guess a pricing function  of the form
 If we substitute this guess into :eq:`Lucas1` and rearrange we obtain
 
 .. math::
-     v(\lambda_t) C_t & = E_t \Bigl[ \beta \lambda_{t+1}^{-\gamma} (C_{t+1} + C_{t+1} \lambda_{t+1} )\Bigr] \cr
-                      & = E_t \Bigl[ \beta \lambda_{t+1}^{-\gamma} \lambda_{t+1} (1 + v(\lambda_{t+1}) C_t \Bigr] 
+     v(\lambda_t) C_t & = E_t \Bigl[ \beta \lambda_{t+1}^{-\gamma} (C_{t+1} + C_{t+1} v(\lambda_{t+1}) )\Bigr] \cr
+                      & = E_t \Bigl[ \beta \lambda_{t+1}^{-\gamma} \lambda_{t+1} (1 + v(\lambda_{t+1})) C_t \Bigr] 
                       
 It follows that 
 
@@ -168,15 +203,21 @@ It follows that
 or
 
 .. math::
-     v(i) = \beta \sum_{j=1}^n P_{ij} \lambda_j^{1-\gamma} ( 1 + v(j) )
+     \bar v_i = \beta \sum_{j=1}^n P_{ij} \lambda_j^{1-\gamma} ( 1 + \bar v_j )
+     :label: Lucas101
      
-which we can write as
+where 
+
+.. math::
+     \bar v_i = v(\bar \lambda_i)
+     
+Thus,  we can write :eq:`Lucas101` as
 
 .. math:: 
-    v = \beta \tilde P {\bf 1} + \beta \tilde P v
+    \bar v = \beta \tilde P {\bf 1} + \beta \tilde P \bar  v
    :label: resolvent1
    
-where :math:`v` is an :math:`n \times n` vector, :math:`{\bf 1}` is an :math:`n times 1` vector of ones,  and
+where :math:`\bar v` is an :math:`n \times n` vector, :math:`{\bf 1}` is an :math:`n \times 1` vector of ones,  and
 
 .. math::
     \tilde P_{ij} = P_{ij} \lambda_j^{1-\gamma}
@@ -184,18 +225,24 @@ where :math:`v` is an :math:`n \times n` vector, :math:`{\bf 1}` is an :math:`n 
 Finally, we can use a von Neuman series (or apply a resolvent operator) to solve  :eq:`resolvent1`:
 
 .. math::
-    v = \beta (I - \beta \tilde P)^{-1} \tilde P {\bf 1}
-    :label: resolvent2
+   \bar v = \beta (I - \beta \tilde P)^{-1} \tilde P {\bf 1}
+   :label: resolvent2
     
     
 A risk-free consol
 ^^^^^^^^^^^^^^^^^^^
 
-Consider the same economy
+Consider the same pure exchange representative agent economy
 
 A risk-free consol promises to pay a constant amount  :math:`\zeta> 0` each period
 
-Recycling notation, let :math:`p_t` be the ex-coupon price of the consol
+Recycling notation,  let :math:`p_t` now be the price of an  ex-coupon claim to the consol
+
+An ex-coupon claim to the consol entitles the owner at the end of period :math:`t` to
+
+   * :math:`\zeta` in period :math:`t+1`, plus
+   
+   * the right to sell the claim for :math:`p_{t+1}` next period
 
 The price satisies
 
@@ -211,8 +258,14 @@ It follows that
 
 .. math:: 
      p_t  = \beta E_t \bigl[ \lambda_{t+1}^{-\gamma} (\zeta + p_{t+1} ) \bigr]
+     :label: consolguess1
      
-or
+Now *guess* that the price takes the form 
+
+.. math::
+    p_t = p(\lambda_t) = \bar p_i \quad {\rm when} \lambda_t = \bar \lambda_i
+   
+Then :eq:`consolguess1` becomes
 
 .. math::
    \bar  p_i = \beta \sum_j (P_{ij}\lambda^j) (\zeta + \bar p_j )
@@ -231,7 +284,9 @@ or
 where
 
 .. math::
-    \check  P_{ij} = P_{ij} \lambda_j^{-\gamma} 
+    \check  P_{ij} = P_{ij} \lambda_j^{-\gamma}
+    
+and :math:`{\bf 1}` is again an :math:`n \times 1` vector of ones
     
 Pricing an option to purchase the consol
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -242,7 +297,7 @@ This is termed a *call option*
 
 It is said to have a *strike price* :math:`p_S`
 
-This means that the owner of the option is entitled to purchase the consol at the price :math:`p_S` at the beginning of any period, after the coupon has been paid to the previous owner of the bond
+The owner of the option is entitled to purchase the consol at the price :math:`p_S` at the beginning of any period, after the coupon has been paid to the previous owner of the bond
            
 The economy  is identical with the one above
 
@@ -254,28 +309,50 @@ The value of the option satisfies the equation
 
 .. math::
     U'(C_t) w(\lambda_t, p_S) & = \max \Bigl[ \beta E_t U'(C_{t+1}) w(\lambda_{t+1}, p_S), U'(C_t) (\bar p(\lambda_t) - p_S) \Bigr] \cr
-    C_t^{-\gamma} w(\lambda_i, p_S) & = \max \Bigl[ \beta P_{ij} \lambda^{-\gamma} C_t^{-\gamma} w(\lambda_j, p_S), C_t^{-\gamma} (\bar p(\lambda_j) - p_S) \Bigr]
+    C_t^{-\gamma} w(\bar \lambda_i, p_S) & = \max \Bigl[ \sum_{j=1}^n \beta P_{ij} \bar \lambda_j^{-\gamma} C_t^{-\gamma} w(\bar \lambda_j, p_S), C_t^{-\gamma} (\bar p(\lambda_j) - p_S) \Bigr]
     
 or
 
 .. math::
-    w(\lambda_i, p_S) = \max \bigl[ \beta \sum_{j=1}^n (P_{ij} \lambda_j^{\gamma}) w (\lambda_j, p_S), v(\lambda_j) - p_S \bigr]
+    w(\bar \lambda_i, p_S) = \max \bigl[ \beta \sum_{j=1}^n (P_{ij} \bar \lambda_j^{\gamma}) w (\bar \lambda_j, p_S), p(\bar \lambda_j) - p_S \bigr]
+    :label: FEoption0
     
-Let :math:`\hat P_{ij} = P_{ij} \lambda^{-\gamma}_j`
+Let :math:`\hat P_{ij} = P_{ij} \lambda^{-\gamma}_j` and :math:`\bar w_i = w(\lambda_i, p_S)`
 
 Express the preceding equation as the functional equation
 
 .. math:: 
-      w_i = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij} w_j, \bar p_j - p_S \bigr]
+      \bar w_i = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij}\bar w_j, \bar p_j - p_S \bigr]
       :label: FEoption
       
 To solve :eq:`FEoption` form, the operator
 
 .. math::
-    T(w;p, p_S) = \max \bigl( \beta \hat P w, \bar p - p_S {\bf 1} \bigr)
+    T(\bar w;p, p_S) = \max \bigl( \beta \hat P \bar w, \bar p - p_S {\bf 1} \bigr)
     
 and iterate to convergence on :math:`T(w;\bar p, p_S)`
 
+
+Finite-horizon options
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Finite horizon options obey  functional equations closely related to :eq:`FEoption0`
+
+Thus, for :math:`k=1, 2, \ldots`, let :math:`w(\bar \lambda_i, p_S;k)` be the value of a :math:`k`-period option
+
+It obeys
+
+.. math::
+    w(\bar \lambda_i, p_S;k) = \max \bigl[ \beta \sum_{j=1}^n (P_{ij} \bar \lambda_j^{\gamma}) w (\bar \lambda_j, p_S;k-1), p(\bar \lambda_j) - p_S \bigr]
+    
+where :math:`w(\bar \lambda_i, p_S;0) \equiv 0`
+
+
+We can express the preceding equation as the functional equation as
+
+.. math:: 
+      \bar w_i^{(k)} = \max \bigl[ \beta \sum_{j=1}^n \hat P_{ij}\bar w_j^{(k-1)}, \bar p_j - p_S \bigr]
+      :label: FEoption
 
 The risk-free interest rate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -288,7 +365,7 @@ For this economy, a stochastic discount factor is
 It follows that the reciprocal :math:`R_t^{-1}` of the gross risk-free interest rate :math:`R_t` is
 
 .. math::
-   E_t m_{t+1} = \beta \sum_{j=1}^n P_{ij} \lambda_j^\gamma = \beta P \lambda^\gamma
+   E_t m_{t+1} = \beta \sum_{j=1}^n P_{ij} \bar \lambda_j^\gamma = \beta P \bar \lambda^\gamma
    
    
 Price of Arrow securities
@@ -297,7 +374,7 @@ Price of Arrow securities
 In our economy, the prices of Arrow securities described in equation :eq:`Arrowprice` are given by
 
 .. math::
-     Q_{ij} = \beta \lambda_j^{-\gamma} P_{ij}
+     Q_{ij} = \beta \bar \lambda_j^{-\gamma} P_{ij}
      
 where :math:`Q_{ij}` is the price of one unit of consumption when next period's growth rate is :math:`\lambda_j` given that this period's growth rate is :math:`\lambda_i`
      
