@@ -32,6 +32,9 @@ Key tools for studying the economy are
    * Formulas for predicting future values of functions of a Markov state
    
    * A formula for predicting the discounted sum of future values of a Markov state 
+   
+   
+
 
 Reminders about prediction formulas for  Markov chains
 -----------------------------------------------------------
@@ -63,8 +66,22 @@ where :math:`P_{ij}^{(k)}` is the :math:`ij` element of :math:`P^k` and
 Premultiplication  by :math:`(I - \beta P)^{-1}` amounts to "applying the *resolvent operator*"      
 
       
-Basic setup 
----------------------
+Introduction to simple asset pricing models
+--------------------------------------------
+
+Before diving into the Lucas  model, let's look at some more basic asset pricing models
+
+Let :math:`p_t` be the price of a claim on a stream of dividends :math:`\{d_{t+j}\}_{j=0}^\infty` or :math:`\{d_{t+j}\}_{j=1}^\infty`
+
+A *cum dividend* asset is claim to the stream :math:`\{d_{t+j}\}_{j=0}^\infty`
+
+An *ex dividend* asset is a claim to the stream :math:`\{d_{t+j}\}_{j=1}^\infty`
+
+(Here *cum* means including the time :math:`t` dividend while *ex* means excluding it)
+      
+      
+Basic setup of Lucas model 
+---------------------------
 
     
 There is a single *non storable* consumption good at each :math:`t \geq 0`

@@ -3,11 +3,11 @@
 The LQ permanent income model
 ======================================
 
-This lecture describes the infinite-horizon linear-quadratic savings problem
+This lecture describes a rational expectations version of the famous permanent income model of Friedman (1956)
 
-Its  solution is a rational expectations version of the famous permanent income model of Friedman (1956)
+Hall (1978) cast Friedman' model within a linear-quadratic setting 
 
-Hall (1978) cast Friedman' model within the linear-quadratic setting
+Like Hall, we formulate a infinite-horizon linear-quadratic savings problem
 
 We use the model as a vehicle for illustrating
 
@@ -58,10 +58,10 @@ where
 
 
 .. note::
-    For the remainder of this lecture, we shall follow Friedman XXXXX and Hall XXXX and assume that :math:`R^{-1} = \beta`. 
+    For the remainder of this lecture, we  follow Friedman XXXXX and Hall XXXX and assume that :math:`R^{-1} = \beta`. 
     
     
-We shall  assume that the endowment process has the state-space representation
+The endowment process has the state-space representation
 
 .. math::
     z_{t+1} & = A_{22} z_t + C_2 w_{t+1} \\
@@ -77,7 +77,7 @@ where
    
    *  :math:`U_y` is a selection vector that pins down :math:`y` with a particular linear combination of the :math:`z_t`.
 
-We impose the following condition on the consumption, borrowing plan:
+We impose the following condition on the consumption, borrowing plan :math:`\{c_t, b_{t+1}\}_{t=0}^\infty`:
 
 .. math::
   E_0 \sum_{t=0}^\infty \beta^t b_t^2 < +\infty
@@ -155,6 +155,8 @@ Equation :eq:`sprob8` or :eq:`sprob9` asserts that  consumption  equals economic
    * A *marginal propensity to consume out of wealth* equals the  interest factor :math:`\frac{r}{1+r}`
    
    * *economic income* equals  a constant marginal propensity to consume  times the sum of nonfinancial wealth and financial wealth 
+   
+   * *economic income* equals the amount the household can consume while leaving its wealth intact
 
 Notice that :eq:`sprob9` represents :math:`c_t` as a function of the *state* :math:`[b_t, z_t]` confronting the household.
 
@@ -177,9 +179,11 @@ A linear state-space system governing consumption can be represented as
   y_t & = U_y z_t \\
   c_t & = (1-\beta) [ U_y(I-\beta A_{22})^{-1} z_t - b_t ]
 
-Another way to understand the solution is to show that *after* the optimal decision rule has been obtained, there is a point of view that allows us to regard the state as being :math:`c_t` together with :math:`z_t` and to regard :math:`b_t` as an outcome. 
+*After* the optimal decision rule has been obtained, there is another useful point of view
 
-Following Hall (1978), this is a sharp way to summarize the implication of the LQ permanent income theory. 
+We can  regard :math:`\{c_t, b_{t+1}\}_{t=0}^\infty` as comprising the  *state* :math:`b_t` as an *outcome* 
+
+Following Hall (1978), this is a sharp way to summarize the implication of the LQ permanent income theory 
 
 To represent the solution for :math:`b_t`, substitute :eq:`sprob8` into :eq:`sprob2` and after
 rearranging obtain
@@ -191,7 +195,7 @@ rearranging obtain
 Next, shift :eq:`sprob8` forward one period and eliminate :math:`b_{t+1}` by using :eq:`sprob2` to obtain
 
 .. math::
-   c_{t+1} = (1-\beta)\sum_{j=0}^\infty  E_{t+1} \beta^j y_{t+j+1} - (1-\beta)[\beta^{-1} (c_t + b_t - y_t)]
+   c_{t+1} = (1-\beta)\sum_{j=0}^\infty  E_{t+1} \beta^j y_{t+j+1} - (1-\beta)\bigl[\beta^{-1} (c_t + b_t - y_t)\bigr]
 
 If we add and subtract :math:`\beta^{-1} (1-\beta) \sum_{j=0}^\infty \beta^j E_t y_{t+j}` from the right side of the preceding equation and rearrange, we obtain
 
@@ -201,7 +205,10 @@ If we add and subtract :math:`\beta^{-1} (1-\beta) \sum_{j=0}^\infty \beta^j E_t
 
 The right side is the time :math:`t+1` *innovation to the expected present value* of the endowment process :math:`y`.
 
-It is useful to express this innovation in terms of a moving average representation [#f4]_ for income :math:`y_t`.
+Moving average representation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is useful to express the innovation innovation to the expected present value of the endowment process in terms of a moving average representation [#f4]_ for income :math:`y_t`.
 
 Suppose that the endowment process has the moving average representation
 
