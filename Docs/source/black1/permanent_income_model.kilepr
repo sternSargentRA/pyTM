@@ -27,7 +27,7 @@ Mode=LaTeX
 ReadWrite=true
 
 [document-settings,item:perm_income.rst]
-Bookmarks=217
+Bookmarks=224
 Encoding=windows-1250
 FoldedColumns=
 FoldedLines=
@@ -48,10 +48,10 @@ order=1
 
 [item:perm_income.rst]
 archive=true
-column=51
+column=72
 encoding=windows-1250
 highlight=reStructuredText
-line=259
+line=212
 mode=reStructuredText
 open=true
 order=0
@@ -73,7 +73,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:perm_income.rst]
-CursorColumn=51
-CursorLine=259
+CursorColumn=72
+CursorLine=212
 JumpList=
-ViMarks=.,217,24,[,217,23,],217,24
+ViMarks=.,224,24,[,224,23,],224,24

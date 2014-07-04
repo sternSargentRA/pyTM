@@ -4,7 +4,22 @@ History Dependent Public Policies
 
 This lecture describes *history-dependent public policies* and some of their representations
 
-We study these objects in the context of a model in which a benevolent tax authority is forced 
+The lecture uses methods described in XXXXX the linear regulator and XXXXX the new lecture on solving Stackelberg LQ models
+
+This lecture is based on [Please site David Evans and Thomas Sargent, 'History Dependent Public Policies' -- reference can be found on Sargent CV on web page
+
+One way setting in which history  dependent policies emerge naturally is  from Ramsey problems in which a government of Ramsey planner
+at time :math:`0` devises a plan to hold for all :math:`t \geq 0` and for all contingencies
+
+The Ramsey planner takes as given Euler equations expressing private agents' first-order necessary conditions 
+
+The Ramsey planner takes into account that its *future* actions affect earlier decisions by private agents, an avenue opened up by the maintained
+assumption of *rational expectations*
+
+Another setting in which history dependent policies naturally emerge is in which there is no Ramsey planner but instead a *sequence* of government administrators, 
+the time :math:`t` member of which, takes as given the policies that it forecasts will be used by its successors.  
+
+We study these things in  the context of a model in which a benevolent tax authority is forced 
 
     * to raise a prescribed present value of revenues
     
@@ -38,7 +53,7 @@ The first timing protocol  models a policy maker who can be said to  'commit'.
 
 To obtain a recursive representation of a Ramsey policy, we  compare two methods. 
 
-We  first apply a method proposed  by :cite:`KP1980` that uses a promised marginal utility to augment authentic state variables. 
+We  first apply a method proposed  by :cite:`KP1980` that uses a promised marginal utility to augment natural state variables. 
 
 We then apply a closely related method of :cite:`Miller_Salmon_1`, :cite:`PCL1986`, and :cite:`Backus_Driffill`. 
 
@@ -59,18 +74,19 @@ Credibility considerations contribute an additional auxiliary state variable (ab
      * It expresses how decisions must unfold to give the government the incentive to confirm private sector expectations when the government chooses sequentially.
 
 .. note:: 
-      We occasionally hear confusions about the consequences of our two timing protocols and about recursive representations of government policies under them.
-      It is erroneous to regard a recursive representation of the Ramsey plan as in any way 'solving' a time-inconsistency problem.
+      We occasionally hear confusions about the consequences of  recursive representations of government policies under our two timing protocols.
+      It is incorrect to regard a recursive representation of the Ramsey plan as in any way 'solving a time-inconsistency problem'.
       On the contrary, the evolution of the auxiliary state variable that augments the authentic ones under our first timing protocol ought to be viewed as
       *expressing* the time-inconsistency of a Ramsey plan.  Despite that, in literatures about practical monetary policy one sometimes hears interpretations that sell
-      Ramsey plans in settings where our sequential timing protocol more accurately characterizes decision making.
-      Please beware of discussions of credibility if you don't see recursive representations of policies with the complete list of state variables appearing
+      Ramsey plans in settings where our sequential timing protocol is the one that more accurately characterizes  decision making.
+      Please beware of discussions that toss around claims about  credibility if you don't also see recursive representations of policies with the complete list of state 
+      variables appearing
       in the :cite:`Chang1998` -like analysis that we present XXXXXX :ref:`sec:credible` below.
 
 Competitive equilibrium
 =======================
 
-A representative competitive firm sells output :math:`q_t` for price :math:`p_t`, where market-wide output is :math:`Q_t`.
+A representative competitive firm sells output :math:`q_t` at price :math:`p_t`, where market-wide output is :math:`Q_t`.
 
 The market as a whole faces a downward sloping inverse demand function
 
@@ -86,9 +102,9 @@ The firm faces what it regards as exogenous sequences :math:`\{p_t, \tau_t\}_{t=
   \sum_{t=0}^\infty \beta^t \bigl\{ p_t q_t - \frac{d}{2}(q_{t+1} - q_t)^2 - \tau_t q_t \bigr\}
   :label: ES_2
 
-Let :math:`u_t = q_{t+1} - q_t` be the firm's 'control' variable at time :math:`t`.
+Let :math:`u_t = q_{t+1} - q_t` be the firm's 'control variable' at time :math:`t`.
 
-First-order conditions for the firm's problem are
+First-order conditions for the representative firm's problem are
 
 .. math::
    u_t = \frac{\beta}{d} p_{t+1} + \beta u_{t+1} - \frac{\beta}{d} \tau_{t+1}
@@ -99,7 +115,7 @@ for :math:`t \geq 0`.
 
 **Notation:** For any scalar :math:`x_t`, let :math:`\vec x = \{x_t\}_{t=0}^\infty`.
 
-To compute a competitive equilibrium, it is appropriate to take , eliminate :math:`p_t` in favor of :math:`Q_t` by using , and then set :math:`q_t = Q_t`, thereby making the *representative firm be representative* [2]_ 
+To compute a competitive equilibrium, it is appropriate to take :eq:`ES_3`, eliminate :math:`p_t` in favor of :math:`Q_t` by using :eq:`ES_1`, and then set :math:`q_t = Q_t`, thereby making the *representative firm be representative* [2]_ 
 
 We arrive at
 
@@ -113,7 +129,8 @@ We also have
    Q_{t+1} = Q_t + u_t .
    :label: ES_5
 
-Equations :eq:`ES_1`,  :eq:`ES_4`, and :eq:`ES_5` summarize competitive equilibrium sequences for :math:`(\vec p, \vec Q, \vec u)` as functions of the path :math:`\{\tau_{t+1}\}_{t=0}^\infty` for the flat rate distorting tax :math:`\tau`.
+Equations :eq:`ES_1`,  :eq:`ES_4`, and :eq:`ES_5` summarize competitive equilibrium sequences for :math:`(\vec p, \vec Q, \vec u)` as functions of the path 
+:math:`\{\tau_{t+1}\}_{t=0}^\infty` for the flat rate distorting tax.
 
 **Definition** Given a tax sequence :math:`\{\tau_{t+1}\}_{t=0}^\infty`, a competitive equilibrium is a price sequence :math:`\{p_t\}_{t=0}^\infty` and an output sequence :math:`\{Q_t\}_{t=0}^\infty` that satisfy :eq:`ES_1`,  :eq:`ES_4`, and :eq:`ES_5`.
 
@@ -121,21 +138,21 @@ Equations :eq:`ES_1`,  :eq:`ES_4`, and :eq:`ES_5` summarize competitive equilibr
 
 .. TODO: Can't figure out how to label definitions... Moving on for now and we can come back to it later if we need to.
 
-**Definition** For any sequence :math:`\vec x = \{x_t\}_{t=0}^\infty`, :math:`\vec x_1 \equiv \{x_t\}_{t=1}^\infty` is called a *continuation* sequence or simply a *continuation*.
+**Definition** For any sequence :math:`\vec x = \{x_t\}_{t=0}^\infty`, :math:`\vec x_1 \equiv \{x_t\}_{t=1}^\infty` is called a *continuation sequence* or simply a *continuation*.
 
 **Remark** A competitive equilibrium consists of a first period value :math:`u_0 = Q_1-Q_0` and a continuation competitive equilibrium with initial condition :math:`Q_1`. A continuation of a competitive equilibrium is a competitive equilibrium.
 
 Following the lead of :cite:`Chang1998`, we shall make extensive use of the following property:
 
-**Remark** A continuation :math:`\vec \tau_1 = \{\tau_{t+1}\}_{t=1}^\infty` of a tax policy :math:`\vec \tau` influences :math:`u_0` via entirely through its impact on :math:`u_1`. A continuation competitive equilibrium can be indexed by a :math:`u_1` that satisfies .
+**Remark** A continuation :math:`\vec \tau_1 = \{\tau_{t+1}\}_{t=1}^\infty` of a tax policy :math:`\vec \tau` influences :math:`u_0` via :eq:`ES_4` entirely through its impact on :math:`u_1`. A continuation competitive equilibrium can be indexed by a :math:`u_1` that satisfies  XXXXX.
 
-**Definition** With some abuse of language, in the spirit of and , we shall use :math:`u_{t+1}` to describe what we shall call a 'promised marginal value' that a competitive equilibrium offers to a representative firm.
+**Definition** With some abuse of language, in the spirit of XXXXX and XXXXXX, we shall use :math:`u_{t+1}` to describe what we shall call a 'promised marginal value' that a competitive equilibrium offers to a representative firm.
 
-**Remark** We could instead, perhaps with more accuracy, define a promised marginal value as :math:`\beta (A_0 - A_1 Q_{t+1} ) - \beta \tau_{t+1} + \frac{u_{t+1}}{\beta}`, since this is the object to which the firm's first order condition instructs it to equate to the marginal cost :math:`d u_t` of :math:`u_t = q_{t+1} - q_t`. [3]_ But given :math:`(u_t, Q_t)`, the representative firm knows :math:`(Q_{t+1},\tau_{t+1})`, so it is adequate to take :math:`u_{t+1}` as the intermediate variable that summarizes how :math:`\vec \tau_{t+1}` affects the firm's choice of :math:`u_t`.
+**Remark** We could instead, perhaps with more accuracy, define a promised marginal value as :math:`\beta (A_0 - A_1 Q_{t+1} ) - \beta \tau_{t+1} + \frac{u_{t+1}}{\beta}`, since this is the object to which the firm's first-order condition instructs it to equate to the marginal cost :math:`d u_t` of :math:`u_t = q_{t+1} - q_t`. [3]_ But given :math:`(u_t, Q_t)`, the representative firm knows :math:`(Q_{t+1},\tau_{t+1})`, so it is adequate to take :math:`u_{t+1}` as the intermediate variable that summarizes how :math:`\vec \tau_{t+1}` affects the firm's choice of :math:`u_t`.
 
 **Definition** Define a history :math:`Q^t = [Q_0, \ldots, Q_t]`. A history-dependent tax policy is a sequence of functions :math:`\{\sigma_t\}_{t=0}^\infty` with time :math:`t` component :math:`\sigma_t` mapping :math:`Q^t` into a choice of :math:`\tau_{t+1}`.
 
-Below we shall study history-dependent tax policies that either (a) solve a Ramsey plan, or (b) are credible. We shall describe recursive representations of both types of history-dependent policies.
+Below, we shall study history-dependent tax policies that either (a) solve a Ramsey plan, or (b) are credible. We shall describe recursive representations of both types of history-dependent policies.
 
 .. NOTE: I did not number definitions or remarks in this section
 
@@ -175,7 +192,11 @@ subject to :eq:`ES_6`.
 
 #. Given :math:`\bigl(Q_0, \{\tau_{t+1}\}_{t=0}^\infty\bigr)`, a competitive equilibrium outcome :math:`\{u_t, Q_{t+1}\}_{t=0}^\infty` emerges (see definition of cometitive equilibrium).
 
-**Remark** In bringing out the timing protocol associated with a Ramsey plan, we run head on to a set of issues analyzed by Basetto (2005)XXXX. This is because in definition of Ramsey Protocol of the Ramsey timing protocol, we have not completely described conceivable actions by the government and firms as time unfolds. For example, we are silent about how the government would respond if firms, for some unspecified reason, were to choose to deviate from the competitive equilibrium associated with the Ramsey plan, thereby possibly violating budget balance . Our definition of a Ramsey plan says nothing about how the government would respond. This is an example of the issues raised by Basse, who identifies a class of government policy problems whose proper formulation requires supplying a complete and coherent description of all actors' behavior across all possible histories. Implicitly, we are assuming that a more complete description of a government strategy than we have included could be specified that (a) agrees with ours along the Ramsey outcome, and (b) suffices uniquely to implement the Ramsey plan by deterring firms from taking actions that deviate from the Ramsey outcome path.
+**Remark** In bringing out the timing protocol associated with a Ramsey plan, we run head on to a set of issues analyzed by Basetto (2005)XXXX. 
+This is because in definition [XXXXX of Ramsey Protocol] of the Ramsey timing protocol, we have not completely described conceivable actions by the government and 
+firms as time unfolds. For example, we are silent about how the government would respond if firms, for some unspecified reason, were to choose to deviate from the competitive 
+equilibrium associated with the Ramsey plan, thereby possibly violating budget balance. Our definition of a Ramsey plan says nothing about how the government would respond. 
+This is an example of the issues raised by XXXXXXBassetto2005, who identifies a class of government policy problems whose proper formulation requires supplying a complete and coherent description of all actors' behavior across all possible histories. Implicitly, we are assuming that a more complete description of a government strategy than we have included could be specified that (a) agrees with ours along the Ramsey outcome, and (b) suffices uniquely to implement the Ramsey plan by deterring firms from taking actions that deviate from the Ramsey outcome path.
 
 .. NOTE: I did not number definitions or remarks in this section
 
@@ -197,11 +218,11 @@ Implementability multiplier approach
 
 The Ramsey problem is a special case of the linear quadratic dynamic Stackelberg problem analyzed in XXXXXX.
 
-The idea is to construct a recursive representation of a Ramsey plan by taking as state variables Lagrange multipliers on implementability constraints that require the Ramsey planner to choose among competitive equilibrium allocations. 
+The idea is to construct a recursive representation of a Ramsey plan by including among the state variables Lagrange multipliers on implementability constraints that require the Ramsey planner to choose among competitive equilibrium allocations. 
 
 The motion through time of these Lagrange multipliers become components of a recursive representation of a history-dependent plan for taxes.
 
-For us, the key implementability conditions are for :math:`t \geq 0`.
+For us, the key implementability conditions are :eq:`ES_4` for :math:`t \geq 0`.
 
 Holding fixed :math:`\mu` and :math:`G_0`, the Lagrangian for the planning problem can be abbreviated as
 
@@ -213,7 +234,7 @@ Define
 .. math::
   y_t = \left(\begin{matrix} z_t\\ u_t\end{matrix}\right) = \left(\begin{matrix} 1\\ Q_t\\ \tau_t \ u_t\end{matrix}\right)
 
-\ where :math:`z_t = \left(\begin{matrix} 1 \ Q_t\\ \tau_t\end{matrix}\right)` are genuine state variables and :math:`u_t` is a jump variable. 
+\ where :math:`z_t = \left(\begin{matrix} 1 \\ Q_t\\ \tau_t\end{matrix}\right)` are genuine state variables and :math:`u_t` is a jump variable. 
 
 We include :math:`\tau_t` as a state variable for bookkeeping purposes: it helps to map the problem into a linear regulator problem with no cross products between states and controls. 
 
@@ -250,7 +271,7 @@ Letting :math:`\lambda_t` be a vector of Lagrangian multipliers on the transitio
 
 .. math:: F = \beta(\beta B'PB)^{-1}B'PA .
 
-\ This we can rewrite as
+\ We can rewrite :math:`\lambda_t = P y_t` as
 
 .. math:: \left(\begin{matrix}\lambda_{zt}\ \lambda_{ut}\end{matrix}\right)=\left(\begin{matrix} P_{11}&P_{12}\\P_{21}&P_{22}\end{matrix}\right)\left(\begin{matrix} z_t \\u_t\end{matrix}\right) .
 
@@ -258,9 +279,9 @@ Letting :math:`\lambda_t` be a vector of Lagrangian multipliers on the transitio
 
 .. math:: u_t = -P_{22}^{-1}P_{21}z_t+P_{22}^{-1}\lambda_{ut},
 
-where now the multiplier :math:`\lambda_{ut}` becomes our authentic state variable, one that measures the costs of confirming the public's prior expectations about time :math:`t` government actions. 
+where now the multiplier :math:`\lambda_{ut}` becomes our authentic state variable, one that measures the cost to the government of confirming the representative firm's prior expectations about time :math:`t` government actions. 
 
-Then the complete state at time t becomes :math:`\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right)`. Thus,
+Then the complete state at time :math:`t` becomes :math:`\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right)`. Thus,
 
 .. math:: y_t = \left(\begin{matrix} z_t\\ u_t\end{matrix}\right) = \left(\begin{matrix} I & 0\\ -P_{22}^{-1}P_{21}&P_{22}^{-1}\end{matrix}\right)\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right)
 
@@ -275,7 +296,7 @@ Then the complete state at time t becomes :math:`\left(\begin{matrix} z_t \ \lam
 \ with initial state
 
 .. math::
-  \left(\begin{matrix} z_0 \ \lambda_{u0}\end{matrix}\right) = \left(\begin{matrix} 1\\ Q_0 \ \tau_0 \ 0\end{matrix}\right).
+  \left(\begin{matrix} z_0 \ \lambda_{u0}\end{matrix}\right) = \left(\begin{matrix} 1\\ Q_0 \\ \tau_0 \\ 0\end{matrix}\right).
   :label: ES_initial_lambda
 
 
@@ -344,7 +365,7 @@ where
   :label: ES_F_formula
 
 
-Note that since as the formulas for :math:`A`,\ :math:`B`, and :math:`R` are identical, it follows that :math:`F` and :math:`P` are the same as in the Lagrangian multiplier approach of section :ref:`sec:Lagrange_multipler`. 
+Note that since  the formulas for :math:`A`, :math:`B`, and :math:`R` are identical, it follows that :math:`F` and :math:`P` are the same as in the Lagrangian multiplier approach of section :ref:`sec:Lagrange_multipler`. 
 
 The optimal choice of :math:`u_0` satisfies
 
@@ -387,7 +408,7 @@ Using the formula
 and applying it to the evolution of the state
 
 .. math::
-  \left(\begin{matrix} z_{t+1}\ \ lambda_{ut+1}\end{matrix}\right) = \left(\begin{matrix} I & 0 \ P_{21}&P_{22}\end{matrix}\right)(A-BF)\left(\begin{matrix} I & 0\\ -P_{22}^{-1}P_{21}&P_{22}^{-1}\end{matrix}\right)\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right),
+  \left(\begin{matrix} z_{t+1}\ \lambda_{ut+1}\end{matrix}\right) = \left(\begin{matrix} I & 0 \ P_{21}&P_{22}\end{matrix}\right)(A-BF)\left(\begin{matrix} I & 0\\ -P_{22}^{-1}P_{21}&P_{22}^{-1}\end{matrix}\right)\left(\begin{matrix} z_t \ \lambda_{ut}\end{matrix}\right),
 
 \ we get
 
@@ -420,7 +441,7 @@ An outcome of the preceding results is that the Ramsey plan can be represented r
   u_0 = \upsilon(Q_0|\mu)
   :label: ES_24
 
-that obeys and the following updating equations for :math:`t\geq 0`:
+that obeys :eq:`ES_24aa`  and the following updating equations for :math:`t\geq 0`:
 
 .. math::
   \tau_{t+1} & = & \tau(Q_t, u_t|\mu)
@@ -461,7 +482,8 @@ The optimal decision rule is [5]_
 
 Notice how the Ramsey plan calls for a high tax at :math:`t=1` followed by a perpetual stream of lower taxes. 
 
-Taxing heavily at first, less later sets up a time-inconsistency problem that we'll characterize formally after first discussing how to compute :math:`\mu`.
+Taxing heavily at first, less later expresses time-inconsistency of the optimal plan for :math:`\{\tau_{t+1}\}_{t=0}^\infty` .  We'll characterize this
+formally after first discussing how to compute :math:`\mu`.
 
 .. TODO: Pick up here!
 
@@ -500,7 +522,7 @@ Then find an :math:`\Omega` that satisfies
   :label: ES_Lyapunov
 
 Equation :eq:`ES_Lyapunov` is a discrete Lyapunov equation that can be solved for :math:`\Omega` using the Matlab program ``dlyap`` or ``doublej2``.
-*XXXXX replace the preceding by appropriate python programs when available*
+*XXXXX replace the preceding by appropriate python programs when available -- these are already available. Please point to them appropriately*
 
 The matrix :math:`F` and therefore the matrix :math:`A_F = A-BF` depend on :math:`\mu`. To find a :math:`\mu` that guarantees that
 
@@ -549,7 +571,7 @@ Evidently, these continuation values satisfy the recursion
 
 for all :math:`t \geq 0`, where :math:`Q_{t+1} = Q_t + u_t`. Under the timing protocol affiliated with the Ramsey plan, the planner is committed to the outcome of iterations on :eq:`ES_25`, :eq:`ES_26`, :eq:`ES_27`. 
 
-In particular, when time :math:`t` comes, he is committed to the value of :math:`u_t` implied by the Ramsey plan and receives continuation value:math:`w(Q_t,u_t|\mu_0)`.
+In particular, when time :math:`t` comes, the Ramsey planner is committed to the value of :math:`u_t` implied by the Ramsey plan and receives continuation value :math:`w(Q_t,u_t,\mu_0)`.
 
 That the Ramsey plan is time-inconsistent can be seen by subjecting it to the following 'revolutionary' test.
 
@@ -562,7 +584,8 @@ First, define continuation revenues :math:`G_t` that the government raises along
 
 where :math:`\{\tau_t, Q_t\}_{t=0}^\infty` is the original Ramsey outcome. [6]_ 
 
-Then at time :math:`t \geq 1`, take :math:`(Q_t, G_t)` inherited from the original Ramsey plan as initial conditions, and invite a brand new Ramsey planner to resolve to compute a new Ramsey plan, solving for a new :math:`u_t`, to be called XXXXXX, and for a new :math:`\mu`, to be called :math:`{\check \mu_t}`. 
+Then at time :math:`t \geq 1`, take :math:`(Q_t, G_t)` inherited from the original Ramsey plan as initial conditions, and invite a brand new Ramsey planner to resolve to compute a new Ramsey plan, solving for a new :math:`u_t`, 
+to be called :math:`{\check u_t}`, and for a new :math:`\mu`, to be called :math:`{\check \mu_t}`. 
 
 The revised Lagrange multiplier  :math:`\check{\mu_t}`  is chosen so that, under the new Ramsey Plan, the government is able to raise enough continuation revenues :math:`G_t` given by :eq:`eqn:G_continuation`. 
 
@@ -574,7 +597,8 @@ The answer is no because along a Ramsey plan, for :math:`t \geq 1`, in general i
   w\bigl(Q_t, \upsilon(Q_t|\check{\mu})|\check{\mu}\bigr) > w(Q_t, u_t|\mu_0)
   :label: ES_28
 
-Inequality :eq:`ES_28` expresses a continuation Ramsey planner's incentive to deviate from a time :math:`0` Ramsey plan by resetting :math:`u_t` according to XXXXXX
+Inequality :eq:`ES_28` expresses a continuation Ramsey planner's incentive to deviate from a time :math:`0` Ramsey plan by resetting :math:`u_t` according to 
+:eq:`ES_24`
 and adjusting the Lagrange multiplier on the continuation appropriately to account for tax revenues already collected. [7]_ 
 
 Inequality expresses the time-inconsistency of a Ramsey plan.
@@ -585,7 +609,7 @@ Associated with the new Ramsey plan at :math:`t` is a value of the Lagrange mult
 
 In figure :ref:`fig:ES_udiff`, we compare the time :math:`t` outcome for :math:`u_t` under the original Ramsey plan with the time :math:`t` value of this new Ramsey problem starting from :math:`(Q_t, G_t)`. 
 
-To compute :math:`u_t` under the new Ramsey plan, we use the following version of formula :
+To compute :math:`u_t` under the new Ramsey plan, we use the following version of formula  :eq:`ES_u0`:
 
 .. math::
   \check{u_t} = - P_{22}^{-1} (\check\mu_{t}) P_{21}(\check\mu_t) z_t
@@ -631,7 +655,8 @@ The Ramsey Plan can then only be time consistent if :math:`G_t` remains constant
 
   Figure 2
 
-  Difference :math:`\check  \tau_{t+1}  - \tau_{t+1}` where :math:`\tau_{t+1}` is along Ramsey plan and :math:`\check{\tau_{t+1}}` is for Ramsey plan restarted at :math:`t` when Lagrange multiplier is frozen at :math:`\mu_0`.
+  Difference :math:`\check  \tau_{t+1}  - \tau_{t+1}` where :math:`\tau_{t+1}` is along the original Ramsey plan and :math:`\check{\tau_{t+1}}` is for  the 
+  Ramsey plan restarted at :math:`t` when the Lagrange multiplier is frozen at :math:`\mu_0`.
 
 .. _fig:ES_udiff:
 
@@ -669,13 +694,15 @@ We express the  theme of this section in the following:
 
 **Remark** A continuation of a credible plan is a credible plan.
 
-The literature on a credible public policy (:cite:`Chari_Kehoe_1990` and :cite:`Stokey_1989`)  arrange strategies and incentives so that public policies can be implemented by a *sequence* of government decision makers. 
+The literature on a credible public policy (:cite:`Chari_Kehoe_1990` and :cite:`Stokey_1989`)  arranges strategies and incentives so 
+that public policies can be implemented by a *sequence* of government decision makers instead of  a single Ramsey planner who chooses an entire
+sequence of history-dependent actions once and for all at time :math:`t=0` 
 
 Here  we confine ourselvs to  sketching how recursive methods can be  used to characterize credible policies in  our model.
 
 :cite:`Chang1998` is a key reference
 
-A credibility problem arises because we assume that the timing of decisions differs from those in for a Ramsey problem
+A credibility problem arises because we assume that the timing of decisions differs from those  for a Ramsey problem
 
 
 **Definition** Sequential timing protocol:
@@ -692,9 +719,9 @@ Of course, the representative firm sets :math:`u_t` in light of its expectations
 
      * is anticipated by the representative firm, and 
       
-     * one that the government chooses to confirm
+     * one that a time :math:`t` government chooses to confirm
 
-We use the following recursion, closely related to but different from  :eq:`ES_28a`, to define the continuation value function for Ramsey planner:
+We use the following recursion, closely related to but different from  :eq:`ES_28a`, to define the continuation value function for the government:
 
 .. math::
   J_t = A_0 Q_{t} - \frac{A_1}{2} Q_{t}^2 - \frac{d}{2} u_{t}^2 + \beta J_{t+1} (\tau_{t+1},G_{t+1})
@@ -719,7 +746,7 @@ subject to the terminal condition :math:`\lim_{t \rightarrow + \infty} \beta^t G
 
 Because the government is choosing sequentially, it is convenient to take :math:`G_t` as a state variable at :math:`t` and to regard the time :math:`t` government as choosing :math:`(\tau_{t+1}, G_{t+1})` subject to constraint :eq:`ES_govt_budget_sequential`.
 
-To express the notion of a credible government plan concisely, we expand the strategy space by also adding :math:`J_t` itself as a state variable and allow policies to take the following recursive forms. [9]_ 
+To express the notion of a credible government plan concisely, we expand the strategy space by also adding :math:`J_t` itself as a state variable and allowing policies to take the following recursive forms. [9]_ 
 
 Regard :math:`J_0` as an a discounted present value promised to the Ramsey planner and take it as an initial condition. 
 
@@ -747,7 +774,7 @@ choose subsequent taxes, outputs, *and* continuation values according to recursi
    J_{t+1}(\tau_{t+1}, G_{t+1}) & = & \nu(Q_t, u_t, G_{t+1}, J_t, \tau_{t+1} )
    :label: ES_33
 
-Here :math:`\hat \tau_{t+1}` is the time :math:`t+1` government action called for by the plan, while :math:`\tau_{t+1}` is possibly some one-time deviation that the time :math:`t+1` government contemplates and :math:` G_{t+1}` is the associated continuation tax collections. 
+Here :math:`\hat \tau_{t+1}` is the time :math:`t+1` government action called for by the plan, while :math:`\tau_{t+1}` is possibly some one-time deviation that the time :math:`t+1` government contemplates and :math:`G_{t+1}` is the associated continuation tax collections. 
 
 **Definition** The plan is said to be *credible* if, for each :math:`t` and each state :math:`(Q_t, u_t, G_t, J_t)`, the plan satisfies the incentive constraint
 
