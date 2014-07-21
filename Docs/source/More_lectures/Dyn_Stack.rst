@@ -208,7 +208,7 @@ Step 2: use the stabilizing properties of shadow price :math:`P y_t`
 
 At this point, we decode the information in the matrix :math:`P` in terms of shadow prices that are associated with a Lagrangian.
 
-We adapt a method described earlier in section XXXXXX that solves a linear quadratic control problem of the form :eq:`new1`, :eq:`new30` by attaching a sequence of Lagrange multipliers :math:` 2 \beta^{t+1} \mu_{t+1}` to the sequence of constraints :eq:`new30` and then forming the Lagrangian:
+We adapt a method described earlier in section XXXXXX that solves a linear quadratic control problem of the form :eq:`new1`, :eq:`new30` by attaching a sequence of Lagrange multipliers :math:`2 \beta^{t+1} \mu_{t+1}` to the sequence of constraints :eq:`new30` and then forming the Lagrangian:
 
 .. TODO: Fill in the section link given the place holder XXXXXX above
 
@@ -261,11 +261,10 @@ We seek a "stabilizing" solution of :eq:`olrp8`, i.e., one that satisfies
 Stabilizing solution
 --------------------
 
-By the same argument used in section XXXXXX of chapter XXXXXX, a stabilizing solution satisfies :math:`\mu_0 = P y_0`, where :math:`P` solves the matrix Riccati equation :eq:`bell3`.
+A stabilizing solution satisfies :math:`\mu_0 = P y_0`, where :math:`P` solves the matrix Riccati equation :eq:`bell3`.
 
 The solution for :math:`\mu_0` replicates itself over time in the sense that
 
-.. TODO: fill in section and chapter links given the placeholder XXXXXX above
 
 .. math::
 	\mu_t = P y_t .
@@ -273,9 +272,7 @@ The solution for :math:`\mu_0` replicates itself over time in the sense that
 
 Appendix :ref:`appAblkstack` verifies that the matrix :math:`P` that satisfies the Riccati equation :eq:`bell3` is the same :math:`P` that defines the stabilizing initial conditions :math:`(y_0, P y_0)`. 
 
-In Appendix XXXXXXX, we describe how to construct :math:`P` by computing generalized eigenvalues and eigenvectors.
 
-.. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
 Step 3: convert implementation multipliers into state variables
 ---------------------------------------------------------------
@@ -441,28 +438,6 @@ for :math:`t \geq 1`. For :math:`t=0`, the initialization :math:`\mu_{x,0}=0` im
 
 By making the instrument feed back on itself, the form of potentially allows for "instrument-smoothing" to emerge as an optimal rule under commitment.
 
-Digression on determinacy of equilibrium
-----------------------------------------
-
-Appendix XXXXXXX describes methods for solving a system of difference equations of the form :eq:`new2` or :eq:`new3` with an arbitrary feedback rule that expresses the decision rule for :math:`u_t` as a function of current and previous values of :math:`y_t` and perhaps previous values of itself. 
-
-The difference equation system has a unique solution satisfying the stability condition :math:`\sum_{t=0}^\infty \beta^t y_t \cdot  y_t` if the eigenvalues of the matrix :eq:`symplec2` split, with half being greater than unity and half being less than unity in modulus. 
-
-If more than half are less than unity in modulus, the equilibrium is said to be indeterminate in the sense that there are multiple equilibria starting from any initial condition.
-
-.. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
-
-If we choose to represent the solution of a Stackelberg or Ramsey problem in the form :eq:`vonzer3`, we can substitute that representation for :math:`u_t` into :eq:`new3`, obtain a difference equation system in :math:`y_t, u_t`, and ask whether the resulting system is determinate.
-
-To answer this question, we would use the method of Appendix XXXXXXX, form system , then check whether the generalized eigenvalues split as required. 
-
-Researchers have used this method to study the determinacy of equilibria under Stackelberg plans with representations like :eq:`vonzer3` and have discovered that sometimes an equilibrium can be indeterminate [#f7]_.
-
-See Evans and Honkapohja (2003) for a discussion of determinacy of equilibria under commitment in a class of equilibrium monetary models and how determinacy depends on how the decision rule of the Stackelberg leader is represented.
-
-Evans and Honkapohja argue that casting a government decision rule in a way that leads to indeterminacy is a bad idea.
-
-.. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
 A large firm with a competitive fringe
 ======================================
@@ -635,7 +610,7 @@ The monopolist is constrained to set :math:`\mu_{x,0} \leq 0`, but will find it 
 
 Recall that :math:`z_t =\begin{bmatrix}  1 & v_t & Q_t & \overline q_t  \end{bmatrix}'`.
 
-Thus, :eq:`oli11` includes the equilibrium law of motion for the quantity :math:`\overline q_t` of the competitive fringe. By construction, :math:`\overline q_t` satisfies the Euler equation of the representative firm in the competitive fringe, as we elaborate in Appendix XXXXXXX.
+Thus, :eq:`oli11` includes the equilibrium law of motion for the quantity :math:`\overline q_t` of the competitive fringe. By construction, :math:`\overline q_t` satisfies the Euler equation of the representative firm in the competitive fringe.
 
 .. TODO: Fill in the link to the appendix given the placeholder XXXXXXX above.
 
